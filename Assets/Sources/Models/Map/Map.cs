@@ -24,14 +24,12 @@ public class Map
         _mapCells = new List<MapCell>();
     }
 
-    public void ButtonClicked(PositionInArray index)
+    public void ButtonClicked(IndexInArray index)
     {
         if (_currentCell != null)
         {
             if (_currentCell.Index.Equals(index))
-            {
                 return;
-            }
 
             List<MapCell> previousLevelCells = _mapCells.Where(newCell => newCell.Index.X == index.X && newCell.Index.Equals(index) == false).ToList();
 
@@ -46,11 +44,9 @@ public class Map
         _currentCell = _mapCells.FirstOrDefault(cell => cell.Index.Equals(index));
         _currentCell.PlayerArriviedToThisCell();
 
-        List<MapCell> nextLevelCells = _mapCells.Where(newCell => newCell.Index.X == _currentCell.Index.X + 1).ToList();
-
-        foreach (MapCell nextCell in nextLevelCells)
+        foreach (IndexInArray cellIndex in _currentCell.NextAvailableCellsIndexes)
         {
-            nextCell.ActivateCell();
+            _mapCells.FirstOrDefault(cell => cell.Index.Equals(cellIndex)).ActivateCell();
         }
     }
 
@@ -66,37 +62,119 @@ public class Map
 
     private void GenerateCells()
     {
-        int startCell = _random.Next(0, _maxRoadsInlevel - 1);
-        _mapCells.Add(new MapCell(MapCellType.Filled, 0, startCell));
+        int defaultPercentsToMakeCell = 50;
+        int extraPercentsToMakeCell = 20; 
+        int centralCell = 2;
+
+        int attemptsToMakeCell;
+        int currentPercentsToMakeCell;
+
+        _mapCells.Add(new MapCell(MapCellType.Filled, 0, centralCell));
 
         for (int x = 1; x < _amountOfLevels - 1; x++)
         {
+            attemptsToMakeCell = 0;
+
             for (int y = 0; y < _maxRoadsInlevel; y++)
             {
-                MapCellType newType = (MapCellType)_random.Next(_amountOfCellTypes);
+                currentPercentsToMakeCell = defaultPercentsToMakeCell + attemptsToMakeCell * extraPercentsToMakeCell;
+
+                MapCellType newType;
+
+                if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))             
+                    newType = (MapCellType)_random.Next(1, _amountOfCellTypes);
+                else
+                    newType = (MapCellType)_random.Next(_amountOfCellTypes);
 
                 if (newType == MapCellType.Empty)
                     continue;
 
                 _mapCells.Add(new MapCell(newType, x, y));
+                attemptsToMakeCell = 0;
             }
         }
 
-        int endCell = _random.Next(0, _maxRoadsInlevel - 1);
-        _mapCells.Add(new MapCell(MapCellType.Filled, _amountOfLevels - 1, endCell));
+        _mapCells.Add(new MapCell(MapCellType.Filled, _amountOfLevels - 1, centralCell));
     }
 
     private void GenerateRoads()
     {
+        int percentsToMakeRoadNextCell = 50;
+        List<MapCell> nextLevelCells;
+
         foreach (MapCell cell in _mapCells)
         {
-            List<MapCell> nextLevelCells = _mapCells.Where(newCell => newCell.Index.X == cell.Index.X + 1).ToList();
-
-            foreach (MapCell nextCell in nextLevelCells)
+            if (cell.Equals(_mapCells[0]) || cell.Index.X == _amountOfLevels - 2 || cell.Index.X == _amountOfLevels - 1)
             {
-                if (nextCell.Type == MapCellType.Filled)
+                nextLevelCells = _mapCells.Where(newCell => newCell.Index.X == cell.Index.X + 1).ToList();
+
+                foreach (MapCell nextCell in nextLevelCells)
                 {
-                    cell.AddRoadToNextCell(nextCell.Index.X, nextCell.Index.Y);
+                    cell.AddRoadToNextCell(new IndexInArray(nextCell.Index.X, nextCell.Index.Y));
+                }
+
+                continue;
+            }
+
+            nextLevelCells = _mapCells.Where(newCell => newCell.Index.X == cell.Index.X + 1).ToList();
+
+            int leftIndex = cell.Index.Y;
+            int rightIndex = cell.Index.Y;
+            int counterOfLoops = 0;
+
+            MapCell leftCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, leftIndex)));
+            MapCell rightCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, rightIndex)));
+
+            if (leftCell != null || rightCell != null)
+            {
+                cell.AddRoadToNextCell(leftCell.Index);
+                leftIndex -= 1;
+
+                if (leftIndex >= 0)
+                {
+                    leftCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, leftIndex)));
+
+                    if (leftCell != null && Extensions.RandomBoolWithPercents(percentsToMakeRoadNextCell))
+                        cell.AddRoadToNextCell(leftCell.Index);
+                }
+
+                rightIndex += 1;
+
+                if (rightIndex <= _amountOfLevels - 1)
+                {
+                    rightCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, rightIndex)));
+
+                    if (rightCell != null && Extensions.RandomBoolWithPercents(percentsToMakeRoadNextCell))
+                        cell.AddRoadToNextCell(rightCell.Index);
+                }
+            }
+            else
+            {
+                while (leftCell == null && rightCell == null && counterOfLoops < 10)
+                {
+                    leftIndex -= 1;
+                    rightIndex += 1;
+
+                    leftCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, leftIndex)));
+                    rightCell = nextLevelCells.FirstOrDefault(cell => cell.Index.Equals(new IndexInArray(cell.Index.X, rightIndex)));
+
+                    if (leftIndex < 0)
+                        leftIndex = 0;
+
+                    if (rightIndex > _maxRoadsInlevel - 1)
+                        rightIndex = _maxRoadsInlevel - 1;
+
+                    counterOfLoops++;
+                }
+
+                if (leftCell != null)
+                {
+                    cell.AddRoadToNextCell(leftCell.Index);
+                }
+
+                if (rightCell != null)
+                {
+                    cell.AddRoadToNextCell(rightCell.Index);
                 }
             }
         }

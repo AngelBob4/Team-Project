@@ -28,7 +28,7 @@ public class MapFactory
         _maxRoadsInlevel = _map.MaxRoadsInlevel;
     }
 
-    public MapCellView CreateCell(MapCell cell, Transform container, PositionInArray position)
+    public MapCellView CreateCell(MapCell cell, Transform container, IndexInArray position)
     {
         float widthBewteenCells = _width / _maxRoadsInlevel;
         float heightBewteenCells = _height / _amountOfLevels;
@@ -52,7 +52,7 @@ public class MapFactory
         return newCell;
     }
 
-    public Image CreateRoad(PositionInArray firstCell, PositionInArray secondCell, Transform container)
+    public Image CreateRoad(IndexInArray firstCell, IndexInArray secondCell, Transform container)
     {
         float widthBewteenCells = _width / _maxRoadsInlevel;
         float heightBewteenCells = _height / _amountOfLevels;
