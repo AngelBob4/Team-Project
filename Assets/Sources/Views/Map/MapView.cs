@@ -38,7 +38,7 @@ public class MapView : MonoBehaviour
         {
             _mapCellViews.Add(_mapFactory.CreateCell(cell, _cellsContainer.transform, cell.Index));
 
-            List <PositionInArray> nextAvailableCells = new List<PositionInArray>(cell.NextAvailableCellsIndexes);
+            List <IndexInArray> nextAvailableCells = new List<IndexInArray>(cell.NextAvailableCellsIndexes);
 
             for (int i = 0; i < nextAvailableCells.Count; i++)
             {
