@@ -28,6 +28,11 @@ public class Map
     {
         if (_currentCell != null)
         {
+            if (_currentCell.Index.Equals(index))
+            {
+                return;
+            }
+
             List<MapCell> previousLevelCells = _mapCells.Where(newCell => newCell.Index.X == index.X && newCell.Index.Equals(index) == false).ToList();
 
             foreach (MapCell cell in previousLevelCells)
