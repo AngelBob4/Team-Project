@@ -73,7 +73,6 @@ public class MapFactory
         Image newRoad = Object.Instantiate(_roadTemplate, newPosition, Quaternion.Euler(0, 0, angle), container);
 
         float length = (secondCellPosition - firstCellPosition).magnitude;
-        length -= _lenghtOffset;
         newRoad.rectTransform.sizeDelta = new Vector2(newRoad.rectTransform.sizeDelta.x, length);
 
         return newRoad;
