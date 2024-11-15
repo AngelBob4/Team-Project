@@ -10,6 +10,7 @@ public class MapFactory
 
     private float _width;
     private float _height;
+    float _lenghtOffset;
 
     private readonly int _amountOfLevels;
     private readonly int _maxRoadsInlevel;
@@ -26,9 +27,10 @@ public class MapFactory
 
         _amountOfLevels = _map.AmountOfLevels;
         _maxRoadsInlevel = _map.MaxRoadsInlevel;
+        _lenghtOffset = _filledTemplate.GetComponent<RectTransform>().rect.width;
     }
 
-    public MapCellView CreateCell(MapCell cell, Transform container, IndexInArray position)
+    public MapCellView CreateCell(MapCell cell, Transform container, PositionOnMap position)
     {
         float widthBewteenCells = _width / _maxRoadsInlevel;
         float heightBewteenCells = _height / _amountOfLevels;
@@ -36,15 +38,23 @@ public class MapFactory
         Vector3 newPosition = new Vector3(widthBewteenCells * position.Y,
             heightBewteenCells * position.X,
             0);
+        Vector3 containerOffset = new Vector3(_mapView.rect.width, 
+            _mapView.rect.height, 
+            0) / 2;
 
-        Vector3 containerOffset = _mapView.position / 2;
-        newPosition += containerOffset;
+        newPosition -= containerOffset;
+
+        Vector3 generationOffset = new Vector3(widthBewteenCells ,heightBewteenCells, 0) / 2;
+        newPosition += generationOffset;
+
 
         MapCellView newCell = cell.Type switch
         {
             MapCellType.Filled => Object.Instantiate(_filledTemplate, newPosition, Quaternion.identity, container),
-            _ => Object.Instantiate(_filledTemplate, newPosition, Quaternion.identity, container),
+            _ => Object.Instantiate(_filledTemplate, Vector3.zero, Quaternion.identity, container),
         };
+
+        newCell.gameObject.transform.localPosition = newPosition;
 
         MapCellPresenter mapCellPresenter = new MapCellPresenter(newCell, cell, _map);
         newCell.Init(mapCellPresenter);
@@ -52,27 +62,18 @@ public class MapFactory
         return newCell;
     }
 
-    public Image CreateRoad(IndexInArray firstCell, IndexInArray secondCell, Transform container)
+    public Image CreateRoad(MapCellView firstCell, MapCellView secondCell, Transform container)
     {
-        float widthBewteenCells = _width / _maxRoadsInlevel;
-        float heightBewteenCells = _height / _amountOfLevels;
-
-        Vector3 firstCellPosition = new Vector3(widthBewteenCells * firstCell.Y,
-            heightBewteenCells * firstCell.X,
-            0);
-
-        Vector3 secondCellPosition = new Vector3(widthBewteenCells * secondCell.Y,
-        heightBewteenCells * secondCell.X,
-        0);
+        Vector3 firstCellPosition = firstCell.transform.position;
+        Vector3 secondCellPosition = secondCell.transform.position;
 
         Vector3 newPosition = (firstCellPosition + secondCellPosition) / 2;
-        Vector3 containerOffset = _mapView.position / 2;
-        newPosition += containerOffset;
 
         float angle = Vector2.SignedAngle(Vector2.up, secondCellPosition - firstCellPosition);
         Image newRoad = Object.Instantiate(_roadTemplate, newPosition, Quaternion.Euler(0, 0, angle), container);
 
         float length = (secondCellPosition - firstCellPosition).magnitude;
+        length -= _lenghtOffset;
         newRoad.rectTransform.sizeDelta = new Vector2(newRoad.rectTransform.sizeDelta.x, length);
 
         return newRoad;
