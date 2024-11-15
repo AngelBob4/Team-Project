@@ -1,16 +1,16 @@
+using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapFactory
 {
+    private readonly Map _map;
     private RectTransform _mapView;
     private MapCellView _filledTemplate;
     private Image _roadTemplate;
-    private Map _map;
 
     private float _width;
     private float _height;
-    float _lenghtOffset;
 
     private readonly int _amountOfLevels;
     private readonly int _maxRoadsInlevel;
@@ -27,7 +27,6 @@ public class MapFactory
 
         _amountOfLevels = _map.AmountOfLevels;
         _maxRoadsInlevel = _map.MaxRoadsInlevel;
-        _lenghtOffset = _filledTemplate.GetComponent<RectTransform>().rect.width;
     }
 
     public MapCellView CreateCell(MapCell cell, Transform container, PositionOnMap position)

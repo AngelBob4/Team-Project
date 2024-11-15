@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Reflex.Attributes;
 
 public class MapPresenter : IPresenter
 {
-    private MapView _view;
     private Map _model;
+    private MapView _view;
 
     public MapPresenter(MapView view, Map model)
     {
