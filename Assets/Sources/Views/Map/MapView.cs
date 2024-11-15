@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MapView : MonoBehaviour
 {
@@ -34,17 +35,24 @@ public class MapView : MonoBehaviour
     {
         _mapCellViews = new List<MapCellView>();
 
-        foreach (MapCell cell in cells)
+        foreach (MapCell mapCell in cells)
         {
-            _mapCellViews.Add(_mapFactory.CreateCell(cell, _cellsContainer.transform, cell.Index));
+            MapCellView newView = _mapFactory.CreateCell(mapCell, _cellsContainer.transform, mapCell.Position);
+            _mapCellViews.Add(newView);
+        }
 
-            List <IndexInArray> nextAvailableCells = new List<IndexInArray>(cell.NextAvailableCellsIndexes);
+        for (int x = 0; x < cells.Count; x++)
+        {
+            List<int> nextAvailableCells = new List<int>(cells[x].NextAvailableCellsIndexes);
 
-            for (int i = 0; i < nextAvailableCells.Count; i++)
+            if (nextAvailableCells.Count != 0)
             {
-                _mapFactory.CreateRoad(cell.Index,
-                    nextAvailableCells[i],
-                    _roadsContainer.transform);
+                for (int i = 0; i < nextAvailableCells.Count; i++)
+                {
+                    _mapFactory.CreateRoad(_mapCellViews[x],
+                        _mapCellViews[i],
+                        _roadsContainer.transform);
+                }
             }
         }
     }
