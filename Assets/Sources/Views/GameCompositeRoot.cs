@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Reflex.Attributes;
 
 public class GameCompositeRoot : MonoBehaviour
 {
@@ -8,23 +9,22 @@ public class GameCompositeRoot : MonoBehaviour
     [SerializeField] private RectTransform _mapContainer;
     [SerializeField] private MapView _mapView;
 
+    private Map _map;
     private MapFactory _mapCellViewFactory;
 
-    private void Start()
+    private void Awake()
     {
         Compose();
     }
 
     private void Compose()
     {
-        Map map = new Map();
+        _map = new Map();
+        _mapCellViewFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map);
 
-        _mapCellViewFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, map);
-
-        MapPresenter mapPresenter = new MapPresenter(_mapView, map);
+        MapPresenter mapPresenter = new MapPresenter(_mapView, _map);
 
         _mapView.Init(mapPresenter, _mapCellViewFactory);
-
-        map.Generate();
+        _map.Generate();
     }
 }
