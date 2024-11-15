@@ -50,7 +50,7 @@ public class MapView : MonoBehaviour
                 for (int i = 0; i < nextAvailableCells.Count; i++)
                 {
                     _mapFactory.CreateRoad(_mapCellViews[x],
-                        _mapCellViews[i],
+                        _mapCellViews[nextAvailableCells[i]],
                         _roadsContainer.transform);
                 }
             }

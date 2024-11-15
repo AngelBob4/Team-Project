@@ -103,7 +103,9 @@ public class Map
 
         foreach (MapCell cell in _mapCells)
         {
-            if (cell.Equals(_mapCells[0]) || cell.Position.X == _amountOfLevels - 2 || cell.Position.X == _amountOfLevels - 1)
+            if (cell.Index == _mapCells[0].Index || 
+                cell.Position.X == _amountOfLevels - 2 || 
+                cell.Index == _mapCells[_mapCells.Count - 1].Index)
             {
                 nextLevelCells = _mapCells.Where(newCell => newCell.Position.X == cell.Position.X + 1).ToList();
 
@@ -117,7 +119,7 @@ public class Map
 
             nextLevelCells = _mapCells.Where(newCell => newCell.Position.X == cell.Position.X + 1).ToList();
 
-            MapCell directCell = nextLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, cell.Position.Y)));
+            MapCell directCell = nextLevelCells.FirstOrDefault(newCell => newCell.Position.Y == cell.Position.Y);
 
             if (directCell != null)
             {
