@@ -4,6 +4,7 @@ using Reflex.Attributes;
 
 public class GameCompositeRoot : MonoBehaviour
 {
+    [Header("Map")]
     [SerializeField] private MapCellView _filledCell;
     [SerializeField] private Image _roadBetweenCells;
     [SerializeField] private RectTransform _mapContainer;
