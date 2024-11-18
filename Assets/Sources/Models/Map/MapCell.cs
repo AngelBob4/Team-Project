@@ -7,6 +7,7 @@ public class MapCell
     private readonly MapCellType _type;
     private readonly PositionOnMap _position;
     private readonly int _index;
+    public bool _isAvailable = false;
 
     public event Action Activated;
     public event Action Deactivated;
@@ -16,6 +17,7 @@ public class MapCell
     public MapCellType Type => _type;
     public PositionOnMap Position => _position;
     public int Index => _index;
+    public bool IsAvailable => _isAvailable;
 
     public MapCell(MapCellType type, int x, int y, int index)
     {
@@ -43,6 +45,11 @@ public class MapCell
     public void PlayerArriviedToThisCell()
     {
         PlayerArriviedToCell?.Invoke();
+    }
+
+    public void SetAvailable()
+    {
+        _isAvailable = true;
     }
 }
 

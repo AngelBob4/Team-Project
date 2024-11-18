@@ -1,10 +1,9 @@
-using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapFactory
 {
-    private readonly Map _map;
+    private Map _map;
     private RectTransform _mapView;
     private MapCellView _filledTemplate;
     private Image _roadTemplate;
