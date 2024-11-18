@@ -111,7 +111,7 @@ public class Map
 
                 foreach (MapCell nextCell in nextLevelCells)
                 {
-                    cell.AddRoadToNextCell(nextCell.Index);
+                    cell.AddRoadToNextCell(nextCell);
                 }
 
                 continue;
@@ -129,6 +129,8 @@ public class Map
             {
                 SetRoadsToDiagonalCells(cell, nextLevelCells);
             }
+
+            SetRoadsToUnavailableCells();
         }
     }
 
@@ -137,7 +139,7 @@ public class Map
         int leftIndex = cell.Position.Y;
         int rightIndex = cell.Position.Y;
         int percentsToMakeRoadNextCell = 50;
-        cell.AddRoadToNextCell(directCellIndex);
+        cell.AddRoadToNextCell(_mapCells[directCellIndex]);
 
         MapCell leftCell = nextLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, leftIndex)));
         MapCell rightCell = nextLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, rightIndex)));
@@ -150,7 +152,7 @@ public class Map
             leftCell = nextLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, leftIndex)));
 
             if (leftCell != null && Extensions.RandomBoolWithPercents(percentsToMakeRoadNextCell))
-                cell.AddRoadToNextCell(leftCell.Index);
+                cell.AddRoadToNextCell(leftCell);
         }
 
         if (rightIndex <= _amountOfLevels - 1)
@@ -158,7 +160,7 @@ public class Map
             rightCell = nextLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, rightIndex)));
 
             if (rightCell != null && Extensions.RandomBoolWithPercents(percentsToMakeRoadNextCell))
-                cell.AddRoadToNextCell(rightCell.Index);
+                cell.AddRoadToNextCell(rightCell);
         }
     }
 
@@ -188,9 +190,54 @@ public class Map
         }
 
         if (leftCell != null)
-            cell.AddRoadToNextCell(leftCell.Index);
+            cell.AddRoadToNextCell(leftCell);
 
         if (rightCell != null)
-            cell.AddRoadToNextCell(rightCell.Index);
+            cell.AddRoadToNextCell(rightCell);
+    }
+
+    private void SetRoadsToUnavailableCells()
+    {
+        int leftIndex;
+        int rightIndex;
+        int counterOfLoops;
+        MapCell leftCell;
+        MapCell rightCell;
+
+        foreach (MapCell unavailableCell in _mapCells)
+        {
+            if (unavailableCell.IsAvailable || _mapCells[0] == unavailableCell)
+                continue;
+            
+            List<MapCell> previousLevelCells = _mapCells.Where(newCell => newCell.Position.X == unavailableCell.Position.X - 1).ToList();
+            counterOfLoops = 0;
+            leftIndex = unavailableCell.Position.Y;
+            rightIndex = unavailableCell.Position.Y;
+            leftCell = previousLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, leftIndex)));
+            rightCell = previousLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, rightIndex)));
+
+            while (leftCell == null && rightCell == null && counterOfLoops < 10)
+            {
+                leftIndex -= 1;
+                rightIndex += 1;
+
+                leftCell = previousLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, leftIndex)));
+                rightCell = previousLevelCells.FirstOrDefault(cell => cell.Position.Equals(new PositionOnMap(cell.Position.X, rightIndex)));
+
+                if (leftIndex < 0)
+                    leftIndex = 0;
+
+                if (rightIndex > _maxRoadsInlevel - 1)
+                    rightIndex = _maxRoadsInlevel - 1;
+
+                counterOfLoops++;
+            }
+
+            if (leftCell != null)
+                leftCell.AddRoadToNextCell(unavailableCell);
+
+            if (rightCell != null)
+                rightCell.AddRoadToNextCell(unavailableCell);
+        }
     }
 }

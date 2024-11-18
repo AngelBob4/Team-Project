@@ -27,9 +27,10 @@ public class MapCell
         _index = index;
     }
 
-    public void AddRoadToNextCell(int index)
+    public void AddRoadToNextCell(MapCell cell)
     {
-        _nextAvailableCellsIndexes.Add(index);
+        _nextAvailableCellsIndexes.Add(cell.Index);
+        cell.SetAvailable();
     }
 
     public void ActivateCell()
