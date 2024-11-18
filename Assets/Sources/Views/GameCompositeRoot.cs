@@ -10,7 +10,13 @@ public class GameCompositeRoot : MonoBehaviour
     [SerializeField] private MapView _mapView;
 
     private Map _map;
-    private MapFactory _mapCellViewFactory;
+    private MapFactory _mapFactory;
+
+    [Inject]
+    private void Inject(Map map)
+    {
+        _map = map;
+    }
 
     private void Awake()
     {
@@ -19,12 +25,11 @@ public class GameCompositeRoot : MonoBehaviour
 
     private void Compose()
     {
-        _map = new Map();
-        _mapCellViewFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map);
+        _mapFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map);
 
         MapPresenter mapPresenter = new MapPresenter(_mapView, _map);
 
-        _mapView.Init(mapPresenter, _mapCellViewFactory);
+        _mapView.Init(mapPresenter, _mapFactory);
         _map.Generate();
     }
 }
