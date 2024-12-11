@@ -1,8 +1,8 @@
 using TMPro;
 using UnityEngine;
-using PlatformsHandler;
+using Runner.PlatformsHandler;
 
-namespace UI
+namespace Runner.UI
 {
     public class PlatformsCounterView : MonoBehaviour
     {

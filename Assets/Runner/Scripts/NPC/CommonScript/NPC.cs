@@ -1,7 +1,7 @@
 using UnityEngine;
-using PlayerController;
+using Runner.PlayerController;
 
-namespace NonPlayerCharacters
+namespace Runner.NonPlayerCharacters
 {
     [RequireComponent(typeof(AudioSource))]
     public abstract class NPC : MonoBehaviour

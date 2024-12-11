@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using PlayerController;
+using Runner.PlayerController;
 
-namespace PlatformsHandler
+namespace Runner.PlatformsHandler
 {
     public class PlatformsCounter : MonoBehaviour
     {

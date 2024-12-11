@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Platforms;
+using Runner.Platforms;
 
 [CreateAssetMenu()]
 public class AllPlatformViews : ScriptableObject

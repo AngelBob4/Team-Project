@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NonPlayerCharacters
+namespace Runner.NonPlayerCharacters
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Leech : NPC

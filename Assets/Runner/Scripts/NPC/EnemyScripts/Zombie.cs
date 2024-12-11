@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NonPlayerCharacters
+namespace Runner.NonPlayerCharacters
 {
     public class Zombie : NPC
     {

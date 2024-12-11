@@ -1,7 +1,7 @@
 using UnityEngine;
-using NonPlayerCharacters;
+using Runner.NonPlayerCharacters;
 
-namespace PlayerController
+namespace Runner.PlayerController
 {
     public class PlayerCollisions : MonoBehaviour
     {

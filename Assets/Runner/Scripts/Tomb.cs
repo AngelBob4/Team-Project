@@ -1,13 +1,17 @@
 using UnityEngine;
-using PlayerController;
-public class Tomb : MonoBehaviour
+using Runner.PlayerController;
+
+namespace Runner
 {
-    private void OnTriggerEnter(Collider other)
+    public class Tomb : MonoBehaviour
     {
-        if (other.TryGetComponent(out Player player))
+        private void OnTriggerEnter(Collider other)
         {
-            Time.timeScale = 0.0f;
-            print("Finish!!!");
+            if (other.TryGetComponent(out Player player))
+            {
+                Time.timeScale = 0.0f;
+                print("Finish!!!");
+            }
         }
     }
 }

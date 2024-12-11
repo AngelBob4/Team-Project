@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Platforms
+namespace Runner.Platforms
 {
     public class StartPlatform : MonoBehaviour
     {

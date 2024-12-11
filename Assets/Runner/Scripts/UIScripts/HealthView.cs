@@ -1,8 +1,8 @@
 using TMPro;
 using UnityEngine;
-using PlayerController;
+using Runner.PlayerController;
 
-namespace UI
+namespace Runner.UI
 {
     public class HealthView : MonoBehaviour
     {

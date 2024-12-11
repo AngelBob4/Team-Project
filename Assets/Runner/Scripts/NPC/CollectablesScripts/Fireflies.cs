@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NonPlayerCharacters
+namespace Runner.NonPlayerCharacters
 {
     public class Fireflies : NPC
     {
@@ -11,7 +11,6 @@ namespace NonPlayerCharacters
 
         public override void ReactToPlayer()
         {
-
         }
     }
 }

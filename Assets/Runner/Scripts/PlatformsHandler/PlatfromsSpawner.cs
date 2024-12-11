@@ -1,7 +1,7 @@
 using UnityEngine;
-using Platforms;
+using Runner.Platforms;
 
-namespace PlatformsHandler
+namespace Runner.PlatformsHandler
 {
     public class PlatfromsSpawner : MonoBehaviour
     {

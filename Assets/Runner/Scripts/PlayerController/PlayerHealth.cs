@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace PlayerController
+namespace Runner.PlayerController
 {
     public class PlayerHealth : MonoBehaviour
     {

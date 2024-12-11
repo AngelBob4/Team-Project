@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+namespace Runner
 {
-    [SerializeField] private Transform _target;
-
-    private void Start()
+    public class CameraMovement : MonoBehaviour
     {
-        transform.parent = null;
-    }
+        [SerializeField] private Transform _target;
 
-    private void LateUpdate()
-    {
-        if (_target != null)
+        private void Start()
         {
-            transform.position = _target.position;
+            transform.parent = null;
+        }
+
+        private void LateUpdate()
+        {
+            if (_target != null)
+            {
+                transform.position = _target.position;
+            }
         }
     }
 }
