@@ -1,6 +1,7 @@
 using UnityEngine;
 using Runner.PlayerController;
 using Runner.Platforms;
+using Runner.Settings;
 
 namespace Runner.PlatformsHandler
 {
@@ -12,6 +13,7 @@ namespace Runner.PlatformsHandler
 
         [SerializeField] private Player _player;
         [SerializeField] private PlatformsCounter _platformsCounter;
+        [SerializeField] private EntryPoint _entryPoint;
 
         [SerializeField] private int _totalNumberOfPlatforms;
 
@@ -32,7 +34,7 @@ namespace Runner.PlatformsHandler
 
         private void Update()
         {
-            if (!_isFinishedLevel)
+            if (!_isFinishedLevel && _entryPoint.IsRunnerStarted)
             {
                 if (_player.transform.position.z + _platformsNumber * _tileLength > _tileLength * _platformsCounter.Meter)
                 {

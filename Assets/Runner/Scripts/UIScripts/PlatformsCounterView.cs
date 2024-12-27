@@ -1,6 +1,6 @@
+using Runner.PlatformsHandler;
 using TMPro;
 using UnityEngine;
-using Runner.PlatformsHandler;
 
 namespace Runner.UI
 {

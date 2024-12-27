@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 7039267689834174990, guid: 7c5e10fa40dbafc42a09b555101726df, type: 3}
   - {fileID: 7039267689834174990, guid: 7c5e10fa40dbafc42a09b555101726df, type: 3}
   - {fileID: 7039267689834174990, guid: 7c5e10fa40dbafc42a09b555101726df, type: 3}
+  AudioClip: {fileID: 8300000, guid: 9ae97df22e8fed446a87a40bd82262a3, type: 3}

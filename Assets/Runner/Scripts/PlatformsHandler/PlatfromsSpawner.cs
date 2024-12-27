@@ -1,20 +1,21 @@
 using UnityEngine;
 using Runner.Platforms;
+using Runner.ScriptableObjects;
 
 namespace Runner.PlatformsHandler
 {
     public class PlatfromsSpawner : MonoBehaviour
     {
-        [SerializeField] private AllPlatformViews _currentPlatformViews;
         [SerializeField] private StartPlatform _startPlatform;
         [SerializeField] private LastPlatform _lastPlatform;
         [SerializeField] private Transform _pool;
 
         private float _offset = 30f;
+        private AllRunnerSettings _currentPlatformViews;
 
-        private void Awake()
+        public void InitPlatformsViews(AllRunnerSettings allRunnerSettings)
         {
-            // получаем из менюшки _currentPlatformViews
+            _currentPlatformViews = allRunnerSettings;
 
             SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform.transform);
             SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform.transform);
