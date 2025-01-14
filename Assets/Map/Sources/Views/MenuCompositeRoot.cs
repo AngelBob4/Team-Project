@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Reflex.Attributes;
 
-public class GameCompositeRoot : MonoBehaviour
+public class MenuCompositeRoot : MonoBehaviour
 {
     [Header("Map")]
     [SerializeField] private MapCellView _filledCell;
