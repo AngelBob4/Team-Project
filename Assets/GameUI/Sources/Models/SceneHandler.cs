@@ -21,7 +21,6 @@ namespace GameUI.Sources.Models
 
         private void CreateSceneDictionary()
         {
-            Scenes.Add(SceneType.Menu, 0);
             Scenes.Add(SceneType.Map, 1);
             Scenes.Add(SceneType.Runner, 2);
             Scenes.Add(SceneType.Battle, 3);

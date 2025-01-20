@@ -4,9 +4,8 @@ using Reflex.Attributes;
 using GameUI.Sources.Presenters;
 using GameUI.Sources.Factory;
 using GameUI.Sources.Models.MapComponents;
-using GameUI.Sources.Views.MapComponents;
 
-namespace GameUI.Sources.Views
+namespace GameUI.Sources.Views.MapComponents
 {
     public class MapCompositeRoot : MonoBehaviour
     {
