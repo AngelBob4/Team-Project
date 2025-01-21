@@ -14,7 +14,7 @@ namespace Events.Main.Events.Shop
         [SerializeField] private Transform _containerCards;
         [SerializeField] private CardDataList _cardDataList;
         [SerializeField] private PlayerGlobalData _playerGlobalData;
-        [SerializeField] private RemoveCardPanel _removeCardPanel;
+        [SerializeField] private ChooseRemoveCardPanel _removeCardPanel;
         [SerializeField] private Button _removeCardButton;
         [SerializeField] private TMP_Text _priceRemoveCardText;
         [SerializeField] private TMP_Text _priceAddStaminaText;

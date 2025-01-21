@@ -1,12 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Events.Main.Events.Dialog
 {
     public class DialogButton : MonoBehaviour
     {
         [SerializeField] private TMP_Text _text;
+        [SerializeField] private Button _button;
 
         public event Action<int> OnClick;
 
@@ -21,6 +23,11 @@ namespace Events.Main.Events.Dialog
         public void OnClickButton()
         {
             OnClick?.Invoke(_index);
+        }
+
+        public void iii()
+        {
+            _button.interactable = false;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Events.MainGlobal
         public event Action Died;
 
         private const int StartStaminaMaxValue = 3;
-        private const int StartCoinsValue = 300;
+        private const int StartCoinsValue = 100;
         private const int MaxStaminaMaxValue = 4;
 
         private Bar _hPBar;
@@ -33,6 +33,7 @@ namespace Events.MainGlobal
 
         public Bar HPBar => _hPBar;
         public Bar Stamina => _stamina;
+        public Bar Coins => _coins;
         public IReadOnlyList<CardData> CardDataList => _cardDataList;
 
         private void Awake()
@@ -44,6 +45,8 @@ namespace Events.MainGlobal
         {
             _hPBar = new Bar(_startHPMax);
             _hPBarView.SetBar(HPBar);
+
+            //_hPBar.ChangeValue(-50);
 
             _stamina = new Bar(StartStaminaMaxValue);
             _staminaBarView.SetBar(_stamina);

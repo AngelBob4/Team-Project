@@ -1,5 +1,6 @@
 using Events.Main;
 using Events.Main.Events;
+using Events.Main.Events.Dialog;
 using UnityEngine;
 
 namespace Events.MainGlobal
@@ -9,6 +10,7 @@ namespace Events.MainGlobal
         [SerializeField] private int _startLevel;
         [SerializeField] private PlayerGlobalData _playerGlobalData;
         [SerializeField] private EventsManager _eventsManager;
+        [SerializeField] private DialogEvent _dialogEvent;
         [SerializeField] private StubEvent _mapManager;
         [SerializeField] private StubEvent _runnerManager;
 
@@ -32,6 +34,7 @@ namespace Events.MainGlobal
 
         public void NewGame()
         {
+            _dialogEvent.InitNewGame();
             _eventsManager.SetLevel(_startLevel);
             _playerGlobalData.InitNewPlayer();
 
