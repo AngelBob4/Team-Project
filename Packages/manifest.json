@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "com.unity.2d.spriteshape": "9.0.5",
+=======
+    "com.gustavopsantos.reflex": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#9.0.1",
+>>>>>>> 897cf908d5cd9d429106d3e691972972698ce4d3
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
