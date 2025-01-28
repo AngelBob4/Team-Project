@@ -1,7 +1,7 @@
 using Runner.Settings;
 using UnityEngine;
 
-namespace RunnerUI
+namespace Runner.UI
 {
     public class TestMenu : MonoBehaviour
     {
@@ -10,14 +10,14 @@ namespace RunnerUI
 
         public void NewGameButtonPressed()
         {
-            // собрали карту
-            // создали набор событии(бой,диалог,магазин)
-            // собрали вьюшки для ранера и запустили:
-            // Ранер: в зависимости от того в какой точке карты находится игрок, и к какому поинту идет передается вид СО
-            // СО содержит:
-            // музыку, вьюшки, количество жизней
+            //1 - индекс СОшки, содержащей настройки сцены : музыку, вьюшки, врагов и т д (Пока их две: 0 - кладбище, 1 - лес)
+            //2 - количество жизней
+            //3 - количество платформ до финиша 
+            //4 - количество масла в фонаре
+            // ? деньги и энергия
 
-            _entryPoint.InitAllSettingsForRunner();
+            _entryPoint.InitAllSettingsForRunner(1, 7, 15, 4);
+            _entryPoint.StartRunner();
             _testMenuView.SetActive(false);
         }
     }

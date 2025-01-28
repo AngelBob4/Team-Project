@@ -10,6 +10,7 @@ namespace Runner.PlatformsHandler
 
         private int _lightIntensityModifier = -1;
         private int _meter = 1;
+        private int _meterDefaultValue = 1;
         private int _numberOfPlatformsToReduceLight = 5;
         private int _stableIndex = 5;
 
@@ -27,6 +28,11 @@ namespace Runner.PlatformsHandler
             ReduceLight();
             _meter++;
             PlatformsAmountChanged?.Invoke(_meter);
+        }
+
+        public void InitDefaultMeterValue()
+        {
+            _meter = _meterDefaultValue;
         }
 
         private void ReduceLight()
