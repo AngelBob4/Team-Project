@@ -16,10 +16,21 @@ namespace Runner.PlayerController
             HealthChanged?.Invoke(_maxHealth);
         }
 
+        public void InitHealth(int healthValueFromFighting)
+        {
+            _health = healthValueFromFighting;
+            HealthChanged?.Invoke(_health);
+        }
+
         public void OnHealthChanged(int healthChangeValue)
         {
             _health = Mathf.Clamp(_health + healthChangeValue, 0, _maxHealth);
             HealthChanged?.Invoke(_health);
+        }
+
+        public int GetCurrentHealthValue()
+        {
+            return _health;
         }
     }
 }

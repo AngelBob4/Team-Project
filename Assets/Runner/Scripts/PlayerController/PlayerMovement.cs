@@ -45,5 +45,10 @@ namespace Runner.PlayerController
                 }
             }
         }
+
+        public void PutPlayerToDefaultPosition()
+        {
+            transform.position = _entryPoint.transform.position;
+        }
     }
 }

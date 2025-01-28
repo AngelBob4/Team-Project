@@ -6,9 +6,19 @@ namespace Runner.PlayerController
     {
         [SerializeField] private Light _lanternLight;
 
-        public void ChangeLanternLightIntensity(int lightIntensityModifier)
+        public void InitLanternIntensity(float lanternIntensity)
+        {
+            _lanternLight.intensity = lanternIntensity;
+        }
+
+        public void ChangeLanternLightIntensity(float lightIntensityModifier)
         {
             _lanternLight.intensity += lightIntensityModifier;
+        }
+
+        public float GetCurrentLanternLightIntensity()
+        {
+            return _lanternLight.intensity;
         }
     }
 }

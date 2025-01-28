@@ -1,6 +1,6 @@
-using UnityEngine;
 using Runner.Platforms;
 using Runner.ScriptableObjects;
+using UnityEngine;
 
 namespace Runner.PlatformsHandler
 {
@@ -20,6 +20,14 @@ namespace Runner.PlatformsHandler
             SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform.transform);
             SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform.transform);
             SpawnPlatformVariants();
+        }
+
+        public void ResetAllPlatforms()
+        {
+            while (_pool.childCount > 0)
+            {
+                DestroyImmediate(transform.GetChild(0).gameObject);
+            }
         }
 
         private void SpawnPlatform(GameObject platform, Transform parent)
