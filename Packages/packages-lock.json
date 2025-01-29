@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "com.unity.2d.common": {
       "version": "8.0.4",
       "depth": 1,
@@ -39,14 +38,13 @@
         "com.unity.mathematics": "1.2.1"
       },
       "url": "https://packages.unity.com"
-=======
+    },
     "com.gustavopsantos.reflex": {
       "version": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#9.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "f3618e0697d979051efe866cafa954bdf0b7b46e"
->>>>>>> 897cf908d5cd9d429106d3e691972972698ce4d3
     },
     "com.unity.collab-proxy": {
       "version": "2.0.5",

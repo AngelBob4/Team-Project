@@ -546,7 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385837635}
-  - component: {fileID: 1385837634}
+  - component: {fileID: 1385837636}
   m_Layer: 0
   m_Name: FinishPoint
   m_TagString: Untagged
@@ -554,19 +554,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1385837634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385837633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b056baeb6487b364d8b652b039919ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 2093419209}
 --- !u!4 &1385837635
 Transform:
   m_ObjectHideFlags: 0
@@ -582,6 +569,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385837636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385837633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4688aa23ba29844abdf75df7c6fbc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2093419209}
 --- !u!1 &1588627012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,7 +2513,7 @@ PrefabInstance:
     - target: {fileID: 72001625413612554, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: _finishPoint
       value: 
-      objectReference: {fileID: 1385837634}
+      objectReference: {fileID: 1385837636}
     - target: {fileID: 1088110248363520935, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_Name
       value: Player

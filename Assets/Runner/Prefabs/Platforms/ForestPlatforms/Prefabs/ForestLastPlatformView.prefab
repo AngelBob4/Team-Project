@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 5244538622122014907}
   - component: {fileID: 7845628577101268559}
   - component: {fileID: 1366231164542776240}
-  - component: {fileID: 3265049414924863230}
+  - component: {fileID: 6463074363354826745}
   m_Layer: 0
   m_Name: crackedOldTree
   m_TagString: Untagged
@@ -1478,7 +1478,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4098622, y: 1, z: 1.2274029}
   m_Center: {x: -0.22174731, y: 1.6757341e-10, z: -0.11370211}
---- !u!114 &3265049414924863230
+--- !u!114 &6463074363354826745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
