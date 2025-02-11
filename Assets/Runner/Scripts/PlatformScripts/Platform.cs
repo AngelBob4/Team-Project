@@ -1,3 +1,5 @@
+using Runner.PlayerController;
+using System;
 using UnityEngine;
 
 namespace Runner.Platforms
@@ -6,9 +8,28 @@ namespace Runner.Platforms
     {
         [SerializeField] private Transform _pool;
 
+        public event Action<Player> PlayerSteppedOnPlatform;
+        public event Action<Player> PlayerSteppedOutOfThePlatform;
+
         private void OnEnable()
         {
             ChangePrefabsState();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.TryGetComponent(out Player player))
+            {
+                PlayerSteppedOnPlatform?.Invoke(player);
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.collider.TryGetComponent(out Player player))
+            {
+               PlayerSteppedOutOfThePlatform?.Invoke(player);
+            }
         }
 
         private void ChangePrefabsState()
@@ -32,7 +53,7 @@ namespace Runner.Platforms
             float minSpawnPosZ = collider.bounds.min.z;
             float maxSpawnPosZ = collider.bounds.max.z;
 
-            return new Vector3(Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, Random.Range(minSpawnPosZ, maxSpawnPosZ));
+            return new Vector3(UnityEngine.Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, maxSpawnPosZ);// UnityEngine.Random.Range(minSpawnPosZ, maxSpawnPosZ));
         }
     }
 }

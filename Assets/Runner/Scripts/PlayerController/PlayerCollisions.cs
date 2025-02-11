@@ -21,6 +21,11 @@ namespace Runner.PlayerController
             {
                 _finishPoint.TransferData();
             }
+
+            if (collision.collider.TryGetComponent(out Embrion embrion))
+            {
+                _player.PlayerHealth.OnHealthChanged(embrion.Damage);
+            }
         }
     }
 }
