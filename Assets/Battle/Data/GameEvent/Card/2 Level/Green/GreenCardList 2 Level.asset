@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb67e0d9c09a5b4da1eb588dd2cccb0, type: 3}
+  m_Name: GreenCardList 2 Level
+  m_EditorClassIdentifier: 
+  _list:
+  - {fileID: 11400000, guid: 500d88e10cc9f3f4fa16049a911aaa86, type: 2}
+  - {fileID: 11400000, guid: 22a44d91b7f1786448a6ce26466e498d, type: 2}
+  - {fileID: 11400000, guid: f6269e503f19afa49be6650792040561, type: 2}
+  - {fileID: 11400000, guid: 1a3805e296804eb4dbbe687c4d54f2d9, type: 2}
+  _lists: []
