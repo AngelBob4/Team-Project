@@ -4,16 +4,25 @@ using MainGlobal;
 using Events.View;
 using System.Collections.Generic;
 using UnityEngine;
+using Reflex.Attributes;
 
 public abstract class ChooseInAllPlayerCardPanel : MonoBehaviour
 {
     [SerializeField] private DeckView _deckView;
-    [SerializeField] protected PlayerGlobalData _playerGlobalData;
 
     private const int MaxLevelCard = 3;
 
+    protected PlayerGlobalData _playerGlobalData;
+    
     private Deck _deck = new Deck();
     private List<CardData> _cards = new List<CardData>();
+
+
+    [Inject]
+    private void Inject(PlayerGlobalData playerGlobalData)
+    {
+        _playerGlobalData = playerGlobalData;
+    }
 
     private void Awake()
     {
@@ -30,7 +39,7 @@ public abstract class ChooseInAllPlayerCardPanel : MonoBehaviour
         _deck.OnClickCardFromDeck -= OnClickCard;
     }
 
-    public void Init(int maxLevel = MaxLevelCard)
+    public virtual void Init(int maxLevel = MaxLevelCard)
     {
         _cards.Clear();
 

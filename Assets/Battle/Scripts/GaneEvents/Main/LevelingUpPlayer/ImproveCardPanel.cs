@@ -52,7 +52,6 @@ public class ImproveCardPanel : MonoBehaviour
 
     public void ImproveCard(CardData cardData)
     {
-
         gameObject.SetActive(true);
 
         _cardDataNewList.Clear();

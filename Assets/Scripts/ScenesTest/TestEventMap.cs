@@ -5,7 +5,7 @@ using System;
 
 public class TestEventMap : GameEvent
 {
-    public override event Action FinishedEvent;
+    //public override event Action FinishedEvent;
 
     private GlobalGame _globalGame;
 

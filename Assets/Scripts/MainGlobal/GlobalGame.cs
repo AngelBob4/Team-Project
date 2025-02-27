@@ -58,8 +58,6 @@ namespace MainGlobal
             _loadingScene = loadingScene;
             _dialogEventDataList = dialogEventDataList;
             //_playerBattleCharacterData = playerBattleCharacterData;
-
-            Debug.Log("555");
         }
 
         //private void OnEnable()
@@ -82,9 +80,6 @@ namespace MainGlobal
 
         public void NewGame()
         {
-            if (_dialogEventDataList == null)
-                Debug.Log("111");
-
             _dialogEventDataList.InitNewGame();
             _level = _startLevel;
             _playerGlobalData.InitNewPlayer();
@@ -123,8 +118,7 @@ namespace MainGlobal
             _loadingScene.LoadSceneEvent();
             //_eventsManager.StartNewEvent(_eventType, _level);
             
-            if(_level <= _levelBoss)
-                _level++;
+            _level++;
         }
 
         public void StartRunner()
@@ -135,35 +129,30 @@ namespace MainGlobal
 
         public void StartMap()
         {
-            _loadingScene.LoadSceneMap();
+            if (_eventType == EventsType.Boss)
+            {
+                Debug.Log("Победа");
+                _loadingScene.LoadSceneStartGame();
+                return;
+            }
 
-            //if (_eventType == EventsType.Boss)
-            //{
-            //    Debug.Log("Победа");
-            //    return;
-            //}
-            //
-            //if (_level < _levelBoss)
-            //{
-            //    _mapManager.gameObject.SetActive(true);
-            //}
-            //else
-            //{
-            //    if( _level == _levelBoss) 
-            //    {
-            //        _bossMapManager.gameObject.SetActive(true);
-            //    }
-            //    else
-            //    {
-            //        SetEvent(EventsType.Boss);
-            //        StartEvent();
-            //    }
-            //}
-        }
-
-        private void GameOver()
-        {
-            //_loseGamePanel.gameObject.SetActive(true);
+            if (_level < _levelBoss - 1)
+            {
+                _loadingScene.LoadSceneMap();
+            }
+            else
+            {
+                if (_level == _levelBoss - 1)
+                {
+                    SetEvent(EventsType.Shop);
+                    _loadingScene.LoadSceneRuner();
+                }
+                else
+                {
+                    SetEvent(EventsType.Boss);
+                    StartEvent();
+                }
+            }
         }
     }
 }

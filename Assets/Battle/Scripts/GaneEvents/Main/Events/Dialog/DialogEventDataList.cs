@@ -15,6 +15,8 @@ public class DialogEventDataList
 
     public DialogEventDataList(CardDataList AddCardDataList)
     {
+        Debug.Log("DialogEventDataList");
+
         _allEventDataList = new List<DialogEventInstance>
             {
                 new DialogEventMedicinalPlants(),
@@ -32,9 +34,12 @@ public class DialogEventDataList
     {
         _eventDataList.Clear();
 
+        Debug.Log("InitNewGame");
+
         foreach (DialogEventInstance instance in _allEventDataList)
         {
             _eventDataList.Add(instance);
+            Debug.Log("add111");
         }
     }
 

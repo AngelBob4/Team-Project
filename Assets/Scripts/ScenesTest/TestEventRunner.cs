@@ -5,7 +5,7 @@ using System;
 
 public class TestEventRunner : GameEvent
 {
-    public override event Action FinishedEvent;
+    //public override event Action FinishedEvent;
 
     private GlobalGame _globalGame;
 

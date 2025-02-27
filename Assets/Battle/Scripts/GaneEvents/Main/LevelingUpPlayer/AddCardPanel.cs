@@ -3,6 +3,7 @@ using Events.Hand;
 using MainGlobal;
 using Events.View;
 using UnityEngine;
+using Reflex.Attributes;
 
 namespace Events.Main.LevelingUpPlayer
 {
@@ -11,11 +12,17 @@ namespace Events.Main.LevelingUpPlayer
         [SerializeField] private CardView _cardPrefab;
         [SerializeField] private DeckView _deckView;
         [SerializeField] private CardDataList _cardDataList;
-        [SerializeField] private PlayerGlobalData _playerGlobalData;
 
         private const int QuantityCards = 3;
 
         private Deck _deck = new Deck();
+        private PlayerGlobalData _playerGlobalData;
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
 
         private void Awake()
         {

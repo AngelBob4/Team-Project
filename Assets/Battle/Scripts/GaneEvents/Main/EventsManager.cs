@@ -1,4 +1,5 @@
 using Events.Main.Events;
+using Events.Main.Events.Dialog;
 using MainGlobal;
 using Reflex.Attributes;
 using System;
@@ -9,20 +10,23 @@ namespace Events.Main
     public class EventsManager : MonoBehaviour
     {
         [SerializeField] private GameEvent _battleEvent;
-        [SerializeField] private GameEvent _dialogEvent;
+        [SerializeField] private DialogEvent _dialogEvent;
         [SerializeField] private GameEvent _shopEvent;
+        [SerializeField] private WindowsManager _windowsManager;
 
         //public event Action FinishedEvent;
 
         private EventsType _eventType;
         private GlobalGame _globalGame;
+        private LoadingScene _loadingScene;
 
         public EventsType EventType => _eventType;
 
         [Inject]
-        private void Inject(GlobalGame globalGame)
+        private void Inject(GlobalGame globalGame, LoadingScene loadingScene)
         {
             _globalGame = globalGame;
+            _loadingScene = loadingScene;
         }
 
         private void Start()
@@ -32,16 +36,16 @@ namespace Events.Main
 
         private void OnEnable()
         {
-            _battleEvent.FinishedEvent += FinishedEvent;
-            _dialogEvent.FinishedEvent += FinishedEvent;
-            _shopEvent.FinishedEvent += FinishedEvent;
+            //_battleEvent.FinishedEvent += CheckFinishedEvent;
+            _dialogEvent.OnClickedButton += CheckFinishedEvent;
+            //_shopEvent.FinishedEvent += CheckFinishedEvent;
         }
 
         private void OnDisable()
         {
-            _battleEvent.FinishedEvent -= FinishedEvent;
-            _dialogEvent.FinishedEvent -= FinishedEvent;
-            _shopEvent.FinishedEvent -= FinishedEvent;
+            //_battleEvent.FinishedEvent -= CheckFinishedEvent;
+            _dialogEvent.OnClickedButton -= CheckFinishedEvent;
+            //_shopEvent.FinishedEvent -= CheckFinishedEvent;
         }
 
         public void StartNewEvent(EventsType eventType, int level)
@@ -71,12 +75,24 @@ namespace Events.Main
             }
         }
 
-        public void EndEvent()
+        public void CheckFinishedEvent()
+        {
+            if (_windowsManager.IsAllWindowsAreTurnedOff())
+            {
+                FinishedEvent();
+            }
+        }
+
+        public void GameOver()
+        {
+            EndEvent();
+            _loadingScene.LoadSceneStartGame();
+        }
+
+        private void EndEvent()
         {
             _eventType = EventsType.Null;
-            _battleEvent.gameObject.SetActive(false);
-            _dialogEvent.gameObject.SetActive(false);
-            _shopEvent.gameObject.SetActive(false);
+            _windowsManager.TurnOffAlllWindows();
         }
 
         private void StartEvent(GameEvent newEvent, int level)

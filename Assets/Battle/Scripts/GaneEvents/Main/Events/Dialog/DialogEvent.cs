@@ -18,7 +18,7 @@ namespace Events.Main.Events.Dialog
         [SerializeField] private DialogButton _buttonPrefab;
         [SerializeField] private DialogEventCommunications _dialogEventCommunications;
 
-        public override event Action FinishedEvent;
+        public event Action OnClickedButton;
 
         private PlayerGlobalData _playerGlobalData;
         private DialogEventDataList _dialogEventDataList;
@@ -77,7 +77,7 @@ namespace Events.Main.Events.Dialog
         {
             _eventData.OnClickButton(index, _dialogEventCommunications);
             gameObject.SetActive(false);
-            FinishedEvent?.Invoke();
+            OnClickedButton?.Invoke();
         }
 
         private void Clear()

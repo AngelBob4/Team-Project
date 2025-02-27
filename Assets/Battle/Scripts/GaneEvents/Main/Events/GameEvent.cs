@@ -9,7 +9,7 @@ namespace Events.Main.Events
 
         public int DefaultLevel => Level;
 
-        public abstract event Action FinishedEvent;
+        //public abstract event Action FinishedEvent;
 
         public abstract void StartEvent(int level = Level);
     }

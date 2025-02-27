@@ -10,11 +10,13 @@ namespace Events.Main.Events.Battle
     {
         [SerializeField] private PlayerBattle _player;
         [SerializeField] private Enemy _enemy;
-        [SerializeField] private LevelingUpPanel _victoryGamePanel;
+        [SerializeField] private LevelingUpPanel _levelingUpPanel;
+        [SerializeField] private Transform _victoryGamePanel;
 
-        public override event Action FinishedEvent;
+        //public override event Action FinishedEvent;
 
         private bool _isBattle = false;
+        private bool _isBoss = false;
 
         public bool IsBattle => _isBattle;
 
@@ -40,27 +42,38 @@ namespace Events.Main.Events.Battle
 
             if(level != DefaultLevel)
             {
+                _isBoss = false;
                 _enemy.InitNewEnemy(level);
             }
             else
             {
+                _isBoss = true;
                 _enemy.InitNewBossEnemy();
             }
         }
 
         public void EndEvent()
         {
-            _victoryGamePanel.gameObject.SetActive(false);
+            _levelingUpPanel.gameObject.SetActive(false);
             gameObject.SetActive(false);
 
-            FinishedEvent?.Invoke();
+            //FinishedEvent?.Invoke();
         }
 
         private void Victoryed()
         {
             _isBattle = false;
-            _victoryGamePanel.gameObject.SetActive(true);
-            _victoryGamePanel.Init();
+
+            if (_isBoss == false)
+            {
+                _isBattle = false;
+                _levelingUpPanel.gameObject.SetActive(true);
+                _levelingUpPanel.Init();
+            }
+            else
+            {
+                _victoryGamePanel.gameObject.SetActive(true);
+            }
         }
 
         private void PlayerDied()
