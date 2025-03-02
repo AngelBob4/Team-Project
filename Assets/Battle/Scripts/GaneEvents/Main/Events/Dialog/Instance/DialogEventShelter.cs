@@ -1,32 +1,32 @@
-using Events.Main.Events.Dialog;
-
-public class DialogEventShelter : DialogEventInstance
+namespace Events.Main.Events.Dialog.Instance
 {
-    private int _changeHP = 30;
-
-    public DialogEventShelter()
+    public class DialogEventShelter : DialogEventInstance
     {
-        _name = "Убежище";
-        _text = "Вы находите безопасное место";
+        private int _changeHP = 30;
 
-        AddButton("Осмотреть [Улучшить рандомную карту]");
-        AddButton("Отдыхать [+" + _changeHP + " HP]");
-        AddButton(ExitString);
-    }
+        public DialogEventShelter()
+        {
+            _name = "Убежище";
+            _text = "Вы находите безопасное место";
 
-    protected override void ActionButtonIndex0()
-    {
-        _dialogEventCommunications.ImproveCardPanel.ImproveRandomCard();
-    }
+            AddButton("Осмотреть [Улучшить рандомную карту]");
+            AddButton("Отдыхать [+" + _changeHP + " HP]");
+            AddButton(ExitString);
+        }
 
-    protected override void ActionButtonIndex1()
-    {
-        _dialogEventCommunications.PlayerGlobalData.ChangeHP(_changeHP);
-    }
+        protected override void ActionButtonIndex0()
+        {
+            _dialogEventCommunications.ImproveCardPanel.ImproveRandomCard();
+        }
 
-    protected override void ActionButtonIndex2()
-    {
-        ActionButtonExit();
+        protected override void ActionButtonIndex1()
+        {
+            _dialogEventCommunications.PlayerGlobalData.ChangeHP(_changeHP);
+        }
+
+        protected override void ActionButtonIndex2()
+        {
+            ActionButtonExit();
+        }
     }
 }
-

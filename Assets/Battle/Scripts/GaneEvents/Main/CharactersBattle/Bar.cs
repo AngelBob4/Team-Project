@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-//using System.Diagnostics;
 
 namespace Events.Main.CharactersBattle
 {
@@ -12,7 +11,6 @@ namespace Events.Main.CharactersBattle
         public event Action UpdatedBar;
 
         private int _maxValue;
-        private int _newMaxValue;
         private int _ñurrentValue;
         private bool _isEndlessBar = false;
 
@@ -57,7 +55,6 @@ namespace Events.Main.CharactersBattle
         {
             if (value > 0)
             {
-                Debug.Log("333");
                 _ñurrentValue += value;
             }
 
@@ -80,8 +77,6 @@ namespace Events.Main.CharactersBattle
         {
             SetMaxValues(value);
             SetValues(value);
-
-            //UpdatedBar?.Invoke();
         }
 
         private void SetValues(int value, bool isValidationCheck = true)
@@ -106,12 +101,10 @@ namespace Events.Main.CharactersBattle
             if (_maxValue < 0)
             {
                 _maxValue = 0;
-                Debug.Log("222");
             }
 
             if (_ñurrentValue > _maxValue)
             {
-                Debug.Log("555");
                 _ñurrentValue = _maxValue;
             }
 

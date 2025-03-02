@@ -5,78 +5,81 @@ using System.Collections.Generic;
 using UnityEngine;
 using Reflex.Attributes;
 
-public class ImproveCardPanel : MonoBehaviour
+namespace Events.Main.LevelingUpPlayer
 {
-    [SerializeField] private CardView _cardViewOriginal;
-    [SerializeField] private CardView _cardViewNew;
-    [SerializeField] private CardDataList _cardDataList;
-
-    const int MaxLevelCard = 2;
-
-    private PlayerGlobalData _playerGlobalData;
-    private CardData _cardDataOriginal;
-    private CardData _cardDataNew;
-    private List<CardData> _cardDataNewList = new List<CardData>();
-    private List<CardData> _cardDataOriginalList = new List<CardData>();
-
-    [Inject]
-    private void Inject(PlayerGlobalData playerGlobalData)
+    public class ImproveCardPanel : MonoBehaviour
     {
-        _playerGlobalData = playerGlobalData;
-    }
+        [SerializeField] private CardView _cardViewOriginal;
+        [SerializeField] private CardView _cardViewNew;
+        [SerializeField] private CardDataList _cardDataList;
 
-    private void Awake()
-    {
-        _cardDataList.Init();
+        const int MaxLevelCard = 2;
 
-        gameObject.SetActive(false);
-    }
+        private PlayerGlobalData _playerGlobalData;
+        private CardData _cardDataOriginal;
+        private CardData _cardDataNew;
+        private List<CardData> _cardDataNewList = new List<CardData>();
+        private List<CardData> _cardDataOriginalList = new List<CardData>();
 
-    public void ImproveRandomCard()
-    {
-        _cardDataOriginalList.Clear();
-
-        foreach (var card in _playerGlobalData.CardDataList)
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
         {
-            if(card.Level <= MaxLevelCard)
+            _playerGlobalData = playerGlobalData;
+        }
+
+        private void Awake()
+        {
+            _cardDataList.Init();
+
+            gameObject.SetActive(false);
+        }
+
+        public void ImproveRandomCard()
+        {
+            _cardDataOriginalList.Clear();
+
+            foreach (var card in _playerGlobalData.CardDataList)
             {
-                _cardDataOriginalList.Add(card);
+                if (card.Level <= MaxLevelCard)
+                {
+                    _cardDataOriginalList.Add(card);
+                }
+            }
+
+            if (_cardDataOriginalList.Count > 0)
+            {
+                ImproveCard(_cardDataOriginalList[Random.Range(0, _cardDataOriginalList.Count)]);
             }
         }
 
-        if(_cardDataOriginalList.Count > 0)
+        public void ImproveCard(CardData cardData)
         {
-            ImproveCard(_cardDataOriginalList[Random.Range(0, _cardDataOriginalList.Count)]);
-        }
-    }
+            gameObject.SetActive(true);
 
-    public void ImproveCard(CardData cardData)
-    {
-        gameObject.SetActive(true);
+            _cardDataNewList.Clear();
 
-        _cardDataNewList.Clear();
+            _cardDataOriginal = cardData;
 
-        _cardDataOriginal = cardData;
-
-        foreach (var card in _cardDataList.List)
-        {
-            if (card.Type == _cardDataOriginal.Type && card.Level == _cardDataOriginal.Level + 1)
+            foreach (var card in _cardDataList.List)
             {
-                _cardDataNewList.Add(card);
+                if (card.Type == _cardDataOriginal.Type && card.Level == _cardDataOriginal.Level + 1)
+                {
+                    _cardDataNewList.Add(card);
+                }
             }
+
+            _cardDataNew = _cardDataNewList[Random.Range(0, _cardDataNewList.Count)];
+
+            _playerGlobalData.RemoveCard(_cardDataOriginal);
+            _playerGlobalData.AddCard(_cardDataNew);
+
+            Draw();
         }
 
-        _cardDataNew = _cardDataNewList[Random.Range(0, _cardDataNewList.Count)];
-
-        _playerGlobalData.RemoveCard(_cardDataOriginal);
-        _playerGlobalData.AddCard(_cardDataNew);
-
-        Draw();
-    }
-
-    private void Draw()
-    {
-        _cardViewOriginal.Draw(new Card(_cardDataOriginal));
-        _cardViewNew.Draw(new Card(_cardDataNew));
+        private void Draw()
+        {
+            _cardViewOriginal.Draw(new Card(_cardDataOriginal));
+            _cardViewNew.Draw(new Card(_cardDataNew));
+        }
     }
 }

@@ -10,8 +10,6 @@ namespace Events.Main.Events.Battle
         [SerializeField] private Enemy _enemy;
         [SerializeField] private BattleEvent _battleEvent;
 
-        //private EnemyData _enemy => _enemyManager.Enemy;
-
         public void OnClickAttack()
         {
             _player.Attack(_enemy);

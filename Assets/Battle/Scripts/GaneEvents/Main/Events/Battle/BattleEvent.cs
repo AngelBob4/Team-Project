@@ -1,7 +1,6 @@
 using Events.Main.CharactersBattle;
 using Events.Main.CharactersBattle.Enemies;
 using Events.Main.LevelingUpPlayer;
-using System;
 using UnityEngine;
 
 namespace Events.Main.Events.Battle
@@ -12,8 +11,6 @@ namespace Events.Main.Events.Battle
         [SerializeField] private Enemy _enemy;
         [SerializeField] private LevelingUpPanel _levelingUpPanel;
         [SerializeField] private Transform _victoryGamePanel;
-
-        //public override event Action FinishedEvent;
 
         private bool _isBattle = false;
         private bool _isBoss = false;
@@ -56,8 +53,6 @@ namespace Events.Main.Events.Battle
         {
             _levelingUpPanel.gameObject.SetActive(false);
             gameObject.SetActive(false);
-
-            //FinishedEvent?.Invoke();
         }
 
         private void Victoryed()

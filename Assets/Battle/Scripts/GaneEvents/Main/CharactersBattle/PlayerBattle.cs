@@ -13,7 +13,6 @@ namespace Events.Main.CharactersBattle
     public class PlayerBattle : MonoBehaviour
     {
         [SerializeField] private CharacterView _characterView;
-        //[SerializeField] private BarView _staminaBarView;
         [SerializeField] private PlayerHand _playerHand;
         [SerializeField] private Image _poisonedView;
 
@@ -68,19 +67,6 @@ namespace Events.Main.CharactersBattle
             {
                 _characterBattleData.Died -= Die;
             }
-        }
-
-        public void InitNewPlayer()
-        {
-           
-
-            //_stamina = _playerGlobalData.Stamina;
-            //_staminaBarView.SetBar(_stamina);
-
-            //_passiveArmor = StartPassiveArmor;
-            //_quantityCardsPlayerTakes = StartQuantityCardsPlayerTakes;
-
-            
         }
 
         public void InitNewBattle()
@@ -158,11 +144,6 @@ namespace Events.Main.CharactersBattle
             _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
             _playerHand.TakeCardFromDeck(_quantityCardsPlayerTakesInNewRound);
         }
-
-        //protected override void DefaultTakeDamage(int damage)
-        //{
-        //    _playerGlobalData.ChangeHP(-damage);
-        //}
 
         private void TakeDamageDepletion()
         {

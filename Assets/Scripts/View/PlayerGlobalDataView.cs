@@ -4,50 +4,53 @@ using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
-public class PlayerGlobalDataView : MonoBehaviour
+namespace ViewGlobal
 {
-    [SerializeField] private BarView _hPBarView;
-    [SerializeField] private BarView _staminaBarView;
-    [SerializeField] private BarView _coinsBarView;
-    [SerializeField] private TMP_Text _countCards;
-
-    private PlayerGlobalData _playerGlobalData;
-
-    [Inject]
-    private void Inject(PlayerGlobalData playerGlobalData)
+    public class PlayerGlobalDataView : MonoBehaviour
     {
-        _playerGlobalData = playerGlobalData;
-    }
+        [SerializeField] private BarView _hPBarView;
+        [SerializeField] private BarView _staminaBarView;
+        [SerializeField] private BarView _coinsBarView;
+        [SerializeField] private TMP_Text _countCards;
 
-    private void Start()
-    {
-        SetPlayer();
-    }
+        private PlayerGlobalData _playerGlobalData;
 
-    private void OnEnable()
-    {
-        _playerGlobalData.Inited += SetPlayer;
-        _playerGlobalData.UpdatedText += DrawText;
-    }
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
 
-    private void OnDisable()
-    {
-        _playerGlobalData.Inited -= SetPlayer;
-        _playerGlobalData.UpdatedText -= DrawText;
-    }
+        private void Start()
+        {
+            SetPlayer();
+        }
 
-    private void SetPlayer()
-    {
-        if (_playerGlobalData == null)
-            return;
+        private void OnEnable()
+        {
+            _playerGlobalData.Inited += SetPlayer;
+            _playerGlobalData.UpdatedText += DrawText;
+        }
 
-        _hPBarView.SetBar(_playerGlobalData.HPBar);
-        _staminaBarView.SetBar(_playerGlobalData.Stamina);
-        _coinsBarView.SetBar(_playerGlobalData.Coins);
-    }
+        private void OnDisable()
+        {
+            _playerGlobalData.Inited -= SetPlayer;
+            _playerGlobalData.UpdatedText -= DrawText;
+        }
 
-    private void DrawText()
-    {
-        _countCards.text = _playerGlobalData.CardDataList.Count.ToString();
+        private void SetPlayer()
+        {
+            if (_playerGlobalData == null)
+                return;
+
+            _hPBarView.SetBar(_playerGlobalData.HPBar);
+            _staminaBarView.SetBar(_playerGlobalData.Stamina);
+            _coinsBarView.SetBar(_playerGlobalData.Coins);
+        }
+
+        private void DrawText()
+        {
+            _countCards.text = _playerGlobalData.CardDataList.Count.ToString();
+        }
     }
 }

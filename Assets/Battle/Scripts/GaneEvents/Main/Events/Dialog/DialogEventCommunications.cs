@@ -1,21 +1,26 @@
 using MainGlobal;
 using Reflex.Attributes;
 using UnityEngine;
+using Events.Main.LevelingUpPlayer;
+using Events.MainGlobal.ChooseInAllPlayerCards;
 
-public class DialogEventCommunications : MonoBehaviour
+namespace Events.Main.Events.Dialog
 {
-    [SerializeField] private ImproveCardPanel _improveCardPanel;
-    [SerializeField] private ChooseImproveCardPanel _chooseImproveCardPanel;
-
-    private PlayerGlobalData _playerGlobalData;
-    
-    [Inject]
-    private void Inject(PlayerGlobalData playerGlobalData)
+    public class DialogEventCommunications : MonoBehaviour
     {
-        _playerGlobalData = playerGlobalData;
-    }
+        [SerializeField] private ImproveCardPanel _improveCardPanel;
+        [SerializeField] private ChooseImproveCardPanel _chooseImproveCardPanel;
 
-    public PlayerGlobalData PlayerGlobalData => _playerGlobalData;
-    public ImproveCardPanel ImproveCardPanel => _improveCardPanel;
-    public ChooseImproveCardPanel ChooseImproveCardPanel => _chooseImproveCardPanel;
+        private PlayerGlobalData _playerGlobalData;
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
+
+        public PlayerGlobalData PlayerGlobalData => _playerGlobalData;
+        public ImproveCardPanel ImproveCardPanel => _improveCardPanel;
+        public ChooseImproveCardPanel ChooseImproveCardPanel => _chooseImproveCardPanel;
+    }
 }

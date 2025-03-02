@@ -1,5 +1,3 @@
-using Events.Cards;
-using Events.Main.Events.Dialog.Instance;
 using MainGlobal;
 using Reflex.Attributes;
 using System;

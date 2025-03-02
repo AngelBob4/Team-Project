@@ -1,22 +1,26 @@
 using Events.Cards;
+using Events.Main.LevelingUpPlayer;
 using UnityEngine;
 
-public class ChooseImproveCardPanel : ChooseInAllPlayerCardPanel
+namespace Events.MainGlobal.ChooseInAllPlayerCards
 {
-    [SerializeField] private ImproveCardPanel _improveCardPanel;
-
-    private const int MaxLevelCard = 2;
-
-    protected override void OnClickCard(Card card)
+    public class ChooseImproveCardPanel : ChooseInAllPlayerCardPanel
     {
-        _improveCardPanel.gameObject.SetActive(true);
-        _improveCardPanel.ImproveCard(card.Data);
+        [SerializeField] private ImproveCardPanel _improveCardPanel;
 
-        gameObject.SetActive(false);
-    }
+        private const int MaxLevelCard = 2;
 
-    public override void Init(int maxLevel = MaxLevelCard)
-    {
-        base.Init(maxLevel);
+        protected override void OnClickCard(Card card)
+        {
+            _improveCardPanel.gameObject.SetActive(true);
+            _improveCardPanel.ImproveCard(card.Data);
+
+            gameObject.SetActive(false);
+        }
+
+        public override void Init(int maxLevel = MaxLevelCard)
+        {
+            base.Init(maxLevel);
+        }
     }
 }

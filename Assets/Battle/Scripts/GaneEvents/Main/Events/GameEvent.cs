@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Events.Main.Events
@@ -8,8 +7,6 @@ namespace Events.Main.Events
         private const int Level = -1;
 
         public int DefaultLevel => Level;
-
-        //public abstract event Action FinishedEvent;
 
         public abstract void StartEvent(int level = Level);
     }

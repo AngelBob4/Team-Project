@@ -18,7 +18,6 @@ namespace Events.Main.CharactersBattle.Enemies
         public event Action Died;
         
         private EnemyDataBattle _enemyData;
-        //private bool _isAtack = false;
 
         public EnemyDataBattle EnemyData => _enemyData;
 
@@ -68,24 +67,12 @@ namespace Events.Main.CharactersBattle.Enemies
             _enemyData.TakeAttack(damage, cardTypesList);
 
             _enemyData.CheckAlive();
-
-            //return _isAtack;
         }
-
-        //public override void StartRound()
-        //{
-        //    _enemyData.StartRound();
-        //}
 
         public void KillEnemy()
         {
             TakeAttack(_enemyData.HPBar.CurrentValue);
         }
-
-        //protected override void DefaultTakeDamage(int damage)
-        //{
-        //    _hPBar.ChangeValue(-damage);
-        //}
 
         private void Subscribe()
         {

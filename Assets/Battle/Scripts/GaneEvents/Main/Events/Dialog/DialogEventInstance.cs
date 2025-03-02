@@ -1,4 +1,3 @@
-using Events.MainGlobal;
 using System;
 using System.Collections.Generic;
 

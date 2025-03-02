@@ -1,7 +1,7 @@
 using Events.Cards;
+using Events.MainGlobal.ChooseInAllPlayerCards;
 using MainGlobal;
 using Reflex.Attributes;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,8 +18,6 @@ namespace Events.Main.Events.Shop
         [SerializeField] private Button _improveCardButton;
         [SerializeField] private TMP_Text _priceRemoveCardText;
         [SerializeField] private TMP_Text _priceAddStaminaText;
-
-        //public override event Action FinishedEvent;
 
         private readonly int _priceRemoveCard = 75;
         private readonly int _priceAddStamina = 50;

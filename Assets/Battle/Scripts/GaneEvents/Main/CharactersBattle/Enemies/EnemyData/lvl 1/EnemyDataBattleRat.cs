@@ -1,5 +1,4 @@
 using Events.Cards;
-using Events.Main.CharactersBattle;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

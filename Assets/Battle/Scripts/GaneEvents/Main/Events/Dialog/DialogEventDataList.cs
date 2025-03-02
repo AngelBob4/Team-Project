@@ -1,23 +1,18 @@
 using Events.Cards;
-using Events.Main.Events.Dialog;
 using Events.Main.Events.Dialog.Instance;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class DialogEventDataList
+namespace Events.Main.Events.Dialog
 {
-    private DialogEventInstance _currentEventData;
-    private List<DialogEventInstance> _allEventDataList;
-    private List<DialogEventInstance> _eventDataList = new List<DialogEventInstance>();
-
-    //public IReadOnlyList<DialogEventInstance> EventDataList => _eventDataList;
-
-    public DialogEventDataList(CardDataList AddCardDataList)
+    public class DialogEventDataList
     {
-        Debug.Log("DialogEventDataList");
+        private DialogEventInstance _currentEventData;
+        private List<DialogEventInstance> _allEventDataList;
+        private List<DialogEventInstance> _eventDataList = new List<DialogEventInstance>();
 
-        _allEventDataList = new List<DialogEventInstance>
+        public DialogEventDataList(CardDataList AddCardDataList)
+        {
+            _allEventDataList = new List<DialogEventInstance>
             {
                 new DialogEventMedicinalPlants(),
                 new DialogEventPlacePower(),
@@ -28,25 +23,23 @@ public class DialogEventDataList
                 new DialogEventTrap(),
                 new DialogEventVision(AddCardDataList)
             };
-    }
-
-    public void InitNewGame()
-    {
-        _eventDataList.Clear();
-
-        Debug.Log("InitNewGame");
-
-        foreach (DialogEventInstance instance in _allEventDataList)
-        {
-            _eventDataList.Add(instance);
-            Debug.Log("add111");
         }
-    }
 
-    public DialogEventInstance GetRandomDialogEventInstance()
-    {
-        _currentEventData = _eventDataList[UnityEngine.Random.Range(0, _eventDataList.Count)];
-        _eventDataList.Remove(_currentEventData); 
-        return _currentEventData;
+        public void InitNewGame()
+        {
+            _eventDataList.Clear();
+
+            foreach (DialogEventInstance instance in _allEventDataList)
+            {
+                _eventDataList.Add(instance);
+            }
+        }
+
+        public DialogEventInstance GetRandomDialogEventInstance()
+        {
+            _currentEventData = _eventDataList[UnityEngine.Random.Range(0, _eventDataList.Count)];
+            _eventDataList.Remove(_currentEventData);
+            return _currentEventData;
+        }
     }
 }

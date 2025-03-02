@@ -1,5 +1,3 @@
-using Events.Cards;
-
 namespace Events.Main.Events.Dialog.Instance
 {
     public class DialogEventMedicinalPlants : DialogEventInstance

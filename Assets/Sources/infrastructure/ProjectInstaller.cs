@@ -1,4 +1,5 @@
 using Events.Cards;
+using Events.Main.Events.Dialog;
 using MainGlobal;
 using Reflex.Core;
 using UnityEngine;

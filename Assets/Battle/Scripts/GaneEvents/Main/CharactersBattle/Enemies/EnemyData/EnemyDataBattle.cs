@@ -16,13 +16,9 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         protected List<CardType> _cardTypeArmorWeaknessList;
         protected CardType _cardTypeArmorWeakness;
         protected bool _isStunned = false;
-        //public override event Action Died;
 
         public string Name => _name;
         public int Lavel => _level;
-
-        //public Bar HP => _hPBar;
-        //public ColorBar Armor => _armorBar;
 
         public virtual void NewInitValue()
         {

@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowsManager : MonoBehaviour
+namespace Events.Main
 {
-    [SerializeField] private List<Transform> _transforms = new List<Transform>(); 
-
-    public bool IsAllWindowsAreTurnedOff() 
+    public class WindowsManager : MonoBehaviour
     {
-        foreach (Transform transforms in _transforms)
+        [SerializeField] private List<Transform> _transforms = new List<Transform>();
+
+        public bool IsAllWindowsAreTurnedOff()
         {
-            if (transforms.gameObject.activeSelf == true)
+            foreach (Transform transforms in _transforms)
             {
-                Debug.Log(transform.gameObject.name + " true");
-                return false;
+                if (transforms.gameObject.activeSelf == true)
+                {
+                    Debug.Log(transform.gameObject.name + " true");
+                    return false;
+                }
             }
-        }
-         
-        return true;
-    }
 
-    public void TurnOffAlllWindows()
-    {
-        foreach (Transform transforms in _transforms)
+            return true;
+        }
+
+        public void TurnOffAlllWindows()
         {
-            transform.gameObject.SetActive(false);
+            foreach (Transform transforms in _transforms)
+            {
+                transform.gameObject.SetActive(false);
+            }
         }
     }
 }

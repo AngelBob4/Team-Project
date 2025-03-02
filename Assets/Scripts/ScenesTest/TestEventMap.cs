@@ -1,45 +1,43 @@
 using Events.Main.Events;
 using MainGlobal;
 using Reflex.Attributes;
-using System;
 
-public class TestEventMap : GameEvent
+namespace ScenesTest
 {
-    //public override event Action FinishedEvent;
-
-    private GlobalGame _globalGame;
-
-    [Inject]
-    private void Inject(GlobalGame globalGame)
+    public class TestEventMap : GameEvent
     {
-        _globalGame = globalGame;
-    }
+        private GlobalGame _globalGame;
 
-    public override void StartEvent(int level)
-    {
+        [Inject]
+        private void Inject(GlobalGame globalGame)
+        {
+            _globalGame = globalGame;
+        }
 
-    }
+        public override void StartEvent(int level)
+        {
 
-    public void OnClickButtonBattle()
-    {
-        OnClickButton(EventsType.Battle);
-    }
+        }
 
-    public void OnClickButtonDialog()
-    {
-        OnClickButton(EventsType.Dialog);
-    }
+        public void OnClickButtonBattle()
+        {
+            OnClickButton(EventsType.Battle);
+        }
 
-    public void OnClickButtonShop()
-    {
-        OnClickButton(EventsType.Shop);
-    }
+        public void OnClickButtonDialog()
+        {
+            OnClickButton(EventsType.Dialog);
+        }
 
-    private void OnClickButton(EventsType eventsType)
-    {
-        _globalGame.SetEvent(eventsType);
-        _globalGame.StartRunner();
-        //gameObject.SetActive(false);
-        //FinishedEvent?.Invoke();
+        public void OnClickButtonShop()
+        {
+            OnClickButton(EventsType.Shop);
+        }
+
+        private void OnClickButton(EventsType eventsType)
+        {
+            _globalGame.SetEvent(eventsType);
+            _globalGame.StartRunner();
+        }
     }
 }

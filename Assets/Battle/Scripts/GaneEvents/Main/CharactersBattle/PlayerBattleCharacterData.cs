@@ -1,13 +1,14 @@
-using Events.Main.CharactersBattle;
-
-public class PlayerBattleCharacterData
+namespace Events.Main.CharactersBattle
 {
-    private CharacterBattleData _characterBattleData;
-
-    public CharacterBattleData CharacterBattleData => _characterBattleData;
-
-    public void InitNewPlayer(Bar hPBar)
+    public class PlayerBattleCharacterData
     {
-        _characterBattleData = new CharacterBattleData(hPBar, new ColorBar());
+        private CharacterBattleData _characterBattleData;
+
+        public CharacterBattleData CharacterBattleData => _characterBattleData;
+
+        public void InitNewPlayer(Bar hPBar)
+        {
+            _characterBattleData = new CharacterBattleData(hPBar, new ColorBar());
+        }
     }
 }

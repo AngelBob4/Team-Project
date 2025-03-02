@@ -1,9 +1,6 @@
 using Events.Cards;
-using Events.Hand;
-using Events.View;
-using UnityEngine;
 
-namespace Events.MainGlobal
+namespace Events.MainGlobal.ChooseInAllPlayerCards
 {
     public class ChooseRemoveCardPanel : ChooseInAllPlayerCardPanel
     {

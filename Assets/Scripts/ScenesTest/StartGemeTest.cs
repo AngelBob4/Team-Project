@@ -1,21 +1,22 @@
 using MainGlobal;
 using Reflex.Attributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StartGemeTest : MonoBehaviour
+namespace ScenesTest
 {
-    private GlobalGame _globalGame;
-
-    [Inject]
-    private void Inject(GlobalGame globalGame)
+    public class StartGemeTest : MonoBehaviour
     {
-        _globalGame = globalGame;
-    }
+        private GlobalGame _globalGame;
 
-    public void StartNewGame()
-    {
-        _globalGame.NewGame();
+        [Inject]
+        private void Inject(GlobalGame globalGame)
+        {
+            _globalGame = globalGame;
+        }
+
+        public void StartNewGame()
+        {
+            _globalGame.NewGame();
+        }
     }
 }

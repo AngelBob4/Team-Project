@@ -49,22 +49,6 @@ namespace Events.Main.LevelingUpPlayer
             AddButton("Coins " + _addCoins, LevelingUpType.Coins);
         }
 
-        private void AddCoins()
-        {
-            _playerGlobalData.ChangeCoins(_addCoins);
-        }
-
-        private void AddCard()
-        {
-            _addCardPanel.gameObject.SetActive(true);
-            _addCardPanel.Init();
-        }
-
-        private void ImproveSkill()
-        {
-
-        }
-
         private void AddButton(string text, LevelingUpType type)
         {
             ButtonLevelingUp newButton = Instantiate(_buttonPrefab, _container);

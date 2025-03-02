@@ -1,35 +1,37 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadingScene
+namespace MainGlobal
 {
-    private readonly int sceneIdStartGame = 0;
-    private readonly int sceneIdStartEvent = 1;
-    private readonly int sceneIdStartMap = 2;
-    private readonly int sceneIdStartRuner = 3;
-
-    public void LoadScene(int sceneId) 
+    public class LoadingScene
     {
-        SceneManager.LoadScene(sceneId);
-    }
+        private readonly int sceneIdStartGame = 0;
+        private readonly int sceneIdStartEvent = 1;
+        private readonly int sceneIdStartMap = 2;
+        private readonly int sceneIdStartRuner = 3;
 
-    public void LoadSceneStartGame()
-    {
-        LoadScene(sceneIdStartGame);
-    }
+        public void LoadScene(int sceneId)
+        {
+            SceneManager.LoadScene(sceneId);
+        }
 
-    public void LoadSceneEvent()
-    {
-        LoadScene(sceneIdStartEvent);
-    }
+        public void LoadSceneStartGame()
+        {
+            LoadScene(sceneIdStartGame);
+        }
 
-    public void LoadSceneMap()
-    {
-        LoadScene(sceneIdStartMap);
-    }
+        public void LoadSceneEvent()
+        {
+            LoadScene(sceneIdStartEvent);
+        }
 
-    public void LoadSceneRuner()
-    {
-        LoadScene(sceneIdStartRuner);
+        public void LoadSceneMap()
+        {
+            LoadScene(sceneIdStartMap);
+        }
+
+        public void LoadSceneRuner()
+        {
+            LoadScene(sceneIdStartRuner);
+        }
     }
 }

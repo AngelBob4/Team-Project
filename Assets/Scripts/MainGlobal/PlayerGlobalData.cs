@@ -1,19 +1,12 @@
 using Events.Cards;
 using Events.Main.CharactersBattle;
-using Events.Main.LevelingUpPlayer;
-using Events.View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
-using UnityEngine;
 
 namespace MainGlobal
 {
     public class PlayerGlobalData
     {
-        //[SerializeField] private AddOneCardPanel _addOneCardPanel;
-
         public event Action Inited;
         public event Action UpdatedText;
         public event Action Died;
@@ -30,7 +23,6 @@ namespace MainGlobal
         private Bar _stamina;
         private Bar _coins;
         private List<CardData> _cardDataList;
-        //private PlayerBattleCharacterData _playerBattleCharacterData
 
         public Bar HPBar => _hPBar;
         public Bar Stamina => _stamina;
@@ -41,7 +33,6 @@ namespace MainGlobal
         {
             _startCardDataList = startCardDataList;
             _startCardDataList.Init();
-            //_playerBattleCharacterData = playerBattleCharacterData;
         }
 
         public void SetPlayerBattle(PlayerBattle playerBattle)
@@ -57,23 +48,16 @@ namespace MainGlobal
             }
 
             _hPBar = new Bar(_startHPMax);
-            //_hPBarView.SetBar(HPBar);
 
             _hPBar.UpdatedBar += CheckAlive;
 
-            //_hPBar.ChangeValue(-50);
-
             _stamina = new Bar(StartStaminaMaxValue);
-            //_staminaBarView.SetBar(_stamina);
             _stamina.ChangeValue(-1);
 
             _coins = new Bar();
             _coins.SetNewValues(StartCoinsValue);
-            //_coinsBarView.SetBar(_coins);
 
             _cardDataList = _startCardDataList.GetList();
-            //_playerBattleCharacterData.InitNewPlayer()
-            //_playerBattle.InitNewPlayer();
 
             Inited?.Invoke();
             DrawText();
@@ -107,8 +91,6 @@ namespace MainGlobal
         {
             AddCard(card);
             AddedOnlyCard?.Invoke(new Card(card));
-            //_addOneCardPanel.gameObject.SetActive(true);
-            //_addOneCardPanel.Init(new Card(card));
         }
 
         public void RemoveCard(CardData card)

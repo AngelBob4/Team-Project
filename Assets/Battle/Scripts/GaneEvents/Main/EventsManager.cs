@@ -14,8 +14,6 @@ namespace Events.Main
         [SerializeField] private GameEvent _shopEvent;
         [SerializeField] private WindowsManager _windowsManager;
 
-        //public event Action FinishedEvent;
-
         private EventsType _eventType;
         private GlobalGame _globalGame;
         private LoadingScene _loadingScene;
@@ -36,16 +34,12 @@ namespace Events.Main
 
         private void OnEnable()
         {
-            //_battleEvent.FinishedEvent += CheckFinishedEvent;
             _dialogEvent.OnClickedButton += CheckFinishedEvent;
-            //_shopEvent.FinishedEvent += CheckFinishedEvent;
         }
 
         private void OnDisable()
         {
-            //_battleEvent.FinishedEvent -= CheckFinishedEvent;
             _dialogEvent.OnClickedButton -= CheckFinishedEvent;
-            //_shopEvent.FinishedEvent -= CheckFinishedEvent;
         }
 
         public void StartNewEvent(EventsType eventType, int level)
