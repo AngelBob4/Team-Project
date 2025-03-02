@@ -7,6 +7,8 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 {
     public abstract class EnemyDataBattle: CharacterBattleData
     {
+        protected readonly int _ignoringAllArmor = -1;
+
         protected string _name;
         protected int _level;
         protected int _hP;
@@ -77,12 +79,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
         public virtual void StartRound()
         {
-            if (_attackList == null || _attackList.Count == 0)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            _newAttack = _attackList[UnityEngine.Random.Range(0, _attackList.Count)];
+            GenerateNewAttack();
         }
 
         protected int AttackDamag(int damage, int ignoringArmor = 0)
@@ -168,6 +165,16 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             _hPBar.ChangeValue(hp, isValidationCheck);
             Debug.Log("   Regeneration " + hp);
+        }
+
+        protected void GenerateNewAttack()
+        {
+            if (_attackList == null || _attackList.Count == 0)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            _newAttack = _attackList[UnityEngine.Random.Range(0, _attackList.Count)];
         }
     }
 }

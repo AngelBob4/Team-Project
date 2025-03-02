@@ -64,7 +64,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
                 {
                     _isRage = false;
                     Debug.Log("   _isRage = " + _isRage);
-                    _newAttack = _attackList[UnityEngine.Random.Range(0, _attackList.Count)];
+                    GenerateNewAttack();
                 }
             }
 

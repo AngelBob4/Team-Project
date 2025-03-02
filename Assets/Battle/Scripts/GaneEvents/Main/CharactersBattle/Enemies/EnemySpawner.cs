@@ -33,6 +33,8 @@ namespace Events.Main.CharactersBattle.Enemies
             _bossList = new List<EnemyDataBattle>()
             {
                 new EnemyDataBattleWerewolf(),
+                new EnemyDataBattleVampire(),
+                new EnemyDataBattleBeetle(),
             }
            ;
 

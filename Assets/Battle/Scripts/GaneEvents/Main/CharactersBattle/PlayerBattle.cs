@@ -82,6 +82,8 @@ namespace Events.Main.CharactersBattle
 
             _characterView.SetCharacter(_characterBattleData);
 
+            _stamina = _playerGlobalData.Stamina;
+
             SetPoisoning(false);
 
             _quantityCardsPlayerTakesInNewRound = _quantityCardsPlayerTakes;

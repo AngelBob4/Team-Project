@@ -52,7 +52,6 @@ namespace MainGlobal
             _hPBar.UpdatedBar += CheckAlive;
 
             _stamina = new Bar(StartStaminaMaxValue);
-            _stamina.ChangeValue(-1);
 
             _coins = new Bar();
             _coins.SetNewValues(StartCoinsValue);
