@@ -114,6 +114,19 @@ namespace Events.Main.CharactersBattle
             return _characterBattleData.DefaultTakeAttack(damage);
         }
 
+        public void TakeDamageCards(int hand, int deck)
+        {
+            if(_playerHand.Hand.GetCardsCount() < hand) 
+            {
+                deck += hand - _playerHand.Hand.GetCardsCount();
+                hand = _playerHand.Hand.GetCardsCount();
+            }
+
+            _playerHand.MoveCardHendToDiscard(hand); //Скидываем карты с руки
+
+            //Скидываем карты с колоды
+        }
+
         public void TakeDamageDeckCards(int cards)
         {
             for (int i = 0; i < cards; i++)
@@ -126,7 +139,7 @@ namespace Events.Main.CharactersBattle
         {
             for (int i = 0; i < cards; i++)
             {
-                _playerHand.MoveCardHendToDiscard();
+                //_playerHand.MoveCardHendToDiscard();
             }
         }
 

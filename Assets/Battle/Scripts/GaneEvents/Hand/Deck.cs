@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Events.Hand
 {
-    public class Deck
+    public class Deck: IReadOnlyDeck
     {
         protected List<Card> _cards = new List<Card>();
         private int _maxCards;
@@ -15,6 +15,11 @@ namespace Events.Hand
         public Deck(int maxCards = -1)
         {
             _maxCards = maxCards;
+        }
+
+        public int GetCardsCount()
+        {
+            return _cards.Count;
         }
 
         public void AddCard(Card card)

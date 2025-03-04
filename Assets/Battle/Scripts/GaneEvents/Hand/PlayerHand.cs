@@ -23,10 +23,13 @@ namespace Events.Hand
         private Deck _discardDeck = new Deck();
         private Deck _hand = new Deck(MaxCardsInHand);
         private CombinationDeck _combinationHand = new CombinationDeck(MaxCardsInHand);
+        private List<Card> _moveCards = new List<Card>();
+        private bool _isCardAnimation = false;
 
         public CombinationDeck CombinationHand => _combinationHand;
         public bool IsCardsHand => _hand.GetAllCards().Count > 0;
         public Deck DiscardDeck => _discardDeck;
+        public IReadOnlyDeck Hand => _hand;
 
         private void Awake()
         {
@@ -85,9 +88,33 @@ namespace Events.Hand
             MoveCardToDiscard(_deck, _hand);
         }
 
-        public void MoveCardHendToDiscard()
+        public void MoveCardHendToDiscard(int cards)
         {
-            MoveCardToDiscard(_hand, _deck);
+            _moveCards.Clear();
+
+            for(int i = 0; i < cards; i++)
+            {
+                _moveCards.Add(_hand.GetRandomCard());
+                // _moveCards[_moveCards.Count - 1].Запуск анимации
+            }
+
+            do
+            {
+                _isCardAnimation = false;
+
+                foreach(Card card in _moveCards)
+                {
+                    //if(card animation == true)
+                    //{
+                    //_isCardAnimation = true;
+                    //}
+                }
+
+            } while (_isCardAnimation);
+
+            MoveListCardToDiscard(_moveCards, _hand);
+
+            //MoveCardToDiscard(_hand, _deck);
         }
 
         public void MoveCardsCombinationToDiscard()
@@ -99,6 +126,14 @@ namespace Events.Hand
         {
             MoveAllCards(_discardDeck, _deck);
             UpdatedDeck?.Invoke();
+        }
+
+        private void MoveListCardToDiscard(List<Card> cards, Deck deck)
+        {
+            foreach (Card card in cards)
+            {
+                TryMoveCard(card, deck, _discardDeck);
+            }
         }
 
         private void MoveCardToDiscard(Deck deckFirst, Deck deckSecond)
