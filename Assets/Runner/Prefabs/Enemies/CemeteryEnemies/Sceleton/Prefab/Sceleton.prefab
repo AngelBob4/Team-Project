@@ -2885,8 +2885,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8083046987847603205}
   - component: {fileID: 8154862411716674808}
-  - component: {fileID: 5458850031421326416}
   - component: {fileID: 8121399701702954901}
+  - component: {fileID: 8547464445809401062}
   m_Layer: 0
   m_Name: Sceleton
   m_TagString: Untagged
@@ -2934,23 +2934,6 @@ CapsuleCollider:
   m_Height: 1.7910959
   m_Direction: 1
   m_Center: {x: 0, y: 0.88731533, z: -0.059844494}
---- !u!114 &5458850031421326416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8107148474331029307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f989e745fc6ab4f8da188d806bf70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthModifier: -1
-  _lightIntensityModifier: -1
-  Speed: 3
-  _audioClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
-  _particleSystem: {fileID: 7586904549280135163}
 --- !u!82 &8121399701702954901
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3047,6 +3030,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8547464445809401062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8107148474331029307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthModifier: -1
+  _lightIntensityModifier: -1
+  Speed: 5
+  _audioClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
+  _particleSystem: {fileID: 7586904549280135163}
+  _audioSource: {fileID: 8121399701702954901}
 --- !u!1 &8130077071464784915
 GameObject:
   m_ObjectHideFlags: 0

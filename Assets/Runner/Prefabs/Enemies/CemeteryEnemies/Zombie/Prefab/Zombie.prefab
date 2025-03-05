@@ -7222,9 +7222,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303694996830195651}
-  - component: {fileID: 5751497299099380448}
   - component: {fileID: 2016888030132674155}
   - component: {fileID: 5391155934249430694}
+  - component: {fileID: 190438979983551221}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -7249,23 +7249,6 @@ Transform:
   - {fileID: 1859224286223725078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5751497299099380448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8999521968112216361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241e69b1001bff840a1d8a857c03b534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthModifier: -1
-  _lightIntensityModifier: -1
-  Speed: 1
-  _audioClip: {fileID: 8300000, guid: 9c88983fa5906dc41944ec5a43b6b5c7, type: 3}
-  _particleSystem: {fileID: 3743065427141362078}
 --- !u!65 &2016888030132674155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7383,6 +7366,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &190438979983551221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999521968112216361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthModifier: -2
+  _lightIntensityModifier: -1
+  Speed: 3
+  _audioClip: {fileID: 8300000, guid: 9c88983fa5906dc41944ec5a43b6b5c7, type: 3}
+  _particleSystem: {fileID: 3743065427141362078}
+  _audioSource: {fileID: 5391155934249430694}
 --- !u!1 &9035017634732157304
 GameObject:
   m_ObjectHideFlags: 0

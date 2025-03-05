@@ -4847,8 +4847,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3815240666484474008}
   - component: {fileID: 1287211881747414247}
-  - component: {fileID: 4670520400831413674}
   - component: {fileID: 130985417657514964}
+  - component: {fileID: 8994843163463558230}
   m_Layer: 0
   m_Name: Fireflies
   m_TagString: Untagged
@@ -4893,23 +4893,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4670520400831413674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115524221936628678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eadac18f8bb54544b1a2cc255811285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthModifier: 0
-  _lightIntensityModifier: 1
-  Speed: 2
-  _audioClip: {fileID: 8300000, guid: 8a7be74d657c57944b0e60abe511cc2b, type: 3}
-  _particleSystem: {fileID: 0}
 --- !u!82 &130985417657514964
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5006,3 +4989,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8994843163463558230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115524221936628678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthModifier: 0
+  _lightIntensityModifier: 2
+  Speed: 3
+  _audioClip: {fileID: 8300000, guid: 8a7be74d657c57944b0e60abe511cc2b, type: 3}
+  _particleSystem: {fileID: 2451412470397011655}
+  _audioSource: {fileID: 130985417657514964}

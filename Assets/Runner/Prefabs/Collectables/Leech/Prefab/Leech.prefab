@@ -4987,6 +4987,7 @@ MonoBehaviour:
   Speed: 2
   _audioClip: {fileID: 8300000, guid: 4b70ec0f0afb9ac4ea7dfea07aca4eb4, type: 3}
   _particleSystem: {fileID: 6010305630217505230}
+  _audioSource: {fileID: 6660570899616124589}
   _jumpHeight: 2
 --- !u!135 &5073827650432004670
 SphereCollider:

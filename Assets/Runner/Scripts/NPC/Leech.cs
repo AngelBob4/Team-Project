@@ -11,11 +11,5 @@ namespace Runner.NonPlayerCharacters
         {
             transform.position += new Vector3(0, _jumpHeight, -Speed) * Speed * Time.deltaTime;
         }
-
-        public override void ReactToPlayer()
-        {
-            _particleSystem.Play();
-            print("with a smacking sound, fly apart into drops of blood");
-        }
     }
 }
