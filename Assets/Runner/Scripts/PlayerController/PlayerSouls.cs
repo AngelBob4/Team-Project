@@ -9,15 +9,15 @@ namespace Runner.PlayerController
 
         public event Action<int> SoulsAmountChanged;
 
-        public void InitLanternIntensity(int souls)
+        public void InitSoulsAmount(int souls)
         {
             _souls = souls;
            SoulsAmountChanged?.Invoke(_souls);
         }
 
-        public void ChangeLanternLightIntensity(int souls)
+        public void ChangeSoulsAmount(int souls)
         {
-            _souls = souls;
+            _souls += souls;
            SoulsAmountChanged?.Invoke(_souls);
         }
 

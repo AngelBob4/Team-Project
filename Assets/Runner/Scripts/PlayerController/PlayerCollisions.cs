@@ -11,13 +11,13 @@ namespace Runner.PlayerController
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.TryGetComponent<NPC>(out NPC npc))
+            if (collision.collider.TryGetComponent(out NPC npc))
             {
                 _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
                 _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
             }
 
-            if (collision.collider.TryGetComponent<Tomb>(out Tomb tomb))
+            if (collision.collider.TryGetComponent(out Tomb tomb))
             {
                 _finishPoint.TransferData();
             }
@@ -26,6 +26,14 @@ namespace Runner.PlayerController
             {
                 _player.PlayerHealth.OnHealthChanged(embrion.Damage);
             }
+        }
+
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (collider.TryGetComponent(out Soul soul))
+            {
+                _player.PlayerSouls.ChangeSoulsAmount(soul.SoulsAmount);
+           }
         }
     }
 }

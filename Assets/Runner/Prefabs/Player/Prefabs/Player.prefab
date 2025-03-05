@@ -269,6 +269,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 1197528936029448341}
   _playerLantern: {fileID: 3161541787853741292}
   _playerMovement: {fileID: 6619646992363443018}
+  _playerSouls: {fileID: 1378912159051994914}
 --- !u!114 &6619646992363443018
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -832,6 +832,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8010019667261145668, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010019667261145668, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010019667261145668, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8033423178638082654, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -839,6 +851,18 @@ PrefabInstance:
     - target: {fileID: 8054930552703613394, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070870524139349888, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8140231162485837032, guid: 1a406e7d06a11494db8ea998553fcfa0, type: 3}
       propertyPath: m_StaticEditorFlags

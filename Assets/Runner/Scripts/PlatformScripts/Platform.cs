@@ -36,16 +36,16 @@ namespace Runner.Platforms
         {
             foreach (Transform prefab in _pool)
             {
-                prefab.position = CalculatePrefabPosition(transform);
+                prefab.position = CalculatePrefabPosition(transform,prefab.position.y);
                 prefab.gameObject.SetActive(true);
             }
         }
 
-        private Vector3 CalculatePrefabPosition(Transform transform)
+        private Vector3 CalculatePrefabPosition(Transform transform, float prefabHeight)
         {
             var collider = transform.GetComponent<Collider>();
 
-            float spawnPosY = 0;
+            float spawnPosY = prefabHeight;
             float minSpawnPosX = collider.bounds.min.x;
             float maxSpawnPosX = collider.bounds.max.x;
             float minSpawnPosZ = collider.bounds.min.z;

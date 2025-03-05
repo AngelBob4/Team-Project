@@ -11,17 +11,17 @@ namespace Runner.UI
 
         private void OnEnable()
         {
-            _player.PlayerLantern.LanternLightChanged += OnPlayerLanternLightChanged;
+            _player.PlayerSouls.SoulsAmountChanged += OnSoulsAmountChanged;
         }
 
         private void OnDisable()
         {
-            _player.PlayerLantern.LanternLightChanged -= OnPlayerLanternLightChanged;
+            _player.PlayerSouls.SoulsAmountChanged -= OnSoulsAmountChanged;
         }
 
-        private void OnPlayerLanternLightChanged(float lanternLight)
+        private void OnSoulsAmountChanged(int souls)
         {
-            _soulsValue.text = lanternLight.ToString();
+            _soulsValue.text = souls.ToString();
         }
     }
 }

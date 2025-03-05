@@ -232,8 +232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 123, y: -73.076355}
-  m_SizeDelta: {x: 174.3686, y: 166.9047}
+  m_AnchoredPosition: {x: 125.0853, y: -76.38948}
+  m_SizeDelta: {x: 265.1136, y: 245.095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &78083236
 MonoBehaviour:
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2747419, g: 0.28558272, b: 0.3962264, a: 0.38431373}
+  m_Color: {r: 0.92141336, g: 0.92536664, b: 0.9622642, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -509,7 +509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 866.1, y: -303}
+  m_AnchoredPosition: {x: 856, y: -305}
   m_SizeDelta: {x: 57.515, y: 45.3954}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &399079831
@@ -941,6 +941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 980056742}
+  - component: {fileID: 980056743}
   m_Layer: 5
   m_Name: SoulsView
   m_TagString: Untagged
@@ -969,6 +970,20 @@ RectTransform:
   m_AnchoredPosition: {x: -691, y: 198}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &980056743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980056741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5484c1fd8d17f24458c9c44674151ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soulsValue: {fileID: 399079831}
+  _player: {fileID: 2093419209}
 --- !u!1 &1385837633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2150,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 78083235}
   - {fileID: 1529421909}
@@ -3090,7 +3105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 36, y: -145}
+  m_AnchoredPosition: {x: 856, y: -965}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8722892966355466520
