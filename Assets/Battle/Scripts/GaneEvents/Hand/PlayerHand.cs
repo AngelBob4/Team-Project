@@ -56,6 +56,13 @@ namespace Events.Hand
             _discardDeck.UpdatedDeck -= DrawText;
         }
 
+        public void StartNewRound()
+        {
+            MoveListCardToDiscard(_moveCards, _hand);
+
+            _moveCards.Clear();
+        }
+
         public void Test()
         {
             _moveCards = _hand.GetRandomListCard(1);

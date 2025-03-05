@@ -156,8 +156,10 @@ namespace Events.Main.CharactersBattle
 
         public virtual void StartRound()
         {
-            _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
+            _playerHand.StartNewRound();
             _playerHand.TakeCardFromDeck(_quantityCardsPlayerTakesInNewRound);
+
+            _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
         }
 
         private void TakeDamageDepletion()
