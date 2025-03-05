@@ -46,14 +46,12 @@ namespace Runner.Platforms
             var collider = transform.GetComponent<Collider>();
 
             float spawnPosY = 0;
-
             float minSpawnPosX = collider.bounds.min.x;
             float maxSpawnPosX = collider.bounds.max.x;
-
             float minSpawnPosZ = collider.bounds.min.z;
             float maxSpawnPosZ = collider.bounds.max.z;
 
-            return new Vector3(UnityEngine.Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, maxSpawnPosZ);// UnityEngine.Random.Range(minSpawnPosZ, maxSpawnPosZ));
+            return new Vector3(UnityEngine.Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, UnityEngine.Random.Range(minSpawnPosZ, maxSpawnPosZ));
         }
     }
 }

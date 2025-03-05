@@ -16,7 +16,7 @@ namespace Runner.UI
             //4 - количество масла в фонаре
             // ? деньги и энергия
 
-            _entryPoint.InitAllSettingsForRunner(1, 7, 15, 4);
+            _entryPoint.InitAllSettingsForRunner(0, 7, 15, 4);
             _entryPoint.StartRunner();
             _testMenuView.SetActive(false);
         }

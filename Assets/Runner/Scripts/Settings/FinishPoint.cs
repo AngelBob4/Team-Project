@@ -15,6 +15,9 @@ namespace Runner.Settings
             //здоровье
             int health;
             health = _player.PlayerHealth.GetCurrentHealthValue();
+            //души
+            int souls;
+            souls = _player.PlayerSouls.GetCurrentSouls();
 
             print(lanternIntensity + " " + health);
 
