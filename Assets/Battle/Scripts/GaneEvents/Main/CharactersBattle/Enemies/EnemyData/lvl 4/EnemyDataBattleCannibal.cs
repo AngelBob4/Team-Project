@@ -25,7 +25,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackClubDamageHP) > 0)
             {
-                AttackDamagDeckCards(_attackClubDamageCard);
+                AttackDamagCards(0, _attackClubDamageCard);
             }
         }
 

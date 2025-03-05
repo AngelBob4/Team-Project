@@ -127,21 +127,21 @@ namespace Events.Main.CharactersBattle
             //Скидываем карты с колоды
         }
 
-        public void TakeDamageDeckCards(int cards)
-        {
-            for (int i = 0; i < cards; i++)
-            {
-                _playerHand.MoveCardDeckToDiscard();
-            }
-        }
-
-        public void TakeDamageHandCards(int cards)
-        {
-            for (int i = 0; i < cards; i++)
-            {
-                //_playerHand.MoveCardHendToDiscard();
-            }
-        }
+        //public void TakeDamageDeckCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        _playerHand.MoveCardDeckToDiscard();
+        //    }
+        //}
+        //
+        //public void TakeDamageHandCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        //_playerHand.MoveCardHendToDiscard();
+        //    }
+        //}
 
         public void ToPoison()
         {

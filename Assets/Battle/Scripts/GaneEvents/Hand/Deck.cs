@@ -22,6 +22,26 @@ namespace Events.Hand
             return _cards.Count;
         }
 
+        public List<Card> GetRandomListCard(int quantity—ards) 
+        {
+            if (_cards.Count < quantity—ards)
+                throw new ArgumentOutOfRangeException();
+
+            List<Card> newList = new List<Card>();
+
+            foreach (Card card in _cards)
+            {
+                newList.Add(card);
+            }
+
+            while (newList.Count > quantity—ards)
+            {
+                newList.RemoveAt(UnityEngine.Random.Range(0, newList.Count));
+            }
+
+            return newList;
+        }
+
         public void AddCard(Card card)
         {
             if (CanAddCard(card) == false)

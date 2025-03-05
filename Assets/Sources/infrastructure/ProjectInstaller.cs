@@ -1,3 +1,4 @@
+using Events.Animation;
 using Events.Cards;
 using Events.Main.Events.Dialog;
 using MainGlobal;
@@ -19,6 +20,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_playerGlobalData);
         containerBuilder.AddSingleton(_loadingScene);
         containerBuilder.AddSingleton(_dialogEventDataList);
+        containerBuilder.AddSingleton(new AnimationTime());
         containerBuilder.AddSingleton(new GlobalGame(_playerGlobalData, _loadingScene, _dialogEventDataList));
     }
 }

@@ -56,6 +56,16 @@ namespace Events.Hand
             _discardDeck.UpdatedDeck -= DrawText;
         }
 
+        public void Test()
+        {
+            _moveCards = _hand.GetRandomListCard(1);
+
+            foreach (Card card in _moveCards)
+            {
+                card.TakeDamage();
+            }
+        }
+
         public void SetDeck(IReadOnlyList<CardData> cardDataList)
         {
             Clean();
@@ -90,29 +100,14 @@ namespace Events.Hand
 
         public void MoveCardHendToDiscard(int cards)
         {
-            _moveCards.Clear();
+            _moveCards = _hand.GetRandomListCard(cards);
 
-            for(int i = 0; i < cards; i++)
+            foreach(Card card in _moveCards)
             {
-                _moveCards.Add(_hand.GetRandomCard());
-                // _moveCards[_moveCards.Count - 1].Запуск анимации
+                card.TakeDamage();
             }
 
-            do
-            {
-                _isCardAnimation = false;
-
-                foreach(Card card in _moveCards)
-                {
-                    //if(card animation == true)
-                    //{
-                    //_isCardAnimation = true;
-                    //}
-                }
-
-            } while (_isCardAnimation);
-
-            MoveListCardToDiscard(_moveCards, _hand);
+            //MoveListCardToDiscard(_moveCards, _hand);
 
             //MoveCardToDiscard(_hand, _deck);
         }

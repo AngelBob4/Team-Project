@@ -77,7 +77,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackClawDamage, _attackClawIgnoringArmor) > 0)
             {
-                AttackDamagDeckCards(_attackClawDamageDeckCard);
+                AttackDamagCards(0, _attackClawDamageDeckCard);
             }
         }
 
@@ -85,8 +85,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             Debug.Log(_name + " AttackStunnedHit");
 
-            AttackDamagDeckCards(_attackHowlDamageDeckCard);
-            AttackDamagHandCards(_attackHowlDamageHandCard);
+            AttackDamagCards(_attackHowlDamageHandCard, _attackHowlDamageDeckCard);
             SetArmorValues(_attackHowlAddArmor);
 
             _isRage = true;
@@ -98,7 +97,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackRageHitDamage, _attackRageHitIgnoringArmor) > 0)
             {
-                AttackDamagDeckCards(_attackRageHitDamageDeckCard);
+                AttackDamagCards(0, _attackRageHitDamageDeckCard);
                 RegenerationHP(_attackRageHitRegenerationHP);
                 PlayerToPoison();
             }

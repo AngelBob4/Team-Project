@@ -106,17 +106,24 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             }
         }
 
-        protected void AttackDamagDeckCards(int damageCard)
+        protected void AttackDamagCards(int hand, int deck)
         {
-            _player.TakeDamageDeckCards(damageCard);
-            Debug.Log("   DamageDeckCard " + damageCard);
+            _player.TakeDamageCards(deck, deck);
+            Debug.Log("   DamageHandCard " + hand);
+            Debug.Log("   DamageDeckCard " + deck);
         }
 
-        protected void AttackDamagHandCards(int damageCard)
-        {
-            _player.TakeDamageHandCards(damageCard);
-            Debug.Log("   DamageHandCard " + damageCard);
-        }
+        //protected void AttackDamagDeckCards(int damageCard)
+        //{
+        //    _player.TakeDamageDeckCards(damageCard);
+        //    Debug.Log("   DamageDeckCard " + damageCard);
+        //}
+        //
+        //protected void AttackDamagHandCards(int damageCard)
+        //{
+        //    _player.TakeDamageHandCards(damageCard);
+        //    Debug.Log("   DamageHandCard " + damageCard);
+        //}
 
         protected void AddArmorValues(int addArmor)
         {
