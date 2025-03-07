@@ -13,8 +13,15 @@ namespace Runner.PlayerController
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
-                _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
+                if (npc as Soul)
+                {
+                    _player.PlayerSouls.ChangeSoulsAmount(npc.SoulsModifier);
+                }
+                else
+                {
+                    _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
+                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
+                }
             }
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
@@ -26,14 +33,6 @@ namespace Runner.PlayerController
             {
                 _player.PlayerHealth.OnHealthChanged(embrion.Damage);
             }
-        }
-
-        private void OnTriggerEnter(Collider collider)
-        {
-            if (collider.TryGetComponent(out Soul soul))
-            {
-                _player.PlayerSouls.ChangeSoulsAmount(soul.SoulsAmount);
-           }
         }
     }
 }

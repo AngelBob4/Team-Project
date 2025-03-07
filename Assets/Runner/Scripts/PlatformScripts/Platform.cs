@@ -7,6 +7,7 @@ namespace Runner.Platforms
     public class Platform : MonoBehaviour
     {
         [SerializeField] private Transform _pool;
+        [SerializeField] private Transform _obstaclesPool;
 
         public event Action<Player> PlayerSteppedOnPlatform;
         public event Action<Player> PlayerSteppedOutOfThePlatform;
@@ -14,6 +15,15 @@ namespace Runner.Platforms
         private void OnEnable()
         {
             ChangePrefabsState();
+            EnableObstacles();
+        }
+
+        private void OnDisable()
+        {
+            foreach (Transform obstacle in _obstaclesPool)
+            {
+                obstacle.gameObject.SetActive(false);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -38,6 +48,16 @@ namespace Runner.Platforms
             {
                 prefab.position = CalculatePrefabPosition(transform,prefab.position.y);
                 prefab.gameObject.SetActive(true);
+            }
+        }
+
+        private void EnableObstacles()
+        {
+            int obstaclesAmount = 5;
+
+            for (int i = 0; i < obstaclesAmount; i++)
+            {
+               _obstaclesPool.GetChild( UnityEngine.Random.Range(0,_obstaclesPool.childCount)).gameObject.SetActive(true);
             }
         }
 

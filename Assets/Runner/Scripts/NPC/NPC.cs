@@ -8,6 +8,7 @@ namespace Runner.NonPlayerCharacters
     {
         [SerializeField] protected int _healthModifier;
         [SerializeField] protected int _lightIntensityModifier;
+        [SerializeField] protected int _soulsValue;
         [SerializeField] protected float Speed;
 
         [SerializeField] protected AudioClip _audioClip;
@@ -16,6 +17,7 @@ namespace Runner.NonPlayerCharacters
 
         public int LightIntensityModifier => _lightIntensityModifier;
         public int HealthModifier => _healthModifier;
+        public int SoulsModifier => _soulsValue;
 
         private void Update()
         {

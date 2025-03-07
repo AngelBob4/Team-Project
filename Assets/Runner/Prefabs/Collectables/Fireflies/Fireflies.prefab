@@ -5003,6 +5003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthModifier: 0
   _lightIntensityModifier: 2
+  _soulsValue: 0
   Speed: 3
   _audioClip: {fileID: 8300000, guid: 8a7be74d657c57944b0e60abe511cc2b, type: 3}
   _particleSystem: {fileID: 2451412470397011655}

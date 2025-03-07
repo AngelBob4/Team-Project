@@ -10,7 +10,7 @@ Material:
   m_Name: SoilMat
   m_Shader: {fileID: 10509, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 2100000, guid: 88f067c4e4e21e3449805b9f54a85258, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 18
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _NORMALMAP
@@ -34,7 +34,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AO: 2.4
-    - _BaseLight: 0.35
+    - _AO: 2.33
+    - _BaseLight: 0.336
     m_Colors: []
   m_BuildTextureStacks: []
