@@ -9,6 +9,7 @@ namespace Events.Main.CharactersBattle
         private const int OneValue = 1;
 
         public event Action UpdatedBar;
+        public event Action<int> DamagBar;
 
         private int _maxValue;
         private int _ñurrentValue;
@@ -38,6 +39,16 @@ namespace Events.Main.CharactersBattle
 
         public void ChangeValue(int value, bool isValidationCheck = true)
         {
+            if(value < 0)
+            {
+                if(Math.Abs(value) > CurrentValue)
+                {
+                    value = -CurrentValue;
+                }
+
+                DamagBar?.Invoke(value);
+            }
+
             SetValues(_ñurrentValue + value, isValidationCheck);
         }
 

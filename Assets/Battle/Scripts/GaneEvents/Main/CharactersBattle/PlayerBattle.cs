@@ -92,10 +92,14 @@ namespace Events.Main.CharactersBattle
             StartRound();
         }
 
-        public void Attack(Enemy enemy)
+        public bool Attack(Enemy enemy)
         {
+            bool isAttack = _playerHand.CombinationHand.GetEffects(CardEffectType.Wound) > 0;
+
             if (_isPoisoned)
             {
+                isAttack = _playerHand.CombinationHand.CardsCount > 0;
+
                 _characterBattleData.DefaultTakeDamage(_playerHand.CombinationHand.CardsCount);
 
                 SetPoisoning(false);
@@ -107,6 +111,8 @@ namespace Events.Main.CharactersBattle
             _quantityCardsPlayerTakesInNewRound = _quantityCardsPlayerTakes + _playerHand.CombinationHand.GetEffects(CardEffectType.TakeCards);
 
             _playerHand.MoveCardsCombinationToDiscard();
+
+            return isAttack;
         }
 
         public int TakeAttack(int damage)
@@ -122,9 +128,11 @@ namespace Events.Main.CharactersBattle
                 hand = _playerHand.Hand.GetCardsCount();
             }
 
-            _playerHand.MoveCardHendToDiscard(hand); //Скидываем карты с руки
+            if(hand > 0)
+                _playerHand.TakeDamagCardHend(hand); //Скидываем карты с руки
 
-            //Скидываем карты с колоды
+            if (deck > 0)
+                _playerHand.TakeDamagCardDeck(deck);//Скидываем карты с колоды
         }
 
         //public void TakeDamageDeckCards(int cards)

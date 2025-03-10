@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-//using MainGlobal;
 using Reflex.Attributes;
 
 namespace Events.Animation
@@ -12,7 +11,7 @@ namespace Events.Animation
 
         //[SerializeField] private bool _isTween = false;
 
-        private float _time = 1f;
+        private float _time;
         //private Tween _tween;
 
         //public bool IsPlay => _isTween;

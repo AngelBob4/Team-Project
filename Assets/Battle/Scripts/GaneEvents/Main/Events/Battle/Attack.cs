@@ -12,6 +12,7 @@ namespace Events.Main.Events.Battle
         [SerializeField] private PlayerBattle _player;
         [SerializeField] private Enemy _enemy;
         [SerializeField] private BattleEvent _battleEvent;
+        [SerializeField] private InputPause _inputPause;
 
         private AnimationTime _animationTime;
 
@@ -28,13 +29,17 @@ namespace Events.Main.Events.Battle
 
         private IEnumerator PlayRaund()
         {
-            _player.Attack(_enemy);
+            _inputPause.SetInput(false);
+
+            if(_player.Attack(_enemy))
+                yield return new WaitForSeconds(_animationTime.TimeDamageCard);
 
             EnemyAttack();
-
             yield return new WaitForSeconds(_animationTime.TimeDamageCard);
 
             StartNewRound();
+
+            _inputPause.SetInput(true);
         }
 
         private void EnemyAttack()

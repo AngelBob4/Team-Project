@@ -9,6 +9,7 @@ namespace Events.View
         [SerializeField] private Transform _conteiner;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private bool _isDrawAtZeroValue;
+        [SerializeField] private AnimationDamageInt _animationDamageInt;
 
         private IBar _bar = null;
 
@@ -61,11 +62,22 @@ namespace Events.View
             }
         }
 
+        private void PlayAnimationDamage(int damag)
+        {
+            _animationDamageInt.Play(damag);
+        }
+
         private void Subscribe()
         {
             if (_bar != null)
             {
                 _bar.UpdatedBar += Draw;
+
+                if (_animationDamageInt != null)
+                {
+                    _bar.DamagBar += PlayAnimationDamage;
+                }
+
                 Draw();
             }
         }
@@ -75,6 +87,11 @@ namespace Events.View
             if (_bar != null)
             {
                 _bar.UpdatedBar -= Draw;
+
+                if (_animationDamageInt != null)
+                {
+                    _bar.DamagBar -= PlayAnimationDamage;
+                }
 
                 _text.text = "";
             }

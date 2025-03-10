@@ -11,6 +11,7 @@ namespace Events.Main.Events.Battle
         [SerializeField] private Enemy _enemy;
         [SerializeField] private LevelingUpPanel _levelingUpPanel;
         [SerializeField] private Transform _victoryGamePanel;
+        [SerializeField] private InputPause _inputPause;
 
         private bool _isBattle = false;
         private bool _isBoss = false;
@@ -69,6 +70,8 @@ namespace Events.Main.Events.Battle
             {
                 _victoryGamePanel.gameObject.SetActive(true);
             }
+
+            _inputPause.SetInput(true);
         }
 
         private void PlayerDied()
