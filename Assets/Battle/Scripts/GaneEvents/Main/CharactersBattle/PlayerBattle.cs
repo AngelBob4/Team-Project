@@ -92,10 +92,14 @@ namespace Events.Main.CharactersBattle
             StartRound();
         }
 
-        public void Attack(Enemy enemy)
+        public bool Attack(Enemy enemy)
         {
+            bool isAttack = _playerHand.CombinationHand.GetEffects(CardEffectType.Wound) > 0;
+
             if (_isPoisoned)
             {
+                isAttack = _playerHand.CombinationHand.CardsCount > 0;
+
                 _characterBattleData.DefaultTakeDamage(_playerHand.CombinationHand.CardsCount);
 
                 SetPoisoning(false);
@@ -107,6 +111,8 @@ namespace Events.Main.CharactersBattle
             _quantityCardsPlayerTakesInNewRound = _quantityCardsPlayerTakes + _playerHand.CombinationHand.GetEffects(CardEffectType.TakeCards);
 
             _playerHand.MoveCardsCombinationToDiscard();
+
+            return isAttack;
         }
 
         public int TakeAttack(int damage)
@@ -114,21 +120,36 @@ namespace Events.Main.CharactersBattle
             return _characterBattleData.DefaultTakeAttack(damage);
         }
 
-        public void TakeDamageDeckCards(int cards)
+        public void TakeDamageCards(int hand, int deck)
         {
-            for (int i = 0; i < cards; i++)
+            if(_playerHand.Hand.GetCardsCount() < hand) 
             {
-                _playerHand.MoveCardDeckToDiscard();
+                deck += hand - _playerHand.Hand.GetCardsCount();
+                hand = _playerHand.Hand.GetCardsCount();
             }
+
+            if(hand > 0)
+                _playerHand.TakeDamagCardHend(hand); //Скидываем карты с руки
+
+            if (deck > 0)
+                _playerHand.TakeDamagCardDeck(deck);//Скидываем карты с колоды
         }
 
-        public void TakeDamageHandCards(int cards)
-        {
-            for (int i = 0; i < cards; i++)
-            {
-                _playerHand.MoveCardHendToDiscard();
-            }
-        }
+        //public void TakeDamageDeckCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        _playerHand.MoveCardDeckToDiscard();
+        //    }
+        //}
+        //
+        //public void TakeDamageHandCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        //_playerHand.MoveCardHendToDiscard();
+        //    }
+        //}
 
         public void ToPoison()
         {
@@ -143,8 +164,10 @@ namespace Events.Main.CharactersBattle
 
         public virtual void StartRound()
         {
-            _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
+            _playerHand.StartNewRound();
             _playerHand.TakeCardFromDeck(_quantityCardsPlayerTakesInNewRound);
+
+            _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
         }
 
         private void TakeDamageDepletion()

@@ -17,8 +17,8 @@ namespace Events.Main.CharactersBattle.Enemies
             _enemies = new List<EnemyDataBattle>()
             {
                 new EnemyDataBattleRat(),
-                new EnemyDataBattleSpirit(),
-                new EnemyDataBattleWolf(),
+                //new EnemyDataBattleSpirit(),
+                //new EnemyDataBattleWolf(),
 
                 new EnemyDataBattleCannibal(),
                 new EnemyDataBattleRobber(),

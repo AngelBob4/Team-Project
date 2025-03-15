@@ -64,8 +64,8 @@ namespace Events.Main
                     StartEvent(_battleEvent);
                     break;
 
-                default:
-                    throw new ArgumentOutOfRangeException();
+                //default:
+                //    throw new ArgumentOutOfRangeException();
             }
         }
 

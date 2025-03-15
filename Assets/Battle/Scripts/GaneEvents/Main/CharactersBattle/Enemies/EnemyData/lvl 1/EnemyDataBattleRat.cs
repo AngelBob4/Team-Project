@@ -21,13 +21,6 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             _cardTypeArmorWeaknessList = new List<CardType>() { CardType.Yellow, CardType.Purple, CardType.Blue };
         }
 
-        public override void Attack(PlayerBattle player, bool isRemoveArmor = true)
-        {
-            RemoveArmor();
-
-            base.Attack(player);
-        }
-
         private void Evade()
         {
             Debug.Log(_name + " Evade");

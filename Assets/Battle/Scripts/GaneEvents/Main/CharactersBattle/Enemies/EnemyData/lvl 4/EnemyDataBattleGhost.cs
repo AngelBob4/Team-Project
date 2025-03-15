@@ -39,7 +39,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (_currentDamage > 0)
             {
-                AttackDamagDeckCards(_currentDamage);
+                AttackDamagCards(0, _currentDamage);
                 RegenerationHP(_currentDamage);
             }
         }

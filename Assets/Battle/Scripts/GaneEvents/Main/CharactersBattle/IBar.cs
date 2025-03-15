@@ -5,6 +5,7 @@ namespace Events.Main.CharactersBattle
     public interface IBar
     {
         public event Action UpdatedBar;
+        public event Action<int> DamagBar;
 
         public bool IsEndlessBar { get; }
 

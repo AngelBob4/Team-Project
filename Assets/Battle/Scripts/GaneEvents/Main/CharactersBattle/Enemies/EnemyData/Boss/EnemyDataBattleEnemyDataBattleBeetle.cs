@@ -85,7 +85,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (_currentDamage > 0)
             {
-                AttackDamagHandCards(_attackWebDamageHandCard);
+                AttackDamagCards(_attackWebDamageHandCard, 0);
 
                 _isWeb = true;
                 Debug.Log("   _isWeb = " + _isWeb);
@@ -108,8 +108,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             if (_currentDamage > 0)
             {
                 PlayerToPoison();
-                AttackDamagDeckCards(_attackAcidDamageCard);
-                AttackDamagHandCards(_attackAcidDamageCard);
+                AttackDamagCards(_attackAcidDamageCard, _attackAcidDamageCard);
             }
         }
 
@@ -120,7 +119,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             if (AttackDamag(_attackBiteDamage, _ignoringAllArmor) > 0)
             {
                 PlayerToPoison();
-                AttackDamagDeckCards(_attackBiteDamageDeckCard);
+                AttackDamagCards(0, _attackBiteDamageDeckCard);
             }
         }
     }

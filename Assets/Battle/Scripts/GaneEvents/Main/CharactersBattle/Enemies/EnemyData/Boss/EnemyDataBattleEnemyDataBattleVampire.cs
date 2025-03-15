@@ -55,7 +55,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             if (_currentDamage > 0)
             {
                 PlayerToPoison();
-                AttackDamagDeckCards(_attackClawDamageDeckCard);
+                AttackDamagCards(0, _attackClawDamageDeckCard);
             }
         }
 

@@ -1,3 +1,4 @@
+using Events.Animation;
 using Events.Cards;
 using System.Collections.Generic;
 using TMPro;
@@ -20,12 +21,30 @@ namespace Events.View
         [SerializeField] private CardCombinationsView _redCombinations;
         [SerializeField] private CardColorData _cardColorData;
         [SerializeField] private Color _colorDefault;
+        [SerializeField] private AnimationDamageCard _animationDamageCard;
 
         private Card _card;
+
+        private void OnEnable()
+        {
+            if (_card != null)
+            {
+                _card.TakenDamage += PlayAnimationDamageCard;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_card != null)
+            {
+                _card.TakenDamage -= PlayAnimationDamageCard;
+            }
+        }
 
         public void Draw(Card card)
         {
             _card = card;
+            _card.TakenDamage += PlayAnimationDamageCard;
 
             _name.text = _card.Data.Name;
             _wound.text = _card.Data.Wound.ToString();
@@ -61,6 +80,11 @@ namespace Events.View
                     combinationsView.Draw(_colorDefault);
                 }
             }
+        }
+
+        private void PlayAnimationDamageCard()
+        {
+            _animationDamageCard.Play();
         }
     }
 }

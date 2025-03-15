@@ -38,7 +38,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackkBiteDamage, _attackBiteIgnoringArmor) > 0)
             {
-                AttackDamagDeckCards(_attackBiteDamage—ard);
+                AttackDamagCards(0, _attackBiteDamage—ard);
                 PlayerToPoison();
                 RegenerationHP(_attackBiteRegenerationHP);
             }

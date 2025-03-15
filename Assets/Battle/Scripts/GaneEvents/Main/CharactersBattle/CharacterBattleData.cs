@@ -31,7 +31,7 @@ namespace Events.Main.CharactersBattle
         {
             _takeDamage = damage;
 
-            if (_armorBar != null)
+            if (_armorBar != null && _armorBar.CurrentValue > 0)
             {
                 _takeDamage -= _armorBar.CurrentValue;
                 _armorBar.ChangeValue(-damage);

@@ -84,7 +84,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             AttackDamag(_attackFeintDamage);
             
-            AttackDamagDeckCards(_attackFeintDamageCard);
+            AttackDamagCards(0, _attackFeintDamageCard);
 
             SetArmorAndWeakness(_attackFeintAddArmor);
 
@@ -98,7 +98,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             AttackDamag(_attackStrongBlowDamage, _attackStrongBlowIgnoringArmor);
 
-            AttackDamagDeckCards(_attackStrongBlowDamageCard);
+            AttackDamagCards(0, _attackStrongBlowDamageCard);
 
             _isFeint = false;
             Debug.Log("   _isFeint = " + _isFeint);

@@ -77,7 +77,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackHitDamage, _attackHitIgnoringArmor) > 0)
             {
-                AttackDamagDeckCards(_attackHitDamageCard);
+                AttackDamagCards(0, _attackHitDamageCard);
             }
         }
 
@@ -86,14 +86,14 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             Debug.Log(_name + " AttackStunnedHit");
 
             AttackDamag(_attackStunnedHitDamage, _attackStunnedHitIgnoringArmor);
-            AttackDamagDeckCards(_attackStunnedHitDamageCard);
+            AttackDamagCards(0, _attackStunnedHitDamageCard);
         }
 
         private void AttackRoar()
         {
             Debug.Log(_name + " AttackRoar");
 
-            AttackDamagDeckCards(_attackRoarDamageCard);
+            AttackDamagCards(0, _attackRoarDamageCard);
 
             _isRage = true;
             Debug.Log("   _isRage = " + _isRage);
@@ -105,7 +105,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackRageHitDamage, _attackRageHitIgnoringArmor) > 0)
             {
-                AttackDamagDeckCards(_attackRageHitDamageCard);
+                AttackDamagCards(0, _attackRageHitDamageCard);
             }
 
             _isRage = false;

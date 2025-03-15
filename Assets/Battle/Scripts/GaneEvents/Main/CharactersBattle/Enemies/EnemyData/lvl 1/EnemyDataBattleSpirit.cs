@@ -35,7 +35,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             Debug.Log(_name + " AttackScare");
 
-            AttackDamagDeckCards(_attackScareDamageDard);
+            AttackDamagCards(0, _attackScareDamageDard);
         }
 
         private void AttackDrawingOutLives()
@@ -44,7 +44,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackByDrawingOutLivesDamage) > 0)
             {
-                AttackDamagDeckCards(_attackScareDamageDard);
+                AttackDamagCards(0, _attackScareDamageDard);
                 RegenerationHP(_regenerationByDrawingOutLives, false);
             }
         }

@@ -31,6 +31,8 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             {
                 _armorBar.SetValueDefault();
             }
+
+            _cardTypeArmorWeakness = CardType.Null;
         }
 
         public virtual void Attack(PlayerBattle player, bool isRemoveArmor = true)
@@ -39,6 +41,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (isRemoveArmor && _armorBar != null)
             {
+                _cardTypeArmorWeakness = CardType.Null;
                 _armorBar.SetValueDefault();
             }
 
@@ -63,7 +66,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
         public virtual int TakeAttack(int damage, List<CardType> cardTypesList = null)
         {
-            if (_armorBar != null && _cardTypeArmorWeakness == CardType.Null && cardTypesList != null)
+            if (_armorBar != null && _cardTypeArmorWeakness != CardType.Null && cardTypesList != null)
             {
                 foreach (CardType cardType in cardTypesList)
                 {
@@ -106,17 +109,24 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
             }
         }
 
-        protected void AttackDamagDeckCards(int damageCard)
+        protected void AttackDamagCards(int hand, int deck)
         {
-            _player.TakeDamageDeckCards(damageCard);
-            Debug.Log("   DamageDeckCard " + damageCard);
+            _player.TakeDamageCards(hand, deck);
+            Debug.Log("   DamageHandCard " + hand);
+            Debug.Log("   DamageDeckCard " + deck);
         }
 
-        protected void AttackDamagHandCards(int damageCard)
-        {
-            _player.TakeDamageHandCards(damageCard);
-            Debug.Log("   DamageHandCard " + damageCard);
-        }
+        //protected void AttackDamagDeckCards(int damageCard)
+        //{
+        //    _player.TakeDamageDeckCards(damageCard);
+        //    Debug.Log("   DamageDeckCard " + damageCard);
+        //}
+        //
+        //protected void AttackDamagHandCards(int damageCard)
+        //{
+        //    _player.TakeDamageHandCards(damageCard);
+        //    Debug.Log("   DamageHandCard " + damageCard);
+        //}
 
         protected void AddArmorValues(int addArmor)
         {
@@ -152,7 +162,9 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         protected void RemoveArmor()
         {
             _cardTypeArmorWeakness = CardType.Null;
-            _armorBar.SetValueDefault();
+
+            _armorBar.ChangeValue(-_armorBar.CurrentValue);
+            //_armorBar.SetValueDefault();
         }
 
         protected void PlayerToPoison()

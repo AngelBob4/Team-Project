@@ -89,7 +89,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             Debug.Log(_name + " AttackCard");
 
-            AttackDamagDeckCards(_attackCardDamage);
+            AttackDamagCards(0, _attackCardDamage);
         }
 
         private void AttackToPoison()

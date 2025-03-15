@@ -32,7 +32,7 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
 
             if (AttackDamag(_attackkBiteDamage) > 0)
             {
-                AttackDamagDeckCards(_attackBiteDamage—ard);
+                AttackDamagCards(0, _attackBiteDamage—ard);
             }
         }
     }

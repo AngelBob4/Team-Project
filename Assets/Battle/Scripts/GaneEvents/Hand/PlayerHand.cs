@@ -13,6 +13,7 @@ namespace Events.Hand
 
         [SerializeField] private DeckView _handView;
         [SerializeField] private DeckView _combinationView;
+        [SerializeField] private AnimationDamageDeck _animationDamageDeck;
         [SerializeField] private CardEffectsView _cardEffectsView;
         [SerializeField] private TMP_Text _deckCardsText;
         [SerializeField] private TMP_Text _discardDeckCardsText;
@@ -23,10 +24,12 @@ namespace Events.Hand
         private Deck _discardDeck = new Deck();
         private Deck _hand = new Deck(MaxCardsInHand);
         private CombinationDeck _combinationHand = new CombinationDeck(MaxCardsInHand);
+        private List<Card> _moveCards = new List<Card>();
 
         public CombinationDeck CombinationHand => _combinationHand;
         public bool IsCardsHand => _hand.GetAllCards().Count > 0;
         public Deck DiscardDeck => _discardDeck;
+        public IReadOnlyDeck Hand => _hand;
 
         private void Awake()
         {
@@ -53,6 +56,23 @@ namespace Events.Hand
             _discardDeck.UpdatedDeck -= DrawText;
         }
 
+        public void StartNewRound()
+        {
+            MoveListCardToDiscard(_moveCards, _hand);
+
+            _moveCards.Clear();
+        }
+
+        public void Test()
+        {
+            _moveCards = _hand.GetRandomListCard(1);
+
+            foreach (Card card in _moveCards)
+            {
+                card.TakeDamage();
+            }
+        }
+
         public void SetDeck(IReadOnlyList<CardData> cardDataList)
         {
             Clean();
@@ -71,7 +91,7 @@ namespace Events.Hand
         {
             for (int i = 0; i < quantity; i++)
             {
-                if (_deck.GetAllCards().Count == 0)
+                if (_deck.GetCardsCount() == 0)
                 {
                     MoveCardsDiscardToDeck();
                 }
@@ -80,14 +100,33 @@ namespace Events.Hand
             }
         }
 
-        public void MoveCardDeckToDiscard()
+        public void TakeDamagCardDeck(int quantity)
         {
-            MoveCardToDiscard(_deck, _hand);
+            _animationDamageDeck.Play(quantity);
+
+            for (int i = 0; i < quantity; i++)
+            {
+                if (_deck.GetCardsCount() == 0)
+                {
+                    MoveCardsDiscardToDeck();
+                }
+
+                TryMoveCard(_deck.GetRandomCard(), _deck, _discardDeck);
+            }
         }
 
-        public void MoveCardHendToDiscard()
+        public void TakeDamagCardHend(int quantity)
         {
-            MoveCardToDiscard(_hand, _deck);
+            _moveCards = _hand.GetRandomListCard(quantity);
+
+            foreach(Card card in _moveCards)
+            {
+                card.TakeDamage();
+            }
+
+            //MoveListCardToDiscard(_moveCards, _hand);
+
+            //MoveCardToDiscard(_hand, _deck);
         }
 
         public void MoveCardsCombinationToDiscard()
@@ -99,6 +138,14 @@ namespace Events.Hand
         {
             MoveAllCards(_discardDeck, _deck);
             UpdatedDeck?.Invoke();
+        }
+
+        private void MoveListCardToDiscard(List<Card> cards, Deck deck)
+        {
+            foreach (Card card in cards)
+            {
+                TryMoveCard(card, deck, _discardDeck);
+            }
         }
 
         private void MoveCardToDiscard(Deck deckFirst, Deck deckSecond)

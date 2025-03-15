@@ -5,6 +5,7 @@ namespace Events.Cards
     public class Card
     {
         public event Action<Card> OnClick;
+        public event Action TakenDamage;
 
         private CardData _cardData;
 
@@ -18,6 +19,11 @@ namespace Events.Cards
         public void ButtonOnClick()
         {
             OnClick?.Invoke(this);
+        }
+
+        public void TakeDamage()
+        {
+            TakenDamage?.Invoke();
         }
     }
 }
