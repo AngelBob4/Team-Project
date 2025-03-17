@@ -20,10 +20,5 @@ namespace Runner.PlayerController
             _souls += souls;
            SoulsAmountChanged?.Invoke(_souls);
         }
-
-        public int GetCurrentSouls()
-        {
-            return _souls;
-        }
     }
 }

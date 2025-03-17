@@ -1,13 +1,14 @@
 using UnityEngine;
 using Runner.NonPlayerCharacters;
 using Runner.Settings;
+using Runner.UI;
 
 namespace Runner.PlayerController
 {
     public class PlayerCollisions : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [SerializeField] private FinishPoint _finishPoint;
+        [SerializeField] private RunnerGameManager _testMenu;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -26,7 +27,7 @@ namespace Runner.PlayerController
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
             {
-                _finishPoint.TransferData();
+               _testMenu.EndGame();
             }
 
             if (collision.collider.TryGetComponent(out Embrion embrion))

@@ -11,6 +11,7 @@ namespace Runner.PlayerController
       
         public void InitLanternIntensity(float lanternIntensity)
         {
+            // Awake передача из  глобал плеера
             _lanternLight.intensity = lanternIntensity;
             LanternLightChanged?.Invoke(_lanternLight.intensity);
         }
@@ -19,11 +20,6 @@ namespace Runner.PlayerController
         {
             _lanternLight.intensity += lightIntensityModifier;
             LanternLightChanged?.Invoke(_lanternLight.intensity);
-        }
-
-        public float GetCurrentLanternLightIntensity()
-        {
-            return _lanternLight.intensity;
         }
     }
 }

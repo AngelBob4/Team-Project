@@ -25,6 +25,8 @@ namespace Runner.PlayerController
 
         public void OnHealthChanged(int healthChangeValue)
         {
+            // изменяем хп 
+
             _health = Mathf.Clamp(_health + healthChangeValue, 0, _maxHealth);
             HealthChanged?.Invoke(_health);
 
@@ -34,13 +36,9 @@ namespace Runner.PlayerController
             }
         }
 
-        public int GetCurrentHealthValue()
-        {
-            return _health;
-        }
-
         private void Die()
         {
+            // подписаться на смерть плеера
             SceneManager.LoadScene(0);
         }
     }

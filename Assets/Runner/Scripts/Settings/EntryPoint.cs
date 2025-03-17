@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using Runner.ScriptableObjects;
 using Runner.SoundSystem;
 using Runner.PlayerController;
+using System;
+using Runner.Enums;
 
 namespace Runner.Settings
 {
     public class EntryPoint : MonoBehaviour
     {
+        private const int PlatformsAmount = 15;
+
         [SerializeField] private PlatfromsSpawner _platformsSpawner;
         [SerializeField] private PlatformsCounter _platformsCounter;
         [SerializeField] private PlatformController _platformsController;
@@ -20,13 +24,13 @@ namespace Runner.Settings
 
         public bool IsRunnerStarted => _isRunnerStarted;
 
-        public void InitAllSettingsForRunner(int index, int health, int platformsAmount, float lanternIntensity)
+        public void InitAllSettingsForRunner(LocationTypes cemetery, int platformsAmount = PlatformsAmount)//, int health, , float lanternIntensity)
         {
-            _backgroundMusic.InitAudioClip(_allRunnerSettings[index]);
-            _platformsSpawner.InitPlatformsViews(_allRunnerSettings[index]);
+            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)cemetery]);
+            _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)cemetery]);
             _platformsController.InitTotalNumberOfPlatforms(platformsAmount);
-            _player.PlayerLantern.InitLanternIntensity(lanternIntensity);
-            _player.PlayerHealth.InitHealth(health);
+            _player.PlayerLantern.InitLanternIntensity(8);
+            _player.PlayerHealth.InitHealth(7);
             _player.PlayerMovement.PutPlayerToDefaultPosition();
         }
 
