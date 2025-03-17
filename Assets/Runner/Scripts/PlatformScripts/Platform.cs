@@ -38,7 +38,7 @@ namespace Runner.Platforms
         {
             if (collision.collider.TryGetComponent(out Player player))
             {
-               PlayerSteppedOutOfThePlatform?.Invoke(player);
+                PlayerSteppedOutOfThePlatform?.Invoke(player);
             }
         }
 
@@ -55,9 +55,12 @@ namespace Runner.Platforms
         {
             int obstaclesAmount = 5;
 
-            for (int i = 0; i < obstaclesAmount; i++)
+            if (_obstaclesPool.childCount > 0)
             {
-               _obstaclesPool.GetChild( UnityEngine.Random.Range(0,_obstaclesPool.childCount)).gameObject.SetActive(true);
+                for (int i = 0; i < obstaclesAmount; i++)
+                {
+                    _obstaclesPool.GetChild(UnityEngine.Random.Range(0, _obstaclesPool.childCount)).gameObject.SetActive(true);
+                }
             }
         }
 
