@@ -10,8 +10,8 @@ namespace Events.Main.Events.Dialog.Instance
             _name = "Ловушка";
             _text = "Вы попадаете в ловушку";
 
-            AddButton("[" + _changeHP + " HP]");
-            AddButton("[" + _changeMaxHP + " MaxHP]");
+            AddButton("Рана [" + _changeHP + " HP]");
+            AddButton("Ушиб [" + _changeMaxHP + " MaxHP]");
         }
 
         protected override void ActionButtonIndex0()

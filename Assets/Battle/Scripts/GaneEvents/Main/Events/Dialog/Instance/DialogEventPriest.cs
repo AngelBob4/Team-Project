@@ -9,10 +9,10 @@ namespace Events.Main.Events.Dialog.Instance
         public DialogEventPriest()
         {
             _name = "Священник";
-            _text = "Вы встречаете священика";
+            _text = "Вы встречаете священника";
 
             AddButton("Получить лечение [+" + _changeHP + " HP, " + _priceCountTreatment + " Coins]", _priceCountTreatment);
-            AddButton("Плучить благословление [Улучшить рандомную карту, " + _priceCountTreatment + " Coins]", _priceCountImproveCard);
+            AddButton("Получить благословление [Улучшить рандомную карту, " + _priceCountTreatment + " Coins]", _priceCountImproveCard);
             AddButton(ExitString);
         }
 

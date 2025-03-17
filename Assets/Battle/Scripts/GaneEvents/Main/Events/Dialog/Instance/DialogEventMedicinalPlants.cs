@@ -12,8 +12,8 @@ namespace Events.Main.Events.Dialog.Instance
             _text = "Вы нашли поляну на которой растут лечебные травы";
 
             AddButton("Сделать лечебное зелье [Восстановить HP " + _addHP +"]");
-            AddButton("Сделать зелье жизни [Увеличить МасHP " + _addMaxHP + "]");
-            AddButton("Собрать прозапас [Получить " + _addCoins + " монет]");
+            AddButton("Сделать зелье жизни [Увеличить МаxHP " + _addMaxHP + "]");
+            AddButton("Собрать про запас [Получить " + _addCoins + " монет]");
         }
 
         protected override void ActionButtonIndex0()
