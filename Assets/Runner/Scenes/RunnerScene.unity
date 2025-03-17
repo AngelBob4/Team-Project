@@ -2982,6 +2982,10 @@ PrefabInstance:
       propertyPath: _finishPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 72001625413612554, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
+      propertyPath: _runnerGameManager
+      value: 
+      objectReference: {fileID: 1718854799}
     - target: {fileID: 1088110248363520935, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_Name
       value: Player

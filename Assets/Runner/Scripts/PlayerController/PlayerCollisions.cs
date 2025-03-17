@@ -8,7 +8,7 @@ namespace Runner.PlayerController
     public class PlayerCollisions : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [SerializeField] private RunnerGameManager _testMenu;
+        [SerializeField] private RunnerGameManager _runnerGameManager;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -27,7 +27,7 @@ namespace Runner.PlayerController
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
             {
-               _testMenu.EndGame();
+               _runnerGameManager.EndGame();
             }
 
             if (collision.collider.TryGetComponent(out Embrion embrion))
