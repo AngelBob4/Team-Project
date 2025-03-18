@@ -57,3 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4a70a3214b6634196bad016275bc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startCardDataList: {fileID: 11400000, guid: eae31e04382c71a45ae8010fcc1d38ee, type: 2}
+  _addCardDataListInDialogEvents: {fileID: 11400000, guid: 38cae27bb3cf63941b931cecc03d2cf1, type: 2}

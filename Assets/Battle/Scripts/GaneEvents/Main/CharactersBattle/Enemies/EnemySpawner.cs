@@ -7,23 +7,47 @@ namespace Events.Main.CharactersBattle.Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private List<EnemyDataBattle> _enemies;
-        
+        private List<EnemyDataBattle> _enemies;
+        private List<EnemyDataBattle> _bossList;
         private List<EnemyDataBattle> _currentListEnemy;
-        private Dictionary<int, List<EnemyDataBattle>> EnemiesByLevel = new Dictionary<int, List<EnemyDataBattle>>();
+        private Dictionary<int, List<EnemyDataBattle>> _enemiesByLevel = new Dictionary<int, List<EnemyDataBattle>>();
 
         private void Awake()
         {
+            _enemies = new List<EnemyDataBattle>()
+            {
+                new EnemyDataBattleRat(),
+                //new EnemyDataBattleSpirit(),
+                //new EnemyDataBattleWolf(),
+
+                new EnemyDataBattleCannibal(),
+                new EnemyDataBattleRobber(),
+                new EnemyDataBattleGhost(),
+
+                new EnemyDataBattleOgre(),
+                new EnemyDataBattleSectarian(),
+                new EnemyDataBattleStryga(),
+            }
+            ;
+
+            _bossList = new List<EnemyDataBattle>()
+            {
+                new EnemyDataBattleWerewolf(),
+                new EnemyDataBattleVampire(),
+                new EnemyDataBattleBeetle(),
+            }
+           ;
+
             foreach (EnemyDataBattle enemy in _enemies)
             {
-                if (EnemiesByLevel.ContainsKey(enemy.Lavel))
+                if (_enemiesByLevel.ContainsKey(enemy.Lavel))
                 {
-                    EnemiesByLevel[enemy.Lavel].Add(enemy);
+                    _enemiesByLevel[enemy.Lavel].Add(enemy);
                 }
                 else
                 {
-                    EnemiesByLevel.Add(enemy.Lavel, new List<EnemyDataBattle>());
-                    EnemiesByLevel[enemy.Lavel].Add(enemy);
+                    _enemiesByLevel.Add(enemy.Lavel, new List<EnemyDataBattle>());
+                    _enemiesByLevel[enemy.Lavel].Add(enemy);
                 }
             }
         }
@@ -35,13 +59,18 @@ namespace Events.Main.CharactersBattle.Enemies
             return _currentListEnemy[UnityEngine.Random.Range(0, _currentListEnemy.Count)];
         }
 
+        public EnemyDataBattle GetNewBossData()
+        {
+            return _bossList[UnityEngine.Random.Range(0, _bossList.Count)];
+        }
+
         private List<EnemyDataBattle> GetCorrectListEnemy(int level)
         {
             while (level > 0)
             {
-                if (EnemiesByLevel.ContainsKey(level))
+                if (_enemiesByLevel.ContainsKey(level))
                 {
-                    return EnemiesByLevel[level];
+                    return _enemiesByLevel[level];
                 }
                 else
                 {

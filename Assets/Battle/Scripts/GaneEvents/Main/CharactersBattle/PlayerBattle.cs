@@ -1,20 +1,22 @@
 using Events.Cards;
 using Events.Hand;
-using Events.MainGlobal;
+using Events.Main.CharactersBattle.Enemies;
+using MainGlobal;
 using Events.View;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
+using Reflex.Attributes;
 
 namespace Events.Main.CharactersBattle
 {
-    public class PlayerBattle : CharacterBattle
+    public class PlayerBattle : MonoBehaviour
     {
-        [SerializeField] private PlayerGlobalData _playerGlobalData;
         [SerializeField] private CharacterView _characterView;
-        [SerializeField] private BarView _staminaBarView;
         [SerializeField] private PlayerHand _playerHand;
+        [SerializeField] private Image _poisonedView;
 
-        public override event Action Died;
+        public event Action Died;
 
         private const int StartQuantityCardsPlayerTakes = 2;
         private const int MaxQuantityCardsPlayerTakes = 5;
@@ -22,77 +24,150 @@ namespace Events.Main.CharactersBattle
         private const int MaxPassiveArmor = 5;
         private const int ChangeStaminaToUpdatedDeck = -1;
 
+        private PlayerGlobalData _playerGlobalData;
         private int _quantityCardsPlayerTakes = 2;
         private int _damageToDepletion = 10;
         private int _quantityCardsPlayerTakesInNewRound;
         private int _passiveArmor = 55;
         private Bar _stamina;
+        private bool _isPoisoned = false;
+        private CharacterBattleData _characterBattleData;
+
+        public CharacterBattleData CharacterBattleData => _characterBattleData;
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
+
+        private void Awake()
+        {
+            _passiveArmor = StartPassiveArmor;
+            _quantityCardsPlayerTakes = StartQuantityCardsPlayerTakes;
+
+            _playerGlobalData.SetPlayerBattle(this);
+        }
 
         private void OnEnable()
         {
             _playerHand.UpdatedDeck += TakeDamageDepletion;
-            _playerGlobalData.Died += Died;
-        }
 
+            if(_characterBattleData != null )
+            {
+                _characterBattleData.Died += Die;
+            }
+        }
+        
         private void OnDisable()
         {
             _playerHand.UpdatedDeck -= TakeDamageDepletion;
-            _playerGlobalData.Died -= Died;
-        }
 
-        public void InitNewPlayer()
-        {
-            _hPBar = _playerGlobalData.HPBar;
-            _armorBar = new Bar();
-            _characterView.SetCharacter(this);
-
-            _stamina = _playerGlobalData.Stamina;
-            _staminaBarView.SetBar(_stamina);
-
-            _passiveArmor = StartPassiveArmor;
-            _quantityCardsPlayerTakes = StartQuantityCardsPlayerTakes;
+            if (_characterBattleData != null)
+            {
+                _characterBattleData.Died -= Die;
+            }
         }
 
         public void InitNewBattle()
         {
+            if (_characterBattleData != null)
+            {
+                _characterBattleData.Died -= Die;
+            }
+
+            _characterBattleData = new CharacterBattleData(_playerGlobalData.HPBar, new ColorBar());
+
+            _characterBattleData.Died += Die;
+
+            _characterView.SetCharacter(_characterBattleData);
+
+            _stamina = _playerGlobalData.Stamina;
+
+            SetPoisoning(false);
+
             _quantityCardsPlayerTakesInNewRound = _quantityCardsPlayerTakes;
             _playerHand.SetDeck(_playerGlobalData.CardDataList);
 
             StartRound();
         }
 
-        public override void Attack(ICharacter character)
+        public bool Attack(Enemy enemy)
         {
-            _armorBar.ChangeValue(_playerHand.CombinationHand.GetEffects(CardEffectType.Shield));
+            bool isAttack = _playerHand.CombinationHand.GetEffects(CardEffectType.Wound) > 0;
 
-            character.TakeAttack(_playerHand.CombinationHand.GetEffects(CardEffectType.Wound));
+            if (_isPoisoned)
+            {
+                isAttack = _playerHand.CombinationHand.CardsCount > 0;
+
+                _characterBattleData.DefaultTakeDamage(_playerHand.CombinationHand.CardsCount);
+
+                SetPoisoning(false);
+            }
+
+            _characterBattleData.ArmorBar.ChangeValue(_playerHand.CombinationHand.GetEffects(CardEffectType.Shield));
+
+            enemy.TakeAttack(_playerHand.CombinationHand.GetEffects(CardEffectType.Wound), _playerHand.CombinationHand.GetCardsType());
             _quantityCardsPlayerTakesInNewRound = _quantityCardsPlayerTakes + _playerHand.CombinationHand.GetEffects(CardEffectType.TakeCards);
 
             _playerHand.MoveCardsCombinationToDiscard();
+
+            return isAttack;
         }
 
-        public override void TakeAttack(int damage)
+        public int TakeAttack(int damage)
         {
-            DefaultTakeAttack(damage);
+            return _characterBattleData.DefaultTakeAttack(damage);
         }
 
-        public void TakeDamageCards(int cards)
+        public void TakeDamageCards(int hand, int deck)
         {
-            for (int i = 0; i < cards; i++)
+            if(_playerHand.Hand.GetCardsCount() < hand) 
             {
-                _playerHand.MoveCardToDiscard();
+                deck += hand - _playerHand.Hand.GetCardsCount();
+                hand = _playerHand.Hand.GetCardsCount();
             }
+
+            if(hand > 0)
+                _playerHand.TakeDamagCardHend(hand); //Скидываем карты с руки
+
+            if (deck > 0)
+                _playerHand.TakeDamagCardDeck(deck);//Скидываем карты с колоды
         }
 
-        public override void StartRound()
+        //public void TakeDamageDeckCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        _playerHand.MoveCardDeckToDiscard();
+        //    }
+        //}
+        //
+        //public void TakeDamageHandCards(int cards)
+        //{
+        //    for (int i = 0; i < cards; i++)
+        //    {
+        //        //_playerHand.MoveCardHendToDiscard();
+        //    }
+        //}
+
+        public void ToPoison()
         {
-            _armorBar.SetNewValues(_passiveArmor);
+            SetPoisoning(true);
+        }
+
+        private void SetPoisoning(bool value)
+        {
+            _isPoisoned = value;
+            _poisonedView.gameObject.SetActive(value);
+        }
+
+        public virtual void StartRound()
+        {
+            _playerHand.StartNewRound();
             _playerHand.TakeCardFromDeck(_quantityCardsPlayerTakesInNewRound);
-        }
 
-        protected override void DefaultTakeDamage(int damage)
-        {
-            _playerGlobalData.ChangeHP(-damage);
+            _characterBattleData.ArmorBar.SetNewValues(_passiveArmor);
         }
 
         private void TakeDamageDepletion()
@@ -103,8 +178,13 @@ namespace Events.Main.CharactersBattle
             }
             else
             {
-                DefaultTakeDamage(_damageToDepletion);
+                _characterBattleData.DefaultTakeDamage(_damageToDepletion);
             }
+        }
+
+        private void Die()
+        {
+            Died?.Invoke();
         }
     }
 }

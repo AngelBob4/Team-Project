@@ -2,10 +2,11 @@ namespace Events.Cards
 {
     public enum CardType
     {
-        Blue = 0,
-        Green = 1,
-        Yellow = 2,
-        Red = 3,
-        Purple = 4
+        Null = 0,
+        Blue = 1,
+        Green = 2,
+        Yellow = 3,
+        Red = 4,
+        Purple = 5
     }
 }

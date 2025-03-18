@@ -1,6 +1,7 @@
 using Events.Cards;
-using Events.MainGlobal;
-using System;
+using Events.MainGlobal.ChooseInAllPlayerCards;
+using MainGlobal;
+using Reflex.Attributes;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,20 +14,24 @@ namespace Events.Main.Events.Shop
         [SerializeField] private CardShop _cardShopPrefab;
         [SerializeField] private Transform _containerCards;
         [SerializeField] private CardDataList _cardDataList;
-        [SerializeField] private PlayerGlobalData _playerGlobalData;
-        [SerializeField] private RemoveCardPanel _removeCardPanel;
-        [SerializeField] private Button _removeCardButton;
+        [SerializeField] private ChooseImproveCardPanel _chooseImproveCardPanel;
+        [SerializeField] private Button _improveCardButton;
         [SerializeField] private TMP_Text _priceRemoveCardText;
         [SerializeField] private TMP_Text _priceAddStaminaText;
-
-        public override event Action FinishedEvent;
 
         private readonly int _priceRemoveCard = 75;
         private readonly int _priceAddStamina = 50;
         private readonly int _quantityCardShop = 5;
         private readonly int _priceLevelModifier = 50;
 
+        private PlayerGlobalData _playerGlobalData;
         private List<CardShop> _cards = new List<CardShop>();
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
 
         private void Awake()
         {
@@ -57,7 +62,7 @@ namespace Events.Main.Events.Shop
         public void Init()
         {
             ClearCards();
-            _removeCardButton.interactable = true;
+            _improveCardButton.interactable = true;
 
             _priceRemoveCardText.text = _priceRemoveCard.ToString();
             _priceAddStaminaText.text = _priceAddStamina.ToString();
@@ -81,25 +86,14 @@ namespace Events.Main.Events.Shop
             }
         }
 
-        public void RemoveCard()
+        public void ImproveCard()
         {
             if (_playerGlobalData.TrySpendCoins(_priceRemoveCard))
             {
-                _removeCardPanel.gameObject.SetActive(true);
-                _removeCardPanel.Init();
-                _removeCardButton.interactable = false;
+                _chooseImproveCardPanel.gameObject.SetActive(true);
+                _chooseImproveCardPanel.Init();
+                _improveCardButton.interactable = false;
             }
-        }
-
-        public void AddOilToLamp()
-        {
-
-        }
-
-        public void Exit()
-        {
-            gameObject.SetActive(false);
-            FinishedEvent?.Invoke();
         }
 
         private void ClearCards()

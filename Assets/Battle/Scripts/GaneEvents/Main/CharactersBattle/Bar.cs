@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Events.Main.CharactersBattle
 {
@@ -8,6 +9,7 @@ namespace Events.Main.CharactersBattle
         private const int OneValue = 1;
 
         public event Action UpdatedBar;
+        public event Action<int> DamagBar;
 
         private int _maxValue;
         private int _ñurrentValue;
@@ -37,6 +39,16 @@ namespace Events.Main.CharactersBattle
 
         public void ChangeValue(int value, bool isValidationCheck = true)
         {
+            if(value < 0)
+            {
+                if(Math.Abs(value) > CurrentValue)
+                {
+                    value = -CurrentValue;
+                }
+
+                DamagBar?.Invoke(value);
+            }
+
             SetValues(_ñurrentValue + value, isValidationCheck);
         }
 
@@ -45,8 +57,18 @@ namespace Events.Main.CharactersBattle
             ChangeValue(OneValue);
         }
 
+        public virtual void SetValueDefault()
+        {
+            SetValues(DefaultValue);
+        }
+
         public void ChangeMaxValue(int value)
         {
+            if (value > 0)
+            {
+                _ñurrentValue += value;
+            }
+
             SetMaxValues(_maxValue + value);
         }
 
@@ -66,8 +88,6 @@ namespace Events.Main.CharactersBattle
         {
             SetMaxValues(value);
             SetValues(value);
-
-            UpdatedBar?.Invoke();
         }
 
         private void SetValues(int value, bool isValidationCheck = true)
@@ -94,16 +114,9 @@ namespace Events.Main.CharactersBattle
                 _maxValue = 0;
             }
 
-            if (value > 0)
+            if (_ñurrentValue > _maxValue)
             {
-                _ñurrentValue += value;
-            }
-            else
-            {
-                if (_ñurrentValue > _maxValue)
-                {
-                    _ñurrentValue = _maxValue;
-                }
+                _ñurrentValue = _maxValue;
             }
 
             UpdatedBar?.Invoke();

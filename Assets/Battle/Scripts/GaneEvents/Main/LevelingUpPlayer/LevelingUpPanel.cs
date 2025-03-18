@@ -1,4 +1,5 @@
-using Events.MainGlobal;
+using MainGlobal;
+using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ namespace Events.Main.LevelingUpPlayer
 {
     public class LevelingUpPanel : MonoBehaviour
     {
-        [SerializeField] private PlayerGlobalData _playerGlobalData;
         [SerializeField] private AddCardPanel _addCardPanel;
         [SerializeField] private Transform _container;
         [SerializeField] private ButtonLevelingUp _buttonPrefab;
@@ -14,8 +14,15 @@ namespace Events.Main.LevelingUpPlayer
         private const int _MinAddCoins = 50;
         private const int _MaxAddCoins = 100;
 
+        private PlayerGlobalData _playerGlobalData;
         private int _addCoins;
         private List<ButtonLevelingUp> _buttons = new List<ButtonLevelingUp>();
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
 
         private void OnEnable()
         {
@@ -40,22 +47,6 @@ namespace Events.Main.LevelingUpPlayer
 
             AddButton("Карта", LevelingUpType.Card);
             AddButton("Coins " + _addCoins, LevelingUpType.Coins);
-        }
-
-        private void AddCoins()
-        {
-            _playerGlobalData.ChangeCoins(_addCoins);
-        }
-
-        private void AddCard()
-        {
-            _addCardPanel.gameObject.SetActive(true);
-            _addCardPanel.Init();
-        }
-
-        private void ImproveSkill()
-        {
-
         }
 
         private void AddButton(string text, LevelingUpType type)

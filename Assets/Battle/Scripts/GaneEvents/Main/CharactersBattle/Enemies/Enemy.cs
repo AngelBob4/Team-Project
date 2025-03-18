@@ -1,20 +1,23 @@
+using Events.Cards;
 using Events.Main.CharactersBattle.Enemies.EnemyData;
 using Events.View;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace Events.Main.CharactersBattle.Enemies
 {
-    public class Enemy : CharacterBattle
+    public class Enemy: MonoBehaviour
     {
         [SerializeField] private CharacterView _enamyView;
+        [SerializeField] private ColorForCardTypeView _colorForCardTypeView;
         [SerializeField] private EnemySpawner _spawner;
         [SerializeField] private TMP_Text _name;
 
+        public event Action Died;
+        
         private EnemyDataBattle _enemyData;
-
-        public override event Action Died;
 
         public EnemyDataBattle EnemyData => _enemyData;
 
@@ -33,6 +36,11 @@ namespace Events.Main.CharactersBattle.Enemies
             InitNewEnemy(_spawner.GetNewEnemyData(level));
         }
 
+        public void InitNewBossEnemy()
+        {
+            InitNewEnemy(_spawner.GetNewBossData());
+        }
+
         public void InitNewEnemy(EnemyDataBattle enemyData)
         {
             Unsubscribe();
@@ -40,46 +48,30 @@ namespace Events.Main.CharactersBattle.Enemies
             Subscribe();
 
             _enemyData.NewInitValue();
-            _hPBar = _enemyData.HP;
-            _armorBar = _enemyData.Armor;
 
-            _enamyView.SetCharacter(this);
+            _enamyView.SetCharacter(_enemyData);
+            _colorForCardTypeView.SetColorForCardType(_enemyData.ArmorBar);
 
             _name.text = _enemyData.Name;
+
+            _enemyData.StartRound();
         }
 
-        public override void Attack(ICharacter character)
+        public void Attack(PlayerBattle player)
         {
-            _enemyData.Attack(character);
+            _enemyData.Attack(player);
         }
 
-        public override void TakeAttack(int damage)
+        public void TakeAttack(int damage, List<CardType> cardTypesList = null)
         {
-            if (_enemyData.IsDefaultTakeAttack)
-            {
-                DefaultTakeAttack(damage);
-            }
-            else
-            {
-                _enemyData.TakeAttack(damage);
-            }
+            _enemyData.TakeAttack(damage, cardTypesList);
 
             _enemyData.CheckAlive();
         }
 
-        public override void StartRound()
-        {
-            _enemyData.StartRound();
-        }
-
         public void KillEnemy()
         {
-            TakeAttack(_enemyData.HP.CurrentValue);
-        }
-
-        protected override void DefaultTakeDamage(int damage)
-        {
-            _hPBar.ChangeValue(-damage);
+            TakeAttack(_enemyData.HPBar.CurrentValue);
         }
 
         private void Subscribe()

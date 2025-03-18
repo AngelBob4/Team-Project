@@ -1,12 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace Events.Main.Events
 {
     public abstract class GameEvent : MonoBehaviour
     {
-        public abstract event Action FinishedEvent;
+        private const int Level = -1;
 
-        public abstract void StartEvent(int level);
+        public int DefaultLevel => Level;
+
+        public abstract void StartEvent(int level = Level);
     }
 }

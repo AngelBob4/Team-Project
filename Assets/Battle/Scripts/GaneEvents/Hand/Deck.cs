@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Events.Hand
 {
-    public class Deck
+    public class Deck: IReadOnlyDeck
     {
         protected List<Card> _cards = new List<Card>();
         private int _maxCards;
@@ -15,6 +15,31 @@ namespace Events.Hand
         public Deck(int maxCards = -1)
         {
             _maxCards = maxCards;
+        }
+
+        public int GetCardsCount()
+        {
+            return _cards.Count;
+        }
+
+        public List<Card> GetRandomListCard(int quantity—ards) 
+        {
+            if (_cards.Count < quantity—ards)
+                throw new ArgumentOutOfRangeException();
+
+            List<Card> newList = new List<Card>();
+
+            foreach (Card card in _cards)
+            {
+                newList.Add(card);
+            }
+
+            while (newList.Count > quantity—ards)
+            {
+                newList.RemoveAt(UnityEngine.Random.Range(0, newList.Count));
+            }
+
+            return newList;
         }
 
         public void AddCard(Card card)

@@ -1,3 +1,4 @@
+using Events.Animation;
 using Events.Cards;
 using System.Collections.Generic;
 using TMPro;
@@ -18,25 +19,39 @@ namespace Events.View
         [SerializeField] private CardCombinationsView _greenCombinations;
         [SerializeField] private CardCombinationsView _yellowCombinations;
         [SerializeField] private CardCombinationsView _redCombinations;
-        [SerializeField] private Color _colorBlue;
-        [SerializeField] private Color _colorPurple;
-        [SerializeField] private Color _colorGreen;
-        [SerializeField] private Color _colorYellow;
-        [SerializeField] private Color _colorRed;
+        [SerializeField] private CardColorData _cardColorData;
         [SerializeField] private Color _colorDefault;
+        [SerializeField] private AnimationDamageCard _animationDamageCard;
 
         private Card _card;
+
+        private void OnEnable()
+        {
+            if (_card != null)
+            {
+                _card.TakenDamage += PlayAnimationDamageCard;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_card != null)
+            {
+                _card.TakenDamage -= PlayAnimationDamageCard;
+            }
+        }
 
         public void Draw(Card card)
         {
             _card = card;
+            _card.TakenDamage += PlayAnimationDamageCard;
 
             _name.text = _card.Data.Name;
             _wound.text = _card.Data.Wound.ToString();
             _shield.text = _card.Data.Shield.ToString();
             _cards.text = _card.Data.Cards.ToString();
 
-            _cardImage.color = GetColor(_card.Data.Type);
+            _cardImage.color = _cardColorData.Colors[_card.Data.Type];
 
             SetColorCombinations(_card.Data.Combinations);
         }
@@ -44,30 +59,6 @@ namespace Events.View
         public void ButtonOnClick()
         {
             _card.ButtonOnClick();
-        }
-
-        private Color GetColor(CardType cardType)
-        {
-            switch (cardType)
-            {
-                case CardType.Blue:
-                    return _colorBlue;
-
-                case CardType.Green:
-                    return _colorGreen;
-
-                case CardType.Yellow:
-                    return _colorYellow;
-
-                case CardType.Red:
-                    return _colorRed;
-
-                case CardType.Purple:
-                    return _colorPurple;
-
-                default:
-                    return _colorDefault;
-            }
         }
 
         private void SetColorCombinations(IReadOnlyDictionary<CardType, CardEffectType> combinations)
@@ -82,13 +73,18 @@ namespace Events.View
             {
                 if (combinations.ContainsKey(type))
                 {
-                    combinationsView.Draw(GetColor(type), combinations[type]);
+                    combinationsView.Draw(_cardColorData.Colors[type], combinations[type]);
                 }
                 else
                 {
                     combinationsView.Draw(_colorDefault);
                 }
             }
+        }
+
+        private void PlayAnimationDamageCard()
+        {
+            _animationDamageCard.Play();
         }
     }
 }

@@ -27,7 +27,9 @@ namespace Events.View
 
         public void SetCombinationHand(CombinationDeck combinationHand)
         {
+            Unsubscribe();
             _combinationHand = combinationHand;
+            Subscribe();
         }
 
         public void DrawNull()

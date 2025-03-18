@@ -7,10 +7,28 @@ namespace Events.Hand
     public class CombinationDeck : Deck
     {
         private int _effects;
+        private List<CardType> _cardsType = new List<CardType>();
+
+        public int CardsCount => _cards.Count;
 
         public CombinationDeck(int i = -1) : base(i)
         {
 
+        }
+
+        public List<CardType> GetCardsType()
+        {
+            _cardsType.Clear();
+
+            foreach (Card card in _cards)
+            {
+                if (_cardsType.Contains(card.Data.Type) == false)
+                {
+                    _cardsType.Add(card.Data.Type);
+                }
+            }
+
+            return _cardsType;
         }
 
         public int GetEffects(CardEffectType cardEffectType)

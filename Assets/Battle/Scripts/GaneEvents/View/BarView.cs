@@ -6,10 +6,20 @@ namespace Events.View
 {
     public class BarView : MonoBehaviour
     {
+        [SerializeField] private Transform _conteiner;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private bool _isDrawAtZeroValue;
+        [SerializeField] private AnimationDamageInt _animationDamageInt;
 
         private IBar _bar = null;
+
+        private void Awake()
+        {
+            if(_conteiner == null)
+            {
+                _conteiner = GetComponent<Transform>();
+            }
+        }
 
         private void OnEnable()
         {
@@ -24,17 +34,25 @@ namespace Events.View
         public void SetBar(IBar bar)
         {
             _bar = bar;
-            Subscribe();
+
+            if (_bar != null)
+            {
+                Subscribe();
+            }
+            else
+            {
+                _conteiner.gameObject.SetActive(false);
+            }
         }
 
         private void Draw()
         {
-            if (_bar == null)
+            if (_bar == null || _conteiner == null)
             {
                 return;
             }
 
-            gameObject.SetActive(_bar.CurrentValue > 0 || _isDrawAtZeroValue);
+            _conteiner.gameObject.SetActive(_bar.CurrentValue > 0 || _isDrawAtZeroValue);
 
             _text.text = _bar.CurrentValue.ToString();
 
@@ -44,11 +62,22 @@ namespace Events.View
             }
         }
 
+        private void PlayAnimationDamage(int damag)
+        {
+            _animationDamageInt.Play(damag);
+        }
+
         private void Subscribe()
         {
             if (_bar != null)
             {
                 _bar.UpdatedBar += Draw;
+
+                if (_animationDamageInt != null)
+                {
+                    _bar.DamagBar += PlayAnimationDamage;
+                }
+
                 Draw();
             }
         }
@@ -59,7 +88,11 @@ namespace Events.View
             {
                 _bar.UpdatedBar -= Draw;
 
-                gameObject.SetActive(false);
+                if (_animationDamageInt != null)
+                {
+                    _bar.DamagBar -= PlayAnimationDamage;
+                }
+
                 _text.text = "";
             }
         }

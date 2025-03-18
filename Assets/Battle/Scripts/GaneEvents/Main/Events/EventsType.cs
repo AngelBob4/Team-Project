@@ -6,5 +6,6 @@ namespace Events.Main.Events
         Battle = 1,
         Dialog = 2,
         Shop = 3,
+        Boss = 4,
     }
 }

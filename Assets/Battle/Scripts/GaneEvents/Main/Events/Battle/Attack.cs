@@ -1,5 +1,8 @@
+using Events.Animation;
 using Events.Main.CharactersBattle;
 using Events.Main.CharactersBattle.Enemies;
+using Reflex.Attributes;
+using System.Collections;
 using UnityEngine;
 
 namespace Events.Main.Events.Battle
@@ -9,16 +12,34 @@ namespace Events.Main.Events.Battle
         [SerializeField] private PlayerBattle _player;
         [SerializeField] private Enemy _enemy;
         [SerializeField] private BattleEvent _battleEvent;
+        [SerializeField] private InputPause _inputPause;
 
-        //private EnemyData _enemy => _enemyManager.Enemy;
+        private AnimationTime _animationTime;
+
+        [Inject]
+        private void Inject(AnimationTime animationTime)
+        {
+            _animationTime = animationTime;
+        }
 
         public void OnClickAttack()
         {
-            _player.Attack(_enemy);
+            StartCoroutine(PlayRaund());
+        }
+
+        private IEnumerator PlayRaund()
+        {
+            _inputPause.SetInput(false);
+
+            if(_player.Attack(_enemy))
+                yield return new WaitForSeconds(_animationTime.TimeDamageCard);
 
             EnemyAttack();
+            yield return new WaitForSeconds(_animationTime.TimeDamageCard);
 
-            StartRound();
+            StartNewRound();
+
+            _inputPause.SetInput(true);
         }
 
         private void EnemyAttack()
@@ -29,12 +50,12 @@ namespace Events.Main.Events.Battle
             }
         }
 
-        private void StartRound()
+        private void StartNewRound()
         {
             if (IsBattle())
             {
                 _player.StartRound();
-                _enemy.StartRound();
+                _enemy.EnemyData.StartRound();
             }
         }
 

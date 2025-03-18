@@ -8,7 +8,7 @@ namespace Events.View
         [SerializeField] private BarView _hPBar;
         [SerializeField] private BarView _armorBar;
 
-        public void SetCharacter(CharacterBattle character)
+        public void SetCharacter(CharacterBattleData character)
         {
             if (_hPBar != null)
                 _hPBar.SetBar(character.HPBar);

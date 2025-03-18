@@ -1,10 +1,10 @@
-using Events.Cards;
-using Events.Main.Events.Dialog.Instance;
-using Events.MainGlobal;
+using MainGlobal;
+using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Events.Main.Events.Dialog
 {
@@ -14,22 +14,20 @@ namespace Events.Main.Events.Dialog
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Transform _buttonsContainer;
         [SerializeField] private DialogButton _buttonPrefab;
-        [SerializeField] private PlayerGlobalData _playerGlobalData;
-        [SerializeField] private CardDataList cardDataList;
+        [SerializeField] private DialogEventCommunications _dialogEventCommunications;
 
-        public override event Action FinishedEvent;
+        public event Action OnClickedButton;
 
-        private DialogEventData _eventData;
+        private PlayerGlobalData _playerGlobalData;
+        private DialogEventDataList _dialogEventDataList;
+        private DialogEventInstance _eventData;
         private List<DialogButton> _dialogButtons = new List<DialogButton>();
 
-        private void Awake()
+        [Inject]
+        private void Inject(DialogEventDataList dialogEventDataList, PlayerGlobalData playerGlobalData)
         {
-            _eventData = new DialogEventDataAddCard(cardDataList);
-        }
-
-        public override void StartEvent(int level)
-        {
-            Init();
+            _dialogEventDataList = dialogEventDataList;
+            _playerGlobalData = playerGlobalData;
         }
 
         private void OnEnable()
@@ -41,10 +39,17 @@ namespace Events.Main.Events.Dialog
         {
             Unsubscribe();
         }
+        
+        public override void StartEvent(int level)
+        {
+            InitInstance();
+        }
 
-        private void Init()
+        private void InitInstance()
         {
             Clear();
+
+            _eventData = _dialogEventDataList.GetRandomDialogEventInstance();
 
             if (_eventData == null)
                 throw new NullReferenceException();
@@ -52,20 +57,25 @@ namespace Events.Main.Events.Dialog
             _name.text = _eventData.Name;
             _text.text = _eventData.Text;
 
-            for (int i = 0; i < _eventData.StringButtons.Count; i++)
+            for (int i = 0; i < _eventData.DialogEventButtonDataList.Count; i++)
             {
                 DialogButton newDialogButton = Instantiate(_buttonPrefab, _buttonsContainer);
-                newDialogButton.Init(_eventData.StringButtons[i], i);
+                newDialogButton.Init(_eventData.DialogEventButtonDataList[i].String, i);
                 newDialogButton.OnClick += OnClickButton;
                 _dialogButtons.Add(newDialogButton);
+
+                if(_playerGlobalData.Coins.CurrentValue < Math.Abs(_eventData.DialogEventButtonDataList[i].PriceCount))
+                {
+                    newDialogButton.GetComponent<Button>().interactable = false;
+                }
             }
         }
 
         private void OnClickButton(int index)
         {
-            _eventData.OnClickButton(index, _playerGlobalData);
+            _eventData.OnClickButton(index, _dialogEventCommunications);
             gameObject.SetActive(false);
-            FinishedEvent?.Invoke();
+            OnClickedButton?.Invoke();
         }
 
         private void Clear()
