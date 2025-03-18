@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8939500095825577313
 Transform:
@@ -4845,7 +4845,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &393905300568439236
 Transform:
@@ -4951,7 +4951,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5789637069065357485
 Transform:
@@ -4984,9 +4984,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthModifier: 1
   _lightIntensityModifier: 0
+  _soulsValue: 0
   Speed: 2
   _audioClip: {fileID: 8300000, guid: 4b70ec0f0afb9ac4ea7dfea07aca4eb4, type: 3}
   _particleSystem: {fileID: 6010305630217505230}
+  _audioSource: {fileID: 6660570899616124589}
   _jumpHeight: 2
 --- !u!135 &5073827650432004670
 SphereCollider:

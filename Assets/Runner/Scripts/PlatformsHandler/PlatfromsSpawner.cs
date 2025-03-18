@@ -22,14 +22,6 @@ namespace Runner.PlatformsHandler
             SpawnPlatformVariants();
         }
 
-        public void ResetAllPlatforms()
-        {
-            while (_pool.childCount > 0)
-            {
-                DestroyImmediate(transform.GetChild(0).gameObject);
-            }
-        }
-
         private void SpawnPlatform(GameObject platform, Transform parent)
         {
             Instantiate(platform, parent);

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Runner.PlayerController
 {
@@ -24,13 +25,21 @@ namespace Runner.PlayerController
 
         public void OnHealthChanged(int healthChangeValue)
         {
+            // изменяем хп 
+
             _health = Mathf.Clamp(_health + healthChangeValue, 0, _maxHealth);
             HealthChanged?.Invoke(_health);
+
+            if (_health <= 0)
+            {
+                Die();
+            }
         }
 
-        public int GetCurrentHealthValue()
+        private void Die()
         {
-            return _health;
+            // подписаться на смерть плеера
+            SceneManager.LoadScene(0);
         }
     }
 }
