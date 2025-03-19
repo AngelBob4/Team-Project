@@ -24,10 +24,10 @@ namespace Runner.Settings
 
         public bool IsRunnerStarted => _isRunnerStarted;
 
-        public void InitAllSettingsForRunner(LocationTypes cemetery, int platformsAmount = PlatformsAmount)//, int health, , float lanternIntensity)
+        public void InitAllSettingsForRunner(LocationTypes locationType, int platformsAmount = PlatformsAmount)//, int health, , float lanternIntensity)
         {
-            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)cemetery]);
-            _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)cemetery]);
+            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)locationType]);
+            _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)locationType]);
             _platformsController.InitTotalNumberOfPlatforms(platformsAmount);
             _player.PlayerLantern.InitLanternIntensity(8);
             _player.PlayerHealth.InitHealth(7);

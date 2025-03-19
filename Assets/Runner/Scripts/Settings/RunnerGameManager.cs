@@ -9,7 +9,7 @@ namespace Runner.Settings
 
         public void StartGame()
         {
-            _entryPoint.InitAllSettingsForRunner(Enums.LocationTypes.Cemetery);
+            _entryPoint.InitAllSettingsForRunner(Enums.LocationTypes.Forest);
             _entryPoint.StartRunner();
             _testMenuView.SetActive(false);
         }
