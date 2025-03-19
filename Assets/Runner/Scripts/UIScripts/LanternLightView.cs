@@ -19,7 +19,7 @@ namespace Runner.UI
             _player.PlayerLantern.LanternLightChanged -= OnPlayerLanternLightChanged;
         }
 
-        private void OnPlayerLanternLightChanged(float lanternLight)
+        private void OnPlayerLanternLightChanged(int lanternLight)
         {
             _lanternLightValue.text = lanternLight.ToString();
         }

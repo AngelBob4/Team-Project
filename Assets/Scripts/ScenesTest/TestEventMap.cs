@@ -1,6 +1,7 @@
 using Events.Main.Events;
 using MainGlobal;
 using Reflex.Attributes;
+using Runner.Enums;
 
 namespace ScenesTest
 {
@@ -32,6 +33,16 @@ namespace ScenesTest
         public void OnClickButtonShop()
         {
             OnClickButton(EventsType.Shop);
+        }
+
+        public void OnClickButtonCemetery()
+        {
+            _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+        }
+
+        public void OnClickButtonForest()
+        {
+            _globalGame.SetLocationRunner(LocationTypes.Forest);
         }
 
         private void OnClickButton(EventsType eventsType)

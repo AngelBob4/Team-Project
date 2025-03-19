@@ -18,15 +18,18 @@ namespace MainGlobal
         private PlayerBattle _playerBattle;
         private CardDataList _startCardDataList;
         private int _startHPMax = 70;
-        private int StartCoinsValue = 100;
+        private int _startCoinsValue = 100;
+        private int _startLanternLight = 10;
         private Bar _hPBar;
         private Bar _stamina;
         private Bar _coins;
+        private Bar _lanternLight;
         private List<CardData> _cardDataList;
 
         public Bar HPBar => _hPBar;
         public Bar Stamina => _stamina;
         public Bar Coins => _coins;
+        public Bar LanternLight => _lanternLight;
         public IReadOnlyList<CardData> CardDataList => _cardDataList;
 
         public PlayerGlobalData(CardDataList startCardDataList)
@@ -54,7 +57,10 @@ namespace MainGlobal
             _stamina = new Bar(StartStaminaMaxValue);
 
             _coins = new Bar();
-            _coins.SetNewValues(StartCoinsValue);
+            _coins.SetNewValues(_startCoinsValue);
+
+            _lanternLight = new Bar();
+            _lanternLight.SetNewValues(_startLanternLight);
 
             _cardDataList = _startCardDataList.GetList();
 
@@ -119,6 +125,11 @@ namespace MainGlobal
                 ChangeCoins(-coins);
                 return true;
             }
+        }
+
+        public void ChangeLanternLight(int lanternLight)
+        {
+            _lanternLight.ChangeValue(lanternLight);
         }
 
         private void DrawText()

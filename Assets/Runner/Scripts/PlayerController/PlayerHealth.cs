@@ -1,3 +1,5 @@
+using MainGlobal;
+using Reflex.Attributes;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,39 +8,56 @@ namespace Runner.PlayerController
 {
     public class PlayerHealth : MonoBehaviour
     {
-        private int _health;
-        private int _maxHealth = 10;
+        //private int _health;
+        //private int _maxHealth = 10;
+        private PlayerGlobalData _playerGlobalData;
 
         public event Action<int> HealthChanged;
 
-        private void Start()
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
         {
-            _health = _maxHealth;
-            HealthChanged?.Invoke(_maxHealth);
+            _playerGlobalData = playerGlobalData;
         }
 
-        public void InitHealth(int healthValueFromFighting)
+        private void Start()
         {
-            _health = healthValueFromFighting;
-            HealthChanged?.Invoke(_health);
+            HealthChanged?.Invoke(_playerGlobalData.HPBar.CurrentValue);
+            //_health = _maxHealth;
+            //HealthChanged?.Invoke(_maxHealth);
         }
+
+        private void OnEnable()
+        {
+            _playerGlobalData.Died += Die;
+        }
+
+        private void OnDisable()
+        {
+            _playerGlobalData.Died -= Die;
+        }
+
+        //public void InitHealth(int healthValueFromFighting)
+        //{
+        //    //_health = healthValueFromFighting;
+        //    //HealthChanged?.Invoke(_health);
+        //}
 
         public void OnHealthChanged(int healthChangeValue)
         {
-            // изменяем хп 
+            _playerGlobalData.ChangeHP(healthChangeValue);
 
-            _health = Mathf.Clamp(_health + healthChangeValue, 0, _maxHealth);
-            HealthChanged?.Invoke(_health);
+            //_health = Mathf.Clamp(_health + healthChangeValue, 0, _maxHealth);
+            HealthChanged?.Invoke(_playerGlobalData.HPBar.CurrentValue);
 
-            if (_health <= 0)
-            {
-                Die();
-            }
+            //if (_health <= 0)
+            //{
+            //    Die();
+            //}
         }
 
         private void Die()
         {
-            // подписаться на смерть плеера
             SceneManager.LoadScene(0);
         }
     }

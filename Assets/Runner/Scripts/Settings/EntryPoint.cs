@@ -11,7 +11,7 @@ namespace Runner.Settings
 {
     public class EntryPoint : MonoBehaviour
     {
-        private const int PlatformsAmount = 15;
+        private const int PlatformsAmount = 3;
 
         [SerializeField] private PlatfromsSpawner _platformsSpawner;
         [SerializeField] private PlatformsCounter _platformsCounter;
@@ -29,8 +29,8 @@ namespace Runner.Settings
             _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)cemetery]);
             _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)cemetery]);
             _platformsController.InitTotalNumberOfPlatforms(platformsAmount);
-            _player.PlayerLantern.InitLanternIntensity(8);
-            _player.PlayerHealth.InitHealth(7);
+            //_player.PlayerLantern.InitLanternIntensity(8);
+            //_player.PlayerHealth.InitHealth(7);
             _player.PlayerMovement.PutPlayerToDefaultPosition();
         }
 

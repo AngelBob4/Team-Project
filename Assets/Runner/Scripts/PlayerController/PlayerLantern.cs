@@ -1,3 +1,5 @@
+using MainGlobal;
+using Reflex.Attributes;
 using System;
 using UnityEngine;
 
@@ -7,19 +9,39 @@ namespace Runner.PlayerController
     {
         [SerializeField] private Light _lanternLight;
 
-        public event Action<float> LanternLightChanged;
-      
-        public void InitLanternIntensity(float lanternIntensity)
+        public event Action<int> LanternLightChanged;
+
+        private PlayerGlobalData _playerGlobalData;
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
         {
-            // Awake передача из  глобал плеера
-            _lanternLight.intensity = lanternIntensity;
-            LanternLightChanged?.Invoke(_lanternLight.intensity);
+            _playerGlobalData = playerGlobalData;
         }
 
-        public void ChangeLanternLightIntensity(float lightIntensityModifier)
+        private void Start()
         {
-            _lanternLight.intensity += lightIntensityModifier;
-            LanternLightChanged?.Invoke(_lanternLight.intensity);
+            SetValues();
+        }
+
+        //public void InitLanternIntensity(float lanternIntensity)
+        //{
+        //    // Awake передача из  глобал плеера
+        //    _lanternLight.intensity = lanternIntensity;
+        //    LanternLightChanged?.Invoke(_lanternLight.intensity);
+        //}
+
+        public void ChangeLanternLightIntensity(int lightIntensityModifier)
+        {
+            _playerGlobalData.ChangeLanternLight(lightIntensityModifier);
+
+            SetValues();
+        }
+
+        private void SetValues()
+        {
+            _lanternLight.intensity += (float)_playerGlobalData.LanternLight.CurrentValue;
+            LanternLightChanged?.Invoke(_playerGlobalData.LanternLight.CurrentValue);
         }
     }
 }

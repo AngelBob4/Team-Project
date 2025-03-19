@@ -1,5 +1,6 @@
 using Events.Main.Events;
 using Events.Main.Events.Dialog;
+using Runner.Enums;
 using UnityEngine;
 
 namespace MainGlobal
@@ -14,8 +15,10 @@ namespace MainGlobal
         private PlayerGlobalData _playerGlobalData;
         private LoadingScene _loadingScene;
         private DialogEventDataList _dialogEventDataList;
+        private LocationTypes _locationRunnerTypes;
 
         public EventsType EventsType => _eventType;
+        public LocationTypes LocationRunnerTypes => _locationRunnerTypes;
         public int Level => _level;
 
         public GlobalGame
@@ -37,12 +40,20 @@ namespace MainGlobal
             _playerGlobalData.InitNewPlayer();
 
             _eventType = EventsType.Null;
+
+            SetLocationRunner(LocationTypes.Cemetery);
+
             StartMap();
         }
 
         public void SetEvent(EventsType eventType)
         {
             _eventType = eventType;
+        }
+
+        public void SetLocationRunner(LocationTypes locationRunner)
+        {
+            _locationRunnerTypes = locationRunner;
         }
 
         public void StartEvent()
