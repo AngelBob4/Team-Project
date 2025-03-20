@@ -7378,7 +7378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthModifier: -2
+  _healthModifier: -70
   _lightIntensityModifier: -1
   _soulsValue: 0
   Speed: 3

@@ -6,12 +6,10 @@ using UnityEngine;
 namespace Runner.PlayerController
 {
     public class PlayerSouls : MonoBehaviour
-    {
-        //[SerializeField] private int _souls;
+    {     
+        private PlayerGlobalData _playerGlobalData;
 
         public event Action<int> SoulsAmountChanged;
-
-        private PlayerGlobalData _playerGlobalData;
 
         [Inject]
         private void Inject(PlayerGlobalData playerGlobalData)
@@ -23,12 +21,6 @@ namespace Runner.PlayerController
         {
             SoulsAmountChanged?.Invoke(_playerGlobalData.Coins.CurrentValue);
         }
-
-        //public void InitSoulsAmount(int souls)
-        //{
-        //    _souls = souls;
-        //   SoulsAmountChanged?.Invoke(_souls);
-        //}
 
         public void ChangeSoulsAmount(int souls)
         {

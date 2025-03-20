@@ -24,13 +24,6 @@ namespace Runner.PlayerController
             SetValues();
         }
 
-        //public void InitLanternIntensity(float lanternIntensity)
-        //{
-        //    // Awake передача из  глобал плеера
-        //    _lanternLight.intensity = lanternIntensity;
-        //    LanternLightChanged?.Invoke(_lanternLight.intensity);
-        //}
-
         public void ChangeLanternLightIntensity(int lightIntensityModifier)
         {
             _playerGlobalData.ChangeLanternLight(lightIntensityModifier);
@@ -40,7 +33,7 @@ namespace Runner.PlayerController
 
         private void SetValues()
         {
-            _lanternLight.intensity += (float)_playerGlobalData.LanternLight.CurrentValue;
+            _lanternLight.intensity = (float)_playerGlobalData.LanternLight.CurrentValue;
             LanternLightChanged?.Invoke(_playerGlobalData.LanternLight.CurrentValue);
         }
     }

@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/MapTest.unity
     guid: 54c9c11ef0373af429124aaa94e341af
   - enabled: 1
-    path: Assets/Runner/Scenes/RunnerScene.unity
+    path: Assets/Scenes/RunnerScene.unity
     guid: 653e5baecf9e7eb49bdbca76d2da45f4
   m_configObjects: {}

@@ -1,9 +1,10 @@
 {
   "dependencies": {
-    "com.unity.2d.spriteshape": "9.0.5",
     "com.gustavopsantos.reflex": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#9.0.1",
+    "com.unity.2d.spriteshape": "9.0.5",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.recorder": "4.0.3",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.5",
     "com.unity.ugui": "1.0.0",

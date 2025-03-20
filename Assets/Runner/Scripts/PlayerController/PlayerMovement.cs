@@ -6,6 +6,7 @@ namespace Runner.PlayerController
     public class PlayerMovement : MonoBehaviour
     {
         private const string Run = nameof(Run);
+        private const string Die = nameof(Die);
 
         [SerializeField] private float _borderX;
         [SerializeField] private float _borderY;
@@ -25,7 +26,7 @@ namespace Runner.PlayerController
                     _oldMousePosX = Input.mousePosition.x;
                     _animator.SetBool(Run, true);
                 }
-
+               
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 newPosition = transform.position + transform.forward * Time.deltaTime * _speed;
@@ -46,9 +47,9 @@ namespace Runner.PlayerController
             }
         }
 
-        public void PutPlayerToDefaultPosition()
+        public void SetDeathAnimation()
         {
-            transform.position = _entryPoint.transform.position;
+            _animator.SetTrigger(Die);
         }
     }
 }
