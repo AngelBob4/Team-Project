@@ -9,8 +9,8 @@ namespace Runner
         {
             if (other.TryGetComponent(out Player player))
             {
-                Time.timeScale = 0.0f;
                 print("Finish!!!");
+
             }
         }
     }
