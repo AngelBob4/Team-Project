@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d25a88dc4743874aaa6cf20211ac4d6, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  StartPlatformView: {fileID: 1840776443658659145, guid: c728993699ffbf846ab8caa5679ba66b, type: 3}
+  LastPlatformView: {fileID: 6614976646710248329, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
+  PlatformVariants:
+  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
+  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
+  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
+  AudioClip: {fileID: 8300000, guid: 40869972fba06ce44a1a024fdf908f9f, type: 3}

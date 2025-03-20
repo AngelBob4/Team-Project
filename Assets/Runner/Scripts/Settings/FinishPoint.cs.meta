@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Runner/Scripts/Settings/FinishPoint.cs.meta
+guid: a4688aa23ba29844abdf75df7c6fbc2e
+========
+guid: 5109dcb1503f98947af898e161f10c20
+>>>>>>>> 897cf908d5cd9d429106d3e691972972698ce4d3:Assets/Sources/Enums/MapCellType.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
