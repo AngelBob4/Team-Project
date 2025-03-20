@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Runner/Downloads/CrackedTree.meta
+guid: b74755267bb092545a2880f67d4a2367
+========
 guid: ce09fe0c527d5e0428a157453e5353eb
+>>>>>>>> 897cf908d5cd9d429106d3e691972972698ce4d3:Assets/Resources.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

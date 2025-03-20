@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Map/Sources/Enums/MapCellType.cs.meta
+guid: 5109dcb1503f98947af898e161f10c20
+========
+guid: 650a80186cc93b54aa5627197c23ea6e
+>>>>>>>> develop:Assets/Battle/Plugins/SerializedCollections/Editor/Scripts/Data/ElementData.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

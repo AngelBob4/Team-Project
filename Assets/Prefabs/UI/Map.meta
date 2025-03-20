@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/UI/Map.meta
 guid: a5ca26f12168f0d4b869158e15b0eb2f
+========
+guid: ae88cbe50f6a7fb4781f129704e15df9
+>>>>>>>> develop:Assets/Map.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

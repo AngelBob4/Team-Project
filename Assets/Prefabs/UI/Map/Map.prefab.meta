@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/UI/Map/Map.prefab.meta
 guid: 00124250dd02d7d43bd327f2a4001441
+========
+guid: 5f421b24760a90e4bb62f51a57b72a99
+>>>>>>>> develop:Assets/Prefabs/UI/Map/Roads/ComplitedMapRoad.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

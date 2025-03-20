@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Map/Sources/Models/Map/Map/MapCell.cs.meta
+guid: 78fec321dc7766742a82b397a3854d21
+========
+guid: ba2d792dfc6653e46bee7c027202acd3
+>>>>>>>> develop:Assets/Battle/Plugins/SerializedCollections/Editor/Scripts/Data/PropertyData.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
