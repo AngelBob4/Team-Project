@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Runner/Downloads/Free Stylized Textures/README.txt.meta
+guid: 6fbf4c8f162b205498a6e40040d75af6
+TextScriptImporter:
+========
 guid: 61c0f97c0b2e42241b6072d616ea0d60
 PrefabImporter:
+>>>>>>>> 897cf908d5cd9d429106d3e691972972698ce4d3:Assets/Prefabs/UI/Map/Cells/Cell.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

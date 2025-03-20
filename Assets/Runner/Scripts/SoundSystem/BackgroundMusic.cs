@@ -10,6 +10,10 @@ namespace Runner.SoundSystem
         public void InitAudioClip(AllRunnerSettings allRunnerSettings)
         {
             _audioSource.clip = allRunnerSettings.AudioClip;
+        }
+
+        public void PlayBackgroundMusic()
+        {
             _audioSource.Play();
         }
     }
