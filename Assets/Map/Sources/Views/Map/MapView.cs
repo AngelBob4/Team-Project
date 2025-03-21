@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using MainGlobal;
+using Reflex.Attributes;
 
 public class MapView : MonoBehaviour
 {
@@ -9,9 +11,16 @@ public class MapView : MonoBehaviour
 
     private MapFactory _mapFactory;
     private IPresenter _presenter;
-
+    private GlobalGame _globalGame;
+    
     private List<MapCellView> _mapCellViews;
 
+    [Inject]
+    public void Inject(GlobalGame globalGameData)
+    {
+        _globalGame = globalGameData;
+    }
+    
     public void Init(IPresenter presenter, MapFactory mapFactory)
     {
         gameObject.SetActive(false);

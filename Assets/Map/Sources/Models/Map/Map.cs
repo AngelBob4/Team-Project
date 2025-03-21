@@ -1,31 +1,42 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Events.Main.Events;
+using MainGlobal;
+using Runner.Enums;
 
 public class Map
 {
     private readonly int _amountOfCellTypes;
-    private readonly int _amountOfLevels = 5;
+    private readonly int _amountOfLevels = 9;
     private readonly int _maxRoadsInlevel = 5;
     private Random _random = new Random();
 
     private List<MapCell> _mapCells;
+    private List<MapCell> _currentMapCells;
     private MapCell _currentCell;
-
+    private GlobalGame _globalGame;
+    
+    
     public int AmountOfLevels => _amountOfLevels;
     public int MaxRoadsInlevel => _maxRoadsInlevel;
 
 
     public event Action<List<MapCell>> MapGenerated;
 
-    public Map()
+    public Map(GlobalGame globalGame)
     {
+        _globalGame = globalGame;
         _amountOfCellTypes = Enum.GetNames(typeof(MapCellType)).Length;
         _mapCells = new List<MapCell>();
     }
 
     public void ButtonClicked(int index)
     {
+        _globalGame.SetEvent(EventsType.Battle);
+        _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+        _globalGame.StartRunner();
+        
         if (_currentCell != null)
         {
             if (_currentCell.Index == index)

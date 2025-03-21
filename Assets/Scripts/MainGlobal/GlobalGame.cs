@@ -72,27 +72,13 @@ namespace MainGlobal
         {
             if (_eventType == EventsType.Boss)
             {
-                Debug.Log("Победа");
+                Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅ");
                 _loadingScene.LoadSceneStartGame();
                 return;
             }
-
-            if (_level < _levelBoss - 1)
-            {
-                _loadingScene.LoadSceneMap();
-            }
             else
             {
-                if (_level == _levelBoss - 1)
-                {
-                    SetEvent(EventsType.Shop);
-                    _loadingScene.LoadSceneRuner();
-                }
-                else
-                {
-                    SetEvent(EventsType.Boss);
-                    StartEvent();
-                }
+                _loadingScene.LoadSceneMap();
             }
         }
     }

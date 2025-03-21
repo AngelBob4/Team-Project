@@ -15,12 +15,13 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         PlayerGlobalData _playerGlobalData = new PlayerGlobalData(_startCardDataList);
         LoadingScene _loadingScene = new LoadingScene();
         DialogEventDataList _dialogEventDataList = new DialogEventDataList(_addCardDataListInDialogEvents);
-
-        containerBuilder.AddSingleton(new Map());
+        GlobalGame globalGame = new GlobalGame(_playerGlobalData, _loadingScene, _dialogEventDataList);
+        
+        containerBuilder.AddSingleton(new Map(globalGame));
         containerBuilder.AddSingleton(_playerGlobalData);
         containerBuilder.AddSingleton(_loadingScene);
         containerBuilder.AddSingleton(_dialogEventDataList);
         containerBuilder.AddSingleton(new AnimationTime());
-        containerBuilder.AddSingleton(new GlobalGame(_playerGlobalData, _loadingScene, _dialogEventDataList));
+        containerBuilder.AddSingleton(globalGame);
     }
 }

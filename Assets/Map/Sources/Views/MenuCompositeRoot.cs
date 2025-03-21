@@ -32,7 +32,5 @@ public class MenuCompositeRoot : MonoBehaviour
 
         _mapView.Init(mapPresenter, _mapFactory);
         _map.Generate();
-
-        _mapView.gameObject.SetActive(false);
     }
 }
