@@ -26,11 +26,20 @@ public class MenuCompositeRoot : MonoBehaviour
 
     private void Compose()
     {
-        _mapFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map);
+        _mapFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map,
+            _mapView.transform.localScale.x);
 
         MapPresenter mapPresenter = new MapPresenter(_mapView, _map);
 
         _mapView.Init(mapPresenter, _mapFactory);
-        _map.Generate();
+
+        if (_map.IsEmpty)
+        {
+            _map.Generate();
+        }
+        else
+        {
+            _map.ActivateMap();
+        }
     }
 }

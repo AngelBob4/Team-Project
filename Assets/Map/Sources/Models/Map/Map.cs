@@ -4,6 +4,8 @@ using System.Linq;
 using Events.Main.Events;
 using MainGlobal;
 using Runner.Enums;
+using UnityEngine;
+using Random = System.Random;
 
 public class Map
 {
@@ -11,38 +13,38 @@ public class Map
     private readonly int _amountOfLevels = 9;
     private readonly int _maxRoadsInlevel = 5;
     private Random _random = new Random();
-
+    
     private List<MapCell> _mapCells;
     private List<MapCell> _currentMapCells;
     private MapCell _currentCell;
     private GlobalGame _globalGame;
     
-    
     public int AmountOfLevels => _amountOfLevels;
     public int MaxRoadsInlevel => _maxRoadsInlevel;
-
+    public bool IsEmpty => _mapCells.Count == 0;
 
     public event Action<List<MapCell>> MapGenerated;
 
-    public Map(GlobalGame globalGame)
+    public void Initialize(GlobalGame globalGame)
     {
         _globalGame = globalGame;
+    }
+
+    public Map()
+    {
         _amountOfCellTypes = Enum.GetNames(typeof(MapCellType)).Length;
         _mapCells = new List<MapCell>();
     }
 
     public void ButtonClicked(int index)
     {
-        _globalGame.SetEvent(EventsType.Battle);
-        _globalGame.SetLocationRunner(LocationTypes.Cemetery);
-        _globalGame.StartRunner();
-        
         if (_currentCell != null)
         {
             if (_currentCell.Index == index)
                 return;
 
-            List<MapCell> previousLevelCells = _mapCells.Where(newCell => newCell.Position.X == (_currentCell.Position.X + 1)&& _currentCell.Index != index).ToList();
+            List<MapCell> previousLevelCells = _mapCells.Where(newCell =>
+                newCell.Position.X == (_currentCell.Position.X + 1) && _currentCell.Index != index).ToList();
 
             foreach (MapCell cell in previousLevelCells)
             {
@@ -59,8 +61,47 @@ public class Map
         {
             _mapCells[cellIndex].ActivateCell();
         }
+        
+        _globalGame.SetEvent(_currentCell.Type);
+        _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+        _globalGame.StartRunner();
     }
 
+    public void ActivateMap()
+    {
+        if (_currentCell == null)
+        {
+            MapGenerated?.Invoke(_mapCells);
+            _mapCells[0].ActivateCell();
+            return;
+        }
+
+        MapGenerated?.Invoke(_mapCells);
+        
+        foreach (int cellIndex in _currentCell.NextAvailableCellsIndexes)
+        {        
+            _mapCells[cellIndex].ActivateCell();
+        }
+
+        foreach (var cell in _mapCells)
+        {
+            if (cell.IsActivated)
+            {
+                cell.PlayerArriviedToThisCell();
+            }
+        }
+    }
+
+    public void RestartGame()
+    {
+        _mapCells.Clear();
+        GenerateCells();
+        GenerateRoads();
+        MapGenerated?.Invoke(_mapCells);
+        
+        _mapCells[0].ActivateCell();
+    }
+    
     public void Generate()
     {
         GenerateCells();
@@ -80,7 +121,7 @@ public class Map
         int attemptsToMakeCell;
         int currentPercentsToMakeCell;
 
-        _mapCells.Add(new MapCell(MapCellType.Filled, 0, centralCell, _mapCells.Count));
+        _mapCells.Add(new MapCell(EventsType.Battle, 0, centralCell, _mapCells.Count));
 
         for (int x = 1; x < _amountOfLevels - 1; x++)
         {
@@ -90,14 +131,14 @@ public class Map
             {
                 currentPercentsToMakeCell = defaultPercentsToMakeCell + attemptsToMakeCell * extraPercentsToMakeCell;
 
-                MapCellType newType;
+                EventsType newType;
 
                 if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))             
-                    newType = (MapCellType)_random.Next(1, _amountOfCellTypes);
+                    newType = (EventsType)_random.Next(1, _amountOfCellTypes);
                 else
-                    newType = (MapCellType)_random.Next(_amountOfCellTypes);
+                    newType = (EventsType)_random.Next(_amountOfCellTypes);
 
-                if (newType == MapCellType.Empty)
+                if (newType == EventsType.Null)
                     continue;
 
                 _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
@@ -105,7 +146,7 @@ public class Map
             }
         }
 
-        _mapCells.Add(new MapCell(MapCellType.Filled, _amountOfLevels - 1, centralCell, _mapCells.Count));
+        _mapCells.Add(new MapCell(EventsType.Boss, _amountOfLevels - 1, centralCell, _mapCells.Count));
     }
 
     private void GenerateRoads()

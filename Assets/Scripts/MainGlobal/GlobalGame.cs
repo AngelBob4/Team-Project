@@ -16,6 +16,7 @@ namespace MainGlobal
         private LoadingScene _loadingScene;
         private DialogEventDataList _dialogEventDataList;
         private LocationTypes _locationRunnerTypes;
+        private Map _map;
 
         public EventsType EventsType => _eventType;
         public LocationTypes LocationRunnerTypes => _locationRunnerTypes;
@@ -25,12 +26,14 @@ namespace MainGlobal
             (
             PlayerGlobalData playerGlobalData,
             LoadingScene loadingScene,
-            DialogEventDataList dialogEventDataList
+            DialogEventDataList dialogEventDataList,
+            Map map
             )
         {
             _playerGlobalData = playerGlobalData;
             _loadingScene = loadingScene;
             _dialogEventDataList = dialogEventDataList;
+            _map = map;
         }
 
         public void NewGame()
@@ -38,6 +41,7 @@ namespace MainGlobal
             _dialogEventDataList.InitNewGame();
             _level = _startLevel;
             _playerGlobalData.InitNewPlayer();
+            _map.RestartGame();
 
             _eventType = EventsType.Null;
 

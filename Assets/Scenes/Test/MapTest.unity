@@ -445,6 +445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141286210140561714, guid: 5f3c252c3709487438b8bfa1257ead02, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 3988223489096112950, guid: 5f3c252c3709487438b8bfa1257ead02, type: 3}
       propertyPath: m_Name
       value: Map

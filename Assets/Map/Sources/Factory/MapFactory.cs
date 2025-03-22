@@ -1,3 +1,4 @@
+using Events.Main.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +11,18 @@ public class MapFactory
 
     private float _width;
     private float _height;
+    private float _mapScale;
 
     private readonly int _amountOfLevels;
     private readonly int _maxRoadsInlevel;
 
-    public MapFactory(RectTransform mapView, MapCellView filledTemplate, Image roadTemplate, Map map)
+    public MapFactory(RectTransform mapView, MapCellView filledTemplate, Image roadTemplate, Map map, float mapScale)
     {
         _map = map;
         _mapView = mapView;
         _filledTemplate = filledTemplate;
         _roadTemplate = roadTemplate;
+        _mapScale = mapScale;
 
         _width = _mapView.sizeDelta.x;
         _height = _mapView.sizeDelta.y;
@@ -48,7 +51,7 @@ public class MapFactory
 
         MapCellView newCell = cell.Type switch
         {
-            MapCellType.Filled => Object.Instantiate(_filledTemplate, newPosition, Quaternion.identity, container),
+            EventsType.Battle => Object.Instantiate(_filledTemplate, newPosition, Quaternion.identity, container),
             _ => Object.Instantiate(_filledTemplate, Vector3.zero, Quaternion.identity, container),
         };
 
@@ -70,7 +73,7 @@ public class MapFactory
         float angle = Vector2.SignedAngle(Vector2.up, secondCellPosition - firstCellPosition);
         Image newRoad = Object.Instantiate(_roadTemplate, newPosition, Quaternion.Euler(0, 0, angle), container);
 
-        float length = (secondCellPosition - firstCellPosition).magnitude;
+        float length = (secondCellPosition - firstCellPosition).magnitude * (1 / _mapScale);
         newRoad.rectTransform.sizeDelta = new Vector2(newRoad.rectTransform.sizeDelta.x, length);
 
         return newRoad;
