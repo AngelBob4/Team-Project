@@ -1,14 +1,17 @@
 using Events.Main.CharactersBattle;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Events.View
 {
     public class BarView : MonoBehaviour
     {
-        [SerializeField] private Transform _conteiner;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private bool _isDrawAtZeroValue;
+        [SerializeField] private bool _isDrawMaxValue;
+        [SerializeField] private Transform _conteiner;
+        [SerializeField] private Image _filledImage;
         [SerializeField] private AnimationDamageInt _animationDamageInt;
 
         private IBar _bar = null;
@@ -47,18 +50,26 @@ namespace Events.View
 
         private void Draw()
         {
-            if (_bar == null || _conteiner == null)
+            if (_bar == null)
             {
                 return;
             }
 
-            _conteiner.gameObject.SetActive(_bar.CurrentValue > 0 || _isDrawAtZeroValue);
-
             _text.text = _bar.CurrentValue.ToString();
 
-            if (_bar.IsEndlessBar == false)
+            if (_conteiner != null)
+            {
+                _conteiner.gameObject.SetActive(_bar.CurrentValue > 0 || _isDrawAtZeroValue);
+            }
+
+            if (_bar.IsEndlessBar == false && _isDrawMaxValue)
             {
                 _text.text = _text.text + "/" + _bar.MaxValue;
+            }
+
+            if(_bar.IsEndlessBar == false && _filledImage != null)
+            {
+                _filledImage.fillAmount = (float)_bar.CurrentValue / (float)_bar.MaxValue;
             }
         }
 
