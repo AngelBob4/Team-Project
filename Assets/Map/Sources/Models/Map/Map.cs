@@ -10,8 +10,8 @@ using Random = System.Random;
 public class Map
 {
     private readonly int _amountOfCellTypes;
-    private readonly int _amountOfLevels = 9;
-    private readonly int _maxRoadsInlevel = 5;
+    private int _amountOfLevels = 9;
+    private int _maxRoadsInlevel = 5;
     private Random _random = new Random();
     
     private List<MapCell> _mapCells;
@@ -32,7 +32,7 @@ public class Map
 
     public Map()
     {
-        _amountOfCellTypes = Enum.GetNames(typeof(MapCellType)).Length;
+        _amountOfCellTypes = Enum.GetNames(typeof(EventsType)).Length;
         _mapCells = new List<MapCell>();
     }
 
@@ -94,6 +94,9 @@ public class Map
 
     public void RestartGame()
     {
+        _currentCell = null;
+        _amountOfLevels = 9;
+        _maxRoadsInlevel = 5;
         _mapCells.Clear();
         GenerateCells();
         GenerateRoads();
@@ -134,9 +137,9 @@ public class Map
                 EventsType newType;
 
                 if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))             
-                    newType = (EventsType)_random.Next(1, _amountOfCellTypes);
+                    newType = (EventsType)_random.Next(1, _amountOfCellTypes - 1);
                 else
-                    newType = (EventsType)_random.Next(_amountOfCellTypes);
+                    newType = (EventsType)_random.Next(0, _amountOfCellTypes - 1);
 
                 if (newType == EventsType.Null)
                     continue;

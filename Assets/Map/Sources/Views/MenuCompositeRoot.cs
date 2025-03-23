@@ -32,14 +32,6 @@ public class MenuCompositeRoot : MonoBehaviour
         MapPresenter mapPresenter = new MapPresenter(_mapView, _map);
 
         _mapView.Init(mapPresenter, _mapFactory);
-
-        if (_map.IsEmpty)
-        {
-            _map.Generate();
-        }
-        else
-        {
-            _map.ActivateMap();
-        }
+        _map.ActivateMap();
     }
 }
