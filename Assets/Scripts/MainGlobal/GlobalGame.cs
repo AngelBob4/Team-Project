@@ -76,8 +76,7 @@ namespace MainGlobal
         {
             if (_eventType == EventsType.Boss)
             {
-                Debug.Log("������");
-                _loadingScene.LoadSceneStartGame();
+                //_loadingScene.LoadSceneStartGame();
                 return;
             }
             else

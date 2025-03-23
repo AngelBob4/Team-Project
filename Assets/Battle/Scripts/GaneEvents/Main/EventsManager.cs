@@ -17,6 +17,7 @@ namespace Events.Main
         private EventsType _eventType;
         private GlobalGame _globalGame;
         private LoadingScene _loadingScene;
+        //private bool _isBoss;
 
         public EventsType EventType => _eventType;
 
@@ -61,7 +62,7 @@ namespace Events.Main
                     break;
 
                 case EventsType.Boss:
-                    StartEvent(_battleEvent);
+                    StartEvent(_shopEvent);
                     break;
 
                 //default:
@@ -102,7 +103,14 @@ namespace Events.Main
 
         private void FinishedEvent()
         {
-            _globalGame.StartMap();
+            if(_eventType != EventsType.Boss)
+            {
+                _globalGame.StartMap();
+            }
+            else
+            {
+                StartEvent(_battleEvent);
+            }
         }
     }
 }

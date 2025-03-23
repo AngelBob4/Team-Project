@@ -48,9 +48,12 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             _currentCardTypeTakeDamageList.Clear();
 
-            foreach (CardType cardType in cardTypesList)
+            if (cardTypesList != null)
             {
-                _currentCardTypeTakeDamageList.Add(cardType);
+                foreach (CardType cardType in cardTypesList)
+                {
+                    _currentCardTypeTakeDamageList.Add(cardType);
+                }
             }
 
             if(_isWeb && _currentCardTypeTakeDamageList.Contains(_cardTypeWedWeakness))
