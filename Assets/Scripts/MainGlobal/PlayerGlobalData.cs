@@ -19,7 +19,7 @@ namespace MainGlobal
         private CardDataList _startCardDataList;
         private int _startHPMax = 70;
         private int _startCoinsValue = 100;
-        private int _startLanternLight = 10;
+        private int _startLanternLightMax = 10;
         private Bar _hPBar;
         private Bar _stamina;
         private Bar _coins;
@@ -59,8 +59,7 @@ namespace MainGlobal
             _coins = new Bar();
             _coins.SetNewValues(_startCoinsValue);
 
-            _lanternLight = new Bar();
-            _lanternLight.SetNewValues(_startLanternLight);
+            _lanternLight = new Bar(_startLanternLightMax);
 
             _cardDataList = _startCardDataList.GetList();
 
