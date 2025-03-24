@@ -1,9 +1,9 @@
 using UnityEngine;
 using Runner.PlayerController;
+using Runner.Enums;
 
 namespace Runner.NonPlayerCharacters
 {
-    [RequireComponent(typeof(AudioSource))]
     public class NPC : MonoBehaviour
     {
         [SerializeField] protected int _healthModifier;
@@ -11,13 +11,14 @@ namespace Runner.NonPlayerCharacters
         [SerializeField] protected int _soulsValue;
         [SerializeField] protected float Speed;
 
-        [SerializeField] protected AudioClip _audioClip;
+        [SerializeField] protected NPCTypes _npcType;
         [SerializeField] protected ParticleSystem _particleSystem;
-        [SerializeField] protected AudioSource _audioSource;
-
+        
         public int LightIntensityModifier => _lightIntensityModifier;
         public int HealthModifier => _healthModifier;
         public int SoulsModifier => _soulsValue;
+
+        public  NPCTypes NPCType => _npcType;
 
         private void Update()
         {
@@ -28,7 +29,6 @@ namespace Runner.NonPlayerCharacters
         {
             if (collision.collider.TryGetComponent(out Player player))
             {
-                _audioSource.PlayOneShot(_audioClip);
                 _particleSystem.Play();
             }
         }

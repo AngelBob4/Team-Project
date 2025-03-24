@@ -63,7 +63,7 @@ namespace Runner.Settings
         private void Die()
         {
             _entryPoint.StopRunner();
-            _player.PlayerMovement.SetDeathAnimation();
+            _player.PlayerAnimations.SetDeathAnimation();
             _deathPanel.gameObject.SetActive(true);
         }
     }

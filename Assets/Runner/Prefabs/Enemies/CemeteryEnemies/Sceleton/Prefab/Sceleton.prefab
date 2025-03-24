@@ -3046,6 +3046,7 @@ MonoBehaviour:
   _lightIntensityModifier: -1
   _soulsValue: 0
   Speed: 5
+  _npcType: 4
   _audioClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
   _particleSystem: {fileID: 7586904549280135163}
   _audioSource: {fileID: 8121399701702954901}

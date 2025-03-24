@@ -8,6 +8,8 @@ namespace Runner.PlayerController
         [SerializeField] private PlayerLantern _playerLantern;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerSouls _playerSouls;
+        [SerializeField] private PlayerAnimations _playerAnimations;
+        [SerializeField] private PlayerAudioEffects _playerAudioEffects;
 
         public PlayerHealth PlayerHealth => _playerHealth;
 
@@ -16,5 +18,9 @@ namespace Runner.PlayerController
         public PlayerMovement PlayerMovement => _playerMovement;
 
         public PlayerSouls PlayerSouls => _playerSouls;
+
+        public PlayerAnimations PlayerAnimations => _playerAnimations;
+
+        public PlayerAudioEffects PlayerAudioEffects => _playerAudioEffects;
     }
 }

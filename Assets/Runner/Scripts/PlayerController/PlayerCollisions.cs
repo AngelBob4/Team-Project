@@ -1,7 +1,6 @@
-using UnityEngine;
 using Runner.NonPlayerCharacters;
 using Runner.Settings;
-using Runner.UI;
+using UnityEngine;
 
 namespace Runner.PlayerController
 {
@@ -27,12 +26,23 @@ namespace Runner.PlayerController
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
             {
-               _runnerGameManager.EndGame();
+                _runnerGameManager.EndGame();
             }
 
-            if (collision.collider.TryGetComponent(out Embrion embrion))
+            //if (collision.collider.TryGetComponent(out Embrion embrion))
+            //{
+            //    _player.PlayerHealth.OnHealthChanged(embrion.Damage);
+            //}
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out NPC npc))
             {
-                _player.PlayerHealth.OnHealthChanged(embrion.Damage);
+                // сделать свойство у всех нпс - аудиоклип 
+                // сделать свойство у всех нпс -  эффект
+                _player.PlayerAudioEffects.PlayAudioEffect((int)npc.NPCType);
+                npc.gameObject.SetActive(false);
             }
         }
     }
