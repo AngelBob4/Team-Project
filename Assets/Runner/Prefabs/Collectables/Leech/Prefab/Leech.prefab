@@ -4981,11 +4981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b5f43384517ae4c9cedb1231833d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthModifier: 1
-  _lightIntensityModifier: 0
-  _soulsValue: 0
+  _type: 0
+  _value: 10
   Speed: 2
-  _npcType: 0
   _particleSystem: {fileID: 6010305630217505230}
   _jumpHeight: 2
 --- !u!135 &5073827650432004670

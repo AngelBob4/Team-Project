@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360963106799363727}
   - component: {fileID: 1870279174858310484}
-  - component: {fileID: 3439866803133603105}
+  - component: {fileID: 6987786609839765246}
   m_Layer: 0
   m_Name: Soul
   m_TagString: Untagged
@@ -56,7 +56,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3439866803133603105
+--- !u!114 &6987786609839765246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,16 +65,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1404828769155371299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ab379d4581ea44eab780604b3f346b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthModifier: 0
-  _lightIntensityModifier: 0
-  _soulsValue: 1
-  Speed: 0
-  _npcType: 1
-  _particleSystem: {fileID: 3426541240844685014}
-  _soulsAmount: 1
+  _type: 1
+  _value: 1
 --- !u!1 &1807914109925731915
 GameObject:
   m_ObjectHideFlags: 0

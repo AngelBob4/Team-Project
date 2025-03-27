@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Runner.NonPlayerCharacters
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Leech : NPC
+    public class Leech : Enemy
     {
         [SerializeField] private float _jumpHeight;
 

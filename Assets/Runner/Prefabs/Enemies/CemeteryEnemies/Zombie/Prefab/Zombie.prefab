@@ -7224,7 +7224,7 @@ GameObject:
   - component: {fileID: 303694996830195651}
   - component: {fileID: 2016888030132674155}
   - component: {fileID: 5391155934249430694}
-  - component: {fileID: 190438979983551221}
+  - component: {fileID: 8278135052253466857}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -7366,7 +7366,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &190438979983551221
+--- !u!114 &8278135052253466857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7375,14 +7375,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8999521968112216361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b5e8af7f5ae47242a2a8ed2c62f2bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthModifier: -10
-  _lightIntensityModifier: -1
-  _soulsValue: 0
-  Speed: 3
-  _npcType: 3
+  _type: 3
+  _value: -10
+  Speed: 5
   _particleSystem: {fileID: 3743065427141362078}
 --- !u!1 &9035017634732157304
 GameObject:

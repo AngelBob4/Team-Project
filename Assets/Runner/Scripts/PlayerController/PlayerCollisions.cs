@@ -13,12 +13,15 @@ namespace Runner.PlayerController
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                if (npc.NPCType == Enums.NPCTypes.Sceleton || npc.NPCType == Enums.NPCTypes.Zombie || npc.NPCType == Enums.NPCTypes.Leech)
+                int modifier = 5;
+
+                if (npc.Type != Enums.NPCTypes.Leech)
                 {
-                    _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
-                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
-                    _player.PlayerAudioEffects.PlayAudioEffect((int)npc.NPCType);
+                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
                 }
+
+                _player.PlayerHealth.OnHealthChanged(npc.Value);
+                _player.PlayerAudioEffects.PlayAudioEffect((int)npc.Type);
             }
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
@@ -31,16 +34,16 @@ namespace Runner.PlayerController
         {
             if (other.TryGetComponent(out NPC npc))
             {
-                if (npc.NPCType == Enums.NPCTypes.Soul)
+                if (npc.Type == Enums.NPCTypes.Soul)
                 {
-                    _player.PlayerSouls.ChangeSoulsAmount(npc.SoulsModifier);
+                    _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
                 }
                 else
                 {
-                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
+                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value);
                 }
 
-                _player.PlayerAudioEffects.PlayAudioEffect((int)npc.NPCType);
+                _player.PlayerAudioEffects.PlayAudioEffect((int)npc.Type);
                 npc.gameObject.SetActive(false);
             }
         }
