@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 3743065427141362078}
   - component: {fileID: 5719554579416540002}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: ZombieParicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7383,9 +7383,7 @@ MonoBehaviour:
   _soulsValue: 0
   Speed: 3
   _npcType: 3
-  _audioClip: {fileID: 8300000, guid: 9c88983fa5906dc41944ec5a43b6b5c7, type: 3}
   _particleSystem: {fileID: 3743065427141362078}
-  _audioSource: {fileID: 5391155934249430694}
 --- !u!1 &9035017634732157304
 GameObject:
   m_ObjectHideFlags: 0

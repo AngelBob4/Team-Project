@@ -7,8 +7,7 @@ namespace Runner.PlayerController
     {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private List<AudioClip> _clips;
-        [SerializeField] private List<ParticleSystem> _particles;
-
+       
         public void PlayAudioEffect(int index)
         {
             _audioSource.PlayOneShot(_clips[index]);

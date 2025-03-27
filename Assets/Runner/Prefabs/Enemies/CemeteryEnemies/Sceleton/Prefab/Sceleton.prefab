@@ -3047,9 +3047,7 @@ MonoBehaviour:
   _soulsValue: 0
   Speed: 5
   _npcType: 4
-  _audioClip: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}
   _particleSystem: {fileID: 7586904549280135163}
-  _audioSource: {fileID: 8121399701702954901}
 --- !u!1 &8130077071464784915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3186,7 @@ GameObject:
   - component: {fileID: 7586904549280135163}
   - component: {fileID: 1578480638472312071}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: SceletonParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

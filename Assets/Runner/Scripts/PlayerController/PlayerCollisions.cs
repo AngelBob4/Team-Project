@@ -13,7 +13,25 @@ namespace Runner.PlayerController
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                if (npc as Soul)
+                if (npc.NPCType == Enums.NPCTypes.Sceleton || npc.NPCType == Enums.NPCTypes.Zombie)
+                {
+                    _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
+                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
+                    _player.PlayerAudioEffects.PlayAudioEffect((int)npc.NPCType);
+                }
+            }
+
+            if (collision.collider.TryGetComponent(out Tomb tomb))
+            {
+                _runnerGameManager.EndGame();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out NPC npc))
+            {
+                if (npc.NPCType == Enums.NPCTypes.Soul)
                 {
                     _player.PlayerSouls.ChangeSoulsAmount(npc.SoulsModifier);
                 }
@@ -22,25 +40,7 @@ namespace Runner.PlayerController
                     _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
                 }
-            }
 
-            if (collision.collider.TryGetComponent(out Tomb tomb))
-            {
-                _runnerGameManager.EndGame();
-            }
-
-            //if (collision.collider.TryGetComponent(out Embrion embrion))
-            //{
-            //    _player.PlayerHealth.OnHealthChanged(embrion.Damage);
-            //}
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent(out NPC npc))
-            {
-                // сделать свойство у всех нпс - аудиоклип 
-                // сделать свойство у всех нпс -  эффект
                 _player.PlayerAudioEffects.PlayAudioEffect((int)npc.NPCType);
                 npc.gameObject.SetActive(false);
             }
