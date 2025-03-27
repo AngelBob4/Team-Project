@@ -31,6 +31,8 @@ namespace MainGlobal
         public Bar Coins => _coins;
         public Bar LanternLight => _lanternLight;
         public IReadOnlyList<CardData> CardDataList => _cardDataList;
+        public bool IsHPFilled => HPBar.CurrentValue == HPBar.MaxValue;
+        public bool IsLanternLightFilled => LanternLight.CurrentValue == LanternLight.MaxValue;
 
         public PlayerGlobalData(CardDataList startCardDataList)
         {

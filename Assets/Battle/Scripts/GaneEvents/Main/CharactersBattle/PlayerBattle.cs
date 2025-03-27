@@ -22,7 +22,7 @@ namespace Events.Main.CharactersBattle
         private const int MaxQuantityCardsPlayerTakes = 5;
         private const int StartPassiveArmor = 0;
         private const int MaxPassiveArmor = 5;
-        private const int ChangeStaminaToUpdatedDeck = -1;
+        private const int ChangeStaminaToUpdatedDeck = -3;
 
         private PlayerGlobalData _playerGlobalData;
         private int _quantityCardsPlayerTakes = 2;
@@ -82,7 +82,7 @@ namespace Events.Main.CharactersBattle
 
             _characterView.SetCharacter(_characterBattleData);
 
-            _stamina = _playerGlobalData.Stamina;
+            _stamina = _playerGlobalData.LanternLight;
 
             SetPoisoning(false);
 
@@ -172,14 +172,12 @@ namespace Events.Main.CharactersBattle
 
         private void TakeDamageDepletion()
         {
-            if (_stamina.CurrentValue > 0)
+            if (_stamina.CurrentValue < Math.Abs(ChangeStaminaToUpdatedDeck))
             {
-                _stamina.ChangeValue(ChangeStaminaToUpdatedDeck);
+                _characterBattleData.DefaultTakeDamage(_damageToDepletion * (Math.Abs(ChangeStaminaToUpdatedDeck) - _stamina.CurrentValue));
             }
-            else
-            {
-                _characterBattleData.DefaultTakeDamage(_damageToDepletion);
-            }
+
+            _stamina.ChangeValue(ChangeStaminaToUpdatedDeck);
         }
 
         private void Die()

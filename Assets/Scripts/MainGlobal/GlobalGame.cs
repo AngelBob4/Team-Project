@@ -7,8 +7,8 @@ namespace MainGlobal
 {
     public class GlobalGame
     {
-        private readonly int _startLevel = 1;
-        private readonly int _levelBoss = 10;
+       private readonly int _startLevel = 1;
+       // private readonly int _levelBoss = 10;
 
         private int _level;
         private EventsType _eventType;
