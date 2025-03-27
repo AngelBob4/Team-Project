@@ -3563,13 +3563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7717ee7ff96b381448e9d14ce9c876c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthModifier: -1
-  _lightIntensityModifier: -1
-  _soulsValue: 0
-  Speed: 2
-  _audioClip: {fileID: 0}
-  _particleSystem: {fileID: 0}
-  _audioSource: {fileID: 2234935896842055239}
+  _type: 6
+  _value: 0
 --- !u!135 &4044489798518997854
 SphereCollider:
   m_ObjectHideFlags: 0
