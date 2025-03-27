@@ -13,7 +13,7 @@ namespace Runner.PlayerController
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                if (npc.NPCType == Enums.NPCTypes.Sceleton || npc.NPCType == Enums.NPCTypes.Zombie)
+                if (npc.NPCType == Enums.NPCTypes.Sceleton || npc.NPCType == Enums.NPCTypes.Zombie || npc.NPCType == Enums.NPCTypes.Leech)
                 {
                     _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
@@ -37,7 +37,6 @@ namespace Runner.PlayerController
                 }
                 else
                 {
-                    _player.PlayerHealth.OnHealthChanged(npc.HealthModifier);
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.LightIntensityModifier);
                 }
 

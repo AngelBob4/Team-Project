@@ -29,7 +29,7 @@ namespace Runner.NonPlayerCharacters
         {
             if (collision.collider.TryGetComponent(out Player player))
             {
-              //  _particleSystem.Play();
+                _particleSystem.Play();
             }
         }
 
