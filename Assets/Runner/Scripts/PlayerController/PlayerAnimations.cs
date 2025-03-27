@@ -1,3 +1,4 @@
+using Runner.Settings;
 using UnityEngine;
 
 namespace Runner.PlayerController
@@ -8,10 +9,14 @@ namespace Runner.PlayerController
         private const string Die = nameof(Die);
 
         [SerializeField] private Animator _animator;
+        [SerializeField] private EntryPoint _entryPoint;
 
         private void Update()
         {
-            _animator.SetBool(Run, true);
+            if (_entryPoint.IsRunnerStarted)
+            {
+                _animator.SetBool(Run, true);
+            }
         }
 
         public void SetDeathAnimation()

@@ -4,6 +4,7 @@ using Runner.PlayerController;
 using Runner.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 namespace Runner.Settings
 {
@@ -12,6 +13,7 @@ namespace Runner.Settings
         [SerializeField] private EntryPoint _entryPoint;
         [SerializeField] private Player _player;
         [SerializeField] private DeathPanel _deathPanel;
+        [SerializeField] private GameObject _startButton;
       
         private GlobalGame _globalGame;
         private PlayerGlobalData _playerGlobalData;
@@ -46,7 +48,13 @@ namespace Runner.Settings
         public void StartGame()
         {
             _entryPoint.InitAllSettingsForRunner(_globalGame.LocationRunnerTypes);
+           // _entryPoint.StartRunner();
+        }
+
+        public void StartRunner()
+        {
             _entryPoint.StartRunner();
+            _startButton.gameObject.SetActive(false);
         }
 
         public void EndGame()

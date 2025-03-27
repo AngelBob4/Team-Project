@@ -25,12 +25,13 @@ namespace Runner.Settings
             _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)locationType]);
             _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)locationType]);
             _platformsController.InitTotalNumberOfPlatforms(platformsAmount);
+            _backgroundMusic.PlayBackgroundMusic();
         }
 
         public void StartRunner()
         {
-            _backgroundMusic.PlayBackgroundMusic();
             _isRunnerStarted = true;
+            _platformsSpawner.SpawnPlatformVariants();
         }
 
         public void StopRunner()

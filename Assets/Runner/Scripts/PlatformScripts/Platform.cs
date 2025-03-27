@@ -1,4 +1,5 @@
 using Runner.PlayerController;
+using Runner.Settings;
 using System;
 using UnityEngine;
 
@@ -9,13 +10,15 @@ namespace Runner.Platforms
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _obstaclesPool;
 
+        private EntryPoint _entryPoint;
+
         public event Action<Player> PlayerSteppedOnPlatform;
         public event Action<Player> PlayerSteppedOutOfThePlatform;
 
         private void OnEnable()
         {
-            ChangePrefabsState();
-            EnableObstacles();
+                ChangePrefabsState();
+                EnableObstacles();
         }
 
         private void OnDisable()
@@ -40,6 +43,11 @@ namespace Runner.Platforms
             {
                 PlayerSteppedOutOfThePlatform?.Invoke(player);
             }
+        }
+
+        public void Init(EntryPoint entryPoint)
+        {
+            _entryPoint = entryPoint;
         }
 
         private void ChangePrefabsState()
