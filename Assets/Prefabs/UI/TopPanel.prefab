@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 8024727029845821555}
-  _isDrawAtZeroValue: 0
+  _isDrawAtZeroValue: 1
   _isDrawMaxValue: 0
   _conteiner: {fileID: 0}
   _filledImage: {fileID: 124255964145079587}
