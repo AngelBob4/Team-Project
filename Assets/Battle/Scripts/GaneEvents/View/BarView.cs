@@ -75,6 +75,9 @@ namespace Events.View
 
         private void PlayAnimationDamage(int damag)
         {
+            if (_animationDamageInt == null)
+                return;
+
             _animationDamageInt.Play(damag);
         }
 

@@ -76,7 +76,7 @@ namespace Events.Main.Events.Battle
 
         private void PlayerDied()
         {
-            EndEvent();
+            //EndEvent();
         }
     }
 }

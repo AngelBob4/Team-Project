@@ -53,11 +53,11 @@ namespace ViewGlobal
             Debug.Log("_coinsBarView");
             _coinsBarView.SetBar(_playerGlobalData.Coins);
 
-            Debug.Log("_staminaBarView");
-            if (_staminaBarView != null)
-            {
-                _staminaBarView.SetBar(_playerGlobalData.Stamina);
-            }
+            //Debug.Log("_staminaBarView");
+            //if (_staminaBarView != null)
+            //{
+            //    _staminaBarView.SetBar(_playerGlobalData.Stamina);
+            //}
         }
 
         private void DrawText()
