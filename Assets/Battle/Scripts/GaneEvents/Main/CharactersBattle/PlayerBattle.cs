@@ -14,7 +14,8 @@ namespace Events.Main.CharactersBattle
     {
         [SerializeField] private CharacterView _characterView;
         [SerializeField] private PlayerHand _playerHand;
-        [SerializeField] private Image _poisonedView;
+        [SerializeField] private Image _poisonedView; 
+        [SerializeField] private BarImageView _staminaView; 
 
         public event Action Died;
 
@@ -83,6 +84,7 @@ namespace Events.Main.CharactersBattle
             _characterView.SetCharacter(_characterBattleData);
 
             _stamina = _playerGlobalData.LanternLight;
+            _staminaView.SetBar(_stamina);
 
             SetPoisoning(false);
 

@@ -13,19 +13,22 @@ namespace Events.Main
         [SerializeField] private DialogEvent _dialogEvent;
         [SerializeField] private GameEvent _shopEvent;
         [SerializeField] private WindowsManager _windowsManager;
+        [SerializeField] private Transform _gameOverPanel;
 
         private EventsType _eventType;
         private GlobalGame _globalGame;
         private LoadingScene _loadingScene;
+        private PlayerGlobalData _playerGlobalData;
         //private bool _isBoss;
 
         public EventsType EventType => _eventType;
 
         [Inject]
-        private void Inject(GlobalGame globalGame, LoadingScene loadingScene)
+        private void Inject(GlobalGame globalGame, LoadingScene loadingScene, PlayerGlobalData playerGlobalData)
         {
             _globalGame = globalGame;
             _loadingScene = loadingScene;
+            _playerGlobalData = playerGlobalData;
         }
 
         private void Start()
@@ -35,12 +38,15 @@ namespace Events.Main
 
         private void OnEnable()
         {
+            _playerGlobalData.Died += GameOver;
             _dialogEvent.OnClickedButton += CheckFinishedEvent;
         }
 
         private void OnDisable()
         {
             _dialogEvent.OnClickedButton -= CheckFinishedEvent;
+            EndEvent();
+
         }
 
         public void StartNewEvent(EventsType eventType, int level)
@@ -80,8 +86,9 @@ namespace Events.Main
 
         public void GameOver()
         {
-            EndEvent();
-            _loadingScene.LoadSceneStartGame();
+            _gameOverPanel.gameObject.SetActive(true);
+            //EndEvent();
+            //_loadingScene.LoadSceneStartGame();
         }
 
         private void EndEvent()

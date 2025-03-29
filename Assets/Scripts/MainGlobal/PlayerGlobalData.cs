@@ -12,22 +12,22 @@ namespace MainGlobal
         public event Action Died;
         public event Action<Card> AddedOnlyCard;
 
-        private const int StartStaminaMaxValue = 3;
-        private const int MaxStaminaMaxValue = 4;
+        //private const int StartStaminaMaxValue = 3;
+        //private const int MaxStaminaMaxValue = 4;
 
         private PlayerBattle _playerBattle;
         private CardDataList _startCardDataList;
         private int _startHPMax = 70;
         private int _startCoinsValue = 100;
-        private int _startLanternLightMax = 10;
+        private int _startLanternLightMax = 9;
         private Bar _hPBar;
-        private Bar _stamina;
+        //private Bar _stamina;
         private Bar _coins;
         private Bar _lanternLight;
         private List<CardData> _cardDataList;
 
         public Bar HPBar => _hPBar;
-        public Bar Stamina => _stamina;
+        // Bar Stamina => _stamina;
         public Bar Coins => _coins;
         public Bar LanternLight => _lanternLight;
         public IReadOnlyList<CardData> CardDataList => _cardDataList;
@@ -56,7 +56,7 @@ namespace MainGlobal
 
             _hPBar.UpdatedBar += CheckAlive;
 
-            _stamina = new Bar(StartStaminaMaxValue);
+            //_stamina = new Bar(StartStaminaMaxValue);
 
             _coins = new Bar();
             _coins.SetNewValues(_startCoinsValue);
