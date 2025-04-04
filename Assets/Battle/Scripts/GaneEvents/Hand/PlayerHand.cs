@@ -1,6 +1,9 @@
+using Events.Animation;
 using Events.Cards;
 using Events.View;
+using Reflex.Attributes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,6 +20,7 @@ namespace Events.Hand
         [SerializeField] private CardEffectsView _cardEffectsView;
         [SerializeField] private TMP_Text _deckCardsText;
         [SerializeField] private TMP_Text _discardDeckCardsText;
+        [SerializeField] private Transform _discardDeckTransform;
 
         public event Action UpdatedDeck;
 
@@ -25,11 +29,18 @@ namespace Events.Hand
         private Deck _hand = new Deck(MaxCardsInHand);
         private CombinationDeck _combinationHand = new CombinationDeck(MaxCardsInHand);
         private List<Card> _moveCards = new List<Card>();
+        //private AnimationTime _animationTime;
 
         public CombinationDeck CombinationHand => _combinationHand;
         public bool IsCardsHand => _hand.GetAllCards().Count > 0;
         public Deck DiscardDeck => _discardDeck;
         public IReadOnlyDeck Hand => _hand;
+
+        //[Inject]
+        //private void Inject(AnimationTime animationTime)
+        //{
+        //    _animationTime = animationTime;
+        //}
 
         private void Awake()
         {
@@ -131,13 +142,30 @@ namespace Events.Hand
 
         public void MoveCardsCombinationToDiscard()
         {
-            MoveAllCards(_combinationHand, _discardDeck);
+            Debug.Log("111");
+            foreach (Card card in _combinationHand.GetAllCards())
+            {
+                Debug.Log("222");
+                card.MoveCard(_discardDeckTransform);
+            }
+
+            StartCoroutine(MoveCard());
+
+            IEnumerator MoveCard()
+            {
+                Debug.Log("333");
+                yield return new WaitForSeconds(AnimationTime.TimeMoveCard);
+                MoveAllCards(_combinationHand, _discardDeck);
+                Debug.Log("444");
+            }
         }
 
         public void MoveCardsDiscardToDeck()
         {
             MoveAllCards(_discardDeck, _deck);
             UpdatedDeck?.Invoke();
+
+            
         }
 
         private void MoveListCardToDiscard(List<Card> cards, Deck deck)
