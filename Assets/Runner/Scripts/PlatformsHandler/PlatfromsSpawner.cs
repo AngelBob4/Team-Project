@@ -1,4 +1,3 @@
-using Runner.Platforms;
 using Runner.ScriptableObjects;
 using UnityEngine;
 
@@ -6,8 +5,8 @@ namespace Runner.PlatformsHandler
 {
     public class PlatfromsSpawner : MonoBehaviour
     {
-        [SerializeField] private StartPlatform _startPlatform;
-        [SerializeField] private LastPlatform _lastPlatform;
+        [SerializeField] private Transform _startPlatform;
+        [SerializeField] private Transform _lastPlatform;
         [SerializeField] private Transform _pool;
       
         private float _offset = 30f;
@@ -17,8 +16,8 @@ namespace Runner.PlatformsHandler
         {
             _currentPlatformViews = allRunnerSettings;
 
-            SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform.transform);
-            SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform.transform);
+            SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform);
+            SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform);
         }
 
         private void SpawnPlatform(GameObject platform, Transform parent)

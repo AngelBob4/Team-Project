@@ -405,17 +405,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1585684431606230972, guid: f2c24e0bd1b88df41ba588beb7d26503, type: 3}
   m_PrefabInstance: {fileID: 3110941907660670269}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &740132658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1772638973911321889, guid: f2c24e0bd1b88df41ba588beb7d26503, type: 3}
-  m_PrefabInstance: {fileID: 3110941907660670269}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d49aa5c53333a84984dbb3315ad21e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &745908683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2134,17 +2123,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4316970130759122763, guid: 5ea2b3280f883dc4cad57922a985b928, type: 3}
   m_PrefabInstance: {fileID: 1925620878843197382}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2031728963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8959486733149799907, guid: 5ea2b3280f883dc4cad57922a985b928, type: 3}
-  m_PrefabInstance: {fileID: 1925620878843197382}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6324c589852c54598b25d33eb47da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2093419209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3992991856805456662, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
@@ -2396,6 +2374,10 @@ PrefabInstance:
     - target: {fileID: 5610327407114442512, guid: f2c24e0bd1b88df41ba588beb7d26503, type: 3}
       propertyPath: m_Name
       value: LastPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610327407114442512, guid: f2c24e0bd1b88df41ba588beb7d26503, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2699,8 +2681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661d96ad1a68b364b9ea90798eb826e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPlatform: {fileID: 2031728963}
-  _lastPlatform: {fileID: 740132658}
+  _startPlatform: {fileID: 2031728962}
+  _lastPlatform: {fileID: 740132657}
   _pool: {fileID: 6863215493514663613}
 --- !u!4 &6863215493514663613
 Transform:

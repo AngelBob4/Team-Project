@@ -10,10 +10,10 @@ namespace Runner.Platforms
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _obstaclesPool;
 
-        private EntryPoint _entryPoint;
+       // private EntryPoint _entryPoint;
 
-        public event Action<Player> PlayerSteppedOnPlatform;
-        public event Action<Player> PlayerSteppedOutOfThePlatform;
+        //public event Action<Player> PlayerSteppedOnPlatform;
+        //public event Action<Player> PlayerSteppedOutOfThePlatform;
 
         private void OnEnable()
         {
@@ -29,26 +29,26 @@ namespace Runner.Platforms
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.collider.TryGetComponent(out Player player))
-            {
-                PlayerSteppedOnPlatform?.Invoke(player);
-            }
-        }
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    if (collision.collider.TryGetComponent(out Player player))
+        //    {
+        //        PlayerSteppedOnPlatform?.Invoke(player);
+        //    }
+        //}
 
-        private void OnCollisionExit(Collision collision)
-        {
-            if (collision.collider.TryGetComponent(out Player player))
-            {
-                PlayerSteppedOutOfThePlatform?.Invoke(player);
-            }
-        }
+        //private void OnCollisionExit(Collision collision)
+        //{
+        //    if (collision.collider.TryGetComponent(out Player player))
+        //    {
+        //        PlayerSteppedOutOfThePlatform?.Invoke(player);
+        //    }
+        //}
 
-        public void Init(EntryPoint entryPoint)
-        {
-            _entryPoint = entryPoint;
-        }
+        //public void Init(EntryPoint entryPoint)
+        //{
+        //    _entryPoint = entryPoint;
+        //}
 
         private void ChangePrefabsState()
         {
