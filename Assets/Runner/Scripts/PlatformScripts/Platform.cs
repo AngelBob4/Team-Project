@@ -1,6 +1,3 @@
-using Runner.PlayerController;
-using Runner.Settings;
-using System;
 using UnityEngine;
 
 namespace Runner.Platforms
@@ -10,15 +7,15 @@ namespace Runner.Platforms
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _obstaclesPool;
 
-       // private EntryPoint _entryPoint;
+        // private EntryPoint _entryPoint;
 
         //public event Action<Player> PlayerSteppedOnPlatform;
         //public event Action<Player> PlayerSteppedOutOfThePlatform;
 
         private void OnEnable()
         {
-                ChangePrefabsState();
-                EnableObstacles();
+            ChangePrefabsState();
+            EnableObstacles();
         }
 
         private void OnDisable()
@@ -82,7 +79,7 @@ namespace Runner.Platforms
             float minSpawnPosZ = collider.bounds.min.z;
             float maxSpawnPosZ = collider.bounds.max.z;
 
-            return new Vector3(UnityEngine.Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, UnityEngine.Random.Range(minSpawnPosZ, maxSpawnPosZ));
+            return new Vector3(Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, Random.Range(minSpawnPosZ, maxSpawnPosZ));
         }
     }
 }

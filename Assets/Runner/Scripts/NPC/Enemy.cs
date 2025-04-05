@@ -1,4 +1,7 @@
+using MainGlobal;
+using Reflex.Attributes;
 using Runner.PlayerController;
+using Runner.Settings;
 using UnityEngine;
 
 namespace Runner.NonPlayerCharacters
@@ -8,7 +11,15 @@ namespace Runner.NonPlayerCharacters
         [SerializeField] protected float Speed;
         [SerializeField] protected ParticleSystem _particleSystem;
 
+        private EntryPoint _entryPoint;
+
         protected Vector3 _offset;
+
+        //[Inject]
+        //private void Inject(EntryPoint entryPoint)
+        //{
+        //    _entryPoint = entryPoint;
+        //}
 
         private void Start()
         {
@@ -33,7 +44,7 @@ namespace Runner.NonPlayerCharacters
             return Speed * Time.deltaTime * -transform.forward;
         }
 
-        private void Move()
+        protected virtual void Move()
         {
             transform.position += _offset;
         }

@@ -47,7 +47,6 @@ namespace Runner.Settings
         public void StartGame()
         {
             _entryPoint.InitAllSettingsForRunner(_globalGame.LocationRunnerTypes);
-           // _entryPoint.StartRunner();
         }
 
         public void StartRunner()

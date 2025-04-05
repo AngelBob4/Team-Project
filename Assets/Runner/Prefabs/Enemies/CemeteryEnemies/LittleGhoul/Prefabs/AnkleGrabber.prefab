@@ -2305,7 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5e8af7f5ae47242a2a8ed2c62f2bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 3
+  _type: 6
   _value: -5
   Speed: 2
   _particleSystem: {fileID: 7155943798964160050}

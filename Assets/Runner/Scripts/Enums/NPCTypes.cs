@@ -7,7 +7,11 @@ namespace Runner.Enums
         Fireflies = 2,
         Zombie = 3,
         Sceleton = 4,
-        Demon = 5,
-        Spider = 6,
+        Bat = 5,
+        LittleGhoul = 6,
+        Demon = 7,
+        Spider = 8,
+        Stump = 9,
+        Scarecrow = 10,
     }
 }

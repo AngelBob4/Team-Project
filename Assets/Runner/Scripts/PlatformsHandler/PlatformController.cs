@@ -1,7 +1,6 @@
-using UnityEngine;
 using Runner.PlayerController;
-using Runner.Platforms;
 using Runner.Settings;
+using UnityEngine;
 
 namespace Runner.PlatformsHandler
 {
@@ -22,14 +21,6 @@ namespace Runner.PlatformsHandler
         private float _tileLength = 30;
 
         private bool _isFinishedLevel = false;
-
-        private void Start()
-        {
-            for (int i = 0; i < _pool.childCount - 1; i++)
-            {
-                EnableFirstPlatforms();
-            }
-        }
 
         private void Update()
         {
@@ -56,14 +47,7 @@ namespace Runner.PlatformsHandler
 
         private bool CheckIfItsTimeForLastPlatform()
         {
-            if (_platformsCounter.Meter >= _totalNumberOfPlatforms)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _platformsCounter.Meter >= _totalNumberOfPlatforms ? true : false;
         }
 
         private void EnableLastPlatform()
@@ -73,23 +57,14 @@ namespace Runner.PlatformsHandler
             _isFinishedLevel = true;
         }
 
-        private void EnableFirstPlatforms()
-        {
-            foreach (Transform platform in _pool)
-            {
-                platform.gameObject.SetActive(true);
-            }
-        }
-
         private void MovePlatform()
         {
             var newPos = _tileLength * _platformsCounter.Meter;
-            Platform movedPlatform = _pool.GetChild(_platformIndex).GetComponent<Platform>();
-
+            Transform movedPlatform = _pool.GetChild(_platformIndex);
             ResetPlatform(movedPlatform, newPos);
         }
 
-        private void ResetPlatform(Platform platform, float newPosZ)
+        private void ResetPlatform(Transform platform, float newPosZ)
         {
             platform.gameObject.SetActive(false);
             platform.transform.position = new Vector3(0, 0, newPosZ);

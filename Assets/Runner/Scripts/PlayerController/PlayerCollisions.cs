@@ -19,6 +19,12 @@ namespace Runner.PlayerController
                 {
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
                 }
+                else if (npc.Type == Enums.NPCTypes.Bat)
+                {
+                    //doesnt work
+                    print("BAT");
+                    _player.PlayerSouls.ChangeSoulsAmount(npc.Value / modifier);
+                }
 
                 _player.PlayerHealth.OnHealthChanged(npc.Value);
                 _player.PlayerAudioEffects.PlayAudioEffect((int)npc.Type);
@@ -34,6 +40,7 @@ namespace Runner.PlayerController
         {
             if (other.TryGetComponent(out NPC npc))
             {
+
                 if (npc.Type == Enums.NPCTypes.Soul)
                 {
                     _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
