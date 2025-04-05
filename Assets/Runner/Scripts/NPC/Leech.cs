@@ -7,9 +7,9 @@ namespace Runner.NonPlayerCharacters
     {
         [SerializeField] private float _jumpHeight;
 
-        public override void Move()
+        protected override Vector3 CalculateOffset()
         {
-            transform.position += new Vector3(0, _jumpHeight, -Speed) * Speed * Time.deltaTime;
+            return new Vector3(0, _jumpHeight, -Speed) * Speed * Time.deltaTime;
         }
     }
 }

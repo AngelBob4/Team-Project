@@ -8,6 +8,13 @@ namespace Runner.NonPlayerCharacters
         [SerializeField] protected float Speed;
         [SerializeField] protected ParticleSystem _particleSystem;
 
+        protected Vector3 _offset;
+
+        private void Start()
+        {
+            _offset = CalculateOffset();
+        }
+
         private void Update()
         {
             Move();
@@ -21,9 +28,14 @@ namespace Runner.NonPlayerCharacters
             }
         }
 
-        public virtual void Move()
+        protected virtual Vector3 CalculateOffset()
         {
-            transform.position += Speed * Time.deltaTime * -transform.forward;
+            return Speed * Time.deltaTime * -transform.forward;
+        }
+
+        private void Move()
+        {
+            transform.position += _offset;
         }
     }
 }
