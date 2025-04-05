@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1569805169333804177}
   - component: {fileID: 2478891771597787956}
   - component: {fileID: 396947505984137214}
-  - component: {fileID: 1316080262027410297}
+  - component: {fileID: 4004019172776351632}
   m_Layer: 7
-  m_Name: tree-scary-dead
+  m_Name: tree-scary-dead 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1316080262027410297
-MeshCollider:
+--- !u!136 &4004019172776351632
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1226902405909131094, guid: cd37ad33a1e7a2849911b9d0bb7f9e3f, type: 3}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 4.6104198
+  m_Direction: 0
+  m_Center: {x: 1, y: 0.5, z: 0.9}

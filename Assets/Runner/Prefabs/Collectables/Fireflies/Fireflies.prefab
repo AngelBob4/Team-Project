@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2874119788340101788}
   - component: {fileID: 2451412470397011655}
   - component: {fileID: 7443790117640107003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 3815240666484474008}
   - component: {fileID: 1287211881747414247}
   - component: {fileID: 8994843163463558230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fireflies
   m_TagString: Untagged
   m_Icon: {fileID: 0}

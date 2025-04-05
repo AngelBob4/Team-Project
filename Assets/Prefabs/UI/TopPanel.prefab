@@ -673,7 +673,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221755040653926313}
-  - component: {fileID: 8102223880638536653}
   - component: {fileID: 2069505314285096247}
   m_Layer: 5
   m_Name: LanternsLightView
@@ -705,20 +704,6 @@ RectTransform:
   m_AnchoredPosition: {x: -105, y: -83}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &8102223880638536653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3911620478833340827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f947f77e5a61f074b8c3599da514f04d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lanternLightValue: {fileID: 8024727029845821555}
-  _player: {fileID: 0}
 --- !u!114 &2069505314285096247
 MonoBehaviour:
   m_ObjectHideFlags: 0

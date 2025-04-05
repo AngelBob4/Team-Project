@@ -4,7 +4,6 @@ using Runner.PlayerController;
 using Runner.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 namespace Runner.Settings
 {

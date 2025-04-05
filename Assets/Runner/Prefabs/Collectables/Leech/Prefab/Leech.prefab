@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8939500095825577313}
   - component: {fileID: 6010305630217505230}
   - component: {fileID: 8607052408542006546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeechParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 8345315195274400950}
   - component: {fileID: 6286803462985297162}
   - component: {fileID: 5373283491414383385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lolo for sketchfab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4945,7 +4945,7 @@ GameObject:
   - component: {fileID: 3707143492361542715}
   - component: {fileID: 5073827650432004670}
   - component: {fileID: -7131291617873626139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
