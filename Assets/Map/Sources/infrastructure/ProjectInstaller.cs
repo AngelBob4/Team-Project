@@ -23,7 +23,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_playerGlobalData);
         containerBuilder.AddSingleton(_loadingScene);
         containerBuilder.AddSingleton(_dialogEventDataList);
-        containerBuilder.AddSingleton(new AnimationTime());
+        //containerBuilder.AddSingleton(new AnimationTime());
         containerBuilder.AddSingleton(globalGame);
     }
 }

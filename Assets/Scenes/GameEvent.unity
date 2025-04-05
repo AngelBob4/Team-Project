@@ -2085,6 +2085,7 @@ MonoBehaviour:
   _cardEffectsView: {fileID: 1615624203}
   _deckCardsText: {fileID: 1703499762}
   _discardDeckCardsText: {fileID: 28869461}
+  _discardDeckTransform: {fileID: 1818627920}
 --- !u!1 &172711877
 GameObject:
   m_ObjectHideFlags: 0

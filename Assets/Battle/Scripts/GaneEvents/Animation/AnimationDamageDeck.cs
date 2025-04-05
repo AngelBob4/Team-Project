@@ -14,10 +14,9 @@ public class AnimationDamageDeck : AnimationDamageInt
     private float _time;
     private float _timeModifier = 0.5f;
 
-    [Inject]
-    private void Inject(AnimationTime animationTime)
+    private void Awake()
     {
-        _time = animationTime.TimeDamageCard * _timeModifier;
+        _time = AnimationTime.TimeDamageCard * _timeModifier;
     }
 
     public override void Play(int quantity)

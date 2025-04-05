@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Events.Cards
 {
@@ -6,6 +7,7 @@ namespace Events.Cards
     {
         public event Action<Card> OnClick;
         public event Action TakenDamage;
+        public event Action<Transform> MovedCard;
 
         private CardData _cardData;
 
@@ -24,6 +26,12 @@ namespace Events.Cards
         public void TakeDamage()
         {
             TakenDamage?.Invoke();
+        }
+
+        public void MoveCard(Transform transform)
+        {
+            Debug.Log("Card.MoveCard");
+            MovedCard?.Invoke(transform);
         }
     }
 }

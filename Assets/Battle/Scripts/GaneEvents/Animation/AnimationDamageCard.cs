@@ -11,16 +11,10 @@ namespace Events.Animation
 
         //[SerializeField] private bool _isTween = false;
 
-        private float _time;
+        private float _time = AnimationTime.TimeDamageCard;
         //private Tween _tween;
 
         //public bool IsPlay => _isTween;
-
-        [Inject]
-        private void Inject(AnimationTime animationTime)
-        {
-            _time = animationTime.TimeDamageCard;
-        }
 
         //private void Update()
         //{
@@ -40,5 +34,7 @@ namespace Events.Animation
             _image.gameObject.SetActive(true);
             _image.DOFade(1, _time);//.SetLoops(2, LoopType.Yoyo);
         }
+
+
     }
 }

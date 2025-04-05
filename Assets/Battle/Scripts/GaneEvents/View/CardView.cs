@@ -22,29 +22,24 @@ namespace Events.View
         [SerializeField] private CardColorData _cardColorData;
         [SerializeField] private Color _colorDefault;
         [SerializeField] private AnimationDamageCard _animationDamageCard;
+        [SerializeField] private AnimationMoveCard _animationMoveCard;
 
         private Card _card;
 
         private void OnEnable()
         {
-            if (_card != null)
-            {
-                _card.TakenDamage += PlayAnimationDamageCard;
-            }
+            Subscribe();
         }
 
         private void OnDisable()
         {
-            if (_card != null)
-            {
-                _card.TakenDamage -= PlayAnimationDamageCard;
-            }
+            Unsubscribe();
         }
 
         public void Draw(Card card)
         {
             _card = card;
-            _card.TakenDamage += PlayAnimationDamageCard;
+            Subscribe();
 
             _name.text = _card.Data.Name;
             _wound.text = _card.Data.Wound.ToString();
@@ -85,6 +80,32 @@ namespace Events.View
         private void PlayAnimationDamageCard()
         {
             _animationDamageCard.Play();
+        }
+
+        private void PlayAnimationMoveCard(Transform transform)
+        {
+            Debug.Log("CardView.PlayAnimationMoveCard");
+            _animationMoveCard.Play(transform);
+        }
+
+        private void Subscribe()
+        {
+            if (_card != null)
+            {
+                Debug.Log("OnEnable");
+                _card.TakenDamage += PlayAnimationDamageCard;
+                _card.MovedCard += PlayAnimationMoveCard;
+            }
+        }
+
+        private void Unsubscribe()
+        {
+            if (_card != null)
+            {
+                Debug.Log("OnDisable");
+                _card.TakenDamage -= PlayAnimationDamageCard;
+                _card.MovedCard -= PlayAnimationMoveCard;
+            }
         }
     }
 }

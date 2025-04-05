@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Events.Animation
 {
-    public class AnimationTime
+    public static class AnimationTime
     {
-        private readonly float _timeDamageCard = 2;
+        public static readonly float TimeDamageCard = 2;
+        public static readonly float TimeMoveCard = 2;
 
-        public float TimeDamageCard => _timeDamageCard;
+        //public float TimeDamageCard => _timeDamageCard;
+        //public float TimeMoveCard => _timeMoveCard;
     }
 }

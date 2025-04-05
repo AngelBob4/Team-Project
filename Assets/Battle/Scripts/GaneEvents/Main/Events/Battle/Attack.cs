@@ -14,13 +14,13 @@ namespace Events.Main.Events.Battle
         [SerializeField] private BattleEvent _battleEvent;
         [SerializeField] private InputPause _inputPause;
 
-        private AnimationTime _animationTime;
+        //private AnimationTime _animationTime;
 
-        [Inject]
-        private void Inject(AnimationTime animationTime)
-        {
-            _animationTime = animationTime;
-        }
+        //[Inject]
+        //private void Inject(AnimationTime animationTime)
+        //{
+        //    _animationTime = animationTime;
+        //}
 
         public void OnClickAttack()
         {
@@ -32,10 +32,10 @@ namespace Events.Main.Events.Battle
             _inputPause.SetInput(false);
 
             if(_player.Attack(_enemy))
-                yield return new WaitForSeconds(_animationTime.TimeDamageCard);
+                yield return new WaitForSeconds(AnimationTime.TimeDamageCard);
 
             EnemyAttack();
-            yield return new WaitForSeconds(_animationTime.TimeDamageCard);
+            yield return new WaitForSeconds(AnimationTime.TimeDamageCard);
 
             StartNewRound();
 
