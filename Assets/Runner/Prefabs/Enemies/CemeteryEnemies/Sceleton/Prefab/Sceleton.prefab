@@ -3447,6 +3447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceletonParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 564989213372942503, guid: 3e9ebff156c4ba541bd8c53a27827b1c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4392119534185118840, guid: 3e9ebff156c4ba541bd8c53a27827b1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

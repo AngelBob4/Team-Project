@@ -2541,6 +2541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 4397643783251617283, guid: 94b4111692172ad44aeb98f962391db3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

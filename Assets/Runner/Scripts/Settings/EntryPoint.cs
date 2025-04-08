@@ -35,7 +35,7 @@ namespace Runner.Settings
         {
             _isRunnerStarted = true;
             _platformsSpawner.ActivatePlatformVariants();
-           // _platformsSpawner.SpawnPlatformVariants();
+           // переместить 
         }
 
         public void StopRunner()

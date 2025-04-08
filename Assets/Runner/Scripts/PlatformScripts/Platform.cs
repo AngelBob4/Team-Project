@@ -1,3 +1,4 @@
+using Runner.Optimization;
 using UnityEngine;
 
 namespace Runner.Platforms
@@ -6,6 +7,9 @@ namespace Runner.Platforms
     {
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _obstaclesPool;
+        [SerializeField] private MeshCombiner _meshCombiner;
+
+        
 
         private int _npcAmount;
         private int _obstaclesAmount;
@@ -20,6 +24,12 @@ namespace Runner.Platforms
         {
             DisablePrefabs(_pool);
             DisablePrefabs(_obstaclesPool);
+        }
+
+        public void ChangeMeshCombinerPosition(float offset)
+        {
+            _meshCombiner.CombineMeshes();
+            _meshCombiner.transform.position = new Vector3(0, 0, offset);
         }
 
         public void InitPrefabsAmount(int npcAmount, int obstaclesAmount)

@@ -25,11 +25,12 @@ namespace Runner.PlatformsHandler
         public void InitPlatformsViews(AllRunnerSettings allRunnerSettings)
         {
             _currentPlatformViews = allRunnerSettings;
-            _pool.gameObject.SetActive(false);
 
             SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform);
             SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform);
             SpawnPlatformVariants();
+
+            _pool.gameObject.SetActive(false);
         }
 
         private void SpawnPlatform(GameObject platform, Transform parent)
@@ -40,6 +41,16 @@ namespace Runner.PlatformsHandler
         public void ActivatePlatformVariants()
         {
             _pool.gameObject.SetActive(true);
+
+            foreach (Transform prefab in _pool)
+            {
+                float offset = 0;
+
+                prefab.GetComponent<Platform>().ChangeMeshCombinerPosition(offset);
+
+                offset += -30;
+
+            }
         }
 
         private void SpawnPlatformVariants()
