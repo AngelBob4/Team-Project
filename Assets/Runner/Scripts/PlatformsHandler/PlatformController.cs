@@ -15,6 +15,7 @@ namespace Runner.PlatformsHandler
         [SerializeField] private EntryPoint _entryPoint;
 
         private int _totalNumberOfPlatforms;
+       
         private int _platformIndex = 0;
         private int _platformsNumber = 2;
         // можно и посчитать через бокс коллайдер
@@ -44,6 +45,8 @@ namespace Runner.PlatformsHandler
         {
             _totalNumberOfPlatforms = totalNumberOfPlatforms;
         }
+
+
 
         private bool CheckIfItsTimeForLastPlatform()
         {

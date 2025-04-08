@@ -54,5 +54,10 @@ namespace Runner.PlayerController
                 npc.gameObject.SetActive(false);
             }
         }
+
+        public void DisableCollider()
+        {
+            _player.GetComponent<Collider>().enabled = false;
+        }
     }
 }

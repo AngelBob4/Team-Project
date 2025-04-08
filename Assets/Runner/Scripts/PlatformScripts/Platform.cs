@@ -8,66 +8,51 @@ namespace Runner.Platforms
         [SerializeField] private Transform _obstaclesPool;
 
         private int _npcAmount;
-
-        // private EntryPoint _entryPoint;
-
-        //public event Action<Player> PlayerSteppedOnPlatform;
-        //public event Action<Player> PlayerSteppedOutOfThePlatform;
+        private int _obstaclesAmount;
 
         private void OnEnable()
         {
-            ChangePrefabsState();
+            EnableNPCs();
             EnableObstacles();
         }
 
         private void OnDisable()
         {
-            foreach (Transform obstacle in _obstaclesPool)
-            {
-                obstacle.gameObject.SetActive(false);
-            }
+            DisablePrefabs(_pool);
+            DisablePrefabs(_obstaclesPool);
         }
 
-        //private void OnCollisionEnter(Collision collision)
-        //{
-        //    if (collision.collider.TryGetComponent(out Player player))
-        //    {
-        //        PlayerSteppedOnPlatform?.Invoke(player);
-        //    }
-        //}
-
-        //private void OnCollisionExit(Collision collision)
-        //{
-        //    if (collision.collider.TryGetComponent(out Player player))
-        //    {
-        //        PlayerSteppedOutOfThePlatform?.Invoke(player);
-        //    }
-        //}
-
-        //public void Init(EntryPoint entryPoint)
-        //{
-        //    _entryPoint = entryPoint;
-        //}
-
-        private void ChangePrefabsState()
+        public void InitPrefabsAmount(int npcAmount, int obstaclesAmount)
         {
-            foreach (Transform prefab in _pool)
+            _npcAmount = npcAmount;
+            _obstaclesAmount = obstaclesAmount;
+        }
+
+        private void EnableNPCs()
+        {
+            for (int i = 0; i < _npcAmount; i++)
             {
-                prefab.position = CalculatePrefabPosition(transform);
-                prefab.gameObject.SetActive(true);
+                _pool.GetChild(i).position = CalculatePrefabPosition(transform);
+                _pool.GetChild(i).gameObject.SetActive(true);
             }
         }
 
         private void EnableObstacles()
         {
-            int obstaclesAmount = 5;
-
             if (_obstaclesPool.childCount > 0)
             {
-                for (int i = 0; i < obstaclesAmount; i++)
+                for (int i = 0; i < _obstaclesAmount; i++)
                 {
-                    _obstaclesPool.GetChild(UnityEngine.Random.Range(0, _obstaclesPool.childCount)).gameObject.SetActive(true);
+                    _obstaclesPool.GetChild(Random.Range(0, _obstaclesPool.childCount)).gameObject.SetActive(true);
                 }
+            }
+        }
+
+        private void DisablePrefabs(Transform pool)
+        {
+            foreach (Transform prefab in pool)
+            {
+                prefab.gameObject.SetActive(false);
             }
         }
 

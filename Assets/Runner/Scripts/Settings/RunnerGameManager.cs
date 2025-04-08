@@ -13,7 +13,7 @@ namespace Runner.Settings
         [SerializeField] private Player _player;
         [SerializeField] private DeathPanel _deathPanel;
         [SerializeField] private GameObject _startButton;
-      
+
         private GlobalGame _globalGame;
         private PlayerGlobalData _playerGlobalData;
 
@@ -69,6 +69,7 @@ namespace Runner.Settings
         private void Die()
         {
             _entryPoint.StopRunner();
+            _player.PlayerCollisions.DisableCollider();
             _player.PlayerAnimations.SetDeathAnimation();
             _deathPanel.gameObject.SetActive(true);
         }
