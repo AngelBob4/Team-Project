@@ -1904,8 +1904,8 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 0
 --- !u!4 &1309453590
 Transform:
   m_ObjectHideFlags: 0
@@ -3686,7 +3686,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &7342332706951533048
 MonoBehaviour:
@@ -3834,15 +3834,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4447253116470099396, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4447253116470099396, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4447253116470099396, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4447253116470099396, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

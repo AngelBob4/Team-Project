@@ -7,6 +7,8 @@ namespace Runner.Platforms
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _obstaclesPool;
 
+        private int _npcAmount;
+
         // private EntryPoint _entryPoint;
 
         //public event Action<Player> PlayerSteppedOnPlatform;

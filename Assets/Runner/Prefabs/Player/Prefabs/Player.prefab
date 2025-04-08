@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b55e00ed1ff2d4e89b7b6fd61752b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _borderX: 3
+  _borderX: 2.5
   _borderY: 30
   _speed: 10
   _entryPoint: {fileID: 0}

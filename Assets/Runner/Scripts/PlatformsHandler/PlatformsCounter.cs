@@ -14,7 +14,7 @@ namespace Runner.PlatformsHandler
         private int _meter = 1;
         private int _meterDefaultValue = 1;
         private int _numberOfPlatformsToReduceLight = 5;
-        private int _numberOfPlatformsToSpawnBat = 5;
+      //  private int _numberOfPlatformsToSpawnBat = 5;
         private int _stableIndex = 5;
 
         public event Action<int> PlatformsAmountChanged;
@@ -29,7 +29,7 @@ namespace Runner.PlatformsHandler
         public void OnPlatformsAmountChanged()
         {
             ReduceLight();
-            AddBat();
+            //AddBat();
             _meter++;
             PlatformsAmountChanged?.Invoke(_meter);
         }
@@ -48,13 +48,13 @@ namespace Runner.PlatformsHandler
             }
         }
 
-        private void AddBat()
-        {
-            if (_meter >= _numberOfPlatformsToSpawnBat)
-            {
-                _spawner.EnableBoss();
-                _numberOfPlatformsToSpawnBat = 30;
-            }
-        }
+        //private void AddBat()
+        //{
+        //    if (_meter >= _numberOfPlatformsToSpawnBat)
+        //    {
+        //        _spawner.EnableBoss();
+        //        _numberOfPlatformsToSpawnBat = 30;
+        //    }
+        //}
     }
 }
