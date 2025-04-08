@@ -17,21 +17,25 @@ namespace Runner.PlayerController
         {
             if (_entryPoint.IsRunnerStarted)
             {
-                Vector3 newPosition = transform.position + transform.forward * Time.deltaTime * _speed;
-                newPosition.x = Mathf.Clamp(newPosition.x, -_borderX, _borderX);
-                transform.position = newPosition;
-
-                float deltaX = Input.mousePosition.x - _oldMousePosX;
-                _oldMousePosX = Input.mousePosition.x;
-
-                _angleY = Mathf.Clamp(_angleY + deltaX, -_borderY, _borderY);
-                transform.eulerAngles = new Vector3(0, _angleY, 0);
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    _oldMousePosX = Input.mousePosition.x;
-                }
+                Move();
+                Rotate();
             }
+        }
+
+        private void Move()
+        {
+            Vector3 newPosition = transform.position + transform.forward * Time.deltaTime * _speed;
+            newPosition.x = Mathf.Clamp(newPosition.x, -_borderX, _borderX);
+            transform.position = newPosition;
+        }
+
+        private void Rotate()
+        {
+            float deltaX = Input.mousePosition.x - _oldMousePosX;
+            _oldMousePosX = Input.mousePosition.x;
+
+            _angleY = Mathf.Clamp(_angleY + deltaX, -_borderY, _borderY);
+            transform.eulerAngles = new Vector3(0, _angleY, 0);
         }
     }
 }
