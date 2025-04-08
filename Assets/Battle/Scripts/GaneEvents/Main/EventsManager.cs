@@ -44,9 +44,9 @@ namespace Events.Main
 
         private void OnDisable()
         {
+            _playerGlobalData.Died -= GameOver;
             _dialogEvent.OnClickedButton -= CheckFinishedEvent;
             EndEvent();
-
         }
 
         public void StartNewEvent(EventsType eventType, int level)
@@ -91,7 +91,7 @@ namespace Events.Main
             //_loadingScene.LoadSceneStartGame();
         }
 
-        private void EndEvent()
+        public void EndEvent()
         {
             _eventType = EventsType.Null;
             _windowsManager.TurnOffAlllWindows();
