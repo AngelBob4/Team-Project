@@ -22,6 +22,11 @@ namespace Runner.Settings
 
         public bool IsRunnerStarted => _isRunnerStarted;
 
+        public void InitRunnerFeatures(LocationTypes type, int raceNumber)
+        {
+
+        }
+
         public void InitAllSettingsForRunner(LocationTypes locationType, int platformsAmount = PlatformsAmount)
         {
             _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)locationType]);

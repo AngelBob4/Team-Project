@@ -17,6 +17,13 @@ namespace Runner.Settings
         private GlobalGame _globalGame;
         private PlayerGlobalData _playerGlobalData;
 
+        // 1) инициализация в энтри поинт
+        // - передает вид раннера  ( кладбище или лес), номер забега (от него зависит количество врагов, количество препятствий(можно убрать),
+        // 2) комбинирование мэшей (в инициализацию отправить)
+        // 3) запуск обучения
+        // 4) запуск самого игрового процесса
+        // 5) окончание раннера
+
         [Inject]
         private void Inject(GlobalGame globalGame)
         {
