@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Runner.PlatformsHandler
 {
-    public class PlatformController : MonoBehaviour
+    public class PlatformsMover : MonoBehaviour
     {
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _startPlatform;
@@ -13,7 +13,8 @@ namespace Runner.PlatformsHandler
 
         [SerializeField] private Player _player;
         [SerializeField] private PlatformsCounter _platformsCounter;
-        [SerializeField] private EntryPoint _entryPoint;
+       
+        [SerializeField] private PlatformsController _platformsController;
 
         private int _totalNumberOfPlatforms;
        
@@ -26,7 +27,7 @@ namespace Runner.PlatformsHandler
 
         private void Update()
         {
-            if (!_isFinishedLevel && _entryPoint.IsRunnerStarted)
+            if (!_isFinishedLevel && _platformsController.LevelController.IsRunnerStarted)
             {
                 if (_player.transform.position.z + _platformsNumber * _tileLength > _tileLength * _platformsCounter.Meter)
                 {

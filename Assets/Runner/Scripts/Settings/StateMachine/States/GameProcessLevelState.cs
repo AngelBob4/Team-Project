@@ -1,23 +1,19 @@
 using MainGlobal;
-using Runner.UI;
 
 namespace Runner.Settings.StateMachine
 {
     public class GameProcessLevelState : LevelState
     {
-        private EntryPoint _entryPoint;
-        private CanvasUI _canvasUI;
+        private LevelController _levelController;
 
-        public GameProcessLevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame, EntryPoint entryPoint, CanvasUI canvasUI) : base(levelStatemachine, globalGame)
+        public GameProcessLevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame, LevelController levelController) : base(levelStatemachine, globalGame)
         {
-            _entryPoint = entryPoint;
-            _canvasUI = canvasUI;
+            _levelController = levelController;
         }
 
         public override void Enter()
         {
-            _entryPoint.StartRunner();
-            _canvasUI.DisableStartButton();
+            _levelController.StartRunner();
         }
     }
 }

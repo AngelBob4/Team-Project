@@ -1,6 +1,4 @@
-using Runner.Settings;
 using UnityEngine;
-
 namespace Runner.PlayerController
 {
     public class PlayerMovement : MonoBehaviour
@@ -8,18 +6,14 @@ namespace Runner.PlayerController
         [SerializeField] private float _borderX;
         [SerializeField] private float _borderY;
         [SerializeField] private float _speed;
-        [SerializeField] private EntryPoint _entryPoint;
 
         private float _oldMousePosX;
         private float _angleY;
 
-        private void Update()
+        public void StartMovement()
         {
-            if (_entryPoint.IsRunnerStarted)
-            {
-                Move();
-                Rotate();
-            }
+            Move();
+            Rotate();
         }
 
         private void Move()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runner.PlatformsHandler
 {
-    public class PlatfromsSpawner : MonoBehaviour
+    public class PlatformsSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _startPlatform;
         [SerializeField] private Transform _lastPlatform;

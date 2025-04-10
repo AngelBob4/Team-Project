@@ -1,20 +1,19 @@
 using MainGlobal;
-using UnityEngine;
 
 namespace Runner.Settings.StateMachine
 {
     public class InitializeLevelState : LevelState
     {
-        private EntryPoint _entryPoint;
-              
-        public InitializeLevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame, EntryPoint entryPoint) : base(levelStatemachine,globalGame)
+        private LevelController _levelController;
+
+        public InitializeLevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame, LevelController levelController) : base(levelStatemachine, globalGame)
         {
-            _entryPoint = entryPoint;
+            _levelController = levelController;
         }
 
         public override void Enter()
         {
-           _entryPoint.InitAllSettingsForRunner(GlobalGame.LocationRunnerTypes);
+            _levelController.InitRunnerFeatures(GlobalGame.LocationRunnerTypes, GlobalGame.Level);
         }
     }
 }

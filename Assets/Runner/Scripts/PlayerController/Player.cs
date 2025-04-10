@@ -1,5 +1,5 @@
+using Runner.Settings;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Runner.PlayerController
 {
@@ -13,24 +13,36 @@ namespace Runner.PlayerController
         [SerializeField] private PlayerAudioEffects _playerAudioEffects;
         [SerializeField] private PlayerCollisions _playerCollisions;
 
+        [SerializeField] private LevelController _levelController;
+
         public PlayerHealth PlayerHealth => _playerHealth;
 
         public PlayerLantern PlayerLantern => _playerLantern;
 
-        public PlayerMovement PlayerMovement => _playerMovement;
-
         public PlayerSouls PlayerSouls => _playerSouls;
 
-        public PlayerAnimations PlayerAnimations => _playerAnimations;
+        private void Update()
+        {
+            if (_levelController.IsRunnerStarted)
+            {
+                _playerMovement.StartMovement();
+            }
+        }
 
-        public PlayerAudioEffects PlayerAudioEffects => _playerAudioEffects;
-
-        public PlayerCollisions PlayerCollisions => _playerCollisions;
+        public void StartRun()
+        {
+            _playerAnimations.SetRunAnimation();
+        }
 
         public void Die()
         {
             _playerCollisions.DisableCollider();
             _playerAnimations.SetDeathAnimation();
+        }
+
+        public void PlayEffect(int index)
+        {
+            _playerAudioEffects.PlayAudioEffect(index);
         }
     }
 }
