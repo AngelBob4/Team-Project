@@ -5,7 +5,7 @@ namespace Runner.Settings.StateMachine
 {
     public class LevelStateMachine
     {
-        private Dictionary<Type, LevelState> _states;
+        private Dictionary<Type, LevelState> _states = new Dictionary<Type, LevelState>();
         private LevelState _currentState;
 
         public void Update()

@@ -1,21 +1,15 @@
 using MainGlobal;
-using Reflex.Attributes;
 
 namespace Runner.Settings.StateMachine
 {
     public abstract class LevelState
     {
         protected readonly LevelStateMachine LevelStateMachine;
-        protected  GlobalGame GlobalGame;
-
-        protected LevelState(LevelStateMachine levelStatemachine)
+        protected GlobalGame GlobalGame;
+        
+        protected LevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame)
         {
             LevelStateMachine = levelStatemachine;
-        }
-
-        [Inject]
-        private void Inject(GlobalGame globalGame)
-        {
             GlobalGame = globalGame;
         }
 

@@ -10,6 +10,7 @@ namespace Runner.UI
 
         private void Update()
         {
+            // переделать на инвоук репитин или корутину
             StartBleeding();
             MakeButtonVisible();
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Runner.PlayerController
 {
@@ -25,5 +26,11 @@ namespace Runner.PlayerController
         public PlayerAudioEffects PlayerAudioEffects => _playerAudioEffects;
 
         public PlayerCollisions PlayerCollisions => _playerCollisions;
+
+        public void Die()
+        {
+            _playerCollisions.DisableCollider();
+            _playerAnimations.SetDeathAnimation();
+        }
     }
 }

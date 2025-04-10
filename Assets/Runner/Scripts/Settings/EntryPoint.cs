@@ -9,7 +9,7 @@ namespace Runner.Settings
 {
     public class EntryPoint : MonoBehaviour
     {
-        private const int PlatformsAmount = 30;
+        private const int PlatformsAmount = 10;
         private const int NPCsAmount = 7;
         private const int ObstaclesAmount = 5;
 
@@ -17,6 +17,7 @@ namespace Runner.Settings
         [SerializeField] private PlatformController _platformsController;
         [SerializeField] private BackgroundMusic _backgroundMusic;
         [SerializeField] private List<AllRunnerSettings> _allRunnerSettings;
+        private AllRunnerSettings _currentRunner;
 
         private bool _isRunnerStarted = false;
 
@@ -24,12 +25,12 @@ namespace Runner.Settings
 
         public void InitRunnerFeatures(LocationTypes type, int raceNumber)
         {
-
+            _currentRunner = _allRunnerSettings[(int)type];
         }
 
         public void InitAllSettingsForRunner(LocationTypes locationType, int platformsAmount = PlatformsAmount)
         {
-            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)locationType]);
+            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)locationType].AudioClip);
             _platformsSpawner.InitPlatformsPrefabsAmount(NPCsAmount, ObstaclesAmount);
             _platformsSpawner.InitPlatformsViews(_allRunnerSettings[(int)locationType]);
             _platformsController.InitTotalNumberOfPlatforms(platformsAmount);
@@ -40,7 +41,7 @@ namespace Runner.Settings
         {
             _isRunnerStarted = true;
             _platformsSpawner.ActivatePlatformVariants();
-           // переместить 
+            // переместить 
         }
 
         public void StopRunner()

@@ -7,9 +7,9 @@ namespace Runner.SoundSystem
     {
         [SerializeField] private AudioSource _audioSource;
 
-        public void InitAudioClip(AllRunnerSettings allRunnerSettings)
+        public void InitAudioClip(AudioClip audioclip)
         {
-            _audioSource.clip = allRunnerSettings.AudioClip;
+            _audioSource.clip = audioclip;
         }
 
         public void PlayBackgroundMusic()

@@ -1,14 +1,19 @@
+using MainGlobal;
+
 namespace Runner.Settings.StateMachine
 {
     public class FinishLevelState : LevelState
     {
-        public FinishLevelState(LevelStateMachine levelStatemachine) : base(levelStatemachine)
+        private GlobalGame _globalGame;
+
+        public FinishLevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame) : base(levelStatemachine, globalGame)
         {
+            _globalGame = globalGame;
         }
 
         public override void Enter()
         {
-            GlobalGame.StartEvent();
+            _globalGame.StartEvent();
         }
     }
 }
