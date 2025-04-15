@@ -9,8 +9,6 @@ namespace Runner.Platforms
         [SerializeField] private Transform _obstaclesPool;
         [SerializeField] private MeshCombiner _meshCombiner;
 
-        
-
         private int _npcAmount;
         private int _obstaclesAmount;
 
@@ -52,7 +50,7 @@ namespace Runner.Platforms
             if (_obstaclesPool.childCount > 0)
             {
                 for (int i = 0; i < _obstaclesAmount; i++)
-                {
+                {                   
                     _obstaclesPool.GetChild(Random.Range(0, _obstaclesPool.childCount)).gameObject.SetActive(true);
                 }
             }

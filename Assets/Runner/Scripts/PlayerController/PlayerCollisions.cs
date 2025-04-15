@@ -20,7 +20,7 @@ namespace Runner.PlayerController
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
                 }
 
-                _player.PlayerHealth.OnHealthChanged(npc.Value);
+                _player.PlayerGlobalData.ChangeHP(npc.Value);
                 _player.PlayEffect((int)npc.Type);
             }
 
@@ -38,7 +38,8 @@ namespace Runner.PlayerController
 
                 if (npc.Type == Enums.NPCTypes.Soul)
                 {
-                    _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
+                   // _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
+                    _player.PlayerGlobalData.ChangeCoins(npc.Value);
                 }
                 else
                 {

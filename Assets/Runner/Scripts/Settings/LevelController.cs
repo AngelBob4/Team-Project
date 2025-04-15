@@ -34,7 +34,7 @@ namespace Runner.Settings
         public bool IsRunnerStarted => _isRunnerStarted;
 
 
-        public event Action<AllRunnerSettings> Initializing;
+       // public event Action<AllRunnerSettings> Initializing;
 
         [Inject]
         private void Inject(PlayerGlobalData playerGlobalData)
@@ -72,10 +72,12 @@ namespace Runner.Settings
 
         public void InitRunnerFeatures(LocationTypes type, int raceNumber)
         {
-            Initializing?.Invoke(_allRunnerSettings[(int)type]);
+            //Initializing?.Invoke(_allRunnerSettings[(int)type]);
 
             _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)type]);
             _platformController.InitPlatforms(_allRunnerSettings[(int)type], 10);
+            //CanvasUI
+            //Player
         }
 
         public void StartRunner()

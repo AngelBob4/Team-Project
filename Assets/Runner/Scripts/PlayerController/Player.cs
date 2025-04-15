@@ -1,3 +1,5 @@
+using MainGlobal;
+using Reflex.Attributes;
 using Runner.Settings;
 using UnityEngine;
 
@@ -5,21 +7,25 @@ namespace Runner.PlayerController
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private PlayerLantern _playerLantern;
         [SerializeField] private PlayerMovement _playerMovement;
-        [SerializeField] private PlayerSouls _playerSouls;
         [SerializeField] private PlayerAnimations _playerAnimations;
         [SerializeField] private PlayerAudioEffects _playerAudioEffects;
         [SerializeField] private PlayerCollisions _playerCollisions;
 
         [SerializeField] private LevelController _levelController;
 
-        public PlayerHealth PlayerHealth => _playerHealth;
+        private PlayerGlobalData _playerGlobalData;
 
         public PlayerLantern PlayerLantern => _playerLantern;
 
-        public PlayerSouls PlayerSouls => _playerSouls;
+        public PlayerGlobalData PlayerGlobalData => _playerGlobalData;
+
+        [Inject]
+        private void Inject(PlayerGlobalData playerGlobalData)
+        {
+            _playerGlobalData = playerGlobalData;
+        }
 
         private void Update()
         {
@@ -32,6 +38,7 @@ namespace Runner.PlayerController
         public void StartRun()
         {
             _playerAnimations.SetRunAnimation();
+            _playerLantern.ReduceLight();
         }
 
         public void Die()

@@ -14,6 +14,16 @@ namespace Runner.PlatformsHandler
         [SerializeField] private Player _player;
         [SerializeField] private LevelController _levelController;
 
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            
+        }
+
         private void Update()
         {
             if (_levelController.IsRunnerStarted)
@@ -24,9 +34,8 @@ namespace Runner.PlatformsHandler
 
         public void InitPlatforms(AllRunnerSettings currentRunnerSettings, int platformsAmount)
         {
-            _platformsSpawner.InitPlatformsViews(currentRunnerSettings);
-            _platformsSpawner.InitPlatformsPrefabsAmount(7, 5);
-            _platformsSpawner.SpawnAllTypesOfPlatforms();
+            _platformsSpawner.InitPlatformsPrefabsAmount(7, 10);
+            _platformsSpawner.SpawnAllTypesOfPlatforms(currentRunnerSettings);
             _platformsMover.InitTotalNumberOfPlatforms(platformsAmount);
         }
 

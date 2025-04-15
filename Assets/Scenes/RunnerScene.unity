@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28295872, g: 0.26831087, b: 0.26831087, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1665,18 +1665,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 6417014030064098734, guid: 51e68cbe647efff4d94a245baf2c177b, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6417014030064098734, guid: 51e68cbe647efff4d94a245baf2c177b, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6417014030064098734, guid: 51e68cbe647efff4d94a245baf2c177b, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1979,26 +1967,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9181984422392692316, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 2093419209}
-    - target: {fileID: -9181984422392692316, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
-      propertyPath: _entryPoint
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 72001625413612554, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 1098171727}
-    - target: {fileID: 72001625413612554, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
-      propertyPath: _runnerGameManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1088110248363520935, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3161541787853741292, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2093419209}
     - target: {fileID: 3992991856805456662, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: _levelController
       value: 
@@ -2042,14 +2022,6 @@ PrefabInstance:
     - target: {fileID: 4447253116470099396, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6619646992363443018, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 2093419209}
-    - target: {fileID: 6619646992363443018, guid: 7e8d0bf86ffea9e4098b911ee32fe845, type: 3}
-      propertyPath: _entryPoint
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

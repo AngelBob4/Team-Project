@@ -14,24 +14,20 @@ namespace Runner.PlatformsHandler
         private int _obstaclesAmount;
 
         private float _offset = 30f;
-        private AllRunnerSettings _currentPlatformViews;
-
+       
         public void InitPlatformsPrefabsAmount(int npcsAmount, int obstaclesAmount)
         {
             _npcsAmount = npcsAmount;
+            Debug.Log(_npcsAmount);
             _obstaclesAmount = obstaclesAmount;
+            Debug.Log(_obstaclesAmount);
         }
 
-        public void InitPlatformsViews(AllRunnerSettings allRunnerSettings)
+        public void SpawnAllTypesOfPlatforms(AllRunnerSettings currentRunnerSettings)
         {
-            _currentPlatformViews = allRunnerSettings;
-        }
-
-        public void SpawnAllTypesOfPlatforms()
-        {
-            SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform);
-            SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform);
-            SpawnPlatformVariants();
+            SpawnPlatform(currentRunnerSettings.StartPlatformView, _startPlatform);
+            SpawnPlatform(currentRunnerSettings.LastPlatformView, _lastPlatform);
+            SpawnPlatformVariants(currentRunnerSettings);
 
             _pool.gameObject.SetActive(false);
         }
@@ -56,12 +52,12 @@ namespace Runner.PlatformsHandler
             Instantiate(platform, parent);
         }
 
-        private void SpawnPlatformVariants()
+        private void SpawnPlatformVariants(AllRunnerSettings currentRunnerSettings  )
         {
-            for (int i = 0; i < _currentPlatformViews.PlatformVariants.Count; i++)
+            for (int i = 0; i < currentRunnerSettings.PlatformVariants.Count; i++)
             {
                 var spawnPos = _pool.position + new Vector3(0, 0, _offset);
-                Platform newPlatform = Instantiate(_currentPlatformViews.PlatformVariants[i], spawnPos, Quaternion.identity, _pool);
+                Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], spawnPos, Quaternion.identity, _pool);
                 newPlatform.InitPrefabsAmount(_npcsAmount, _obstaclesAmount);
                 _offset += 30f;
             }

@@ -33,7 +33,7 @@ namespace Runner.PlatformsHandler
         {
             if (_meter >= _numberOfPlatformsToReduceLight)
             {
-                _player.PlayerLantern.ChangeLanternLightIntensity(_lightIntensityModifier);
+              //  _player.PlayerLantern.ChangeLanternLightIntensity(_lightIntensityModifier);
                 _numberOfPlatformsToReduceLight += _stableIndex;
             }
         }
