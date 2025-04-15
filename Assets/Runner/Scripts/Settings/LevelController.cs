@@ -7,7 +7,6 @@ using Runner.ScriptableObjects;
 using Runner.Settings.StateMachine;
 using Runner.SoundSystem;
 using Runner.UI;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +17,6 @@ namespace Runner.Settings
         [SerializeField] private CanvasUI _canvasUI;
         [SerializeField] private Player _player;
         [SerializeField] private PlatformsController _platformController;
-
         [SerializeField] private BackgroundMusic _backgroundMusic;
 
         [SerializeField] private List<AllRunnerSettings> _allRunnerSettings;
@@ -32,9 +30,6 @@ namespace Runner.Settings
         private bool _isRunnerStarted = false;
 
         public bool IsRunnerStarted => _isRunnerStarted;
-
-
-       // public event Action<AllRunnerSettings> Initializing;
 
         [Inject]
         private void Inject(PlayerGlobalData playerGlobalData)
@@ -72,12 +67,10 @@ namespace Runner.Settings
 
         public void InitRunnerFeatures(LocationTypes type, int raceNumber)
         {
-            //Initializing?.Invoke(_allRunnerSettings[(int)type]);
-
+            _player.Initialize(this, _playerGlobalData);
             _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)type]);
             _platformController.InitPlatforms(_allRunnerSettings[(int)type], 10);
             //CanvasUI
-            //Player
         }
 
         public void StartRunner()

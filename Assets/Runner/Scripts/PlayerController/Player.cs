@@ -13,19 +13,12 @@ namespace Runner.PlayerController
         [SerializeField] private PlayerAudioEffects _playerAudioEffects;
         [SerializeField] private PlayerCollisions _playerCollisions;
 
-        [SerializeField] private LevelController _levelController;
-
+        private LevelController _levelController;
         private PlayerGlobalData _playerGlobalData;
 
         public PlayerLantern PlayerLantern => _playerLantern;
 
         public PlayerGlobalData PlayerGlobalData => _playerGlobalData;
-
-        [Inject]
-        private void Inject(PlayerGlobalData playerGlobalData)
-        {
-            _playerGlobalData = playerGlobalData;
-        }
 
         private void Update()
         {
@@ -33,6 +26,12 @@ namespace Runner.PlayerController
             {
                 _playerMovement.StartMovement();
             }
+        }
+
+        public void Initialize(LevelController levelController, PlayerGlobalData playerGlobalData)
+        {
+            _levelController = levelController;
+            _playerGlobalData = playerGlobalData;
         }
 
         public void StartRun()
