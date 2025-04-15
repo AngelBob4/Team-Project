@@ -9,11 +9,6 @@ namespace Runner.PlatformsHandler
         [SerializeField] private Transform _startPlatform;
         [SerializeField] private Transform _lastPlatform;
 
-        [SerializeField] private Player _player;
-        [SerializeField] private PlatformsCounter _platformsCounter;
-       
-        [SerializeField] private PlatformsController _platformsController;
-
         private int _totalNumberOfPlatforms;
        
         private int _platformIndex = 0;
@@ -23,19 +18,20 @@ namespace Runner.PlatformsHandler
 
         private bool _isFinishedLevel = false;
 
-        private void Update()
+       
+        public void MovePlatfroms(Player player, PlatformsCounter counter)
         {
-            if (!_isFinishedLevel && _platformsController.LevelController.IsRunnerStarted)
+            if (!_isFinishedLevel )
             {
-                if (_player.transform.position.z + _platformsNumber * _tileLength > _tileLength * _platformsCounter.Meter)
+                if (player.transform.position.z + _platformsNumber * _tileLength > _tileLength * counter.Meter)
                 {
-                    MovePlatform();
+                    MovePlatform(counter);
                     IncreasePlatformIndex();
-                    _platformsCounter.OnPlatformsAmountChanged();
+                    counter.OnPlatformsAmountChanged();
 
-                    if (CheckIfItsTimeForLastPlatform())
+                    if (CheckIfItsTimeForLastPlatform(counter))
                     {
-                        EnableLastPlatform();
+                        EnableLastPlatform(counter);
                     }
                 }
             }
@@ -46,23 +42,21 @@ namespace Runner.PlatformsHandler
             _totalNumberOfPlatforms = totalNumberOfPlatforms;
         }
 
-
-
-        private bool CheckIfItsTimeForLastPlatform()
+        private bool CheckIfItsTimeForLastPlatform(PlatformsCounter counter)
         {
-            return _platformsCounter.Meter >= _totalNumberOfPlatforms ? true : false;
+            return counter.Meter >= _totalNumberOfPlatforms ? true : false;
         }
 
-        private void EnableLastPlatform()
+        private void EnableLastPlatform(PlatformsCounter counter)
         {
-            _lastPlatform.transform.position = new Vector3(0, 0, _tileLength * _platformsCounter.Meter);
+            _lastPlatform.transform.position = new Vector3(0, 0, _tileLength * counter.Meter);
             _lastPlatform.gameObject.SetActive(true);
             _isFinishedLevel = true;
         }
 
-        private void MovePlatform()
+        private void MovePlatform(PlatformsCounter counter)
         {
-            var newPos = _tileLength * _platformsCounter.Meter;
+            var newPos = _tileLength * counter.Meter;
             Transform movedPlatform = _pool.GetChild(_platformIndex);
             ResetPlatform(movedPlatform, newPos);
         }

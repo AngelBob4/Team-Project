@@ -25,7 +25,6 @@ namespace Runner.Settings
 
         private int _raceNumber;
 
-        private AllRunnerSettings _currentRunnerSettings;
         private LevelStateMachine _levelStateMachine;
         private PlayerGlobalData _playerGlobalData;
         private GlobalGame _globalGame;
@@ -73,13 +72,10 @@ namespace Runner.Settings
 
         public void InitRunnerFeatures(LocationTypes type, int raceNumber)
         {
-            _currentRunnerSettings = _allRunnerSettings[(int)type];
+            Initializing?.Invoke(_allRunnerSettings[(int)type]);
 
-            Initializing?.Invoke(_currentRunnerSettings);
-
-            _backgroundMusic.InitAudioClip(_currentRunnerSettings);
-            _platformController.InitPlatforms(_currentRunnerSettings, 10);
-
+            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)type]);
+            _platformController.InitPlatforms(_allRunnerSettings[(int)type], 10);
         }
 
         public void StartRunner()

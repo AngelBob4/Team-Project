@@ -1824,7 +1824,6 @@ MonoBehaviour:
   _pool: {fileID: 6863215493514663613}
   _startPlatform: {fileID: 2031728962}
   _lastPlatform: {fileID: 740132657}
-  _player: {fileID: 2093419209}
   _platformsCounter: {fileID: 1892684553341316381}
   _platformsController: {fileID: 7544152521159252406}
 --- !u!114 &4468625198263871277
@@ -2253,6 +2252,7 @@ MonoBehaviour:
   _platformsCounter: {fileID: 1892684553341316381}
   _platformsSpawner: {fileID: 7544152521159252405}
   _platformsMover: {fileID: 4128313784275534887}
+  _player: {fileID: 2093419209}
   _levelController: {fileID: 1098171727}
 --- !u!1001 &7549079074995179935
 PrefabInstance:

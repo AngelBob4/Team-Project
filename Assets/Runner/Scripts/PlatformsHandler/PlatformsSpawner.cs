@@ -25,17 +25,15 @@ namespace Runner.PlatformsHandler
         public void InitPlatformsViews(AllRunnerSettings allRunnerSettings)
         {
             _currentPlatformViews = allRunnerSettings;
+        }
 
+        public void SpawnAllTypesOfPlatforms()
+        {
             SpawnPlatform(_currentPlatformViews.StartPlatformView, _startPlatform);
             SpawnPlatform(_currentPlatformViews.LastPlatformView, _lastPlatform);
             SpawnPlatformVariants();
 
             _pool.gameObject.SetActive(false);
-        }
-
-        private void SpawnPlatform(GameObject platform, Transform parent)
-        {
-            Instantiate(platform, parent);
         }
 
         public void ActivatePlatformVariants()
@@ -51,6 +49,11 @@ namespace Runner.PlatformsHandler
                 offset += -30;
 
             }
+        }
+
+        private void SpawnPlatform(GameObject platform, Transform parent)
+        {
+            Instantiate(platform, parent);
         }
 
         private void SpawnPlatformVariants()
