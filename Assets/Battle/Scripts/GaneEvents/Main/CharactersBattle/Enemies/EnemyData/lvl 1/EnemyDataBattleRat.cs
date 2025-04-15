@@ -32,6 +32,8 @@ namespace Events.Main.CharactersBattle.Enemies.EnemyData
         {
             Debug.Log(_name + " AttackClaw");
 
+            AttackDamagCards(3, 1);
+
             if (AttackDamag(_attackClawDamage) > 0)
             {
                 PlayerToPoison();

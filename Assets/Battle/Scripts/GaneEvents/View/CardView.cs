@@ -77,15 +77,21 @@ namespace Events.View
             }
         }
 
+        public void PlayAnimationMoveCard(Transform endTransform)
+        {
+            Debug.Log("CardView.PlayAnimationMoveCard");
+            _animationMoveCard.Play(endTransform);
+        }
+
+        public void PlayAnimationMoveCard(Vector3 startTransform, Transform endTransform)
+        {
+            Debug.Log("CardView.PlayAnimationMoveCard");
+            _animationMoveCard.Play(startTransform, endTransform);
+        }
+
         private void PlayAnimationDamageCard()
         {
             _animationDamageCard.Play();
-        }
-
-        private void PlayAnimationMoveCard(Transform transform)
-        {
-            Debug.Log("CardView.PlayAnimationMoveCard");
-            _animationMoveCard.Play(transform);
         }
 
         private void Subscribe()
@@ -94,7 +100,8 @@ namespace Events.View
             {
                 Debug.Log("OnEnable");
                 _card.TakenDamage += PlayAnimationDamageCard;
-                _card.MovedCard += PlayAnimationMoveCard;
+                _card.SetCardView(this);
+                //_card.MovedCard += PlayAnimationMoveCard;
             }
         }
 
@@ -104,7 +111,12 @@ namespace Events.View
             {
                 Debug.Log("OnDisable");
                 _card.TakenDamage -= PlayAnimationDamageCard;
-                _card.MovedCard -= PlayAnimationMoveCard;
+
+                if (_card.CardView == this)
+                {
+                    _card.SetCardView(null);
+                }
+                //_card.MovedCard -= PlayAnimationMoveCard;
             }
         }
     }

@@ -18,4 +18,9 @@ public class NewGameButton : MonoBehaviour
     {
         _loadingScene.LoadSceneStartGame();
     }
+
+    public void LoadScen(int index)
+    {
+        _loadingScene.LoadScene(index);
+    }
 }

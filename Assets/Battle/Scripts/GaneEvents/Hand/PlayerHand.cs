@@ -100,6 +100,8 @@ namespace Events.Hand
 
         public void TakeCardFromDeck(int quantity)
         {
+            List<Card> moveCards = new List<Card>();
+
             for (int i = 0; i < quantity; i++)
             {
                 if (_deck.GetCardsCount() == 0)
@@ -107,7 +109,16 @@ namespace Events.Hand
                     MoveCardsDiscardToDeck();
                 }
 
-                TryMoveCard(_deck.GetRandomCard(), _deck, _hand);
+                Card moveCard = _deck.GetRandomCard();
+
+                moveCards.Add(moveCard);
+
+                TryMoveCard(moveCard, _deck, _hand);
+            }
+
+            foreach (Card card in moveCards)
+            {
+                card.MoveCard(_deckCardsText.transform.position, null);
             }
         }
 
@@ -164,8 +175,6 @@ namespace Events.Hand
         {
             MoveAllCards(_discardDeck, _deck);
             UpdatedDeck?.Invoke();
-
-            
         }
 
         private void MoveListCardToDiscard(List<Card> cards, Deck deck)
@@ -200,12 +209,16 @@ namespace Events.Hand
 
         private void MoveCardFromHandToCombination(Card card)
         {
+            Vector3 startTransform = card.CardView.transform.position; 
             TryMoveCard(card, _hand, _combinationHand);
+            card.MoveCard(startTransform, card.CardView.transform);
         }
 
         private void MoveCardFromCombinationToHand(Card card)
         {
+            Vector3 startTransform = card.CardView.transform.position;
             TryMoveCard(card, _combinationHand, _hand);
+            card.MoveCard(startTransform, card.CardView.transform);
         }
 
         private bool TryMoveCard(Card card, Deck fromDesk, Deck toDesk)
