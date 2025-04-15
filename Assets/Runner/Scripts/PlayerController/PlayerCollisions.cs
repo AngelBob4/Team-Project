@@ -27,7 +27,7 @@ namespace Runner.PlayerController
             if (collision.collider.TryGetComponent(out Tomb tomb))
             {
                 // переделать, убрать томб 
-                _levelController.EndGame();
+                _levelController.FinishRunner();
             }
         }
 

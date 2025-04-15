@@ -11,15 +11,15 @@ namespace Runner.SoundSystem
 
         private void OnEnable()
         {
-            _levelController.Initializing += InitAudioClip;
+          //  _levelController.Initializing += InitAudioClip;
         }
 
         private void OnDisable()
         {
-            _levelController.Initializing -= InitAudioClip;
+            //_levelController.Initializing -= InitAudioClip;
         }
 
-        private void InitAudioClip(AllRunnerSettings settings)
+        public  void InitAudioClip(AllRunnerSettings settings)
         {
             _audioSource.clip = settings.AudioClip;
             _audioSource.Play();

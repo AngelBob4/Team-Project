@@ -13,7 +13,7 @@ namespace Runner.Settings.StateMachine
 
         public override void Enter()
         {
-            _levelcontroller.StopRunner();
+            _levelcontroller.GameOver();
         }
     }
 }

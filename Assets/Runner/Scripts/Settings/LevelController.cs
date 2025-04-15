@@ -19,6 +19,8 @@ namespace Runner.Settings
         [SerializeField] private Player _player;
         [SerializeField] private PlatformsController _platformController;
 
+        [SerializeField] private BackgroundMusic _backgroundMusic;
+
         [SerializeField] private List<AllRunnerSettings> _allRunnerSettings;
 
         private int _raceNumber;
@@ -75,7 +77,7 @@ namespace Runner.Settings
 
             Initializing?.Invoke(_currentRunnerSettings);
 
-
+            _backgroundMusic.InitAudioClip(_currentRunnerSettings);
             _platformController.InitPlatforms(_currentRunnerSettings, 10);
 
         }
@@ -89,19 +91,19 @@ namespace Runner.Settings
             // переместить 
         }
 
-        public void StopRunner()
+        public void GameOver()
         {
             _isRunnerStarted = false;
             _canvasUI.EnableDeathPanel();
             _player.Die();
         }
-
+      
         public void OnStartButtonClick()
         {
             _levelStateMachine.SetState<GameProcessLevelState>();
         }
 
-        public void EndGame()
+        public void FinishRunner()
         {
             _levelStateMachine.SetState<FinishLevelState>();
         }
