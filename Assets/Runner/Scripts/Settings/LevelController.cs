@@ -7,6 +7,7 @@ using Runner.ScriptableObjects;
 using Runner.Settings.StateMachine;
 using Runner.SoundSystem;
 using Runner.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,10 +17,11 @@ namespace Runner.Settings
     {
         [SerializeField] private CanvasUI _canvasUI;
         [SerializeField] private Player _player;
-        [SerializeField] private BackgroundMusic _backgroundMusic;
         [SerializeField] private PlatformsController _platformController;
 
         [SerializeField] private List<AllRunnerSettings> _allRunnerSettings;
+
+        private int _raceNumber;
 
         private AllRunnerSettings _currentRunnerSettings;
         private LevelStateMachine _levelStateMachine;
@@ -30,6 +32,8 @@ namespace Runner.Settings
 
         public bool IsRunnerStarted => _isRunnerStarted;
 
+
+        public event Action<AllRunnerSettings> Initializing;
 
         [Inject]
         private void Inject(PlayerGlobalData playerGlobalData)
@@ -48,9 +52,9 @@ namespace Runner.Settings
             _levelStateMachine = new LevelStateMachine();
 
             _levelStateMachine.AddState(new InitializeLevelState(_levelStateMachine, _globalGame, this));
+            _levelStateMachine.AddState(new GameProcessLevelState(_levelStateMachine, _globalGame, this));
             _levelStateMachine.AddState(new GameOverLevelState(_levelStateMachine, _globalGame, this));
             _levelStateMachine.AddState(new FinishLevelState(_levelStateMachine, _globalGame));
-            _levelStateMachine.AddState(new GameProcessLevelState(_levelStateMachine, _globalGame, this));
 
             _levelStateMachine.SetState<InitializeLevelState>();
         }
@@ -69,8 +73,9 @@ namespace Runner.Settings
         {
             _currentRunnerSettings = _allRunnerSettings[(int)type];
 
-            _backgroundMusic.InitAudioClip(_currentRunnerSettings.AudioClip);
-            _backgroundMusic.Play();
+            Initializing?.Invoke(_currentRunnerSettings);
+
+
             _platformController.InitPlatforms(_currentRunnerSettings, 10);
 
         }

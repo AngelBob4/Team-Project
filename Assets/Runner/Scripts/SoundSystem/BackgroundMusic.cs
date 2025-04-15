@@ -1,3 +1,5 @@
+using Runner.ScriptableObjects;
+using Runner.Settings;
 using UnityEngine;
 
 namespace Runner.SoundSystem
@@ -5,20 +7,21 @@ namespace Runner.SoundSystem
     public class BackgroundMusic : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private LevelController _levelController;
 
-        public void StartMusic(AudioClip clip)
+        private void OnEnable()
         {
-            InitAudioClip(clip);
-            Play();
+            _levelController.Initializing += InitAudioClip;
         }
 
-        public void InitAudioClip(AudioClip audioclip)
+        private void OnDisable()
         {
-            _audioSource.clip = audioclip;
+            _levelController.Initializing -= InitAudioClip;
         }
 
-        public void Play()
+        private void InitAudioClip(AllRunnerSettings settings)
         {
+            _audioSource.clip = settings.AudioClip;
             _audioSource.Play();
         }
     }

@@ -6,11 +6,19 @@ namespace Runner.Settings.StateMachine
     {
         protected readonly LevelStateMachine LevelStateMachine;
         protected GlobalGame GlobalGame;
-        
+        protected LevelController LevelController;
+
         protected LevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame)
         {
             LevelStateMachine = levelStatemachine;
             GlobalGame = globalGame;
+        }
+
+        protected LevelState(LevelStateMachine levelStatemachine, GlobalGame globalGame,LevelController levelController)
+        {
+            LevelStateMachine = levelStatemachine;
+            GlobalGame = globalGame;
+            LevelController = levelController;
         }
 
         public virtual void Enter() { }

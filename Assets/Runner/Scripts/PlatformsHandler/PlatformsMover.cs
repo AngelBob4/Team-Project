@@ -1,6 +1,4 @@
-using Runner.Enums;
 using Runner.PlayerController;
-using Runner.Settings;
 using UnityEngine;
 
 namespace Runner.PlatformsHandler

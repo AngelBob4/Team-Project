@@ -731,7 +731,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasUI: {fileID: 8722892966355466521}
   _player: {fileID: 2093419209}
+<<<<<<< Updated upstream
   _backgroundMusic: {fileID: 1755012259}
+=======
+>>>>>>> Stashed changes
   _platformController: {fileID: 7544152521159252406}
   _allRunnerSettings:
   - {fileID: 11400000, guid: 39595a2a71fef014fa72d22ca27ce226, type: 2}
@@ -1387,6 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 1755012260}
+  _levelController: {fileID: 1098171727}
 --- !u!82 &1755012260
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1398,7 +1402,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
