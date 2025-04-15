@@ -64,7 +64,7 @@ namespace MainGlobal
         {
             _loadingScene.LoadSceneEvent();
             
-            //_level++;
+            _level++;
         }
 
         public void StartRunner()
@@ -82,7 +82,6 @@ namespace MainGlobal
             else
             {
                 _loadingScene.LoadSceneMap();
-                _level++;
             }
         }
     }
