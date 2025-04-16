@@ -11,7 +11,6 @@ namespace Runner.PlatformsHandler
         [SerializeField] private Transform _pool;
 
         private int _npcsAmount;
-       
         private float _offset = 30f;
        
         public void InitPlatformsPrefabsAmount(int npcsAmount)
@@ -24,22 +23,16 @@ namespace Runner.PlatformsHandler
             SpawnPlatform(currentRunnerSettings.StartPlatformView, _startPlatform);
             SpawnPlatform(currentRunnerSettings.LastPlatformView, _lastPlatform);
             SpawnPlatformVariants(currentRunnerSettings);
-
-            _pool.gameObject.SetActive(false);
         }
 
         public void ActivatePlatformVariants()
         {
-            _pool.gameObject.SetActive(true);
-
-            foreach (Transform prefab in _pool)
+            for (int i = 0; i < _pool.childCount; i++)
             {
-                float offset = 0;
-
-                prefab.GetComponent<Platform>().ChangeMeshCombinerPosition(offset);
-
-                offset += -30;
-
+                var spawnPos = _pool.position + new Vector3(0, 0, _offset);
+                _pool.GetChild(i).transform.position = spawnPos;
+                _pool.GetChild(i).gameObject.SetActive(true);
+                _offset += 30f;
             }
         }
 
@@ -54,8 +47,8 @@ namespace Runner.PlatformsHandler
             {
                 var spawnPos = _pool.position + new Vector3(0, 0, _offset);
                 Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], spawnPos, Quaternion.identity, _pool);
+                newPlatform.CombineMeshes();
                 newPlatform.InitPrefabsAmount(_npcsAmount);
-                _offset += 30f;
             }
         }
     }

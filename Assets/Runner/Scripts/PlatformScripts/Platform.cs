@@ -5,7 +5,7 @@ namespace Runner.Platforms
 {
     public class Platform : MonoBehaviour
     {
-        private readonly int ObstaclesAmount = 5;
+        private readonly int ObstaclesAmount = 6;
 
         [SerializeField] private Transform _collectablesPool;
         [SerializeField] private Transform _enemiesPool;
@@ -13,7 +13,6 @@ namespace Runner.Platforms
         [SerializeField] private MeshCombiner _meshCombiner;
 
         private int _npcAmount;
-        // сделать проверку, чтобы не выходил за пределы коллекции
 
         private void OnEnable()
         {
@@ -30,23 +29,27 @@ namespace Runner.Platforms
             DisablePrefabs(_obstaclesPool);
         }
 
-        public void ChangeMeshCombinerPosition(float offset)
+        public void CombineMeshes()
         {
             _meshCombiner.CombineMeshes();
-            _meshCombiner.transform.position = new Vector3(0, 0, offset);
         }
 
         public void InitPrefabsAmount(int npcAmount)
         {
             _npcAmount = npcAmount;
+            DisablePrefabs(_collectablesPool);
+            DisablePrefabs(_enemiesPool);
         }
 
         private void EnableEnemies()
         {
-            for (int i = 0; i < _npcAmount; i++)
+            if (_npcAmount <= _enemiesPool.childCount)
             {
-                _enemiesPool.GetChild(i).position = CalculatePrefabPosition(transform);
-                _enemiesPool.GetChild(i).gameObject.SetActive(true);
+                for (int i = 0; i < _npcAmount; i++)
+                {
+                    _enemiesPool.GetChild(i).position = CalculatePrefabPosition(transform);
+                    _enemiesPool.GetChild(i).gameObject.SetActive(true);
+                }
             }
         }
 
@@ -61,7 +64,7 @@ namespace Runner.Platforms
 
         private void EnableObstacles()
         {
-            if (_obstaclesPool.childCount > 0)
+            if (_obstaclesPool.childCount > 0 && ObstaclesAmount < _obstaclesPool.childCount)
             {
                 for (int i = 0; i < ObstaclesAmount; i++)
                 {

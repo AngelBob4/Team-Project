@@ -9,5 +9,6 @@ namespace Runner.ScriptableObjects
         public int PlatformsAmount;
         public int EnemiesAmount;
         public LocationType LocationType;
+        public Color Color;
     }
 }

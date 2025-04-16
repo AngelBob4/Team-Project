@@ -20,8 +20,10 @@ namespace Runner.Settings
 
         [SerializeField] private List<Level> _levels;
 
+        private SceneConfigs _sceneConfigs;
+
         private Level _currentLevel;
-       
+
         private LevelStateMachine _levelStateMachine;
         private PlayerGlobalData _playerGlobalData;
         private GlobalGame _globalGame;
@@ -73,19 +75,20 @@ namespace Runner.Settings
                 if (level.LevelNumber == levelNumber)
                 {
                     _currentLevel = level;
-                    InitRunnerFeatures(_currentLevel.LocationType, _currentLevel.PlatformsAmount, _currentLevel.EnemiesAmount);
+                    InitRunnerFeatures(_currentLevel.LocationType, _currentLevel.PlatformsAmount, _currentLevel.EnemiesAmount, _currentLevel.Color);
                     return;
                 }
-                
+
                 // сделать проверку уровня
             }
         }
 
-        public void InitRunnerFeatures(LocationType type, int platformsAmount, int enemiesAmount)
+        public void InitRunnerFeatures(LocationType type, int platformsAmount, int enemiesAmount, Color color)
         {
+            RenderSettings.fogColor = color;
             _player.Initialize(this, _playerGlobalData);
             _backgroundMusic.InitAudioClip(type);
-            _platformController.InitPlatforms(type, platformsAmount,  enemiesAmount);
+            _platformController.InitPlatforms(type, platformsAmount, enemiesAmount);
             //CanvasUI
         }
 
@@ -119,14 +122,5 @@ namespace Runner.Settings
         {
             _levelStateMachine.SetState<GameOverLevelState>();
         }
-
-
-        // 1) инициализация 
-        // - передает вид раннера  ( кладбище или лес), номер забега (от него зависит количество врагов, количество препятствий(можно убрать),
-        // 2) комбинирование мэшей (в инициализацию отправить)
-        // 3) запуск обучения
-        // 4) запуск самого игрового процесса
-        // 5) окончание раннера
-        // + 6) гейм овер
     }
 }

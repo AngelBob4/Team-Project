@@ -5,9 +5,7 @@ using Runner.PlayerController;
 namespace Runner.PlatformsHandler
 {
     public class PlatformsCounter : MonoBehaviour
-    {
-        [SerializeField] private Player _player;
-
+    {       
         private int _meter = 1;
        
         public event Action<int> PlatformsAmountChanged;

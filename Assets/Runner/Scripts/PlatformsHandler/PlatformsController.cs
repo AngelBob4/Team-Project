@@ -39,21 +39,9 @@ namespace Runner.PlatformsHandler
             _platformsMover.InitTotalNumberOfPlatforms(platformsAmount);
         }
 
-        public void CombinePlatformMeshes()
-        {
-
-        }
-
         public void StartGameProcess()
         {
             _platformsSpawner.ActivatePlatformVariants();
         }
-
-        // инициализация платформ
-        // спаун платформ
-        // комбайн мешей
-        // запуск платформ
-
-        // контролирует : движение платформ, отсчет платформ, пора ли запускать последнюю платформу
     }
 }

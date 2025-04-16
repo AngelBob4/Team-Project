@@ -8,14 +8,8 @@ namespace Runner.Optimization
         [SerializeField] private List<MeshFilter> _sourceMeshFilters;
         [SerializeField] private MeshFilter _filter;
         [SerializeField] private Transform _allMeshes;
-        
-        private void Start()
-        {
-           // CombineMeshes();
-           // print("COMBINED");
-        }
 
-        public  void CombineMeshes()
+        public void CombineMeshes()
         {
             var combine = new CombineInstance[_sourceMeshFilters.Count];
 
@@ -29,9 +23,7 @@ namespace Runner.Optimization
             Mesh mesh = new Mesh();
             mesh.CombineMeshes(combine);
             _filter.mesh = mesh;
-            transform.gameObject.SetActive(true);
-
-            print("Combined");
+            transform.position = new Vector3(0, 0, 0);
         }
     }
 }
