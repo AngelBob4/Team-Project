@@ -13,10 +13,14 @@ namespace Runner.PlayerController
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                int modifier = 5;
+                if (npc.Type == Enums.NPCTypes.Bat)
+                {
+                    _player.PlayerGlobalData.ChangeCoins(npc.Value);
+                }
 
                 if (npc.Type != Enums.NPCTypes.Leech)
                 {
+                    int modifier = 5;
                     _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
                 }
 
@@ -38,7 +42,7 @@ namespace Runner.PlayerController
 
                 if (npc.Type == Enums.NPCTypes.Soul)
                 {
-                   // _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
+                    // _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
                     _player.PlayerGlobalData.ChangeCoins(npc.Value);
                 }
                 else

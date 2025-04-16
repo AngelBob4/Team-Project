@@ -19,7 +19,7 @@ namespace Runner.SoundSystem
             //_levelController.Initializing -= InitAudioClip;
         }
 
-        public  void InitAudioClip(AllRunnerSettings settings)
+        public  void InitAudioClip(LocationType settings)
         {
             _audioSource.clip = settings.AudioClip;
             _audioSource.Play();

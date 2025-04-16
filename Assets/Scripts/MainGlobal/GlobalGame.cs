@@ -15,11 +15,11 @@ namespace MainGlobal
         private PlayerGlobalData _playerGlobalData;
         private LoadingScene _loadingScene;
         private DialogEventDataList _dialogEventDataList;
-        private LocationTypes _locationRunnerTypes;
+       // private LocationTypes _locationRunnerTypes;
         private Map _map;
 
         public EventsType EventsType => _eventType;
-        public LocationTypes LocationRunnerTypes => _locationRunnerTypes;
+       // public LocationTypes LocationRunnerTypes => _locationRunnerTypes;
         public int Level => _level;
 
         public GlobalGame
@@ -45,7 +45,7 @@ namespace MainGlobal
 
             _eventType = EventsType.Null;
 
-            SetLocationRunner(LocationTypes.Cemetery);
+           // SetLocationRunner(LocationTypes.Cemetery);
 
             StartMap();
         }
@@ -55,10 +55,10 @@ namespace MainGlobal
             _eventType = eventType;
         }
 
-        public void SetLocationRunner(LocationTypes locationRunner)
-        {
-            _locationRunnerTypes = locationRunner;
-        }
+        //public void SetLocationRunner(LocationTypes locationRunner)
+        //{
+        //    _locationRunnerTypes = locationRunner;
+        //}
 
         public void StartEvent()
         {

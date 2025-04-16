@@ -599,9 +599,17 @@ MonoBehaviour:
   _player: {fileID: 2093419209}
   _platformController: {fileID: 7544152521159252406}
   _backgroundMusic: {fileID: 1755012259}
-  _allRunnerSettings:
-  - {fileID: 11400000, guid: 39595a2a71fef014fa72d22ca27ce226, type: 2}
-  - {fileID: 11400000, guid: dc3811a6cd130de4db0455e64f41d008, type: 2}
+  _levels:
+  - {fileID: 11400000, guid: 729f4e0eac18c794c9575266a076009e, type: 2}
+  - {fileID: 11400000, guid: 49094ec0df727ad46971b9eb1d8c2cae, type: 2}
+  - {fileID: 11400000, guid: e7478ab33cdcebc4fbe5f215753ba972, type: 2}
+  - {fileID: 11400000, guid: 3bb3774fe68af3a41b9e5a10890eacc4, type: 2}
+  - {fileID: 11400000, guid: 6dde0b68b72b9494496c746c06487cb9, type: 2}
+  - {fileID: 11400000, guid: 9872af679f3d7c340ad6b6e60528c7a8, type: 2}
+  - {fileID: 11400000, guid: 0ff47f90a4e4ed04d9d297e2b56680b6, type: 2}
+  - {fileID: 11400000, guid: 5a716147dbd4510489a760286e61bd5d, type: 2}
+  - {fileID: 11400000, guid: f496eb688c3c5834e9f1b9678abcf560, type: 2}
+  - {fileID: 11400000, guid: 275d0102bf91cf249a52d7470e52fc01, type: 2}
 --- !u!4 &1098171728
 Transform:
   m_ObjectHideFlags: 0

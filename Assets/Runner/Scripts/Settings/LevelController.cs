@@ -1,6 +1,5 @@
 using MainGlobal;
 using Reflex.Attributes;
-using Runner.Enums;
 using Runner.PlatformsHandler;
 using Runner.PlayerController;
 using Runner.ScriptableObjects;
@@ -19,10 +18,10 @@ namespace Runner.Settings
         [SerializeField] private PlatformsController _platformController;
         [SerializeField] private BackgroundMusic _backgroundMusic;
 
-        [SerializeField] private List<AllRunnerSettings> _allRunnerSettings;
+        [SerializeField] private List<Level> _levels;
 
-        private int _raceNumber;
-
+        private Level _currentLevel;
+       
         private LevelStateMachine _levelStateMachine;
         private PlayerGlobalData _playerGlobalData;
         private GlobalGame _globalGame;
@@ -65,11 +64,28 @@ namespace Runner.Settings
             _playerGlobalData.Died -= Die;
         }
 
-        public void InitRunnerFeatures(LocationTypes type, int raceNumber)
+        public void InitializeLevel(int levelNumber)
+        {
+            print(levelNumber);
+
+            foreach (var level in _levels)
+            {
+                if (level.LevelNumber == levelNumber)
+                {
+                    _currentLevel = level;
+                    InitRunnerFeatures(_currentLevel.LocationType, _currentLevel.PlatformsAmount, _currentLevel.EnemiesAmount);
+                    return;
+                }
+                
+                // сделать проверку уровня
+            }
+        }
+
+        public void InitRunnerFeatures(LocationType type, int platformsAmount, int enemiesAmount)
         {
             _player.Initialize(this, _playerGlobalData);
-            _backgroundMusic.InitAudioClip(_allRunnerSettings[(int)type]);
-            _platformController.InitPlatforms(_allRunnerSettings[(int)type], 10);
+            _backgroundMusic.InitAudioClip(type);
+            _platformController.InitPlatforms(type, platformsAmount,  enemiesAmount);
             //CanvasUI
         }
 
@@ -88,7 +104,7 @@ namespace Runner.Settings
             _canvasUI.EnableDeathPanel();
             _player.Die();
         }
-      
+
         public void OnStartButtonClick()
         {
             _levelStateMachine.SetState<GameProcessLevelState>();

@@ -9,7 +9,7 @@ namespace Runner.Settings.StateMachine
 
         public override void Enter()
         {
-            LevelController.InitRunnerFeatures(GlobalGame.LocationRunnerTypes, GlobalGame.Level);
+           LevelController.InitializeLevel(GlobalGame.Level);
         }
     }
 }

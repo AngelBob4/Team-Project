@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Runner.ScriptableObjects
 {
     [CreateAssetMenu()]
-    public class AllRunnerSettings : ScriptableObject
+    public class LocationType : ScriptableObject
     {
         public GameObject StartPlatformView;
         public GameObject LastPlatformView;

@@ -5,22 +5,28 @@ namespace Runner.Platforms
 {
     public class Platform : MonoBehaviour
     {
-        [SerializeField] private Transform _pool;
+        private readonly int ObstaclesAmount = 5;
+
+        [SerializeField] private Transform _collectablesPool;
+        [SerializeField] private Transform _enemiesPool;
         [SerializeField] private Transform _obstaclesPool;
         [SerializeField] private MeshCombiner _meshCombiner;
 
         private int _npcAmount;
-        private int _obstaclesAmount;
+        // сделать проверку, чтобы не выходил за пределы коллекции
 
         private void OnEnable()
         {
-            EnableNPCs();
+            EnableEnemies();
             EnableObstacles();
+            EnableCollectables();
+            EnableEnemies();
         }
 
         private void OnDisable()
         {
-            DisablePrefabs(_pool);
+            DisablePrefabs(_collectablesPool);
+            DisablePrefabs(_enemiesPool);
             DisablePrefabs(_obstaclesPool);
         }
 
@@ -30,18 +36,26 @@ namespace Runner.Platforms
             _meshCombiner.transform.position = new Vector3(0, 0, offset);
         }
 
-        public void InitPrefabsAmount(int npcAmount, int obstaclesAmount)
+        public void InitPrefabsAmount(int npcAmount)
         {
             _npcAmount = npcAmount;
-            _obstaclesAmount = obstaclesAmount;
         }
 
-        private void EnableNPCs()
+        private void EnableEnemies()
         {
             for (int i = 0; i < _npcAmount; i++)
             {
-                _pool.GetChild(i).position = CalculatePrefabPosition(transform);
-                _pool.GetChild(i).gameObject.SetActive(true);
+                _enemiesPool.GetChild(i).position = CalculatePrefabPosition(transform);
+                _enemiesPool.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        private void EnableCollectables()
+        {
+            foreach (Transform collectable in _collectablesPool)
+            {
+                collectable.position = CalculatePrefabPosition(transform);
+                collectable.gameObject.SetActive(true);
             }
         }
 
@@ -49,8 +63,8 @@ namespace Runner.Platforms
         {
             if (_obstaclesPool.childCount > 0)
             {
-                for (int i = 0; i < _obstaclesAmount; i++)
-                {                   
+                for (int i = 0; i < ObstaclesAmount; i++)
+                {
                     _obstaclesPool.GetChild(Random.Range(0, _obstaclesPool.childCount)).gameObject.SetActive(true);
                 }
             }

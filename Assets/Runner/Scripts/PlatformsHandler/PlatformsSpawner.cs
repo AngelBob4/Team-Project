@@ -11,19 +11,15 @@ namespace Runner.PlatformsHandler
         [SerializeField] private Transform _pool;
 
         private int _npcsAmount;
-        private int _obstaclesAmount;
-
+       
         private float _offset = 30f;
        
-        public void InitPlatformsPrefabsAmount(int npcsAmount, int obstaclesAmount)
+        public void InitPlatformsPrefabsAmount(int npcsAmount)
         {
-            _npcsAmount = npcsAmount;
-            Debug.Log(_npcsAmount);
-            _obstaclesAmount = obstaclesAmount;
-            Debug.Log(_obstaclesAmount);
+            _npcsAmount = npcsAmount;           
         }
 
-        public void SpawnAllTypesOfPlatforms(AllRunnerSettings currentRunnerSettings)
+        public void SpawnAllTypesOfPlatforms(LocationType currentRunnerSettings)
         {
             SpawnPlatform(currentRunnerSettings.StartPlatformView, _startPlatform);
             SpawnPlatform(currentRunnerSettings.LastPlatformView, _lastPlatform);
@@ -52,13 +48,13 @@ namespace Runner.PlatformsHandler
             Instantiate(platform, parent);
         }
 
-        private void SpawnPlatformVariants(AllRunnerSettings currentRunnerSettings  )
+        private void SpawnPlatformVariants(LocationType currentRunnerSettings  )
         {
             for (int i = 0; i < currentRunnerSettings.PlatformVariants.Count; i++)
             {
                 var spawnPos = _pool.position + new Vector3(0, 0, _offset);
                 Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], spawnPos, Quaternion.identity, _pool);
-                newPlatform.InitPrefabsAmount(_npcsAmount, _obstaclesAmount);
+                newPlatform.InitPrefabsAmount(_npcsAmount);
                 _offset += 30f;
             }
         }

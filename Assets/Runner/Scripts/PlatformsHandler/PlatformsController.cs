@@ -32,9 +32,9 @@ namespace Runner.PlatformsHandler
             }
         }
 
-        public void InitPlatforms(AllRunnerSettings currentRunnerSettings, int platformsAmount)
+        public void InitPlatforms(LocationType currentRunnerSettings, int platformsAmount, int prefabsAmount)
         {
-            _platformsSpawner.InitPlatformsPrefabsAmount(7, 10);
+            _platformsSpawner.InitPlatformsPrefabsAmount(prefabsAmount);
             _platformsSpawner.SpawnAllTypesOfPlatforms(currentRunnerSettings);
             _platformsMover.InitTotalNumberOfPlatforms(platformsAmount);
         }

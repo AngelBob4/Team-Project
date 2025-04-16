@@ -35,15 +35,15 @@ namespace ScenesTest
             OnClickButton(EventsType.Shop);
         }
 
-        public void OnClickButtonCemetery()
-        {
-            _globalGame.SetLocationRunner(LocationTypes.Cemetery);
-        }
+        //public void OnClickButtonCemetery()
+        //{
+        //    _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+        //}
 
-        public void OnClickButtonForest()
-        {
-            _globalGame.SetLocationRunner(LocationTypes.Forest);
-        }
+        //public void OnClickButtonForest()
+        //{
+        //    _globalGame.SetLocationRunner(LocationTypes.Forest);
+        //}
 
         private void OnClickButton(EventsType eventsType)
         {

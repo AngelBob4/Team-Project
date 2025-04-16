@@ -63,7 +63,7 @@ public class Map
         }
         
         _globalGame.SetEvent(_currentCell.Type);
-        _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+      //  _globalGame.SetLocationRunner(LocationTypes.Cemetery);
         _globalGame.StartRunner();
     }
 
