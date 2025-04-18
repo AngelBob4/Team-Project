@@ -368,7 +368,6 @@ MonoBehaviour:
   _playerAnimations: {fileID: -9181984422392692316}
   _playerAudioEffects: {fileID: 3817512529477210809}
   _playerCollisions: {fileID: 72001625413612554}
-  _levelController: {fileID: 0}
 --- !u!114 &6619646992363443018
 MonoBehaviour:
   m_ObjectHideFlags: 0

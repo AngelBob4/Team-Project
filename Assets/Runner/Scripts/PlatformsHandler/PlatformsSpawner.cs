@@ -10,16 +10,12 @@ namespace Runner.PlatformsHandler
         [SerializeField] private Transform _lastPlatform;
         [SerializeField] private Transform _pool;
 
-        private int _npcsAmount;
+        private int _enemiesAmount;
         private float _offset = 30f;
-       
-        public void InitPlatformsPrefabsAmount(int npcsAmount)
-        {
-            _npcsAmount = npcsAmount;           
-        }
 
-        public void SpawnAllTypesOfPlatforms(LocationType currentRunnerSettings)
+        public void SpawnAllTypesOfPlatforms(LocationType currentRunnerSettings, int enemiesAmount)
         {
+            _enemiesAmount = enemiesAmount;
             SpawnPlatform(currentRunnerSettings.StartPlatformView, _startPlatform);
             SpawnPlatform(currentRunnerSettings.LastPlatformView, _lastPlatform);
             SpawnPlatformVariants(currentRunnerSettings);
@@ -41,14 +37,13 @@ namespace Runner.PlatformsHandler
             Instantiate(platform, parent);
         }
 
-        private void SpawnPlatformVariants(LocationType currentRunnerSettings  )
+        private void SpawnPlatformVariants(LocationType currentRunnerSettings)
         {
             for (int i = 0; i < currentRunnerSettings.PlatformVariants.Count; i++)
             {
-                var spawnPos = _pool.position + new Vector3(0, 0, _offset);
-                Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], spawnPos, Quaternion.identity, _pool);
+                Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], _pool.position + new Vector3(0, 0, _offset), Quaternion.identity, _pool);
                 newPlatform.CombineMeshes();
-                newPlatform.InitPrefabsAmount(_npcsAmount);
+                newPlatform.InitEnemiesAmount(_enemiesAmount);
             }
         }
     }

@@ -1,5 +1,6 @@
 using Runner.Optimization;
 using UnityEngine;
+using System.Linq;
 
 namespace Runner.Platforms
 {
@@ -12,7 +13,7 @@ namespace Runner.Platforms
         [SerializeField] private Transform _obstaclesPool;
         [SerializeField] private MeshCombiner _meshCombiner;
 
-        private int _npcAmount;
+        private int _enemiesAmount;
 
         private void OnEnable()
         {
@@ -34,18 +35,19 @@ namespace Runner.Platforms
             _meshCombiner.CombineMeshes();
         }
 
-        public void InitPrefabsAmount(int npcAmount)
+        public void InitEnemiesAmount(int enemiesAmount)
         {
-            _npcAmount = npcAmount;
+            _enemiesAmount = enemiesAmount;
+
             DisablePrefabs(_collectablesPool);
             DisablePrefabs(_enemiesPool);
         }
 
         private void EnableEnemies()
         {
-            if (_npcAmount <= _enemiesPool.childCount)
+            if (_enemiesAmount <= _enemiesPool.childCount)
             {
-                for (int i = 0; i < _npcAmount; i++)
+                for (int i = 0; i < _enemiesAmount; i++)
                 {
                     _enemiesPool.GetChild(i).position = CalculatePrefabPosition(transform);
                     _enemiesPool.GetChild(i).gameObject.SetActive(true);

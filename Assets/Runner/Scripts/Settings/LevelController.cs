@@ -1,104 +1,60 @@
 using MainGlobal;
-using Reflex.Attributes;
 using Runner.PlatformsHandler;
 using Runner.PlayerController;
 using Runner.ScriptableObjects;
-using Runner.Settings.StateMachine;
 using Runner.SoundSystem;
 using Runner.UI;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Runner.Settings
 {
     public class LevelController : MonoBehaviour
     {
-        [SerializeField] private CanvasUI _canvasUI;
-        [SerializeField] private Player _player;
-        [SerializeField] private PlatformsController _platformController;
-        [SerializeField] private BackgroundMusic _backgroundMusic;
-
-        [SerializeField] private List<Level> _levels;
-
-        private SceneConfigs _sceneConfigs;
-
-        private Level _currentLevel;
-
-        private LevelStateMachine _levelStateMachine;
+        private CanvasUI _canvasUI;
+        private Player _player;
+        private PlatformsController _platformController;
+        private SoundController _soundController;
         private PlayerGlobalData _playerGlobalData;
         private GlobalGame _globalGame;
+
+        private Level _level;
 
         private bool _isRunnerStarted = false;
 
         public bool IsRunnerStarted => _isRunnerStarted;
 
-        [Inject]
-        private void Inject(PlayerGlobalData playerGlobalData)
-        {
-            _playerGlobalData = playerGlobalData;
-        }
-
-        [Inject]
-        private void Inject(GlobalGame globalGame)
-        {
-            _globalGame = globalGame;
-        }
-
-        private void Awake()
-        {
-            _levelStateMachine = new LevelStateMachine();
-
-            _levelStateMachine.AddState(new InitializeLevelState(_levelStateMachine, _globalGame, this));
-            _levelStateMachine.AddState(new GameProcessLevelState(_levelStateMachine, _globalGame, this));
-            _levelStateMachine.AddState(new GameOverLevelState(_levelStateMachine, _globalGame, this));
-            _levelStateMachine.AddState(new FinishLevelState(_levelStateMachine, _globalGame));
-
-            _levelStateMachine.SetState<InitializeLevelState>();
-        }
-
-        private void OnEnable()
-        {
-            _playerGlobalData.Died += Die;
-        }
-
         private void OnDisable()
         {
-            _playerGlobalData.Died -= Die;
+            _playerGlobalData.Died -= GameOver;
         }
 
-        public void InitializeLevel(int levelNumber)
+        public void Initialize(GlobalGame globalGame, PlayerGlobalData globalData, CanvasUI canvasUI, SoundController soundController, Level level,
+            Player player, PlatformsController platformsController)
         {
-            print(levelNumber);
+            _globalGame = globalGame;
+            _playerGlobalData = globalData;
+            _level = level;
+            _canvasUI = canvasUI;
+            _soundController = soundController;
+            _platformController = platformsController;
+            _player = player;
 
-            foreach (var level in _levels)
-            {
-                if (level.LevelNumber == levelNumber)
-                {
-                    _currentLevel = level;
-                    InitRunnerFeatures(_currentLevel.LocationType, _currentLevel.PlatformsAmount, _currentLevel.EnemiesAmount, _currentLevel.Color);
-                    return;
-                }
-
-                // сделать проверку уровня
-            }
+            _playerGlobalData.Died += GameOver;
+            InitializeLevel();
         }
 
-        public void InitRunnerFeatures(LocationType type, int platformsAmount, int enemiesAmount, Color color)
+        public void InitializeLevel()
         {
-            RenderSettings.fogColor = color;
-            _player.Initialize(this, _playerGlobalData);
-            _backgroundMusic.InitAudioClip(type);
-            _platformController.InitPlatforms(type, platformsAmount, enemiesAmount);
-            //CanvasUI
+            _canvasUI.InitializeLevel(_level);
+            _platformController.InitializeLevel(_level.LocationType, _level.PlatformsAmount, _level.EnemiesAmount);
         }
 
         public void StartRunner()
         {
             _isRunnerStarted = true;
-            _canvasUI.DisableStartButton();
-            _player.StartRun();
+            _canvasUI.StartGameProcess();
             _platformController.StartGameProcess();
-            // переместить 
+            _player.StartGameProcess();
         }
 
         public void GameOver()
@@ -108,19 +64,9 @@ namespace Runner.Settings
             _player.Die();
         }
 
-        public void OnStartButtonClick()
-        {
-            _levelStateMachine.SetState<GameProcessLevelState>();
-        }
-
         public void FinishRunner()
         {
-            _levelStateMachine.SetState<FinishLevelState>();
-        }
-
-        private void Die()
-        {
-            _levelStateMachine.SetState<GameOverLevelState>();
+            _globalGame.StartEvent();
         }
     }
 }

@@ -15,14 +15,14 @@ namespace Runner.PlayerController
 
         private void Start()
         {
-            SetValues();
+            //SetValues();
         }
 
         public void ReduceLight()
         {
+
             InvokeRepeating(ReduceLanternLight, _delay, _repeatRate);
         }
-
         public void ChangeLanternLightIntensity(int lightIntensityModifier)
         {
             _player.PlayerGlobalData.ChangeLanternLight(lightIntensityModifier);

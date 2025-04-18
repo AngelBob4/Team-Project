@@ -10,19 +10,11 @@ namespace Runner.PlatformsHandler
         [SerializeField] private PlatformsCounter _platformsCounter;
         [SerializeField] private PlatformsSpawner _platformsSpawner;
         [SerializeField] private PlatformsMover _platformsMover;
-       
-        [SerializeField] private Player _player;
-        [SerializeField] private LevelController _levelController;
 
-        private void OnEnable()
-        {
-            
-        }
+        private Player _player;
+        private LevelController _levelController;
 
-        private void OnDisable()
-        {
-            
-        }
+        public PlatformsCounter Counter => _platformsCounter;
 
         private void Update()
         {
@@ -32,10 +24,15 @@ namespace Runner.PlatformsHandler
             }
         }
 
-        public void InitPlatforms(LocationType currentRunnerSettings, int platformsAmount, int prefabsAmount)
+        public void Initialize(Player player, LevelController levelController, Level level)
         {
-            _platformsSpawner.InitPlatformsPrefabsAmount(prefabsAmount);
-            _platformsSpawner.SpawnAllTypesOfPlatforms(currentRunnerSettings);
+            _player = player;
+            _levelController = levelController;
+        }
+
+        public void InitializeLevel(LocationType currentRunnerSettings, int platformsAmount, int enemiesAmount)
+        {
+            _platformsSpawner.SpawnAllTypesOfPlatforms(currentRunnerSettings, enemiesAmount);
             _platformsMover.InitTotalNumberOfPlatforms(platformsAmount);
         }
 

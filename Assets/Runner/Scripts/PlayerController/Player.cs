@@ -1,5 +1,4 @@
 using MainGlobal;
-using Reflex.Attributes;
 using Runner.Settings;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ namespace Runner.PlayerController
             _playerGlobalData = playerGlobalData;
         }
 
-        public void StartRun()
+        public void StartGameProcess()
         {
             _playerAnimations.SetRunAnimation();
             _playerLantern.ReduceLight();

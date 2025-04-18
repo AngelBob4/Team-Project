@@ -16,4 +16,4 @@ MonoBehaviour:
   PlatformsAmount: 10
   EnemiesAmount: 2
   LocationType: {fileID: 11400000, guid: 39595a2a71fef014fa72d22ca27ce226, type: 2}
-  Color: {r: 1, g: 1, b: 1, a: 0}
+  Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}

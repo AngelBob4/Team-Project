@@ -15,7 +15,7 @@ MonoBehaviour:
   StartPlatformView: {fileID: 1840776443658659145, guid: c728993699ffbf846ab8caa5679ba66b, type: 3}
   LastPlatformView: {fileID: 6614976646710248329, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
   PlatformVariants:
-  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
-  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
-  - {fileID: -3670233110459776172, guid: 67400116d23ad1c409bd5153ddc86f56, type: 3}
+  - {fileID: 4577923615336048478, guid: 60d246a1d2af91f4d99f50be34d765ce, type: 3}
+  - {fileID: 4577923615336048478, guid: 60d246a1d2af91f4d99f50be34d765ce, type: 3}
+  - {fileID: 4577923615336048478, guid: 60d246a1d2af91f4d99f50be34d765ce, type: 3}
   AudioClip: {fileID: 8300000, guid: 40869972fba06ce44a1a024fdf908f9f, type: 3}

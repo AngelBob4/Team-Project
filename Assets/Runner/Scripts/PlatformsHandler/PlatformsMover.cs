@@ -5,23 +5,22 @@ namespace Runner.PlatformsHandler
 {
     public class PlatformsMover : MonoBehaviour
     {
+        private const float _tileLength = 30;
+        // можно и посчитать через бокс коллайдер
+
         [SerializeField] private Transform _pool;
         [SerializeField] private Transform _startPlatform;
         [SerializeField] private Transform _lastPlatform;
 
         private int _totalNumberOfPlatforms;
-       
         private int _platformIndex = 0;
         private int _platformsNumber = 2;
-        // можно и посчитать через бокс коллайдер
-        private float _tileLength = 30;
 
         private bool _isFinishedLevel = false;
 
-       
         public void MovePlatfroms(Player player, PlatformsCounter counter)
         {
-            if (!_isFinishedLevel )
+            if (!_isFinishedLevel)
             {
                 if (player.transform.position.z + _platformsNumber * _tileLength > _tileLength * counter.Meter)
                 {

@@ -1,21 +1,23 @@
+using Runner.PlayerController;
 using UnityEngine;
 
 namespace Runner
 {
     public class CameraMovement : MonoBehaviour
     {
-        [SerializeField] private Transform _target;
+        private Player _target;
 
-        private void Start()
+        public void Initialize(Player player)
         {
             transform.parent = null;
+            _target = player;
         }
 
         private void LateUpdate()
         {
             if (_target != null)
             {
-                transform.position = _target.position;
+                transform.position = _target.transform.position;
             }
         }
     }
