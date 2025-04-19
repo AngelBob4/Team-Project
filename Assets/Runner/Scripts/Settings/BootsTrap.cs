@@ -48,7 +48,8 @@ namespace Runner.Settings
 
         private void Awake()
         {
-            InitLevel(_globalGame.Level);
+            //InitLevel(_globalGame.Level);
+            InitLevel(4);
             SetGrafficsSettings(_currentLevel.Color);
             SpawnAll();
             InitializeAll();
@@ -90,7 +91,7 @@ namespace Runner.Settings
             _cameraMovement.Initialize(_player);
             _platformsController.Initialize(_player, _levelController, _currentLevel);
             _canvasUI.Initialize(_levelController);
-            _levelController.Initialize(_globalGame, _playerGlobalData, _canvasUI, _soundController,_currentLevel,_player,_platformsController);
+            _levelController.Initialize(_globalGame, _playerGlobalData, _canvasUI, _soundController, _currentLevel, _player, _platformsController);
         }
     }
 }

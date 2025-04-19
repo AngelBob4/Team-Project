@@ -16,7 +16,7 @@ namespace Runner.PlatformsHandler
         public void SpawnAllTypesOfPlatforms(LocationType currentRunnerSettings, int enemiesAmount)
         {
             _enemiesAmount = enemiesAmount;
-            SpawnPlatform(currentRunnerSettings.StartPlatformView, _startPlatform);
+            SpawnStartPlatform(currentRunnerSettings.StartPlatform, _startPlatform);
             SpawnPlatform(currentRunnerSettings.LastPlatformView, _lastPlatform);
             SpawnPlatformVariants(currentRunnerSettings);
         }
@@ -30,6 +30,12 @@ namespace Runner.PlatformsHandler
                 _pool.GetChild(i).gameObject.SetActive(true);
                 _offset += 30f;
             }
+        }
+
+        private void SpawnStartPlatform(StartPlatform startPlatform, Transform parent)
+        {
+            StartPlatform newStartPlatform = Instantiate(startPlatform, parent);
+            newStartPlatform.CombineMeshes();
         }
 
         private void SpawnPlatform(GameObject platform, Transform parent)

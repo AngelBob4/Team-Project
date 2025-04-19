@@ -1,12 +1,11 @@
 using Runner.Optimization;
 using UnityEngine;
-using System.Linq;
 
 namespace Runner.Platforms
 {
     public class Platform : MonoBehaviour
     {
-        private readonly int ObstaclesAmount = 6;
+        private readonly int ObstaclesAmount = 5;
 
         [SerializeField] private Transform _collectablesPool;
         [SerializeField] private Transform _enemiesPool;

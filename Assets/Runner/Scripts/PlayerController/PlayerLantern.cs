@@ -15,7 +15,7 @@ namespace Runner.PlayerController
 
         private void Start()
         {
-            //SetValues();
+            SetValues();
         }
 
         public void ReduceLight()

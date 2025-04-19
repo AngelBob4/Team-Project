@@ -9,6 +9,7 @@ namespace Runner.UI
     {
         [SerializeField] private DeathPanel _deathPanel;
         [SerializeField] private Button _startButton;
+        [SerializeField] private Button _finishButton;
 
         private LevelController _levelController;
 
@@ -20,6 +21,7 @@ namespace Runner.UI
         public void InitializeLevel(Level level)
         {
             _startButton.onClick.AddListener(_levelController.StartRunner);
+            _finishButton.onClick.AddListener(_levelController.FinishRunner);
 
             if (level.LevelNumber == 1)
             {

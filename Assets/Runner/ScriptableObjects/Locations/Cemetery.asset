@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPlatformView: {fileID: 6652402374003863036, guid: de79972c088fbd84fb29510a4b6b72be, type: 3}
   LastPlatformView: {fileID: 4756565401106194829, guid: 393c04ca5e18e5046bbcc83fe91f4e46, type: 3}
+  StartPlatform: {fileID: -5244102842028309963, guid: de79972c088fbd84fb29510a4b6b72be, type: 3}
   PlatformVariants:
   - {fileID: 8589554285649590265, guid: 2d1bd23831c0ea84d8cce36d3649af37, type: 3}
   - {fileID: 8589554285649590265, guid: 2d1bd23831c0ea84d8cce36d3649af37, type: 3}

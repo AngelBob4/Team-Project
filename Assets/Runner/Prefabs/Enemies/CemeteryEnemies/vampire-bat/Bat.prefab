@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 5
   _value: -10
-  Speed: 6
+  Speed: 10
   _particleSystem: {fileID: 5696975238479760786}
 --- !u!135 &4323980628922714445
 SphereCollider:

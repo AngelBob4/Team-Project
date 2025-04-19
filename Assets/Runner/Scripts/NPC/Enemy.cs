@@ -30,7 +30,7 @@ namespace Runner.NonPlayerCharacters
 
         protected virtual Vector3 CalculateOffset()
         {
-            return Speed * Time.deltaTime * -transform.forward;
+            return Speed * -transform.forward * Time.deltaTime;
         }
 
         protected virtual void Move()

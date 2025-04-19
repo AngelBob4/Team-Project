@@ -157,7 +157,7 @@ MonoBehaviour:
   _value: 10
   Speed: 2
   _particleSystem: {fileID: 16136410598744837}
-  _jumpHeight: 2
+  _jumpHeight: 2.5
 --- !u!135 &5073827650432004670
 SphereCollider:
   m_ObjectHideFlags: 0

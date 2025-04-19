@@ -1,5 +1,4 @@
 using Runner.NonPlayerCharacters;
-using Runner.Settings;
 using UnityEngine;
 
 namespace Runner.PlayerController
@@ -7,31 +6,41 @@ namespace Runner.PlayerController
     public class PlayerCollisions : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [SerializeField] private LevelController _levelController;
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
-                if (npc.Type == Enums.NPCTypes.Bat)
-                {
-                    _player.PlayerGlobalData.ChangeCoins(npc.Value);
-                }
-
-                if (npc.Type != Enums.NPCTypes.Leech)
-                {
-                    int modifier = 5;
-                    _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
-                }
-
-                _player.PlayerGlobalData.ChangeHP(npc.Value);
                 _player.PlayEffect((int)npc.Type);
+                _player.PlayerGlobalData.ChangeHP(npc.Value);
+
+                switch (npc.Type)
+                {
+                    case Enums.NPCTypes.Bat:
+                        {
+                            _player.PlayerGlobalData.ChangeCoins(npc.Value);
+                        }
+                        break;
+
+                    case Enums.NPCTypes.LittleGhoul:
+                        {
+                            _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value);
+                        }
+                        break;
+
+                    case Enums.NPCTypes.Sceleton:
+                    case Enums.NPCTypes.Zombie:
+                        {
+                            int modifier = 5;
+                            _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value / modifier);
+                        }
+                        break;
+                }
             }
 
             if (collision.collider.TryGetComponent(out Tomb tomb))
             {
-                // переделать, убрать томб 
-                _levelController.FinishRunner();
+                _player.LevelController.FinishRunner();
             }
         }
 
@@ -42,7 +51,6 @@ namespace Runner.PlayerController
 
                 if (npc.Type == Enums.NPCTypes.Soul)
                 {
-                    // _player.PlayerSouls.ChangeSoulsAmount(npc.Value);
                     _player.PlayerGlobalData.ChangeCoins(npc.Value);
                 }
                 else

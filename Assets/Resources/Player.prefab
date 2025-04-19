@@ -2153,7 +2153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 772504491805825120}
-  _levelController: {fileID: 0}
 --- !u!114 &2384406407507499106
 MonoBehaviour:
   m_ObjectHideFlags: 0

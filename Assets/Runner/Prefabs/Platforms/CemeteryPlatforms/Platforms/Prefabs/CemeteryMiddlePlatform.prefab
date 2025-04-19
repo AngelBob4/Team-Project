@@ -5172,17 +5172,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4272535534366012034, guid: 1c9897b537498ba48bb09683a45d6853, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5115524221936628678, guid: 1c9897b537498ba48bb09683a45d6853, type: 3}
       propertyPath: m_Name
       value: Fireflies
-      objectReference: {fileID: 0}
-    - target: {fileID: 5115524221936628678, guid: 1c9897b537498ba48bb09683a45d6853, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5311,14 +5303,6 @@ PrefabInstance:
     - target: {fileID: 1404828769155371299, guid: c473c2314e136b745a15ec272d002db2, type: 3}
       propertyPath: m_Name
       value: Soul
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404828769155371299, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919952758419529271, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6092,14 +6076,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soul (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1404828769155371299, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919952758419529271, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6161,14 +6137,6 @@ PrefabInstance:
     - target: {fileID: 1404828769155371299, guid: c473c2314e136b745a15ec272d002db2, type: 3}
       propertyPath: m_Name
       value: Soul (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404828769155371299, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919952758419529271, guid: c473c2314e136b745a15ec272d002db2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6360,21 +6328,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7189830923034102635, guid: 8c2cf33be574e5344af06393dfd41dc8, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176203076135254592, guid: 8c2cf33be574e5344af06393dfd41dc8, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8715171065600248774, guid: 8c2cf33be574e5344af06393dfd41dc8, type: 3}
       propertyPath: m_Name
       value: Leech
-      objectReference: {fileID: 0}
-    - target: {fileID: 8715171065600248774, guid: 8c2cf33be574e5344af06393dfd41dc8, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

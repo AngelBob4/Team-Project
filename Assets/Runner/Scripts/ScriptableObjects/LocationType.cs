@@ -7,8 +7,8 @@ namespace Runner.ScriptableObjects
     [CreateAssetMenu()]
     public class LocationType : ScriptableObject
     {
-        public GameObject StartPlatformView;
         public GameObject LastPlatformView;
+        public StartPlatform StartPlatform;
         public List<Platform> PlatformVariants;
         public AudioClip AudioClip;
     }

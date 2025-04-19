@@ -19,6 +19,8 @@ namespace Runner.PlayerController
 
         public PlayerGlobalData PlayerGlobalData => _playerGlobalData;
 
+        public LevelController LevelController => _levelController;
+
         private void Update()
         {
             if (_levelController.IsRunnerStarted)
