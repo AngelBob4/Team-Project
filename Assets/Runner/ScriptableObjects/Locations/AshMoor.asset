@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4769cdfa31b3ac34984c29c7d5314d83, type: 3}
+  m_Name: AshMoor
+  m_EditorClassIdentifier: 
+  LastPlatformView: {fileID: 6614976646710248329, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
+  StartPlatform: {fileID: 8541707645770605339, guid: c728993699ffbf846ab8caa5679ba66b, type: 3}
+  PlatformVariants:
+  - {fileID: 4577923615336048478, guid: 60d246a1d2af91f4d99f50be34d765ce, type: 3}
+  - {fileID: 936364554775834527, guid: 149eed50b6b981944a848ecc9ad9b4b7, type: 3}
+  - {fileID: 608213386537307392, guid: cb742e61f5c61cd43a21e1e6b116a34a, type: 3}
+  AudioClip: {fileID: 8300000, guid: 57f0ee949655e7b4696695908fb6df33, type: 3}
