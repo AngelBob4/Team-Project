@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4769cdfa31b3ac34984c29c7d5314d83, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  LastPlatformView: {fileID: 6652402374003863036, guid: de79972c088fbd84fb29510a4b6b72be, type: 3}
-  StartPlatform: {fileID: 8541707645770605339, guid: c728993699ffbf846ab8caa5679ba66b, type: 3}
+  LastPlatformView: {fileID: 8560237594833394613, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
+  StartPlatform: {fileID: 5933477472892890719, guid: a61dc9ef6b84c5648bd45f3b9d700fb2, type: 3}
   PlatformVariants:
   - {fileID: 522192460689261918, guid: 7fc3fb92a724c7c449639013d6db902b, type: 3}
   - {fileID: 5144627875887037361, guid: 44af38b734eab1a4996a0602a92f9ea3, type: 3}

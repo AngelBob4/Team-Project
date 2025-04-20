@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4769cdfa31b3ac34984c29c7d5314d83, type: 3}
   m_Name: Cemetery
   m_EditorClassIdentifier: 
-  StartPlatformView: {fileID: 6652402374003863036, guid: de79972c088fbd84fb29510a4b6b72be, type: 3}
   LastPlatformView: {fileID: 4756565401106194829, guid: 393c04ca5e18e5046bbcc83fe91f4e46, type: 3}
   StartPlatform: {fileID: -5244102842028309963, guid: de79972c088fbd84fb29510a4b6b72be, type: 3}
   PlatformVariants:
-  - {fileID: 8589554285649590265, guid: 2d1bd23831c0ea84d8cce36d3649af37, type: 3}
-  - {fileID: 8589554285649590265, guid: 2d1bd23831c0ea84d8cce36d3649af37, type: 3}
-  - {fileID: 8589554285649590265, guid: 2d1bd23831c0ea84d8cce36d3649af37, type: 3}
+  - {fileID: 8905963178951617218, guid: 6d25d65766d53d64c921a2a3e3412acc, type: 3}
+  - {fileID: 3420245678008254981, guid: 647cb12e79fda1945bff86eb5dee5e13, type: 3}
+  - {fileID: 3707751057190109171, guid: bb00c95850548bb4685877b85b836ae3, type: 3}
   AudioClip: {fileID: 8300000, guid: 9ae97df22e8fed446a87a40bd82262a3, type: 3}

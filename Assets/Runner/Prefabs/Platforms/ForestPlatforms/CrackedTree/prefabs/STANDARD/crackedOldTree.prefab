@@ -341,8 +341,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5958970331863559466}
-  - component: {fileID: 8546598962917921758}
-  - component: {fileID: 2625936888531928433}
   m_Layer: 0
   m_Name: crackedOldTree
   m_TagString: Untagged
@@ -369,57 +367,3 @@ Transform:
   - {fileID: 459739972686922315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &8546598962917921758
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812022760827756861}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.05258572, y: 1.5077577, z: -0.15150091}
-  m_Size: 3.5527353
-  m_FadeMode: 1
-  m_AnimateCrossFading: 1
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.21637128
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 3956908845602679847}
-  - screenRelativeHeight: 0.08296106
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4740407278463988011}
-  - screenRelativeHeight: 0.032491397
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 6706917604088269500}
-  - screenRelativeHeight: 0.01
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 731641494683993093}
-  m_Enabled: 1
---- !u!136 &2625936888531928433
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812022760827756861}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6432456
-  m_Height: 3.13
-  m_Direction: 1
-  m_Center: {x: 0.07061422, y: 1.1860685, z: -0.009729624}

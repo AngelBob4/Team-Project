@@ -28,6 +28,19 @@ namespace Runner.Settings
             _playerGlobalData.Died -= GameOver;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Time.timeScale = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1f;
+            }
+        }
+
         public void Initialize(GlobalGame globalGame, PlayerGlobalData globalData, CanvasUI canvasUI, SoundController soundController, Level level,
             Player player, PlatformsController platformsController)
         {

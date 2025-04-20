@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4769cdfa31b3ac34984c29c7d5314d83, type: 3}
   m_Name: AshMoor
   m_EditorClassIdentifier: 
-  LastPlatformView: {fileID: 6614976646710248329, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
+  LastPlatformView: {fileID: 8560237594833394613, guid: 13bf45dd391a95f438e990a529cc918e, type: 3}
   StartPlatform: {fileID: 8541707645770605339, guid: c728993699ffbf846ab8caa5679ba66b, type: 3}
   PlatformVariants:
   - {fileID: 4577923615336048478, guid: 60d246a1d2af91f4d99f50be34d765ce, type: 3}
