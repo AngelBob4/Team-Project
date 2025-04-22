@@ -28,6 +28,7 @@ namespace Runner.PlatformsHandler
                 var spawnPos = _pool.position + new Vector3(0, 0, _offset);
                 _pool.GetChild(i).transform.position = spawnPos;
                 _pool.GetChild(i).gameObject.SetActive(true);
+                _pool.GetChild(i).gameObject.GetComponent<Platform>().EnemiesPool.gameObject.SetActive(true);
                 _offset += 30f;
             }
         }
@@ -48,6 +49,7 @@ namespace Runner.PlatformsHandler
             for (int i = 0; i < currentRunnerSettings.PlatformVariants.Count; i++)
             {
                 Platform newPlatform = Instantiate(currentRunnerSettings.PlatformVariants[i], _pool.position + new Vector3(0, 0, _offset), Quaternion.identity, _pool);
+                newPlatform.EnemiesPool.gameObject.SetActive(false);
                 newPlatform.CombineMeshes();
                 newPlatform.InitEnemiesAmount(_enemiesAmount);
             }
