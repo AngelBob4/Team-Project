@@ -5,7 +5,7 @@ namespace Runner.Platforms
 {
     public class Platform : MonoBehaviour
     {
-        private readonly int ObstaclesAmount = 5;
+        private readonly int ObstaclesAmount = 3;
 
         [SerializeField] private Transform _collectablesPool;
         [SerializeField] private Transform _enemiesPool;
@@ -20,6 +20,13 @@ namespace Runner.Platforms
             EnableObstacles();
             EnableCollectables();
             EnableEnemies();
+        }
+
+        private void Awake()
+        {
+            DisablePrefabs(_collectablesPool);
+            DisablePrefabs(_enemiesPool);
+            DisablePrefabs(_obstaclesPool);
         }
 
         private void OnDisable()
@@ -65,7 +72,7 @@ namespace Runner.Platforms
 
         private void EnableObstacles()
         {
-            if (_obstaclesPool.childCount > 0 && ObstaclesAmount < _obstaclesPool.childCount)
+            if (_obstaclesPool.childCount > 0 && ObstaclesAmount <= _obstaclesPool.childCount)
             {
                 for (int i = 0; i < ObstaclesAmount; i++)
                 {

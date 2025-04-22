@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769749547036118450}
   - component: {fileID: 6190360833074348760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 769749547036118450}
     m_Modifications:
+    - target: {fileID: 4721035853349240201, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721035853349240201, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5895020343245686502, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -106,7 +114,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: stump-possesed
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6522480445163838556, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6216630744612151560, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

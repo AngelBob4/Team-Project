@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level7
   m_EditorClassIdentifier: 
   LevelNumber: 7
-  PlatformsAmount: 30
+  PlatformsAmount: 20
   EnemiesAmount: 4
   LocationType: {fileID: 11400000, guid: a3939cc09906a9f42bc8dab249097662, type: 2}
   Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}

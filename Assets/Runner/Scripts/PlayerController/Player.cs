@@ -47,7 +47,7 @@ namespace Runner.PlayerController
             _playerAnimations.SetDeathAnimation();
         }
 
-        public void PlayEffect(int index)
+        public void PlayAudio(int index)
         {
             _playerAudioEffects.PlayAudioEffect(index);
         }

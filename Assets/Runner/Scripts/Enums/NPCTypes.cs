@@ -9,9 +9,10 @@ namespace Runner.Enums
         Sceleton = 4,
         Bat = 5,
         LittleGhoul = 6,
-        Demon = 7,
-        Spider = 8,
-        Stump = 9,
-        Scarecrow = 10,
+        BlackWidowSpider = 7,
+        Watcher = 8,
+        SandSpider = 9,
+        Demon = 10,
+        Mushroom = 11,
     }
 }
