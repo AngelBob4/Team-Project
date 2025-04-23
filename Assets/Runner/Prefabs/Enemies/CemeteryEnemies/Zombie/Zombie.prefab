@@ -2454,8 +2454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _value: -10
-  Speed: 3
+  _value: -5
+  _speed: 3
   _particleSystem: {fileID: 972651716823175855}
 --- !u!1 &9035017634732157304
 GameObject:
@@ -2503,11 +2503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 442301060288549596, guid: 94b4111692172ad44aeb98f962391db3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.483
       objectReference: {fileID: 0}
     - target: {fileID: 442301060288549596, guid: 94b4111692172ad44aeb98f962391db3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.588
       objectReference: {fileID: 0}
     - target: {fileID: 442301060288549596, guid: 94b4111692172ad44aeb98f962391db3, type: 3}
       propertyPath: m_LocalRotation.w

@@ -49,7 +49,7 @@ namespace Runner.Settings
         private void Awake()
         {
             InitLevel(_globalGame.Level);
-            InitLevel(7);
+            //InitLevel(4);
             SetGrafficsSettings(_currentLevel.Color);
             SpawnAll();
             InitializeAll();
@@ -57,8 +57,6 @@ namespace Runner.Settings
 
         private void InitLevel(int levelNumber)
         {
-            print(levelNumber);
-
             if (levelNumber > 0 && levelNumber <= _levels.Count)
             {
                 _currentLevel = _levels.Where(level => level.LevelNumber == levelNumber).First();

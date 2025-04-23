@@ -5,10 +5,12 @@ namespace Runner.NonPlayerCharacters
 {
     public class Enemy : NPC
     {
-        [SerializeField] protected float Speed;
-        [SerializeField] protected ParticleSystem _particleSystem;
+        [SerializeField] private float _speed;
+        [SerializeField] private ParticleSystem _particleSystem;
 
         protected Vector3 _offset;
+
+        public float Speed => _speed;
 
         private void Start()
         {
@@ -30,12 +32,12 @@ namespace Runner.NonPlayerCharacters
 
         protected virtual Vector3 CalculateOffset()
         {
-            return Speed * -transform.forward * Time.deltaTime;
+            return _speed * -transform.forward;
         }
 
         protected virtual void Move()
         {
-            transform.position += _offset;
+            transform.position += _offset * Time.deltaTime;
         }
     }
 }

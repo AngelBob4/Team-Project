@@ -1,4 +1,5 @@
 using Runner.NonPlayerCharacters;
+using System;
 using UnityEngine;
 
 namespace Runner.PlayerController
@@ -7,12 +8,14 @@ namespace Runner.PlayerController
     {
         [SerializeField] private Player _player;
 
+        public event Action<int> PlayerIsPoisoned;
+        public event Action PlayerIsHealed;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out NPC npc))
             {
                 _player.PlayAudio((int)npc.Type);
-                // _player.PlayerGlobalData.ChangeHP(npc.Value);
 
                 switch (npc.Type)
                 {
@@ -33,6 +36,7 @@ namespace Runner.PlayerController
                     case Enums.NPCTypes.Zombie:
                     case Enums.NPCTypes.SandSpider:
                     case Enums.NPCTypes.Watcher:
+                    case Enums.NPCTypes.Leech:
                         {
                             _player.PlayerGlobalData.ChangeHP(npc.Value);
                         }
@@ -41,7 +45,7 @@ namespace Runner.PlayerController
                     case Enums.NPCTypes.BlackWidowSpider:
                         {
                             _player.PlayerGlobalData.ChangeHP(npc.Value);
-                            //poison Player
+                            PlayerIsPoisoned?.Invoke(npc.Value);
                         }
                         break;
                 }
@@ -71,7 +75,7 @@ namespace Runner.PlayerController
                     case Enums.NPCTypes.Mushroom:
                         {
                             _player.PlayerGlobalData.ChangeHP(npc.Value);
-                            // stop poisoning
+                            PlayerIsHealed?.Invoke();
                         }
                         break;
 

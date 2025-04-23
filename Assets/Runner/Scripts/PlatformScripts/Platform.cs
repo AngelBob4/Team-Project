@@ -12,36 +12,14 @@ namespace Runner.Platforms
         [SerializeField] private Transform _obstaclesPool;
         [SerializeField] private MeshCombiner _meshCombiner;
 
-        public Transform EnemiesPool => _enemiesPool;
-
         private int _enemiesAmount;
-
-        private void Awake()
-        {
-            print("Awake");
-        }
 
         private void OnEnable()
         {
-            print("ENABLE");
             EnableEnemies();
             EnableObstacles();
             EnableCollectables();
-            EnableEnemies();
         }
-
-        private void Start()
-        {
-            DisablePrefabs(_collectablesPool);
-            DisablePrefabs(_enemiesPool);
-            DisablePrefabs(_obstaclesPool);
-        }
-        //private void Awake()
-        //{
-        //    DisablePrefabs(_collectablesPool);
-        //    DisablePrefabs(_enemiesPool);
-        //    DisablePrefabs(_obstaclesPool);
-        //}
 
         private void OnDisable()
         {

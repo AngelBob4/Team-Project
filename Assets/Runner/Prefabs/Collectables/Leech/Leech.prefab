@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _value: 10
-  Speed: 2
+  _speed: 2.5
   _particleSystem: {fileID: 16136410598744837}
   _jumpHeight: 2
 --- !u!135 &5073827650432004670
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6321670879679082838, guid: 7be2c1f476a2227429575ea0f8fda967, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.314
       objectReference: {fileID: 0}
     - target: {fileID: 6321670879679082838, guid: 7be2c1f476a2227429575ea0f8fda967, type: 3}
       propertyPath: m_LocalRotation.w

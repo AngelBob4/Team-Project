@@ -9,7 +9,7 @@ namespace Runner.NonPlayerCharacters
 
         protected override Vector3 CalculateOffset()
         {
-            return new Vector3(0, _jumpHeight, -Speed) * Speed * Time.deltaTime;
+            return new Vector3(0, _jumpHeight, -Speed) * Speed;
         }
     }
 }
