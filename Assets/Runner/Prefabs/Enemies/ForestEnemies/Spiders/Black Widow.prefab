@@ -8318,7 +8318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 7
   _value: -2
-  Speed: 3
+  _speed: 3
   _particleSystem: {fileID: 7720476442131865851}
 --- !u!1 &8756870369409294498
 GameObject:

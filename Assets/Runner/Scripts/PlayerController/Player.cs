@@ -1,9 +1,7 @@
 using MainGlobal;
-using Runner.NonPlayerCharacters;
 using Runner.Settings;
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Runner.PlayerController
 {

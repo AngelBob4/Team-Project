@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Runner.Platforms
 {
+    [RequireComponent(typeof(Collider))]
     public class Platform : MonoBehaviour
     {
         private readonly int ObstaclesAmount = 3;
@@ -13,9 +14,11 @@ namespace Runner.Platforms
         [SerializeField] private MeshCombiner _meshCombiner;
 
         private int _enemiesAmount;
+        private Collider _collider;
 
         private void OnEnable()
         {
+            _collider = GetComponent<Collider>();
             EnableEnemies();
             EnableObstacles();
             EnableCollectables();
@@ -78,18 +81,20 @@ namespace Runner.Platforms
             foreach (Transform prefab in pool)
             {
                 prefab.gameObject.SetActive(false);
+                //
+              //  prefab.transform.position = Vector3.zero;
             }
         }
 
         private Vector3 CalculatePrefabPosition(Transform transform)
         {
-            var collider = transform.GetComponent<Collider>();
+            //var collider = transform.GetComponent<Collider>();
 
             float spawnPosY = 0;
-            float minSpawnPosX = collider.bounds.min.x;
-            float maxSpawnPosX = collider.bounds.max.x;
-            float minSpawnPosZ = collider.bounds.min.z;
-            float maxSpawnPosZ = collider.bounds.max.z;
+            float minSpawnPosX = _collider.bounds.min.x;
+            float maxSpawnPosX = _collider.bounds.max.x;
+            float minSpawnPosZ = _collider.bounds.min.z;
+            float maxSpawnPosZ = _collider.bounds.max.z;
 
             return new Vector3(Random.Range(minSpawnPosX, maxSpawnPosX), spawnPosY, Random.Range(minSpawnPosZ, maxSpawnPosZ));
         }

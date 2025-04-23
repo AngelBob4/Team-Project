@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769749547036118450}
   - component: {fileID: 6190360833074348760}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6522480445163838556, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6216630744612151560, guid: 6d58392d0b7c5a44a82040de4cdf5f68, type: 3}
