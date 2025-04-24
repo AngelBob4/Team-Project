@@ -32,6 +32,8 @@ namespace Runner.PlayerController
                     case Enums.NPCTypes.LittleGhoul:
                         {
                             _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value);
+                            _player.PlayerGlobalData.ChangeHP(npc.Value);
+                            _player.PlayerGlobalData.ChangeCoins(npc.Value);
                         }
                         break;
 
