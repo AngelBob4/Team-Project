@@ -49,7 +49,7 @@ namespace Runner.Settings
         private void Awake()
         {
             InitLevel(_globalGame.Level);
-           // InitLevel(4);
+           // InitLevel(8);
             SetGrafficsSettings(_currentLevel.Color);
             SpawnAll();
             InitializeAll();

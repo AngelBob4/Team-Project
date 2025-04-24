@@ -14,5 +14,7 @@ namespace Runner.Enums
         SandSpider = 9,
         Demon = 10,
         Mushroom = 11,
+        SkinlessMan = 12,
+        Puddle = 13,
     }
 }

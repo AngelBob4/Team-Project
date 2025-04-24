@@ -9,7 +9,10 @@ namespace Runner.PlayerController
         [SerializeField] private Player _player;
 
         public event Action<int> PlayerIsPoisoned;
-        public event Action PlayerIsHealed;
+        public event Action PlayerIsHealedFromPosion;
+
+        public event Action<int> PlayerIsBurning;
+        public event Action PlayerIsHealedFromBurning;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -48,6 +51,13 @@ namespace Runner.PlayerController
                             PlayerIsPoisoned?.Invoke(npc.Value);
                         }
                         break;
+
+                    case Enums.NPCTypes.SkinlessMan:
+                        {
+                            _player.PlayerGlobalData.ChangeHP(npc.Value);
+                            PlayerIsBurning?.Invoke(npc.Value);
+                        }
+                        break;
                 }
             }
 
@@ -75,13 +85,20 @@ namespace Runner.PlayerController
                     case Enums.NPCTypes.Mushroom:
                         {
                             _player.PlayerGlobalData.ChangeHP(npc.Value);
-                            PlayerIsHealed?.Invoke();
+                            PlayerIsHealedFromPosion?.Invoke();
                         }
                         break;
 
                     case Enums.NPCTypes.Fireflies:
                         {
                             _player.PlayerLantern.ChangeLanternLightIntensity(npc.Value);
+                        }
+                        break;
+
+                    case Enums.NPCTypes.Puddle:
+                        {
+                            _player.PlayerGlobalData.ChangeHP(npc.Value);
+                            PlayerIsHealedFromBurning?.Invoke();
                         }
                         break;
                 }
