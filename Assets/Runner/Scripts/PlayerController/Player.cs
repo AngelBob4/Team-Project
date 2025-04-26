@@ -16,6 +16,8 @@ namespace Runner.PlayerController
         private LevelController _levelController;
         private PlayerGlobalData _playerGlobalData;
 
+        public PlayerAudioEffects PlayerAudioEffects => _playerAudioEffects;
+
         public PlayerCollisions PlayerCollisions => _playerCollisions;
 
         public PlayerLantern PlayerLantern => _playerLantern;
