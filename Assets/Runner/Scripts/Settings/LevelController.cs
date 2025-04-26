@@ -77,8 +77,8 @@ namespace Runner.Settings
         {
             _isRunnerStarted = true;
             _canvasUI.EnableDeathPanel(false);
-            _playerGlobalData.ChangeHP(70);
-            _playerGlobalData.ChangeLanternLight(9);
+            _playerGlobalData.ChangeHP(_playerGlobalData.StartHPMax);
+            _playerGlobalData.ChangeLanternLight(_playerGlobalData.StartLanternLightMax);
             _player.Resurrect();
             // создать дефолтные значения для здоровья и монеток в глобал дата
         }

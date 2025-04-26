@@ -26,6 +26,9 @@ namespace MainGlobal
         private Bar _lanternLight;
         private List<CardData> _cardDataList;
 
+        public int StartHPMax =>_startHPMax;
+        public int StartLanternLightMax => _startLanternLightMax;
+
         public Bar HPBar => _hPBar;
         // Bar Stamina => _stamina;
         public Bar Coins => _coins;
