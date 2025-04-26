@@ -106,9 +106,9 @@ namespace Runner.PlayerController
                 }
             }
         }
-        public void DisableCollider()
+        public void EnableCollider(bool isActive)
         {
-            _player.GetComponent<Collider>().enabled = false;
+            _player.GetComponent<Collider>().enabled = isActive;
         }
     }
 }

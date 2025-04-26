@@ -49,8 +49,14 @@ namespace Runner.PlayerController
 
         public void Die()
         {
-            _playerCollisions.DisableCollider();
+            _playerCollisions.EnableCollider(false);
             _playerAnimations.SetDeathAnimation();
+        }
+
+        public void Resurrect()
+        {
+            _playerCollisions.EnableCollider(true);
+            _playerAnimations.SetRunAnimation();
         }
 
         public void PlayAudio(int index)

@@ -7,12 +7,17 @@ namespace Runner.UI
     {
         [SerializeField] private Image _bloodImage;
         [SerializeField] private Button _restartButton;
+        [SerializeField] private Button _watchAddButton;
+        [SerializeField] private GameObject _advertisementPanel;
+        [SerializeField] private Button _whatchAdd;
+        [SerializeField] private Button _refuse;
+
+        [SerializeField] private CanvasUI _canvasUI;
 
         private void Update()
         {
             // переделать на инвоук репитин или корутину
             StartBleeding();
-            MakeButtonVisible();
         }
 
         private void StartBleeding()
@@ -24,20 +29,20 @@ namespace Runner.UI
             {
                 _bloodImage.transform.position += new Vector3(0, changeValue, 0) * Time.deltaTime;
             }
-
-            MakeButtonVisible();
         }
 
-        private void MakeButtonVisible()
+        public void OnRefuseButtonClick()
         {
-            int maxAColor = 255;
-            float changeValue = 0.1f;
+            _restartButton.gameObject.SetActive(true);
+            _advertisementPanel.SetActive(false);
+        }
 
-            if (_restartButton.image.color.a < maxAColor)
-            {
-                _restartButton.image.color = new Color(_restartButton.image.color.r, _restartButton.image.color.g, _restartButton.image.color.b,
-                Mathf.MoveTowards(_restartButton.image.color.a, 1f, changeValue * Time.deltaTime));
-            }
+        public void OnWatchAddButtonClick()
+        {
+            //посмотреть рекламу
+            _advertisementPanel.SetActive(true);
+            _canvasUI.LevelController.ResurrectPlayer();
+            // запустить процесс игры
         }
     }
 }

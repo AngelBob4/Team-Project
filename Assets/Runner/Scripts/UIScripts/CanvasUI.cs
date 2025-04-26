@@ -16,6 +16,8 @@ namespace Runner.UI
 
         private LevelController _levelController;
 
+        public LevelController LevelController =>_levelController;
+
         public void Initialize(LevelController levelController, SoundController soundController)
         {
             _levelController = levelController;
@@ -40,9 +42,9 @@ namespace Runner.UI
             }
         }
 
-        public void EnableDeathPanel()
+        public void EnableDeathPanel(bool isActive)
         {
-            _deathPanel.gameObject.SetActive(true);
+            _deathPanel.gameObject.SetActive(isActive);
         }
 
         public void StartGameProcess()

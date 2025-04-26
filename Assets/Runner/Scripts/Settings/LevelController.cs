@@ -69,8 +69,18 @@ namespace Runner.Settings
         public void GameOver()
         {
             _isRunnerStarted = false;
-            _canvasUI.EnableDeathPanel();
+            _canvasUI.EnableDeathPanel(true);
             _player.Die();
+        }
+
+        public void ResurrectPlayer()
+        {
+            _isRunnerStarted = true;
+            _canvasUI.EnableDeathPanel(false);
+            _playerGlobalData.ChangeHP(70);
+            _playerGlobalData.ChangeLanternLight(9);
+            _player.Resurrect();
+            // создать дефолтные значения для здоровья и монеток в глобал дата
         }
 
         public void FinishRunner()

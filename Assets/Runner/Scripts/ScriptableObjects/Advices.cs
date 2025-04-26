@@ -7,5 +7,9 @@ namespace Runner.ScriptableObjects
     public class Advices : ScriptableObject
     {
         public List<string> EducationAdvices = new List<string>();
+
+        public string WatchAddText;
+        public string AcceptButtonText;
+        public string RefuseButtonText;
     }
 }
