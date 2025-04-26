@@ -2,7 +2,6 @@ using MainGlobal;
 using Runner.PlatformsHandler;
 using Runner.PlayerController;
 using Runner.ScriptableObjects;
-using Runner.SoundSystem;
 using Runner.UI;
 using UnityEngine;
 
@@ -13,7 +12,6 @@ namespace Runner.Settings
         private CanvasUI _canvasUI;
         private Player _player;
         private PlatformsController _platformController;
-        private SoundController _soundController;
         private PlayerGlobalData _playerGlobalData;
         private GlobalGame _globalGame;
 
@@ -41,14 +39,12 @@ namespace Runner.Settings
             }
         }
 
-        public void Initialize(GlobalGame globalGame, PlayerGlobalData globalData, CanvasUI canvasUI, SoundController soundController, Level level,
-            Player player, PlatformsController platformsController)
+        public void Initialize(GlobalGame globalGame, PlayerGlobalData globalData, CanvasUI canvasUI, Level level, Player player, PlatformsController platformsController)
         {
             _globalGame = globalGame;
             _playerGlobalData = globalData;
             _level = level;
             _canvasUI = canvasUI;
-            _soundController = soundController;
             _platformController = platformsController;
             _player = player;
 
