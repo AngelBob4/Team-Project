@@ -1214,7 +1214,6 @@ GameObject:
   - component: {fileID: 3518698876709091692}
   - component: {fileID: 8268505094200539929}
   - component: {fileID: 5367116728236877186}
-  - component: {fileID: 6960626055195473000}
   - component: {fileID: 7109092194457064611}
   - component: {fileID: 1160175842364609939}
   m_Layer: 5
@@ -1308,19 +1307,6 @@ MonoBehaviour:
   _colorDefault: {r: 0, g: 0, b: 0, a: 0}
   _animationDamageCard: {fileID: 7109092194457064611}
   _animationMoveCard: {fileID: 1160175842364609939}
---- !u!114 &6960626055195473000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5610558401590587434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &7109092194457064611
 MonoBehaviour:
   m_ObjectHideFlags: 0

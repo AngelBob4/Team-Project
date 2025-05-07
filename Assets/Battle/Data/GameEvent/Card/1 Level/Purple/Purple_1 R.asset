@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb67e0d9c09a5b4da1eb588dd2cccb0, type: 3}
-  m_Name: RedCardList 2 Level
+  m_Script: {fileID: 11500000, guid: 2154fb77862309d4b89bb42915946ec6, type: 3}
+  m_Name: Purple_1 R
   m_EditorClassIdentifier: 
-  _list:
-  - {fileID: 11400000, guid: 2cbb5c31423b1a949955d90095e3668c, type: 2}
-  - {fileID: 11400000, guid: 2cbb5c31423b1a949955d90095e3668c, type: 2}
-  _lists: []
+  _name: Purple 1
+  _level: 1
+  _cardType: 3
+  _wound: 0
+  _shield: 0
+  _cards: 1
+  _combinations:
+    _serializedList:
+    - Key: 4
+      Value: 0
