@@ -6,7 +6,7 @@ public class MapCellView : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private Image _backGround;
-
+    
     private IPresenter _presenter;
 
     public event Action ButtonClicked;
@@ -16,6 +16,11 @@ public class MapCellView : MonoBehaviour
         gameObject.SetActive(false);
         _presenter = presenter;
         gameObject.SetActive(true);
+    }
+
+    public void InitImage(Sprite sprite)
+    {
+        _backGround.sprite = sprite;
     }
 
     private void OnEnable()

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cellsContainer: {fileID: 5878030127911442062}
   _roadsContainer: {fileID: 6898580565055856617}
+  _allImages: {fileID: 11400000, guid: 8232afb66174b2444baa409ee79fdaa4, type: 2}
 --- !u!1 &5878030127911442062
 GameObject:
   m_ObjectHideFlags: 0
