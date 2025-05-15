@@ -84,7 +84,7 @@ namespace Runner.Settings
 
         private void InitializeAll()
         {
-            _soundController.Initialize(_currentLevel.LocationType.AudioClip, _player, _canvasUI);
+            _soundController.Initialize(_currentLevel.LocationType.AudioClip, _player, _canvasUI,_globalGame);
             _player.Initialize(_levelController, _playerGlobalData);
             _cameraMovement.Initialize(_player);
             _platformsController.Initialize(_player, _levelController, _currentLevel);
