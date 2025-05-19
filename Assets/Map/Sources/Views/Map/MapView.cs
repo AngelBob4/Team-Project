@@ -37,6 +37,7 @@ public class MapView : MonoBehaviour
     {
         _sprites = new Dictionary<EventsType, Sprite>()
         {
+         {EventsType.Null, _allImages.Null},
          {EventsType.Shop, _allImages.Shop},
          {EventsType.Boss, _allImages.Boss},
          {EventsType.Battle, _allImages.Battle},

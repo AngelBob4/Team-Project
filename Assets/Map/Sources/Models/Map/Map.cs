@@ -3,21 +3,24 @@ using MainGlobal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
 public class Map
 {
+    private int testIndex = 1;
+
     private readonly int _amountOfCellTypes;
     private int _amountOfLevels = 9;
     private int _maxRoadsInlevel = 5;
     private Random _random = new Random();
-    
+
     private List<MapCell> _mapCells;
     private List<MapCell> _currentMapCells;
     private MapCell _currentCell;
     private GlobalGame _globalGame;
-    
+
     public int AmountOfLevels => _amountOfLevels;
     public int MaxRoadsInlevel => _maxRoadsInlevel;
     public bool IsEmpty => _mapCells.Count == 0;
@@ -60,9 +63,9 @@ public class Map
         {
             _mapCells[cellIndex].ActivateCell();
         }
-        
+
         _globalGame.SetEvent(_currentCell.Type);
-      //  _globalGame.SetLocationRunner(LocationTypes.Cemetery);
+        //  _globalGame.SetLocationRunner(LocationTypes.Cemetery);
         _globalGame.StartRunner();
     }
 
@@ -76,9 +79,9 @@ public class Map
         }
 
         MapGenerated?.Invoke(_mapCells);
-        
+
         foreach (int cellIndex in _currentCell.NextAvailableCellsIndexes)
-        {        
+        {
             _mapCells[cellIndex].ActivateCell();
         }
 
@@ -100,10 +103,25 @@ public class Map
         GenerateCells();
         GenerateRoads();
         MapGenerated?.Invoke(_mapCells);
-        
+
         _mapCells[0].ActivateCell();
     }
-    
+
+    public void LoadGame()
+    {
+        //передавать ту ячейку, на которой остановились
+        _currentCell = null;
+        _amountOfLevels = 9;
+        _maxRoadsInlevel = 5;
+        _mapCells.Clear();
+        // передавать сохраненную карту
+        GenerateCells();
+        GenerateRoads();
+        MapGenerated?.Invoke(_mapCells);
+        // активировать нужно ту ячейку, на которой остановились
+        _mapCells[0].ActivateCell();
+    }
+
     public void Generate()
     {
         GenerateCells();
@@ -117,13 +135,17 @@ public class Map
     private void GenerateCells()
     {
         int defaultPercentsToMakeCell = 50;
-        int extraPercentsToMakeCell = 20; 
+        int extraPercentsToMakeCell = 20;
         int centralCell = 2;
 
         int attemptsToMakeCell;
         int currentPercentsToMakeCell;
 
-        _mapCells.Add(new MapCell(EventsType.Battle, 0, centralCell, _mapCells.Count));
+        //_mapCells.Add(new MapCell(EventsType.Battle, 0, centralCell, _mapCells.Count));
+        // ну закостылила хоть как-то
+        MapCell newCell = new(EventsType.Null, 0, centralCell, _mapCells.Count);
+        _mapCells.Add(newCell);
+        ButtonClicked(0);
 
         for (int x = 1; x < _amountOfLevels - 1; x++)
         {
@@ -135,14 +157,21 @@ public class Map
 
                 EventsType newType;
 
-                if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))             
+                // происходит инициализация по рядам но не совсем
+
+                if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))
                     newType = (EventsType)_random.Next(1, _amountOfCellTypes - 1);
                 else
                     newType = (EventsType)_random.Next(0, _amountOfCellTypes - 1);
 
                 if (newType == EventsType.Null)
+                {
+                    Debug.Log("Moveto");
                     continue;
-                Debug.Log(newType);
+                }
+                // убрать индекс потом
+                Debug.Log(newType + " " + testIndex);
+                testIndex++;
                 _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
                 attemptsToMakeCell = 0;
             }
@@ -157,8 +186,8 @@ public class Map
 
         foreach (MapCell cell in _mapCells)
         {
-            if (cell.Index == _mapCells[0].Index || 
-                cell.Position.X == _amountOfLevels - 2 || 
+            if (cell.Index == _mapCells[0].Index ||
+                cell.Position.X == _amountOfLevels - 2 ||
                 cell.Index == _mapCells[_mapCells.Count - 1].Index)
             {
                 nextLevelCells = _mapCells.Where(newCell => newCell.Position.X == cell.Position.X + 1).ToList();
@@ -262,7 +291,7 @@ public class Map
         {
             if (unavailableCell.IsAvailable || _mapCells[0] == unavailableCell)
                 continue;
-            
+
             List<MapCell> previousLevelCells = _mapCells.Where(newCell => newCell.Position.X == unavailableCell.Position.X - 1).ToList();
             counterOfLoops = 0;
             leftIndex = unavailableCell.Position.Y;
