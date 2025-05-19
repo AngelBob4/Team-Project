@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: YellowCardList 3 Level
   m_EditorClassIdentifier: 
   _list:
-  - {fileID: 11400000, guid: de7ae24bf8ba14742aa74560eef2d576, type: 2}
-  - {fileID: 11400000, guid: 788783f6ae7cf9c438fe3b1653b9beb6, type: 2}
-  - {fileID: 11400000, guid: 21b9e8895442f374eb6b2bee2a6d69ef, type: 2}
-  - {fileID: 11400000, guid: f30d3264bef06004193124dc4202956f, type: 2}
+  - {fileID: 11400000, guid: 2f49c0a052175d64b8903d80cfb427f3, type: 2}
+  - {fileID: 11400000, guid: 2f49c0a052175d64b8903d80cfb427f3, type: 2}
   _lists: []

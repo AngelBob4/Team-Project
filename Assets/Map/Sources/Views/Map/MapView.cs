@@ -71,8 +71,6 @@ public class MapView : MonoBehaviour
                 for (int i = 0; i < nextAvailableCells.Count; i++)
                 {
                     Debug.Log(_mapCellViews[nextAvailableCells[i]]);
-
-                    _mapFactory.CreateRoad(_mapCellViews[x],
                         _mapCellViews[nextAvailableCells[i]],
                         _roadsContainer.transform);
                 }
