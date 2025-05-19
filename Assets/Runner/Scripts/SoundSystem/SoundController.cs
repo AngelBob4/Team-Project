@@ -1,3 +1,4 @@
+using MainGlobal;
 using Runner.PlayerController;
 using Runner.UI;
 using UnityEngine;
@@ -9,35 +10,26 @@ namespace Runner.SoundSystem
         [SerializeField] private AudioSource _backgroundMusicAudioSource;
 
         private AudioSource _soundEffectsSource;
+        private GlobalGame _globalGame;
 
-        //установить дефолтное значение и передавать из главного скрипта сохраненные значения, также после изменения сохранять значение
-        public void Initialize(AudioClip clip, Player player, CanvasUI canvasUI)
+        public void Initialize(AudioClip clip, Player player, CanvasUI canvasUI, GlobalGame globalGame)
         {
+            _globalGame = globalGame;
             _soundEffectsSource = player.PlayerAudioEffects.AudioSource;
+            InitVolume(_soundEffectsSource, _globalGame.SoundEffectsVolume);
+            InitVolume(_backgroundMusicAudioSource, _globalGame.BackgroundMusicVolume);
             InitAudioClip(clip);
+        }
+
+        private void InitVolume(AudioSource source, float volume)
+        {
+            source.volume = volume;
         }
 
         private void InitAudioClip(AudioClip clip)
         {
             _backgroundMusicAudioSource.clip = clip;
             _backgroundMusicAudioSource.Play();
-        }
-
-        public void ChangeBackgroundMusicVolume(float value)
-        {
-            ChangeVolume(_backgroundMusicAudioSource, value);
-            // _saver.Save();
-        }
-
-        public void ChangeSoundEffectsMusicVolume(float value)
-        {
-            ChangeVolume(_soundEffectsSource, value);
-           // _saver.Save();
-        }
-
-        private void ChangeVolume(AudioSource source, float value)
-        {
-            source.volume = value;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using Events.Main.Events;
 using MainGlobal;
 using Runner.Enums;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -143,7 +144,7 @@ public class Map
 
                 if (newType == EventsType.Null)
                     continue;
-
+                Debug.Log(newType);
                 _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
                 attemptsToMakeCell = 0;
             }

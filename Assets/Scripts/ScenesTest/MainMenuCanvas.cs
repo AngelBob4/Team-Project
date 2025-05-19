@@ -1,12 +1,15 @@
 using MainGlobal;
 using Reflex.Attributes;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace ScenesTest
 {
-    public class StartGemeTest : MonoBehaviour
+    public class MainMenuCanvas : MonoBehaviour
     {
         private GlobalGame _globalGame;
+
+        public GlobalGame GlobalGame =>_globalGame;
 
         [Inject]
         private void Inject(GlobalGame globalGame)
