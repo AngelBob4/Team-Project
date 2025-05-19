@@ -3,7 +3,7 @@ using MainGlobal;
 using Reflex.Attributes;
 using Runner.Enums;
 
-namespace ScenesTest
+namespace Menu
 {
     public class TestEventMap : GameEvent
     {

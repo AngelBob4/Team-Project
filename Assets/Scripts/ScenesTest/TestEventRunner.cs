@@ -2,7 +2,7 @@ using Events.Main.Events;
 using MainGlobal;
 using Reflex.Attributes;
 
-namespace ScenesTest
+namespace Menu
 {
     public class TestEventRunner : GameEvent
     {

@@ -1,7 +1,11 @@
 using Events.Cards;
 using Events.Main.CharactersBattle;
+using Menu;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine.SocialPlatforms.Impl;
+using YG;
 
 namespace MainGlobal
 {
@@ -26,7 +30,7 @@ namespace MainGlobal
         private Bar _lanternLight;
         private List<CardData> _cardDataList;
 
-        public int StartHPMax =>_startHPMax;
+        public int StartHPMax => _startHPMax;
         public int StartLanternLightMax => _startLanternLightMax;
 
         public Bar HPBar => _hPBar;
@@ -50,7 +54,7 @@ namespace MainGlobal
 
         public void InitNewPlayer()
         {
-            if(_hPBar != null)
+            if (_hPBar != null)
             {
                 _hPBar.UpdatedBar -= CheckAlive;
             }
@@ -111,6 +115,8 @@ namespace MainGlobal
         public void ChangeCoins(int coins)
         {
             _coins.ChangeValue(coins);
+            YandexGame.GetLeaderboard(MainMenuCanvas.LeaderboardName, 10, 3, 3, "small");
+            YandexGame.NewLeaderboardScores(MainMenuCanvas.LeaderboardName, coins);
         }
 
         public bool TrySpendCoins(int coins)
