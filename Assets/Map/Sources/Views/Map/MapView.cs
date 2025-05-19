@@ -70,9 +70,9 @@ public class MapView : MonoBehaviour
             {
                 for (int i = 0; i < nextAvailableCells.Count; i++)
                 {
-                    Debug.Log(_mapCellViews[nextAvailableCells[i]]);
-                        _mapCellViews[nextAvailableCells[i]],
-                        _roadsContainer.transform);
+                    //Debug.Log(_mapCellViews[nextAvailableCells[i]]);
+                    //    _mapCellViews[nextAvailableCells[i]].
+                    //    _roadsContainer.transform);
                 }
             }
         }
