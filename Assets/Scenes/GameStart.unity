@@ -2209,6 +2209,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 31694111}
     m_Modifications:
+    - target: {fileID: 733867672631739449, guid: daf70a28cce371246baa48f3fd63d9c4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000091552734
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201580501559974204, guid: daf70a28cce371246baa48f3fd63d9c4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 6201976491381312147, guid: daf70a28cce371246baa48f3fd63d9c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2292,6 +2300,10 @@ PrefabInstance:
     - target: {fileID: 7953218969191948726, guid: daf70a28cce371246baa48f3fd63d9c4, type: 3}
       propertyPath: m_Name
       value: LeaderboardElement
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148877129710111598, guid: daf70a28cce371246baa48f3fd63d9c4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00033569336
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3492,7 +3504,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1991015591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1411553243}
+        m_TargetAssemblyTypeName: ScenesTest.MainMenuCanvas, Assembly-CSharp
+        m_MethodName: OnLeaderboardButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1991015591
 MonoBehaviour:
   m_ObjectHideFlags: 0

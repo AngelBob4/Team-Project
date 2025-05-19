@@ -1,7 +1,5 @@
 using Events.Main.Events;
 using Events.Main.Events.Dialog;
-using Runner.Enums;
-using UnityEngine;
 
 namespace MainGlobal
 {

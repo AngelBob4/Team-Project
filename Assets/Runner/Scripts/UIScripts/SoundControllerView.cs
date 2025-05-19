@@ -8,12 +8,9 @@ namespace ScenesTest
     {
         [SerializeField] private Slider _backgroundMusicSlider;
         [SerializeField] private Slider _soundEffectsSlider;
-
         [SerializeField] private Button _soundEffectsButton;
-
         [SerializeField] private AudioSource _backgroundMusicSource;
         [SerializeField] private AudioSource _soundEffectsSource;
-
         [SerializeField] private MainMenuCanvas _mainCanvas;
 
         private Coroutine _coroutine;

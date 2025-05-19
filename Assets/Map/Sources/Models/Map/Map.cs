@@ -1,10 +1,8 @@
+using Events.Main.Events;
+using MainGlobal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Events.Main.Events;
-using MainGlobal;
-using Runner.Enums;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
