@@ -1,11 +1,13 @@
 using Events.Cards;
 using Events.Main.CharactersBattle;
+using MapUI;
 using Menu;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine.SocialPlatforms.Impl;
 using YG;
+using UnityEngine;
 
 namespace MainGlobal
 {
@@ -115,8 +117,10 @@ namespace MainGlobal
         public void ChangeCoins(int coins)
         {
             _coins.ChangeValue(coins);
-            YandexGame.GetLeaderboard(MainMenuCanvas.LeaderboardName, 10, 3, 3, "small");
-            YandexGame.NewLeaderboardScores(MainMenuCanvas.LeaderboardName, coins);
+
+            YandexGame.GetLeaderboard(MapCanvasUI.LeaderboardName, 10, 3, 3, "small");
+            YandexGame.NewLeaderboardScores(MapCanvasUI.LeaderboardName, _coins.CurrentValue);
+            UnityEngine.Debug.Log(_coins.CurrentValue);
         }
 
         public bool TrySpendCoins(int coins)
