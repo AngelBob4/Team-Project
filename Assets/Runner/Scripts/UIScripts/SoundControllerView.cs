@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +12,11 @@ namespace Menu
         [SerializeField] private AudioSource _soundEffectsSource;
         [SerializeField] private MainMenuCanvas _mainCanvas;
 
-        private Coroutine _coroutine;
-
         private void Awake()
         {
             _backgroundMusicSlider.onValueChanged.AddListener(ChangeBackgroundMusicVolume);
             _soundEffectsSlider.onValueChanged.AddListener(ChangeSoundEffectsMusicVolume);
-            _soundEffectsButton.onClick.AddListener(PlaySoundEffect);
+            _soundEffectsButton.onClick.AddListener(PlayTestEffect);
             _backgroundMusicSource.Play();
         }
 
@@ -33,30 +30,18 @@ namespace Menu
         {
             ChangeVolume(_soundEffectsSource, value);
             _mainCanvas.GlobalGame.SetEffectsVolume(value);
-        }
-
-        private void SetButtonActive()
-        {
-            _coroutine = StartCoroutine(InteractableRoutine());
-        }
-
-        private IEnumerator InteractableRoutine()
-        {
-            float pause = 5.0f;
-            _soundEffectsButton.interactable = false;
-            yield return new WaitForSeconds(pause);
-            _soundEffectsButton.interactable = true;
-        }
-
-        private void PlaySoundEffect()
-        {
-            _soundEffectsSource.PlayOneShot(_soundEffectsSource.clip);
-            SetButtonActive();
+            PlayTestEffect();
         }
 
         private void ChangeVolume(AudioSource source, float value)
         {
             source.volume = value;
+        }
+
+        private void PlayTestEffect()
+        {
+            if (!_soundEffectsSource.isPlaying)
+                _soundEffectsSource.PlayOneShot(_soundEffectsSource.clip);
         }
     }
 }

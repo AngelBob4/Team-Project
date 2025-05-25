@@ -11,8 +11,18 @@ namespace Runner.UI
         [SerializeField] private GameObject _advertisementPanel;
         [SerializeField] private Button _whatchAdd;
         [SerializeField] private Button _refuse;
-
         [SerializeField] private CanvasUI _canvasUI;
+
+        private bool _hasWatchedAd = false;
+
+        private void Awake()
+        {
+            if (!_hasWatchedAd)
+            {
+                _advertisementPanel.gameObject.SetActive(true);
+                _hasWatchedAd = true;
+            }
+        }
 
         private void Update()
         {
@@ -40,7 +50,7 @@ namespace Runner.UI
         public void OnWatchAddButtonClick()
         {
             //посмотреть рекламу
-            _advertisementPanel.SetActive(true);
+            _advertisementPanel.SetActive(false);
             _canvasUI.LevelController.ResurrectPlayer();
             // запустить процесс игры
         }

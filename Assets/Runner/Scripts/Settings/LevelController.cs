@@ -80,7 +80,6 @@ namespace Runner.Settings
             _playerGlobalData.ChangeHP(_playerGlobalData.StartHPMax);
             _playerGlobalData.ChangeLanternLight(_playerGlobalData.StartLanternLightMax);
             _player.Resurrect();
-            // создать дефолтные значения для здоровья и монеток в глобал дата
         }
 
         public void FinishRunner()
