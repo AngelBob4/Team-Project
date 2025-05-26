@@ -5,6 +5,7 @@ using MainGlobal;
 using MapSection.Presenters;
 using MapSection.Views;
 using MapSection.Models;
+using YG.Example;
 
 namespace MapSection
 {
@@ -15,7 +16,9 @@ namespace MapSection
         [SerializeField] private Image _roadBetweenCells;
         [SerializeField] private RectTransform _mapContainer;
         [SerializeField] private MapView _mapView;
+
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private SaveData _saveData;
 
         private Map _map;
         private MapFactory _mapFactory;
@@ -41,6 +44,7 @@ namespace MapSection
         private void Compose()
         {
             InitVolume();
+            Save();
 
             _mapFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map,
                 _mapView.transform.localScale.x);
@@ -54,6 +58,11 @@ namespace MapSection
         private void InitVolume()
         {
             _audioSource.volume = _globalGame.BackgroundMusicVolume;
+        }
+
+        private void Save()
+        {
+            _saveData.Save();
         }
     }
 }

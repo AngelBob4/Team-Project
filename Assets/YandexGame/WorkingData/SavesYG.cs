@@ -25,6 +25,7 @@ namespace YG
         public int LanternLight;
         public int HP;
         public int MaxHP;
+        public int Level = 1;
         public List<CardData> _cardDataList;
         public Map Map;
 

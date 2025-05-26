@@ -74,6 +74,32 @@ namespace MainGlobal
             DrawText();
         }
 
+        // по хорошему эти 2 метода объединить
+
+        public void InitOldPlayer(int hp, int coins, int lanternLight)
+        {
+            if (_hPBar != null)
+            {
+                _hPBar.UpdatedBar -= CheckAlive;
+            }
+
+            _hPBar = new Bar(hp);
+
+            _hPBar.UpdatedBar += CheckAlive;
+
+            //_stamina = new Bar(StartStaminaMaxValue);
+
+            _coins = new Bar();
+            _coins.SetNewValues(coins);
+
+            _lanternLight = new Bar(lanternLight);
+
+            _cardDataList = _startCardDataList.GetList();
+
+            Inited?.Invoke();
+            DrawText();
+        }
+
         public void ChangeHP(int value)
         {
             _hPBar.ChangeValue(value);

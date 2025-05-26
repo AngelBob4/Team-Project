@@ -168,11 +168,11 @@ namespace MapSection.Models
 
                     if (newType == EventsType.Null)
                     {
-                        Debug.Log("Moveto");
+                       // Debug.Log("Moveto");
                         continue;
                     }
                     // убрать индекс потом
-                    Debug.Log(newType + " " + testIndex);
+                   // Debug.Log(newType + " " + testIndex);
                     testIndex++;
                     _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
                     attemptsToMakeCell = 0;

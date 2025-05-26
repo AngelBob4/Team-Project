@@ -1,6 +1,7 @@
 using Events.Main.Events;
 using Events.Main.Events.Dialog;
 using MapSection.Models;
+using YG;
 
 namespace MainGlobal
 {
@@ -61,6 +62,30 @@ namespace MainGlobal
 
             // SetLocationRunner(LocationTypes.Cemetery);
 
+            StartMap();
+        }
+
+        public void LoadGame()
+        {
+            // если правильно понимаю, то сохранять нужно на уровне карты
+
+            // твоя какая то логика 
+            // загрузка сохранений
+
+            _dialogEventDataList.InitNewGame();
+            // какой-то метод загрузки старой игры
+
+            _level = YandexGame.savesData.Level;
+            // загрузка нужного уровня
+
+            _playerGlobalData.InitOldPlayer(YandexGame.savesData.HP, YandexGame.savesData.Coins, YandexGame.savesData.LanternLight);
+           // загрузка статов игрока
+            
+            _eventType = EventsType.Null;
+           //загрузка 
+
+
+            _map.LoadGame();
             StartMap();
         }
 

@@ -23,10 +23,11 @@ namespace YG.Example
             //YandexGame.savesData.money = int.Parse(integerText.text);
             //YandexGame.savesData.newPlayerName = stringifyText.text.ToString();
 
-           // for (int i = 0; i < booleanArrayToggle.Length; i++)
+            // for (int i = 0; i < booleanArrayToggle.Length; i++)
             //    YandexGame.savesData.openLevels[i] = booleanArrayToggle[i].isOn;
-
+            YandexGame.savesData.Level = 4;
             YandexGame.SaveProgress();
+            print(YandexGame.savesData.Level);
         }
 
         public void Load() => YandexGame.LoadProgress();

@@ -28,6 +28,11 @@ namespace Menu
             _globalGame.NewGame();
         }
 
+        public void LoadGame()
+        {
+            _globalGame.LoadGame();
+        }
+
         //public void OnLeaderboardButtonPressed()
         //{
         //    if (YandexGame.auth == false)

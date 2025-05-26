@@ -1,0 +1,12 @@
+{
+    "idSave": 20,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "Coins": 80,
+    "LanternLight": 6,
+    "HP": 60,
+    "MaxHP": 0,
+    "Level": 8,
+    "_cardDataList": []
+}

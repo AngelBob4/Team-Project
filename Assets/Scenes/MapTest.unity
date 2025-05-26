@@ -1668,6 +1668,7 @@ GameObject:
   - component: {fileID: 2087596345}
   - component: {fileID: 2087596344}
   - component: {fileID: 2087596346}
+  - component: {fileID: 2087596347}
   m_Layer: 0
   m_Name: CompositeRoot
   m_TagString: Untagged
@@ -1692,6 +1693,7 @@ MonoBehaviour:
   _mapContainer: {fileID: 1455301449}
   _mapView: {fileID: 1540638498}
   _audioSource: {fileID: 2087596346}
+  _saveData: {fileID: 2087596347}
 --- !u!4 &2087596345
 Transform:
   m_ObjectHideFlags: 0
@@ -1803,6 +1805,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2087596347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087596343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9e20a9a0bbb73448086797849bbff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
