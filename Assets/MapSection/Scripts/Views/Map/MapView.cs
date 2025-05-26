@@ -14,6 +14,8 @@ namespace MapSection.Views
         [SerializeField] private GameObject _roadsContainer;
         [SerializeField] private ImagesSO _allImages;
 
+        [SerializeField] private Transform _background;
+        
         private Dictionary<EventsType, Sprite> _sprites;
 
         private MapFactory _mapFactory;
@@ -79,6 +81,19 @@ namespace MapSection.Views
                         _mapFactory.CreateRoad(_mapCellViews[x], _mapCellViews[nextAvailableCells[i]], _roadsContainer.transform);
                     }
                 }
+            }
+
+           // RotateMap();
+        }
+
+        //
+        public void RotateMap()
+        {
+            _background.Rotate(0, 0, -90);
+
+            foreach (Transform cell in _cellsContainer.transform)
+            {
+                cell.Rotate(0, 0, 90);
             }
         }
     }

@@ -121,7 +121,7 @@ namespace MapSection.Models
             GenerateRoads();
             MapGenerated?.Invoke(_mapCells);
             // активировать нужно ту €чейку, на которой остановились
-            _mapCells[0].ActivateCell();
+            _mapCells[3].ActivateCell();
         }
 
         public void Generate()
