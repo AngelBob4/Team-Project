@@ -1,5 +1,6 @@
 using Events.Main.Events;
 using Events.Main.Events.Dialog;
+using MapSection.Models;
 
 namespace MainGlobal
 {

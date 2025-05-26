@@ -1,13 +1,9 @@
 using Events.Cards;
 using Events.Main.CharactersBattle;
-using MapUI;
-using Menu;
+using MapSection.MapUI;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine.SocialPlatforms.Impl;
 using YG;
-using UnityEngine;
 
 namespace MainGlobal
 {

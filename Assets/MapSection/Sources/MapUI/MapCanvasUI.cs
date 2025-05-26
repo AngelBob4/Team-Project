@@ -2,7 +2,7 @@ using Menu;
 using UnityEngine;
 using YG;
 
-namespace MapUI
+namespace MapSection.MapUI
 {
     public class MapCanvasUI : MonoBehaviour
     {
@@ -31,6 +31,10 @@ namespace MapUI
             gameObject.SetActive(false);
         }
 
+        public void OnAuthButtonPressed()
+        {
+            YandexGame.AuthDialog();
+        }
         //public void SetScore(int score)
         //{
         //    YandexGame.GetLeaderboard(LeaderboardName, 10, 3, 3, "small");

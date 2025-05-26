@@ -1,5 +1,6 @@
 ﻿
 using Events.Cards;
+using MapSection.Models;
 using System.Collections.Generic;
 
 namespace YG
@@ -25,6 +26,7 @@ namespace YG
         public int HP;
         public int MaxHP;
         public List<CardData> _cardDataList;
+        public Map Map;
 
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
