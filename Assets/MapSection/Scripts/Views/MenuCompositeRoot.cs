@@ -6,6 +6,7 @@ using MapSection.Presenters;
 using MapSection.Views;
 using MapSection.Models;
 using YG.Example;
+using YG;
 
 namespace MapSection
 {
@@ -38,13 +39,15 @@ namespace MapSection
 
         private void Awake()
         {
-            Compose();
+             Compose();
+          //  _map.Init(this);
         }
 
-        private void Compose()
+        public void Compose()
         {
-            InitVolume();
-            Save();
+            print("—ќЅ–јЋ»  ј–“” - количество селлов " + _map.MapCells.Count+ " актив €чейка " + _map.CurrentCell.Type + " ее индекс  " + _map.CurrentCell.Index);
+
+          
 
             _mapFactory = new MapFactory(_mapContainer, _filledCell, _roadBetweenCells, _map,
                 _mapView.transform.localScale.x);
@@ -53,6 +56,9 @@ namespace MapSection
 
             _mapView.Init(mapPresenter, _mapFactory);
             _map.ActivateMap();
+
+            InitVolume();
+            Save();
         }
 
         private void InitVolume()

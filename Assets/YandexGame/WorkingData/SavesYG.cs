@@ -1,7 +1,7 @@
 ﻿
+using System.Collections.Generic;
 using Events.Cards;
 using MapSection.Models;
-using System.Collections.Generic;
 
 namespace YG
 {
@@ -26,8 +26,12 @@ namespace YG
         public int HP;
         public int MaxHP;
         public int Level = 1;
-        public List<CardData> _cardDataList;
-        public Map Map;
+
+        public MapCell CurrentCell = null;
+        public int CurrentCellIndex = 0;
+        public List<CellStructure> StructureCells = new();
+
+        public List<CardData> CardDataList;
 
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны

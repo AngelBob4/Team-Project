@@ -1,12 +1,13 @@
 {
-    "idSave": 20,
+    "idSave": 130,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "Coins": 80,
-    "LanternLight": 6,
-    "HP": 60,
+    "Coins": 100,
+    "LanternLight": 9,
+    "HP": 70,
     "MaxHP": 0,
-    "Level": 8,
-    "_cardDataList": []
+    "Level": 1,
+    "CurrentCellIndex": 0,
+    "CardDataList": []
 }

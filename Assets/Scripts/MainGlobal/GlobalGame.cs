@@ -72,20 +72,21 @@ namespace MainGlobal
             // твоя какая то логика 
             // загрузка сохранений
 
-            _dialogEventDataList.InitNewGame();
             // какой-то метод загрузки старой игры
 
+            _dialogEventDataList.InitNewGame();
             _level = YandexGame.savesData.Level;
+            _playerGlobalData.InitOldPlayer(YandexGame.savesData.HP, YandexGame.savesData.Coins, YandexGame.savesData.LanternLight);
+            _eventType = EventsType.Null;
             // загрузка нужного уровня
 
-            _playerGlobalData.InitOldPlayer(YandexGame.savesData.HP, YandexGame.savesData.Coins, YandexGame.savesData.LanternLight);
            // загрузка статов игрока
             
-            _eventType = EventsType.Null;
            //загрузка 
 
 
-            _map.LoadGame();
+           // _map.LoadGame();
+            // просто запускает сцену
             StartMap();
         }
 

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using YG;
 using Random = System.Random;
 
 namespace MapSection.Models
@@ -27,6 +28,10 @@ namespace MapSection.Models
         public int MaxRoadsInlevel => _maxRoadsInlevel;
         public bool IsEmpty => _mapCells.Count == 0;
 
+        public MapCell CurrentCell => _currentCell;
+
+        public List<MapCell> MapCells => _mapCells;
+
         public event Action<List<MapCell>> MapGenerated;
 
         public void Initialize(GlobalGame globalGame)
@@ -38,6 +43,8 @@ namespace MapSection.Models
         {
             _amountOfCellTypes = Enum.GetNames(typeof(EventsType)).Length;
             _mapCells = new List<MapCell>();
+
+            Debug.Log("—ќ«ƒјЋ»  ј–“” " + _mapCells.Count);
         }
 
         public void ButtonClicked(int index)
@@ -98,41 +105,36 @@ namespace MapSection.Models
 
         public void RestartGame()
         {
+            Debug.Log("fjjfj " + _mapCells.Count);
             _currentCell = null;
-            _amountOfLevels = 9;
-            _maxRoadsInlevel = 5;
             _mapCells.Clear();
             GenerateCells();
             GenerateRoads();
             MapGenerated?.Invoke(_mapCells);
 
             _mapCells[0].ActivateCell();
+
+            //_menuCompositeRoot.Compose();
+            Debug.Log("»Ќ»÷»јЋ»«»–ќ¬јЋ» ¬—≈ ћЁѕ —≈ЋЋџ");
+            Debug.Log("fjjfj " + _mapCells.Count);
         }
 
         public void LoadGame()
         {
-            //передавать ту €чейку, на которой остановились
-            _currentCell = null;
-            _amountOfLevels = 9;
-            _maxRoadsInlevel = 5;
-            _mapCells.Clear();
-            // передавать сохраненную карту
-            GenerateCells();
-            GenerateRoads();
-            MapGenerated?.Invoke(_mapCells);
-            // активировать нужно ту €чейку, на которой остановились
-            _mapCells[3].ActivateCell();
+           
         }
 
-        public void Generate()
-        {
-            GenerateCells();
-            GenerateRoads();
+        //public void Generate()
+        //{
+        //    GenerateCells();
+        //    GenerateRoads();
+        //    // этот метод ниоткуда не вызываетс€
+        //    Debug.Log("где то там сгенерировали, вопрос где");
 
-            MapGenerated?.Invoke(_mapCells);
+        //    MapGenerated?.Invoke(_mapCells);
 
-            _mapCells[0].ActivateCell();
-        }
+        //    _mapCells[0].ActivateCell();
+        //}
 
         private void GenerateCells()
         {
@@ -168,11 +170,11 @@ namespace MapSection.Models
 
                     if (newType == EventsType.Null)
                     {
-                       // Debug.Log("Moveto");
+                        // Debug.Log("Moveto");
                         continue;
                     }
                     // убрать индекс потом
-                   // Debug.Log(newType + " " + testIndex);
+                    // Debug.Log(newType + " " + testIndex);
                     testIndex++;
                     _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
                     attemptsToMakeCell = 0;
