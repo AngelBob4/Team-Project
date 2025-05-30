@@ -1,59 +1,59 @@
 {
-    "idSave": 18,
+    "idSave": 31,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "IsSave": true,
-    "Coins": 251,
+    "Coins": 254,
     "LanternLight": 9,
     "HP": 70,
     "MaxHP": 70,
     "Level": 3,
     "CardDataList": [
         {
-            "instanceID": 25398
+            "instanceID": 25402
         },
         {
-            "instanceID": 25194
+            "instanceID": 25198
         },
         {
-            "instanceID": 25298
+            "instanceID": 25302
         },
         {
-            "instanceID": 25424
+            "instanceID": 25428
         },
         {
-            "instanceID": 25504
+            "instanceID": 25508
         },
         {
-            "instanceID": 25440
+            "instanceID": 25444
         },
         {
-            "instanceID": 25034
+            "instanceID": 25038
         },
         {
-            "instanceID": 25168
+            "instanceID": 25172
         },
         {
-            "instanceID": 25130
+            "instanceID": 25134
         },
         {
-            "instanceID": 25360
+            "instanceID": 25364
         },
         {
-            "instanceID": 25360
+            "instanceID": 25364
         },
         {
-            "instanceID": 25372
+            "instanceID": 25376
         },
         {
-            "instanceID": 25218
+            "instanceID": 25222
         },
         {
-            "instanceID": 25450
+            "instanceID": 25302
         },
         {
-            "instanceID": 25052
+            "instanceID": 25366
         }
     ],
     "MapCellsData": [
