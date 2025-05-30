@@ -21,12 +21,14 @@ namespace YG
         //public bool[] openLevels = new bool[3];
 
         // Ваши сохранения
+        public bool IsSave;
         public int Coins;
         public int LanternLight;
         public int HP;
         public int MaxHP;
         public int Level = 1;
-        public List<CardData> _cardDataList;
+        public List<CardData> CardDataList;
+        public List<MapCellData> MapCellsData;
         public Map Map;
 
 
@@ -37,7 +39,7 @@ namespace YG
         public SavesYG()
         {
             // Допустим, задать значения по умолчанию для отдельных элементов массива
-
+            IsSave = false;
             //openLevels[1] = true;
         }
     }

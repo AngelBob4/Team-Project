@@ -1,6 +1,7 @@
 using Events.Main.Events;
 using Events.Main.Events.Dialog;
 using MapSection.Models;
+using Runner.ScriptableObjects;
 using YG;
 
 namespace MainGlobal
@@ -51,16 +52,28 @@ namespace MainGlobal
             _backgroundMusicVolume = backgroundMusic;
         }
 
-        public void NewGame()
+        public void NewGame(bool load = false)
         {
             _dialogEventDataList.InitNewGame();
             _level = _startLevel;
             _playerGlobalData.InitNewPlayer();
-            _map.RestartGame();
 
-            _eventType = EventsType.Null;
+
+            if(load == true)
+            {
+                _map.LoadGame();
+                _level = YandexGame.savesData.Level;
+                _playerGlobalData.LoadPlayerStats();
+            }
+            else
+            {
+                _map.RestartGame();
+            }
+            //_map.RestartGame();
 
             // SetLocationRunner(LocationTypes.Cemetery);
+
+            _eventType = EventsType.Null;
 
             StartMap();
         }
@@ -75,18 +88,18 @@ namespace MainGlobal
             _dialogEventDataList.InitNewGame();
             // какой-то метод загрузки старой игры
 
-            _level = YandexGame.savesData.Level;
+            //_level = YandexGame.savesData.Level;
             // загрузка нужного уровня
 
-            _playerGlobalData.InitOldPlayer(YandexGame.savesData.HP, YandexGame.savesData.Coins, YandexGame.savesData.LanternLight);
+           // _playerGlobalData.InitOldPlayer(YandexGame.savesData.HP, YandexGame.savesData.Coins, YandexGame.savesData.LanternLight);
            // загрузка статов игрока
             
             _eventType = EventsType.Null;
            //загрузка 
 
 
-            _map.LoadGame();
-            StartMap();
+            //_map.LoadGame();
+            //StartMap();
         }
 
         public void SetEvent(EventsType eventType)

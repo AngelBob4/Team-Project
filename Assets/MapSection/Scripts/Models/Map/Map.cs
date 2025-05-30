@@ -5,18 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = System.Random;
+using YG;
 
 namespace MapSection.Models
 {
     public class Map
     {
-        private int testIndex = 1;
+        public event Action<List<MapCell>> MapGenerated;
 
+        private int testIndex = 1;
         private readonly int _amountOfCellTypes;
         private int _amountOfLevels = 9;
         private int _maxRoadsInlevel = 5;
-        private Random _random = new Random();
+        //private Random _random = new Random();
 
         private List<MapCell> _mapCells;
         private List<MapCell> _currentMapCells;
@@ -26,8 +27,9 @@ namespace MapSection.Models
         public int AmountOfLevels => _amountOfLevels;
         public int MaxRoadsInlevel => _maxRoadsInlevel;
         public bool IsEmpty => _mapCells.Count == 0;
+        public IReadOnlyList<MapCell> MapCells => _mapCells;
 
-        public event Action<List<MapCell>> MapGenerated;
+
 
         public void Initialize(GlobalGame globalGame)
         {
@@ -109,19 +111,19 @@ namespace MapSection.Models
             _mapCells[0].ActivateCell();
         }
 
+
+
         public void LoadGame()
         {
-            //передавать ту ячейку, на которой остановились
-            _currentCell = null;
-            _amountOfLevels = 9;
-            _maxRoadsInlevel = 5;
             _mapCells.Clear();
-            // передавать сохраненную карту
-            GenerateCells();
-            GenerateRoads();
+
+            foreach(MapCellData mapCellData in YandexGame.savesData.MapCellsData)
+            {
+                _mapCells.Add(new MapCell(mapCellData.Type, mapCellData.X, mapCellData.Y, mapCellData.Index, 
+                    mapCellData.NextAvailableCellsIndexes, mapCellData.IsAvailable, mapCellData.IsActivated));
+            }
+            
             MapGenerated?.Invoke(_mapCells);
-            // активировать нужно ту ячейку, на которой остановились
-            _mapCells[3].ActivateCell();
         }
 
         public void Generate()
@@ -159,21 +161,44 @@ namespace MapSection.Models
 
                     EventsType newType;
 
-                    // происходит инициализация по рядам но не совсем
-
-                    if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))
-                        newType = (EventsType)_random.Next(1, _amountOfCellTypes - 1);
-                    else
-                        newType = (EventsType)_random.Next(0, _amountOfCellTypes - 1);
-
-                    if (newType == EventsType.Null)
+                    if(x == 1)
                     {
-                       // Debug.Log("Moveto");
-                        continue;
+                        newType = EventsType.Battle;
                     }
+                    else
+                    {
+                        switch(UnityEngine.Random.Range(0, 4))
+                        {
+                            case 0:
+                                newType = EventsType.Dialog;
+                                break;
+                                
+                            case 1:
+                                newType = EventsType.Shop;
+                                break;
+                            
+                            default:
+                                newType = EventsType.Battle;
+                                break;
+                                    
+                        }
+                    }
+
+                    //// происходит инициализация по рядам но не совсем
+                    //
+                    //if (Extensions.RandomBoolWithPercents(currentPercentsToMakeCell))
+                    //    newType = (EventsType)_random.Next(1, _amountOfCellTypes - 1);
+                    //else
+                    //    newType = (EventsType)_random.Next(0, _amountOfCellTypes - 1);
+                    //
+                    //if (newType == EventsType.Null)
+                    //{
+                    //   // Debug.Log("Moveto");
+                    //    continue;
+                    //}
                     // убрать индекс потом
                    // Debug.Log(newType + " " + testIndex);
-                    testIndex++;
+                    //testIndex++;
                     _mapCells.Add(new MapCell(newType, x, y, _mapCells.Count));
                     attemptsToMakeCell = 0;
                 }

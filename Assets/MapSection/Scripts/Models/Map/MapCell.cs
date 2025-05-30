@@ -11,8 +11,8 @@ namespace MapSection.Models
         private readonly EventsType _type;
         private readonly PositionOnMap _position;
         private readonly int _index;
-        public bool _isAvailable = false;
-        public bool _isActivated = false;
+        private bool _isAvailable = false;
+        private bool _isActivated = false;
 
         public event Action Activated;
         public event Action Deactivated;
@@ -25,12 +25,23 @@ namespace MapSection.Models
         public bool IsAvailable => _isAvailable;
         public bool IsActivated => _isActivated;
 
-        public MapCell(EventsType type, int x, int y, int index)
+        public MapCell(EventsType type, int x, int y, int index, List<int> nextAvailableCellsIndexes = null, bool isAvailable = false, bool isActivated = false)
         {
             _nextAvailableCellsIndexes = new List<int>();
             _position = new PositionOnMap(x, y);
             _type = type;
             _index = index;
+
+            _isAvailable = isAvailable;
+            _isActivated = isActivated;
+
+            if (nextAvailableCellsIndexes != null)
+            {
+                foreach (int cellsIndexes in nextAvailableCellsIndexes)
+                {
+                    _nextAvailableCellsIndexes.Add(cellsIndexes);
+                }
+            }
         }
 
         public void AddRoadToNextCell(MapCell cell)

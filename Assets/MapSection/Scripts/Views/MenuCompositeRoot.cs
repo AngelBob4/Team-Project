@@ -18,8 +18,8 @@ namespace MapSection
         [SerializeField] private MapView _mapView;
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private SaveData _saveData;
-
+        [SerializeField] private Saves _saveData;
+        
         private Map _map;
         private MapFactory _mapFactory;
         private GlobalGame _globalGame;

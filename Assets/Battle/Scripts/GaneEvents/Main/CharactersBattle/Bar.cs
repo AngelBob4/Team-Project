@@ -90,7 +90,7 @@ namespace Events.Main.CharactersBattle
             SetValues(value);
         }
 
-        private void SetValues(int value, bool isValidationCheck = true)
+        public void SetValues(int value, bool isValidationCheck = true)
         {
             _ñurrentValue = value;
 

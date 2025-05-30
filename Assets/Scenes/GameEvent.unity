@@ -12891,8 +12891,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1673253293}
-        m_TargetAssemblyTypeName: ShopEvent, Assembly-CSharp
-        m_MethodName: AddStamina
+        m_TargetAssemblyTypeName: Events.Main.Events.Shop.ShopEvent, Assembly-CSharp
+        m_MethodName: OnClickButtonRest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13103,7 +13103,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1673253293}
         m_TargetAssemblyTypeName: Events.Main.Events.Shop.ShopEvent, Assembly-CSharp
-        m_MethodName: ImproveCard
+        m_MethodName: OnClickButtonImproveCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17122,11 +17122,5 @@ SceneRoots:
   - {fileID: 718424846}
   - {fileID: 802841391}
   - {fileID: 1184913509}
-
   - {fileID: 476672806}
-
   - {fileID: 2078150009}
-
-
-  - {fileID: 2078150009}
-

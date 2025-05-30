@@ -1,12 +1,172 @@
 {
-    "idSave": 20,
+    "idSave": 18,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "Coins": 80,
-    "LanternLight": 6,
-    "HP": 60,
-    "MaxHP": 0,
-    "Level": 8,
-    "_cardDataList": []
+    "IsSave": true,
+    "Coins": 251,
+    "LanternLight": 9,
+    "HP": 70,
+    "MaxHP": 70,
+    "Level": 3,
+    "CardDataList": [
+        {
+            "instanceID": 25398
+        },
+        {
+            "instanceID": 25194
+        },
+        {
+            "instanceID": 25298
+        },
+        {
+            "instanceID": 25424
+        },
+        {
+            "instanceID": 25504
+        },
+        {
+            "instanceID": 25440
+        },
+        {
+            "instanceID": 25034
+        },
+        {
+            "instanceID": 25168
+        },
+        {
+            "instanceID": 25130
+        },
+        {
+            "instanceID": 25360
+        },
+        {
+            "instanceID": 25360
+        },
+        {
+            "instanceID": 25372
+        },
+        {
+            "instanceID": 25218
+        },
+        {
+            "instanceID": 25450
+        },
+        {
+            "instanceID": 25052
+        }
+    ],
+    "MapCellsData": [
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        }
+    ]
 }

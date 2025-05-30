@@ -30,7 +30,8 @@ namespace Menu
 
         public void LoadGame()
         {
-            _globalGame.LoadGame();
+            //_globalGame.LoadGame();
+            _globalGame.NewGame(true);
         }
 
         //public void OnLeaderboardButtonPressed()
