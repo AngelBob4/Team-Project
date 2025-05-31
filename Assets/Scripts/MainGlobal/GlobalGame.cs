@@ -2,6 +2,7 @@ using Events.Main.Events;
 using Events.Main.Events.Dialog;
 using MapSection.Models;
 using Runner.ScriptableObjects;
+using System.Collections.Generic;
 using YG;
 
 namespace MainGlobal
@@ -64,9 +65,11 @@ namespace MainGlobal
                 _map.LoadGame();
                 _level = YandexGame.savesData.Level;
                 _playerGlobalData.LoadPlayerStats();
+                _dialogEventDataList.LoadDialogEvents(YandexGame.savesData.dialogEventIndexs);
             }
             else
             {
+                _dialogEventDataList.InitNewGame();
                 _map.RestartGame();
             }
             //_map.RestartGame();

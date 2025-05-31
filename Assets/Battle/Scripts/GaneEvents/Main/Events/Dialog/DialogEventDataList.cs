@@ -7,21 +7,22 @@ namespace Events.Main.Events.Dialog
     public class DialogEventDataList
     {
         private DialogEventInstance _currentEventData;
-        private List<DialogEventInstance> _allEventDataList;
+        private Dictionary<int,DialogEventInstance> _allEventDataList;
         private List<DialogEventInstance> _eventDataList = new List<DialogEventInstance>();
 
         public DialogEventDataList(CardDataList AddCardDataList)
         {
-            _allEventDataList = new List<DialogEventInstance>
+            int index = 1;
+            _allEventDataList = new Dictionary<int, DialogEventInstance>
             {
-                new DialogEventMedicinalPlants(),
-                new DialogEventPlacePower(),
-                new DialogEventPriest(),
-                new DialogEventShelter(),
-                new DialogEventShrineCoins(),
-                new DialogEventShrineImproveCard(),
-                new DialogEventTrap(),
-                new DialogEventVision(AddCardDataList)
+                { index++, new DialogEventMedicinalPlants() },
+                { index++, new DialogEventPlacePower() },
+                { index++, new DialogEventPriest() },
+                { index++, new DialogEventShelter() },
+                { index++, new DialogEventShrineCoins() },
+                { index++, new DialogEventShrineImproveCard() },
+                { index++, new DialogEventTrap() },
+                { index++, new DialogEventVision(AddCardDataList) }
             };
         }
 
@@ -29,10 +30,35 @@ namespace Events.Main.Events.Dialog
         {
             _eventDataList.Clear();
 
-            foreach (DialogEventInstance instance in _allEventDataList)
+            foreach (DialogEventInstance eventData in _allEventDataList.Values)
             {
-                _eventDataList.Add(instance);
+                _eventDataList.Add(eventData);
             }
+        }
+
+        public void LoadDialogEvents(List<int> indexs) 
+        {
+            _eventDataList.Clear();
+
+            foreach (int index in indexs)
+            {
+                _eventDataList.Add(_allEventDataList[index]);
+            }
+        }
+
+        public List<int> GetIndexDialogEvents()
+        {
+            List<int> indexs = new List<int>();
+
+            foreach (int index in _allEventDataList.Keys)
+            {
+                if (_eventDataList.Contains(_allEventDataList[index]))
+                {
+                    indexs.Add(index);
+                }
+            }
+
+            return indexs;
         }
 
         public DialogEventInstance GetRandomDialogEventInstance()

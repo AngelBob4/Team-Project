@@ -6,16 +6,16 @@ namespace Events.Cards
     [CreateAssetMenu(fileName = "CardDataList", menuName = "Data/CardDataList")]
     public class CardDataList : ScriptableObject
     {
-        [SerializeField] private List<CardData> _list;
+        [SerializeField] private List<CardDataSO> _list;
         [SerializeField] private List<CardDataList> _lists;
 
-        private List<CardData> _cards;
+        private List<CardDataSO> _cards;
 
-        public IReadOnlyList<CardData> List => _cards;
+        public IReadOnlyList<CardDataSO> List => _cards;
 
         public void Init()
         {
-            _cards = new List<CardData>();
+            _cards = new List<CardDataSO>();
 
             foreach (var card in _list)
             {
@@ -35,16 +35,16 @@ namespace Events.Cards
 
         public CardData GetRandomCardData()
         {
-            return _cards[Random.Range(0, _cards.Count)];
+            return new CardData(_cards[Random.Range(0, _cards.Count)]);
         }
 
         public List<CardData> GetList()
         {
             List<CardData> newList = new List<CardData>();
 
-            foreach (CardData card in _cards)
+            foreach (CardDataSO card in _cards)
             {
-                newList.Add(card);
+                newList.Add(new CardData(card));
             }
 
             return newList;

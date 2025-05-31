@@ -28,6 +28,7 @@ namespace MapSection.Models
         public int MaxRoadsInlevel => _maxRoadsInlevel;
         public bool IsEmpty => _mapCells.Count == 0;
         public IReadOnlyList<MapCell> MapCells => _mapCells;
+        public int IndexCurrentCell => _currentCell.Index;
 
 
 
@@ -40,6 +41,17 @@ namespace MapSection.Models
         {
             _amountOfCellTypes = Enum.GetNames(typeof(EventsType)).Length;
             _mapCells = new List<MapCell>();
+        }
+
+        public void SetIndexCurrentCell(int Index)
+        {
+            foreach (MapCell cell in _mapCells)
+            {
+                if(cell.Index == Index)
+                {
+                    _currentCell = cell;
+                }
+            }
         }
 
         public void ButtonClicked(int index)
@@ -117,11 +129,16 @@ namespace MapSection.Models
         {
             _mapCells.Clear();
 
+            //Debug.Log("!!!!!!!!!!!!!!!" + YandexGame.savesData.MapCellsData.Count.ToString());
+            //Debug.Log("!!!!!!!!!!!!!!!" + YandexGame.savesData.MapCellsData[0].Index);
+
             foreach(MapCellData mapCellData in YandexGame.savesData.MapCellsData)
             {
                 _mapCells.Add(new MapCell(mapCellData.Type, mapCellData.X, mapCellData.Y, mapCellData.Index, 
                     mapCellData.NextAvailableCellsIndexes, mapCellData.IsAvailable, mapCellData.IsActivated));
             }
+
+            SetIndexCurrentCell(YandexGame.savesData.IndexCurrentCell);
             
             MapGenerated?.Invoke(_mapCells);
         }

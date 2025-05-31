@@ -1,4 +1,6 @@
 using Events.Cards;
+using Events.Main.Events.Dialog;
+using Events.Main.Events.Dialog.Instance;
 using MainGlobal;
 using MapSection.Models;
 using Reflex.Attributes;
@@ -14,13 +16,15 @@ namespace MapSection
         private GlobalGame _globalGame;
         private PlayerGlobalData _playerGlobalData;
         private Map _map;
+        private DialogEventDataList _dialogEventDataList;
 
         [Inject]
-        private void Inject(GlobalGame globalGame, PlayerGlobalData playerGlobalData, Map map)
+        private void Inject(GlobalGame globalGame, PlayerGlobalData playerGlobalData, Map map, DialogEventDataList dialogEventDataList)
         {
             _globalGame = globalGame;
             _playerGlobalData = playerGlobalData;
             _map = map;
+            _dialogEventDataList = dialogEventDataList;
         }
 
         private void Awake()
@@ -37,22 +41,24 @@ namespace MapSection
             YandexGame.savesData.HP = _playerGlobalData.HPBar.CurrentValue;
             YandexGame.savesData.MaxHP = _playerGlobalData.HPBar.MaxValue;
             YandexGame.savesData.Level = _globalGame.Level;
+            
+            YandexGame.savesData.dialogEventIndexs = _dialogEventDataList.GetIndexDialogEvents();
 
-            YandexGame.savesData.CardDataList = new List<CardData>();
+            YandexGame.savesData.CardDataSaveList.Clear();
             foreach (CardData cardData in _playerGlobalData.CardDataList)
             {
-                YandexGame.savesData.CardDataList.Add(cardData);
+                YandexGame.savesData.CardDataSaveList.Add(new CardDataSave(cardData));
             }
-            
-            YandexGame.savesData.MapCellsData = new List<MapCellData>();
+
+            YandexGame.savesData.IndexCurrentCell = _map.IndexCurrentCell;
+
+            YandexGame.savesData.MapCellsData.Clear();
             foreach (MapCell mapCell in _map.MapCells)
             {
                 YandexGame.savesData.MapCellsData.Add(new MapCellData(mapCell));
             }
-            
 
             YandexGame.SaveProgress();
-            print(YandexGame.savesData.Level);
         }
     }
 }

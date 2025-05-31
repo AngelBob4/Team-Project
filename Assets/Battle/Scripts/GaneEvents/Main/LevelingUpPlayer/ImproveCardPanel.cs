@@ -64,7 +64,7 @@ namespace Events.Main.LevelingUpPlayer
             {
                 if (card.Type == _cardDataOriginal.Type && card.Level == _cardDataOriginal.Level + 1)
                 {
-                    _cardDataNewList.Add(card);
+                    _cardDataNewList.Add(new CardData(card));
                 }
             }
 

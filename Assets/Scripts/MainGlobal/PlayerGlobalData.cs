@@ -3,6 +3,7 @@ using Events.Main.CharactersBattle;
 using MapSection.MapUI;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using YG;
 
 namespace MainGlobal
@@ -80,7 +81,13 @@ namespace MainGlobal
             _lanternLight.SetValues(YandexGame.savesData.LanternLight);
             _hPBar.SetNewValues(YandexGame.savesData.MaxHP);
             _hPBar.SetValues(YandexGame.savesData.HP);
-            _cardDataList = YandexGame.savesData.CardDataList;
+
+            _cardDataList.Clear();
+
+            foreach (CardDataSave cardDataSave in YandexGame.savesData.CardDataSaveList)
+            {
+                _cardDataList.Add(new CardData(cardDataSave));
+            }
         }
 
         public void ChangeHP(int value)

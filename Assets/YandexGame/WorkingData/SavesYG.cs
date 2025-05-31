@@ -1,5 +1,7 @@
 ﻿
 using Events.Cards;
+using Events.Main.Events;
+using Events.Main.Events.Dialog;
 using MapSection.Models;
 using System.Collections.Generic;
 
@@ -27,9 +29,15 @@ namespace YG
         public int HP;
         public int MaxHP;
         public int Level = 1;
-        public List<CardData> CardDataList;
+        public List<int> dialogEventIndexs;
+        public List<CardDataSave> CardDataSaveList;
+
+        //public List<EventsType> Types;
+        //public List<int[]> NextAvailableCellsIndexes;
+        //public MapCellData MapCellsData;
+        public int IndexCurrentCell;
         public List<MapCellData> MapCellsData;
-        public Map Map;
+        //public Map Map;
 
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
@@ -40,7 +48,10 @@ namespace YG
         {
             // Допустим, задать значения по умолчанию для отдельных элементов массива
             IsSave = false;
-            //openLevels[1] = true;
-        }
+        dialogEventIndexs = new List<int>();
+        MapCellsData = new List<MapCellData>();
+        CardDataSaveList = new List<CardDataSave>();
+        //openLevels[1] = true;
+    }
     }
 }

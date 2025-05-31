@@ -35,6 +35,11 @@ namespace MapSection.Models
             _isAvailable = isAvailable;
             _isActivated = isActivated;
 
+            //if (_isAvailable)
+            //{
+            //    Debug.Log("Load True!!!!!!!!!!!!!!!");
+            //}
+
             if (nextAvailableCellsIndexes != null)
             {
                 foreach (int cellsIndexes in nextAvailableCellsIndexes)
