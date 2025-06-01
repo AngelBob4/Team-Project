@@ -1,5 +1,6 @@
 using Events.Main.CharactersBattle;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Events.View
 {
@@ -7,6 +8,7 @@ namespace Events.View
     {
         [SerializeField] private BarView _hPBar;
         [SerializeField] private BarView _armorBar;
+        [SerializeField] private Image _image;
 
         public void SetCharacter(CharacterBattleData character)
         {

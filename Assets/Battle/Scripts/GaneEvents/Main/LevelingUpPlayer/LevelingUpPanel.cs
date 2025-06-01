@@ -10,6 +10,7 @@ namespace Events.Main.LevelingUpPlayer
         [SerializeField] private AddCardPanel _addCardPanel;
         [SerializeField] private Transform _container;
         [SerializeField] private ButtonLevelingUp _buttonPrefab;
+        [SerializeField] private List<Sprite> _sprites;
 
         private const int _MinAddCoins = 50;
         private const int _MaxAddCoins = 100;
@@ -17,7 +18,7 @@ namespace Events.Main.LevelingUpPlayer
         private PlayerGlobalData _playerGlobalData;
         private int _addCoins;
         private List<ButtonLevelingUp> _buttons = new List<ButtonLevelingUp>();
-
+        
         [Inject]
         private void Inject(PlayerGlobalData playerGlobalData)
         {
@@ -45,14 +46,14 @@ namespace Events.Main.LevelingUpPlayer
             Clear();
             _addCoins = Random.Range(_MinAddCoins, _MaxAddCoins + 1);
 
-            AddButton("Карта", LevelingUpType.Card);
-            AddButton("Coins " + _addCoins, LevelingUpType.Coins);
+            AddButton("+ ", LevelingUpType.Card, _sprites[(int)LevelingUpType.Card]);
+            AddButton("+ " + _addCoins, LevelingUpType.Coins, _sprites[(int)LevelingUpType.Coins]);
         }
 
-        private void AddButton(string text, LevelingUpType type)
+        private void AddButton(string text, LevelingUpType type, Sprite sprite)
         {
             ButtonLevelingUp newButton = Instantiate(_buttonPrefab, _container);
-            newButton.Init(text, type);
+            newButton.Init(text, type, sprite);
             _buttons.Add(newButton);
             newButton.OnClick += OnClickButton;
         }

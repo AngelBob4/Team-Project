@@ -42,13 +42,13 @@ namespace MapSection.Views
         private void OnEnable()
         {
             _sprites = new Dictionary<EventsType, Sprite>()
-        {
-         { EventsType.Null, _allImages.Null },
-         { EventsType.Shop, _allImages.Shop },
-         { EventsType.Boss, _allImages.Boss },
-         { EventsType.Battle, _allImages.Battle },
-         { EventsType.Dialog, _allImages.Dialog },
-        };
+            {
+              { EventsType.Null, _allImages.Null },
+              { EventsType.Shop, _allImages.Shop },
+              { EventsType.Boss, _allImages.Boss },
+              { EventsType.Battle, _allImages.Battle },
+              { EventsType.Dialog, _allImages.Dialog },
+            };
 
             _presenter?.Enable();
         }
