@@ -8,6 +8,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Место Силы";
             _text = "Вы находите место силы";
+            _dialogType = DialogTypes.PowerPlace; 
 
             AddButton("Медитировать [Улучшить рандомную карту]");
             AddButton("Провести ритуал [Улучшить карту на выбор, " + _priceCount + " Coins]", _priceCount);

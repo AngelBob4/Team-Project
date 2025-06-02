@@ -9,6 +9,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Ловушка";
             _text = "Вы попадаете в ловушку";
+            _dialogType = DialogTypes.Trap;
 
             AddButton("Рана [" + _changeHP + " HP]");
             AddButton("Ушиб [" + _changeMaxHP + " MaxHP]");

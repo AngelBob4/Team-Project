@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Events.Main.Events.Dialog
 {
@@ -9,9 +10,11 @@ namespace Events.Main.Events.Dialog
 
         protected string _name;
         protected string _text;
-
+        protected DialogTypes _dialogType;
         public string Name => _name;
         public string Text => _text;
+
+        public DialogTypes DialogType => _dialogType;
 
         protected DialogEventCommunications _dialogEventCommunications;
 

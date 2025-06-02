@@ -1,7 +1,7 @@
-using MainGlobal;
-using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
+using MainGlobal;
+using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +15,10 @@ namespace Events.Main.Events.Dialog
         [SerializeField] private Transform _buttonsContainer;
         [SerializeField] private DialogButton _buttonPrefab;
         [SerializeField] private DialogEventCommunications _dialogEventCommunications;
+
+        [SerializeField] private Image _image;
+        [SerializeField] private DialogSpriteSO _dialogSpritesSO;
+        [SerializeField] private Dictionary<DialogTypes, Sprite> _dialogSprites;
 
         public event Action OnClickedButton;
 
@@ -30,6 +34,21 @@ namespace Events.Main.Events.Dialog
             _playerGlobalData = playerGlobalData;
         }
 
+        private void Awake()
+        {
+            _dialogSprites = new()
+            {
+                { DialogTypes.MedicalHerbs, _dialogSpritesSO.MedicalPlants },
+                { DialogTypes.PowerPlace, _dialogSpritesSO.PowerPlace },
+                { DialogTypes.Priest, _dialogSpritesSO.Priest },
+                { DialogTypes.Shelter, _dialogSpritesSO.Shelter },
+                { DialogTypes.ShrineCoins, _dialogSpritesSO.ShrineCoins },
+                { DialogTypes.ShrineCard, _dialogSpritesSO.ShrineCard },
+                { DialogTypes.Trap, _dialogSpritesSO.Trap },
+                { DialogTypes.Vision, _dialogSpritesSO.Visions },
+            };
+        }
+
         private void OnEnable()
         {
             Subscribe();
@@ -39,10 +58,16 @@ namespace Events.Main.Events.Dialog
         {
             Unsubscribe();
         }
-        
+
         public override void StartEvent(int level)
         {
             InitInstance();
+            InitBackgroundImage(_dialogSprites[_eventData.DialogType]);
+        }
+
+        private void InitBackgroundImage(Sprite sprite)
+        {
+            _image.sprite = sprite;
         }
 
         private void InitInstance()
@@ -64,7 +89,7 @@ namespace Events.Main.Events.Dialog
                 newDialogButton.OnClick += OnClickButton;
                 _dialogButtons.Add(newDialogButton);
 
-                if(_playerGlobalData.Coins.CurrentValue < Math.Abs(_eventData.DialogEventButtonDataList[i].PriceCount))
+                if (_playerGlobalData.Coins.CurrentValue < Math.Abs(_eventData.DialogEventButtonDataList[i].PriceCount))
                 {
                     newDialogButton.GetComponent<Button>().interactable = false;
                 }

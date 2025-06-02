@@ -10,6 +10,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Лечебные растения";
             _text = "Вы нашли поляну на которой растут лечебные травы";
+            _dialogType = DialogTypes.MedicalHerbs;
 
             AddButton("Сделать лечебное зелье [Восстановить HP " + _addHP +"]");
             AddButton("Сделать зелье жизни [Увеличить МаxHP " + _addMaxHP + "]");

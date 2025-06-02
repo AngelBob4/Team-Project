@@ -13,6 +13,7 @@ namespace Events.Main.Events.Dialog.Instance
             _name = "Видение";
             _text = "Вы видите болезненные видения из прошлого,\n" +
                 "тем не менее это полезный опыт, который может помочь в приключении";
+            _dialogType = DialogTypes.Vision;
 
             AddButton("Наблюдать [Получить рандомную карту, -10 HP]");
             AddButton("Забыть");

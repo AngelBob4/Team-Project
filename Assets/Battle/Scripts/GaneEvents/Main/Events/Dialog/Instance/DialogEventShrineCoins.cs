@@ -8,6 +8,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Святыня";
             _text = "Вы встретили придорожную святыню";
+            _dialogType = DialogTypes.ShrineCoins;
 
             AddButton("Помолиться [+100 монет]");
             AddButton(ExitString);

@@ -1,12 +1,8 @@
-using Events.Cards;
 using Events.Main.Events.Dialog;
-using Events.Main.Events.Dialog.Instance;
 using MainGlobal;
 using MapSection.Models;
 using Reflex.Attributes;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using YG;
 
 namespace MapSection

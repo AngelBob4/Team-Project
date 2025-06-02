@@ -10,6 +10,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Священник";
             _text = "Вы встречаете священника";
+            _dialogType = DialogTypes.Priest;
 
             AddButton("Получить лечение [+" + _changeHP + " HP, " + _priceCountTreatment + " Coins]", _priceCountTreatment);
             AddButton("Получить благословление [Улучшить рандомную карту, " + _priceCountTreatment + " Coins]", _priceCountImproveCard);

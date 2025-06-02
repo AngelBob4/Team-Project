@@ -8,6 +8,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Убежище";
             _text = "Вы находите безопасное место";
+            _dialogType = DialogTypes.Shelter;
 
             AddButton("Осмотреть [Улучшить рандомную карту]");
             AddButton("Отдыхать [+" + _changeHP + " HP]");

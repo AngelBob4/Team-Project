@@ -15,7 +15,7 @@ namespace MapSection.Views
         [SerializeField] private ImagesSO _allImages;
 
         [SerializeField] private Transform _background;
-        
+
         private Dictionary<EventsType, Sprite> _sprites;
 
         private MapFactory _mapFactory;
@@ -39,7 +39,7 @@ namespace MapSection.Views
             _mapFactory = mapFactory;
         }
 
-        private void OnEnable()
+        private void Awake()
         {
             _sprites = new Dictionary<EventsType, Sprite>()
             {
@@ -49,7 +49,10 @@ namespace MapSection.Views
               { EventsType.Battle, _allImages.Battle },
               { EventsType.Dialog, _allImages.Dialog },
             };
+        }
 
+        private void OnEnable()
+        {
             _presenter?.Enable();
         }
 
@@ -83,7 +86,7 @@ namespace MapSection.Views
                 }
             }
 
-           // RotateMap();
+            // RotateMap();
         }
 
         //

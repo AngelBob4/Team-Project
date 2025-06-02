@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f3e6f623c16296e40b9dfc0b4ffa25c1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MedicalPlants: {fileID: 21300000, guid: 6f378123718a2a244a09b918d6f56d38, type: 3}
+  - PowerPlace: {fileID: 21300000, guid: 6a399e7da307f814b9616549a07ba274, type: 3}
+  - Priest: {fileID: 21300000, guid: b6d4a02093cf3974885a948e330e590d, type: 3}
+  - Shelter: {fileID: 21300000, guid: bcd12220ad376754bbfb57801486ac18, type: 3}
+  - ShrineCoins: {fileID: 21300000, guid: 46acdb2a97312904d8f968625b59ecfe, type: 3}
+  - ShrineCard: {fileID: 21300000, guid: 46acdb2a97312904d8f968625b59ecfe, type: 3}
+  - Trap: {fileID: 21300000, guid: 4dba51982242acf448c8744947e23a19, type: 3}
+  - Visions: {fileID: 21300000, guid: ed0090ce8d5bece4a957b714bbe64dae, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

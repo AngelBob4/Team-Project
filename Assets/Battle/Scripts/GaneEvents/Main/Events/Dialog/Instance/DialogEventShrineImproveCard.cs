@@ -6,6 +6,7 @@ namespace Events.Main.Events.Dialog.Instance
         {
             _name = "Святыня";
             _text = "Вы встретили придорожную святыню";
+            _dialogType = DialogTypes.ShrineCard;
 
             AddButton("Помолиться [Улучшить рандомную карту]");
             AddButton(ExitString);

@@ -1,22 +1,22 @@
 {
-  "idSave": 138,
+  "idSave": 252,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
   "IsSave": true,
-  "Coins": 145,
-  "LanternLight": 9,
+  "Coins": 157,
+  "LanternLight": 8,
   "HP": 70,
   "MaxHP": 70,
   "Level": 3,
   "dialogEventIndexs": [
     1,
+    2,
     3,
     4,
     5,
     6,
-    7,
-    8
+    7
   ],
   "CardDataSaveList": [
     {
@@ -163,19 +163,30 @@
       }
     },
     {
-      "Name": "Yellow 2",
+      "Name": "Blue 1",
+      "Level": 1,
+      "Type": 1,
+      "Wound": 1,
+      "Shield": 0,
+      "Cards": 0,
+      "Combinations": {
+        "Yellow": 0
+      }
+    },
+    {
+      "Name": "Blue 2",
       "Level": 2,
-      "Type": 5,
+      "Type": 1,
       "Wound": 2,
       "Shield": 0,
       "Cards": 0,
       "Combinations": {
-        "Green": 3,
-        "Purple": 3
+        "Green": 0,
+        "Purple": 0
       }
     }
   ],
-  "IndexCurrentCell": 7,
+  "IndexCurrentCell": 10,
   "MapCellsData": [
     {
       "NextAvailableCellsIndexes": [
@@ -206,8 +217,7 @@
     },
     {
       "NextAvailableCellsIndexes": [
-        7,
-        6
+        7
       ],
       "Type": 1,
       "Index": 2,
@@ -221,13 +231,12 @@
         8,
         8,
         8,
-        7,
-        9
+        7
       ],
       "Type": 1,
       "Index": 3,
       "IsAvailable": true,
-      "IsActivated": true,
+      "IsActivated": false,
       "X": 1,
       "Y": 2
     },
@@ -236,13 +245,12 @@
         9,
         9,
         9,
-        8,
         10
       ],
       "Type": 1,
       "Index": 4,
       "IsAvailable": true,
-      "IsActivated": false,
+      "IsActivated": true,
       "X": 1,
       "Y": 3
     },
@@ -266,7 +274,7 @@
         11,
         11
       ],
-      "Type": 3,
+      "Type": 2,
       "Index": 6,
       "IsAvailable": true,
       "IsActivated": false,
@@ -277,13 +285,12 @@
       "NextAvailableCellsIndexes": [
         12,
         12,
-        12,
-        11
+        12
       ],
-      "Type": 2,
+      "Type": 1,
       "Index": 7,
       "IsAvailable": true,
-      "IsActivated": true,
+      "IsActivated": false,
       "X": 2,
       "Y": 1
     },
@@ -291,9 +298,7 @@
       "NextAvailableCellsIndexes": [
         13,
         13,
-        13,
-        12,
-        14
+        13
       ],
       "Type": 1,
       "Index": 8,
@@ -320,12 +325,13 @@
       "NextAvailableCellsIndexes": [
         15,
         15,
-        15
+        15,
+        14
       ],
-      "Type": 3,
+      "Type": 2,
       "Index": 10,
       "IsAvailable": true,
-      "IsActivated": false,
+      "IsActivated": true,
       "X": 2,
       "Y": 4
     },
@@ -336,7 +342,7 @@
         16,
         17
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 11,
       "IsAvailable": true,
       "IsActivated": false,
@@ -347,9 +353,7 @@
       "NextAvailableCellsIndexes": [
         17,
         17,
-        17,
-        16,
-        18
+        17
       ],
       "Type": 1,
       "Index": 12,
@@ -362,9 +366,10 @@
       "NextAvailableCellsIndexes": [
         18,
         18,
-        18
+        18,
+        19
       ],
-      "Type": 1,
+      "Type": 3,
       "Index": 13,
       "IsAvailable": true,
       "IsActivated": false,
@@ -376,6 +381,7 @@
         19,
         19,
         19,
+        18,
         20
       ],
       "Type": 1,
@@ -389,9 +395,10 @@
       "NextAvailableCellsIndexes": [
         20,
         20,
-        20
+        20,
+        19
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 15,
       "IsAvailable": true,
       "IsActivated": false,
@@ -402,10 +409,9 @@
       "NextAvailableCellsIndexes": [
         21,
         21,
-        21,
-        22
+        21
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 16,
       "IsAvailable": true,
       "IsActivated": false,
@@ -417,10 +423,9 @@
         22,
         22,
         22,
-        21,
-        23
+        21
       ],
-      "Type": 1,
+      "Type": 3,
       "Index": 17,
       "IsAvailable": true,
       "IsActivated": false,
@@ -431,8 +436,7 @@
       "NextAvailableCellsIndexes": [
         23,
         23,
-        23,
-        24
+        23
       ],
       "Type": 3,
       "Index": 18,
@@ -449,7 +453,7 @@
         23,
         25
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 19,
       "IsAvailable": true,
       "IsActivated": false,
@@ -460,10 +464,9 @@
       "NextAvailableCellsIndexes": [
         25,
         25,
-        25,
-        24
+        25
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 20,
       "IsAvailable": true,
       "IsActivated": false,
@@ -474,9 +477,10 @@
       "NextAvailableCellsIndexes": [
         26,
         26,
-        26
+        26,
+        27
       ],
-      "Type": 2,
+      "Type": 3,
       "Index": 21,
       "IsAvailable": true,
       "IsActivated": false,
@@ -487,10 +491,9 @@
       "NextAvailableCellsIndexes": [
         27,
         27,
-        27,
-        26
+        27
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 22,
       "IsAvailable": true,
       "IsActivated": false,
@@ -502,7 +505,7 @@
         28,
         28,
         28,
-        27
+        29
       ],
       "Type": 1,
       "Index": 23,
@@ -515,9 +518,11 @@
       "NextAvailableCellsIndexes": [
         29,
         29,
-        29
+        29,
+        28,
+        30
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 24,
       "IsAvailable": true,
       "IsActivated": false,
@@ -528,7 +533,8 @@
       "NextAvailableCellsIndexes": [
         30,
         30,
-        30
+        30,
+        29
       ],
       "Type": 1,
       "Index": 25,
@@ -541,9 +547,10 @@
       "NextAvailableCellsIndexes": [
         31,
         31,
-        31
+        31,
+        32
       ],
-      "Type": 2,
+      "Type": 1,
       "Index": 26,
       "IsAvailable": true,
       "IsActivated": false,
@@ -554,9 +561,10 @@
       "NextAvailableCellsIndexes": [
         32,
         32,
-        32
+        32,
+        33
       ],
-      "Type": 1,
+      "Type": 3,
       "Index": 27,
       "IsAvailable": true,
       "IsActivated": false,
@@ -568,9 +576,9 @@
         33,
         33,
         33,
-        32
+        34
       ],
-      "Type": 1,
+      "Type": 3,
       "Index": 28,
       "IsAvailable": true,
       "IsActivated": false,
@@ -585,7 +593,7 @@
         33,
         35
       ],
-      "Type": 2,
+      "Type": 1,
       "Index": 29,
       "IsAvailable": true,
       "IsActivated": false,
@@ -596,7 +604,8 @@
       "NextAvailableCellsIndexes": [
         35,
         35,
-        35
+        35,
+        34
       ],
       "Type": 2,
       "Index": 30,
@@ -609,7 +618,7 @@
       "NextAvailableCellsIndexes": [
         36
       ],
-      "Type": 1,
+      "Type": 2,
       "Index": 31,
       "IsAvailable": true,
       "IsActivated": false,
@@ -633,7 +642,7 @@
         36,
         36
       ],
-      "Type": 3,
+      "Type": 1,
       "Index": 33,
       "IsAvailable": true,
       "IsActivated": false,
@@ -655,7 +664,7 @@
       "NextAvailableCellsIndexes": [
         36
       ],
-      "Type": 2,
+      "Type": 3,
       "Index": 35,
       "IsAvailable": true,
       "IsActivated": false,
