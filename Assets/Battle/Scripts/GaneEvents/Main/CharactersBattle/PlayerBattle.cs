@@ -94,7 +94,7 @@ namespace Events.Main.CharactersBattle
             StartRound();
         }
 
-        public bool Attack(Enemy enemy)
+        public bool Attack(EnemyManager enemy)
         {
             bool isAttack = _playerHand.CombinationHand.GetEffects(CardEffectType.Wound) > 0;
 

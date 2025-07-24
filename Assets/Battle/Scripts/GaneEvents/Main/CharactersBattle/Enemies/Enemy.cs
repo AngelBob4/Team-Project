@@ -1,93 +1,68 @@
-using Events.Cards;
 using Events.Main.CharactersBattle.Enemies.EnemyData;
-using Events.View;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-namespace Events.Main.CharactersBattle.Enemies
+public class Enemy : MonoBehaviour
 {
-    public class Enemy: MonoBehaviour
+    [SerializeField] private Animator _animation;
+    [SerializeField] private EnamyType _enamyType;
+    
+    private EnemyDataBattle _enemyDataBattle;
+
+    public EnemyDataBattle EnemyDataBattle => _enemyDataBattle;
+
+    public void Init()
     {
-        [SerializeField] private CharacterView _enamyView;
-        [SerializeField] private ColorForCardTypeView _colorForCardTypeView;
-        [SerializeField] private EnemySpawner _spawner;
-        [SerializeField] private TMP_Text _name;
-
-        public event Action Died;
-        
-        private EnemyDataBattle _enemyData;
-
-        public EnemyDataBattle EnemyData => _enemyData;
-
-        private void OnEnable()
+        switch (_enamyType)
         {
-            Subscribe();
-        }
+            case EnamyType.Rat:
+                _enemyDataBattle = new EnemyDataBattleRat(); 
+                break;
 
-        private void OnDisable()
-        {
-            Unsubscribe();
-        }
+            case EnamyType.Spirit:
+                _enemyDataBattle = new EnemyDataBattleSpirit();
+                break;
 
-        public void InitNewEnemy(int level)
-        {
-            InitNewEnemy(_spawner.GetNewEnemyData(level));
-        }
+            case EnamyType.Wolf:
+                _enemyDataBattle = new EnemyDataBattleWolf();
+                break;
 
-        public void InitNewBossEnemy()
-        {
-            InitNewEnemy(_spawner.GetNewBossData());
-        }
+            case EnamyType.Cannibal:
+                _enemyDataBattle = new EnemyDataBattleCannibal();
+                break;
 
-        public void InitNewEnemy(EnemyDataBattle enemyData)
-        {
-            Unsubscribe();
-            _enemyData = enemyData;
-            Subscribe();
+            case EnamyType.Ghost:
+                _enemyDataBattle = new EnemyDataBattleGhost();
+                break;
 
-            _enemyData.NewInitValue();
+            case EnamyType.Robber:
+                _enemyDataBattle = new EnemyDataBattleRobber();
+                break;
 
-            _enamyView.SetCharacter(_enemyData);
-            _colorForCardTypeView.SetColorForCardType(_enemyData.ArmorBar);
+            case EnamyType.Ogre:
+                _enemyDataBattle = new EnemyDataBattleOgre();
+                break;
 
-            _name.text = _enemyData.Name;
+            case EnamyType.Sectarian:
+                _enemyDataBattle = new EnemyDataBattleSectarian();
+                break;
 
-            _enemyData.StartRound();
-        }
+            case EnamyType.Stryga:
+                _enemyDataBattle = new EnemyDataBattleStryga();
+                break;
 
-        public void Attack(PlayerBattle player)
-        {
-            _enemyData.Attack(player);
-        }
+            case EnamyType.Beetle:
+                _enemyDataBattle = new EnemyDataBattleBeetle();
+                break;
 
-        public void TakeAttack(int damage, List<CardType> cardTypesList = null)
-        {
-            _enemyData.TakeAttack(damage, cardTypesList);
+            case EnamyType.Vampire:
+                _enemyDataBattle = new EnemyDataBattleVampire();
+                break;
 
-            _enemyData.CheckAlive();
-        }
-
-        public void KillEnemy()
-        {
-            TakeAttack(_enemyData.HPBar.CurrentValue);
-        }
-
-        private void Subscribe()
-        {
-            if (_enemyData != null)
-            {
-                _enemyData.Died += Died;
-            }
-        }
-
-        private void Unsubscribe()
-        {
-            if (_enemyData != null)
-            {
-                _enemyData.Died -= Died;
-            }
+            case EnamyType.Werewolf:
+                _enemyDataBattle = new EnemyDataBattleWerewolf();
+                break;
         }
     }
 }

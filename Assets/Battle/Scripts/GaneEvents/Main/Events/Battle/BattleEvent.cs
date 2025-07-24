@@ -8,7 +8,7 @@ namespace Events.Main.Events.Battle
     public class BattleEvent : GameEvent
     {
         [SerializeField] private PlayerBattle _player;
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] private EnemyManager _enemy;
         [SerializeField] private LevelingUpPanel _levelingUpPanel;
         [SerializeField] private Transform _victoryGamePanel;
         [SerializeField] private InputPause _inputPause;

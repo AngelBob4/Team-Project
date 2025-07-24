@@ -10,7 +10,7 @@ namespace Events.Main.Events.Battle
     public class Attack : MonoBehaviour
     {
         [SerializeField] private PlayerBattle _player;
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] private EnemyManager _enemy;
         [SerializeField] private BattleEvent _battleEvent;
         [SerializeField] private InputPause _inputPause;
 
