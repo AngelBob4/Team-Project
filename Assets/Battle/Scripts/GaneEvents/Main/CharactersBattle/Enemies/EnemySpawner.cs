@@ -7,6 +7,8 @@ namespace Events.Main.CharactersBattle.Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private List<Enemy> _enemies1;
+        
         private List<EnemyDataBattle> _enemies;
         private List<EnemyDataBattle> _bossList;
         private List<EnemyDataBattle> _currentListEnemy;
