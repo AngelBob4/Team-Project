@@ -153,10 +153,8 @@ namespace Events.Hand
 
         public void MoveCardsCombinationToDiscard()
         {
-            Debug.Log("111");
             foreach (Card card in _combinationHand.GetAllCards())
             {
-                Debug.Log("222");
                 card.MoveCard(_discardDeckTransform);
             }
 
@@ -164,10 +162,8 @@ namespace Events.Hand
 
             IEnumerator MoveCard()
             {
-                Debug.Log("333");
                 yield return new WaitForSeconds(AnimationTime.TimeMoveCard);
                 MoveAllCards(_combinationHand, _discardDeck);
-                Debug.Log("444");
             }
         }
 

@@ -33,7 +33,8 @@ namespace Events.Main
 
         private void Start()
         {
-            StartNewEvent(_globalGame.EventsType, _globalGame.Level);
+            StartNewEvent(EventsType.Battle, 1);
+            //StartNewEvent(_globalGame.EventsType, _globalGame.Level);
         }
 
         private void OnEnable()

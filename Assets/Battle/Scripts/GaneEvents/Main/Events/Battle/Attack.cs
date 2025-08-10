@@ -55,7 +55,7 @@ namespace Events.Main.Events.Battle
             if (IsBattle())
             {
                 _player.StartRound();
-                _enemy.EnemyData.StartRound();
+                //_enemy.StartRound();
             }
         }
 

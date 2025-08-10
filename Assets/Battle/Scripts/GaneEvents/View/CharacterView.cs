@@ -1,5 +1,6 @@
 using Events.Main.CharactersBattle;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 namespace Events.View
@@ -12,11 +13,16 @@ namespace Events.View
 
         public void SetCharacter(CharacterBattleData character)
         {
+            SetBars(character.HPBar, character.ArmorBar);
+        }
+
+        public void SetBars(Bar hP, Bar armor)
+        {
             if (_hPBar != null)
-                _hPBar.SetBar(character.HPBar);
+                _hPBar.SetBar(hP);
 
             if (_armorBar != null)
-                _armorBar.SetBar(character.ArmorBar);
+                _armorBar.SetBar(armor);
         }
     }
 }
