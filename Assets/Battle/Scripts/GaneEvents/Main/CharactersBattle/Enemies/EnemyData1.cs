@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyData1
 {
     //[SerializeField] private int _hP;
-    private List<CardType> _cardTypeArmorWeaknessList;
+    //private List<CardType> _cardTypeArmorWeaknessList;
     private Bar _hPBar;
     private ColorBar _armorBar;
     private CardType _cardTypeArmorWeakness;
@@ -18,10 +18,8 @@ public class EnemyData1
     public bool IsStunned => _isStunned;
     public CardType CardTypeArmorWeakness =>_cardTypeArmorWeakness;
 
-    public EnemyData1(int hP, List<CardType> cardTypeArmorWeaknessList)
+    public EnemyData1(int hP)
     {
-        _cardTypeArmorWeaknessList = cardTypeArmorWeaknessList;
-
         _hPBar = new Bar(hP);
         _isStunned = false;
 
@@ -65,16 +63,16 @@ public class EnemyData1
         }
     }
 
-    public void SetArmorAndWeakness(int armor)
-    {
-        _cardTypeArmorWeakness = GetRandomCardTypeWeakness();
-        SetArmorValues(armor, _cardTypeArmorWeakness);
-
-        CardType GetRandomCardTypeWeakness()
-        {
-            return _cardTypeArmorWeaknessList[UnityEngine.Random.Range(0, _cardTypeArmorWeaknessList.Count)];
-        }
-    }
+    //public void SetArmorAndWeakness(int armor)
+    //{
+    //    _cardTypeArmorWeakness = GetRandomCardTypeWeakness();
+    //    SetArmorValues(armor, _cardTypeArmorWeakness);
+    //
+    //    CardType GetRandomCardTypeWeakness()
+    //    {
+    //        return _cardTypeArmorWeaknessList[UnityEngine.Random.Range(0, _cardTypeArmorWeaknessList.Count)];
+    //    }
+    //}
 
     public void RemoveArmor()
     {

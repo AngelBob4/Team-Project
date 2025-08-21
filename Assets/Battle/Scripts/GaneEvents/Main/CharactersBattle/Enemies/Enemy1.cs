@@ -11,7 +11,6 @@ public class Enemy1 : MonoBehaviour
 {
     [SerializeField] private int _lavel;
     [SerializeField] private int _hP;
-    [SerializeField] private List<CardType> _cardTypeArmorWeaknessList;
     
     private Animator _animation;
     private EnemyAI _enemyAI;
@@ -24,7 +23,7 @@ public class Enemy1 : MonoBehaviour
 
     public void Awake()
     {
-        _enemyData = new EnemyData1(_hP, _cardTypeArmorWeaknessList);
+        _enemyData = new EnemyData1(_hP);
 
         _animation = GetComponent<Animator>();
         _enemyAI = GetComponent<EnemyAI>();

@@ -12,6 +12,10 @@ public abstract class EnemyAI : MonoBehaviour
     protected bool _isRemoveArmorOfTurn = true;
     protected List<Action> _attackList;
 
+    private Action _curretAttack;
+    private Action _newAttack;
+    private int _repeatsRandomAttack = 2;
+
     public bool IsRemoveArmorOfTurn => _isRemoveArmorOfTurn;
 
     public void SetEnemyData(EnemyData1 enemyData)
@@ -40,7 +44,23 @@ public abstract class EnemyAI : MonoBehaviour
             throw new System.NotImplementedException();
         }
 
-        _attackList[UnityEngine.Random.Range(0, _attackList.Count)]();
+        _curretAttack = GetNewAttack();
+        _curretAttack();
+
+        Action GetNewAttack()
+        {
+            for(int i = 0; i < _repeatsRandomAttack; i++)
+            {
+                _newAttack = _attackList[UnityEngine.Random.Range(0, _attackList.Count)];
+
+                if(_newAttack != _curretAttack)
+                {
+                    break;
+                }
+            }
+
+            return _newAttack;
+        }
     }
 
     protected void AttackDamagCards(int hand, int deck)

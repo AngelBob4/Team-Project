@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8548191488940163684}
   - component: {fileID: 761713876881290858}
   m_Layer: 6
-  m_Name: EnaamyRat
+  m_Name: EnamyRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lavel: 1
   _hP: 3
-  _cardTypeArmorWeaknessList: 050000000300000001000000
 --- !u!114 &761713876881290858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87266915af30c2544983e25f9e239af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scurryTypeArmorCards: 010000000500000003000000
 --- !u!1001 &913310547661135761
 PrefabInstance:
   m_ObjectHideFlags: 0

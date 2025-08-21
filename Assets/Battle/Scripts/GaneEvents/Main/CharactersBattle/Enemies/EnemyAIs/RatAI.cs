@@ -1,15 +1,19 @@
+using Events.Cards;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RatAI : EnemyAI
 {
-    private readonly int _attackClawDamage = 1;
-    private readonly int _armor = 3;
+    [SerializeField] private List<CardType> _scurryTypeArmorCards;
+    [SerializeField] private int _attackBiteDamage = 3;
+    [SerializeField] private int _attackClawDamage = 2;
+    [SerializeField] private int _attackClawIgnorArmor = 2;
+    [SerializeField] private int _scurryArmor = 3;
 
     private void Awake()
     {
-        _attackList = new List<Action>() { Evade, AttackClaw };
+        _attackList = new List<Action>() { Scurry, AttackBite, AttackClaw };
     }
 
     //protected override void CastAttack()
@@ -18,22 +22,27 @@ public class RatAI : EnemyAI
     //    _attackList[UnityEngine.Random.Range(0, _attackList.Count)]();
     //}
 
-    private void Evade()
+    private void Scurry()
     {
-        Debug.Log("Evade");
+        Debug.Log("Scurry");
 
-        _enemyData.SetArmorAndWeakness(_armor);
+        _enemyData.SetArmorValues(_scurryArmor, _scurryTypeArmorCards[UnityEngine.Random.Range(0, _scurryTypeArmorCards.Count)]);
+    }
+
+    private void AttackBite()
+    {
+        Debug.Log("Bite");
+
+        if (AttackDamag(_attackBiteDamage) > 0)
+        {
+            PlayerToPoison();
+        }
     }
 
     private void AttackClaw()
     {
         Debug.Log("AttackClaw");
 
-        AttackDamagCards(3, 1);
-
-        if (AttackDamag(_attackClawDamage) > 0)
-        {
-            PlayerToPoison();
-        }
+        AttackDamag(_attackClawDamage, _attackClawIgnorArmor);
     }
 }
