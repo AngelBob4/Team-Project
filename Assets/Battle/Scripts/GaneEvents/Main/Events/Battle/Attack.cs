@@ -32,7 +32,7 @@ namespace Events.Main.Events.Battle
             _inputPause.SetInput(false);
 
             if(_player.Attack(_enemy))
-                yield return new WaitForSeconds(AnimationTime.TimeDamageCard);
+                 yield return new WaitForSeconds(AnimationTime.TimeDamageCard);
 
             EnemyAttack();
             yield return new WaitForSeconds(AnimationTime.TimeDamageCard);

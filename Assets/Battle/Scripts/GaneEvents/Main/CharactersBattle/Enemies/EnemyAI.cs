@@ -3,24 +3,27 @@ using Events.Main.CharactersBattle;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyAI : MonoBehaviour
 {
     protected EnemyData1 _enemyData;
+    protected Enemy1 _enemy;
     protected PlayerBattle _player;
-    protected bool _isRemoveArmorOfTurn = true;
+    //protected bool _isRemoveArmorOfTurn = true;
     protected List<Action> _attackList;
 
     private Action _curretAttack;
     private Action _newAttack;
     private int _repeatsRandomAttack = 2;
 
-    public bool IsRemoveArmorOfTurn => _isRemoveArmorOfTurn;
+    //public bool IsRemoveArmorOfTurn => _isRemoveArmorOfTurn;
 
-    public void SetEnemyData(EnemyData1 enemyData)
+    public void Init(Enemy1 enemy, EnemyData1 enemyData)
     {
         _enemyData = enemyData;
+        _enemy = enemy;
     }
 
     public void Attack(PlayerBattle player)
@@ -35,6 +38,8 @@ public abstract class EnemyAI : MonoBehaviour
         }
 
         Debug.Log("---------------------END-ATTACK---------------------");
+
+        EndOfAttack();
     }
 
     protected virtual void CastAttack()
@@ -60,6 +65,14 @@ public abstract class EnemyAI : MonoBehaviour
             }
 
             return _newAttack;
+        }
+    }
+
+    protected virtual void EndOfAttack()
+    {
+        if (_enemyData.ArmorBar != null)
+        {
+            _enemyData.RemoveArmor();
         }
     }
 
@@ -98,5 +111,16 @@ public abstract class EnemyAI : MonoBehaviour
     {
         _player.ToPoison();
         Debug.Log("   Отравление");
+    }
+
+    protected void RegenerationHP(int hp, bool isValidationCheck = true)
+    {
+        _enemyData.HPBar.ChangeValue(hp, isValidationCheck);
+        Debug.Log("   Regeneration " + hp);
+    }
+
+    protected void MoveAnimation(AnimationType animationType)
+    {
+        _enemy.MoveAnimation(animationType);
     }
 }

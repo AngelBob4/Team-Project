@@ -25,6 +25,7 @@ public class RatAI : EnemyAI
     private void Scurry()
     {
         Debug.Log("Scurry");
+        MoveAnimation(AnimationType.Jump);
 
         _enemyData.SetArmorValues(_scurryArmor, _scurryTypeArmorCards[UnityEngine.Random.Range(0, _scurryTypeArmorCards.Count)]);
     }
@@ -32,6 +33,7 @@ public class RatAI : EnemyAI
     private void AttackBite()
     {
         Debug.Log("Bite");
+        MoveAnimation(AnimationType.SpecialAttack);
 
         if (AttackDamag(_attackBiteDamage) > 0)
         {
@@ -42,6 +44,7 @@ public class RatAI : EnemyAI
     private void AttackClaw()
     {
         Debug.Log("AttackClaw");
+        MoveAnimation(AnimationType.Attack);
 
         AttackDamag(_attackClawDamage, _attackClawIgnorArmor);
     }
